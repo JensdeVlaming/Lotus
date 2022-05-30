@@ -30,8 +30,7 @@ DROP TABLE IF EXISTS account;
 CREATE TABLE account (
     email varchar(100) NOT NULL,
     roles varchar(25) NOT NULL,
-    PRIMARY KEY (email, role),
-    FOREIGN KEY (email) REFERENCES registry_lotus (email)
+    PRIMARY KEY (email, roles)
 );
 
 INSERT INTO account VALUES
@@ -59,7 +58,7 @@ CREATE TABLE client_account (
     PRIMARY KEY(email)
 );
 
-INSERT INTO client_account VALUES
+INSERT INTO client_account (email,firstName,lastName,street,phonenumber,city,postcode,gender) VALUES
 ('clienta@lotus.nl','Client','A','lotus','+316 12345678', 'Breda','1234AL','M'),
 ('clientb@lotus.nl','Client','B','lotus','+316 12345678', 'Breda','1234AL','M');
 
@@ -81,7 +80,7 @@ CREATE TABLE member_account (
     PRIMARY KEY(email)
 );
 
-INSERT INTO member_account VALUES
+INSERT INTO member_account (email,firstName,lastName,street,phonenumber,city,postcode,gender) VALUES
 ('kasper@lotus.nl','kasper','van den Enden','lotus','+316 12345678','Breda','1234AL','M'),
 ('juliet@lotus.nl','Juliet','van Bezooijen','lotus','+316 12345678','Breda','1234AL','V'),
 ('daniel@lotus.nl','Daniel','Zuijdam','lotus','+316 12345678','Breda','1234AL','M'),
@@ -105,7 +104,7 @@ CREATE TABLE coord_account (
     PRIMARY KEY(email)
 );
 
-INSERT INTO coord_account VALUES
+INSERT INTO coord_account (email,firstName,lastName,street,phonenumber,city,postcode,gender) VALUES
 ('admin@lotus.nl','admin','lotus','lotus','+316 12345678','Breda','1234AL','O');
 
 --
