@@ -1,10 +1,18 @@
-td:nth-child(even), th:nth-child(even) {
-    background-color: #D6EEEE;
+th,td {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 40px;
 }
 
-th, td {
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 40px;
-  }
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #d6eeee;
+}
+
+tr:nth-child(odd) {
+  background-color: #d6eeee;
+}
