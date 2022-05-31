@@ -50,7 +50,6 @@ if (!$conn) {
 <?php
 if (isset($_POST["placeRequest"])) {
     
-    $clientEmail = $_POST["clientEmail"];
     $requestName = $_POST["requestName"];
     $summary = $_POST["summary"];
     $comments = $_POST["comments"];
@@ -60,7 +59,6 @@ if (isset($_POST["placeRequest"])) {
     $playTime = $_POST["playTime"];
     $playGround = $_POST["playGround"];
     $lotusCasualties = $_POST["lotusCasualties"];
-    $approved = $_POST["approved"];
 
     $sql = 
         "INSERT INTO request (
@@ -80,12 +78,14 @@ if (isset($_POST["placeRequest"])) {
             '$summary', 
             '$comments', 
             '$clientName', 
-            '$clientEmail', 
+            -- TODO: change email value to users email!
+            'user.email@lotus.com', 
             '$billingAddress', 
             '$playDate', 
             '$playTime', 
             '$playGround', 
             '$lotusCasualties', 
+            -- TODO: change default in db!
             '0'
         )";
 
