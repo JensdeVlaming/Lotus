@@ -44,7 +44,7 @@ if (!$conn) {
         href="src/css/styles.css"
     >
     <title>
-        Lotus - Aanvraag plaatsen
+        <?php echo SITENAME ?> - Aanvraag plaatsen
     </title>
 </head>
 
@@ -97,6 +97,7 @@ if (isset($_POST["placeRequest"])) {
 ?> -->
 
 <body>
+
     <form 
         action="" 
         method="post"
@@ -203,7 +204,9 @@ if (isset($_POST["placeRequest"])) {
                                             for="playDate"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Speel Datum: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Speel Datum: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="date" 
@@ -223,7 +226,9 @@ if (isset($_POST["placeRequest"])) {
                                             for="playTime"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Speel Tijd: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Speel Tijd:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="time" 
@@ -259,6 +264,8 @@ if (isset($_POST["placeRequest"])) {
                                                 form-control
                                                 request-input
                                             "
+                                            min="1" 
+                                            max="50"
                                         >
                                         </div>
                                 </div>
@@ -289,7 +296,9 @@ if (isset($_POST["placeRequest"])) {
                                             for="Country"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Land: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Land:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="text" 
@@ -308,18 +317,20 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="province"
+                                            for="provincePlayGround"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Provincie: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Provincie: 
+                                            </span>
                                         </label>
                                         <select 
                                             class="
                                                 form-select
                                                 request-input
                                             "
-                                            name="province" 
-                                            id="province"
+                                            name="provincePlayGround" 
+                                            id="provincePlayGround"
                                         >
                                             <option selected></option>
                                             <option value="Drenthe">
@@ -362,15 +373,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="city"
+                                            for="cityPlayGround"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Stad: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Stad: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="city" 
-                                            id="city"
+                                            name="cityPlayGround" 
+                                            id="cityPlayGround"
                                             required
                                             class="
                                                 form-control
@@ -380,15 +393,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="street"
+                                            for="streetPlayGround"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Straat: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Straat:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="street" 
-                                            id="street"
+                                            name="streetPlayGround" 
+                                            id="streetPlayGround"
                                             required
                                             class="
                                                 form-control
@@ -398,33 +413,38 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-3">
                                         <label 
-                                            for="houseNumber"
+                                            for="houseNumberPlayGround"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Huisnummer: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Huisnummer: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="number" 
-                                            name="houseNumber" 
-                                            id="houseNumber"
+                                            name="houseNumberPlayGround" 
+                                            id="houseNumberPlayGround"
                                             required
                                             class="
                                                 form-control
                                                 request-input
                                             "
+                                            min="1"
                                         >
                                     </div>
                                     <div class="col-3">
                                         <label 
-                                            for="annex"
+                                            for="annexPlayGround"
                                             class="mt-2"
                                         >
-                                            Toevoeging: 
+                                            <span class="formLabel">
+                                                Toevoeging:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="annex" 
-                                            id="annex"
+                                            name="annexPlayGround" 
+                                            id="annexPlayGround"
                                             class="
                                                 form-control
                                                 request-input
@@ -433,15 +453,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="postalCode"
+                                            for="postalCodePlayGround"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Postcode: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Postcode:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="postalCode" 
-                                            id="postalCode"
+                                            name="postalCodePlayGround" 
+                                            id="postalCodePlayGround"
                                             required
                                             class="
                                                 form-control
@@ -469,8 +491,9 @@ if (isset($_POST["placeRequest"])) {
                                     <div class="col-12">
                                         <input 
                                             type="checkbox" 
-                                            name="grimeerLocatieCheckbox" 
-                                            id="grimeerLocatieCheckbox"
+                                            name="gatherLocationCheckbox" 
+                                            id="gatherLocationCheckbox"
+                                            onclick="automateGatherLocationDataOnCheck()"
                                         >
                                         <span class="formLabel">
                                             <span class="checkboxText">
@@ -480,15 +503,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="Country"
+                                            for="country"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Land: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Land: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="Country" 
-                                            id="Country"
+                                            name="country" 
+                                            id="country"
                                             required
                                             readonly
                                             disabled
@@ -502,18 +527,20 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="province"
+                                            for="provinceGatherLocation"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Provincie: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Provincie: 
+                                            </span>
                                         </label>
                                         <select 
                                             class="
                                                 form-select
                                                 request-input
                                             "
-                                            name="province" 
-                                            id="province"
+                                            name="provinceGatherLocation" 
+                                            id="provinceGatherLocation"
                                         >
                                             <option selected></option>
                                             <option value="Drenthe">
@@ -556,15 +583,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="city"
+                                            for="cityGatherLocation"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Stad: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Stad: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="city" 
-                                            id="city"
+                                            name="cityGatherLocation" 
+                                            id="cityGatherLocation"
                                             required
                                             class="
                                                 form-control
@@ -574,15 +603,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="street"
+                                            for="streetGatherLocation"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Straat: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Straat: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="street" 
-                                            id="street"
+                                            name="streetGatherLocation" 
+                                            id="streetGatherLocation"
                                             required
                                             class="
                                                 form-control
@@ -592,33 +623,38 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-3">
                                         <label 
-                                            for="houseNumber"
+                                            for="houseNumberGatherLocation"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Huisnummer: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Huisnummer: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="number" 
-                                            name="houseNumber" 
-                                            id="houseNumber"
+                                            name="houseNumberGatherLocation" 
+                                            id="houseNumberGatherLocation"
                                             required
                                             class="
                                                 form-control
                                                 request-input
                                             "
+                                            min="1"
                                         >
                                     </div>
                                     <div class="col-3">
                                         <label 
-                                            for="annex"
+                                            for="annexGatherLocation"
                                             class="mt-2"
                                         >
-                                            Toevoeging: 
+                                            <span class="formLabel">
+                                                Toevoeging: 
+                                            </span>
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="annex" 
-                                            id="annex"
+                                            name="annexGatherLocation" 
+                                            id="annexGatherLocation"
                                             class="
                                                 form-control
                                                 request-input
@@ -627,15 +663,17 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                     <div class="col-6">
                                         <label 
-                                            for="postalCode"
+                                            for="postalCodeGatherLocation"
                                             class="mt-2"
                                         >
-                                            <span class="requiredField">*</span>Postcode: 
+                                            <span class="formLabel">
+                                                <span class="requiredField">*</span>Postcode:
+                                            </span> 
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="postalCode" 
-                                            id="postalCode"
+                                            name="postalCodeGatherLocation" 
+                                            id="postalCodeGatherLocation"
                                             required
                                             class="
                                                 form-control
@@ -659,7 +697,7 @@ if (isset($_POST["placeRequest"])) {
             
                  
                 
-                <div class="bussinesInfoBox">
+                <div class="businessInfoBox">
                     <label 
                         for=""
                         class="
@@ -678,11 +716,10 @@ if (isset($_POST["placeRequest"])) {
                                         for="requestName"
                                         class="
                                             mt-2
-                                            fw-bold
                                         "
                                     >
-                                        <span class="formMiniSectionTitle">
-                                            Bedrijfsnaam: 
+                                        <span class="formLabel">
+                                            <span class="requiredField">*</span>Bedrijfsnaam: 
                                         </span> 
                                     </label>
                                     <input 
@@ -716,6 +753,7 @@ if (isset($_POST["placeRequest"])) {
                                                 type="checkbox" 
                                                 name="clientNameCheckbox" 
                                                 id="clientNameCheckbox"
+                                                onclick="automateUserDataOnCheck()"
                                             >
                                             <span class="formLabel">
                                                 <span class="checkboxText">
@@ -855,7 +893,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="province"
+                                                    for="provinceBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -867,8 +905,8 @@ if (isset($_POST["placeRequest"])) {
                                                         form-select
                                                         request-input
                                                     "
-                                                    name="province" 
-                                                    id="province"
+                                                    name="provinceBusinessAddress" 
+                                                    id="provinceBusinessAddress"
                                                 >
                                                     <option selected></option>
                                                     <option value="Drenthe">
@@ -911,7 +949,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="city"
+                                                    for="cityBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -920,8 +958,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="city" 
-                                                    id="city"
+                                                    name="cityBusinessAddress" 
+                                                    id="cityBusinessAddress"
                                                     required
                                                     class="
                                                         form-control
@@ -931,7 +969,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="street"
+                                                    for="streetBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -940,8 +978,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="street" 
-                                                    id="street"
+                                                    name="streetBusinessAddress" 
+                                                    id="streetBusinessAddress"
                                                     required
                                                     class="
                                                         form-control
@@ -951,7 +989,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-3">
                                                 <label 
-                                                    for="houseNumber"
+                                                    for="houseNumberBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -960,26 +998,27 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="number" 
-                                                    name="houseNumber" 
-                                                    id="houseNumber"
+                                                    name="houseNumberBusinessAddress" 
+                                                    id="houseNumberBusinessAddress"
                                                     required
                                                     class="
                                                         form-control
                                                         request-input
                                                     "
+                                                    min="1"
                                                 >
                                             </div>
                                             <div class="col-3">
                                                 <label 
-                                                    for="annex"
+                                                    for="annexBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">Toevoeging:</span> 
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="annex" 
-                                                    id="annex"
+                                                    name="annexBusinessAddress" 
+                                                    id="annexBusinessAddress"
                                                     class="
                                                         form-control
                                                         request-input
@@ -988,7 +1027,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="postalCode"
+                                                    for="postalCodeBusinessAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -997,8 +1036,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="postalCode" 
-                                                    id="postalCode"
+                                                    name="postalCodeBusinessAddress" 
+                                                    id="postalCodeBusinessAddress"
                                                     required
                                                     class="
                                                         form-control
@@ -1030,10 +1069,11 @@ if (isset($_POST["placeRequest"])) {
                                                     type="checkbox" 
                                                     name="billingAddressCheckbox"   
                                                     id="billingAddressCheckbox"
+                                                    onclick="automateBillingAddressDataOnCheck()"
                                                     >
                                                 <span class="formLabel">
                                                     <span class="checkboxText">
-                                                        Factuuradres is hetzelfde adres als Bedrijfsadres.
+                                                        Factuuradres is het bedrijfsadres.
                                                     </span>
                                                 </span>
                                             </div>
@@ -1051,15 +1091,19 @@ if (isset($_POST["placeRequest"])) {
                                                     name="Country" 
                                                     id="Country"
                                                     required
+                                                    readonly
+                                                    disabled
+                                                    value="Nederland"
                                                     class="
                                                         form-control
                                                         request-input
+                                                        disabled-input
                                                     "
                                                 >
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="province"
+                                                    for="provinceBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1071,8 +1115,8 @@ if (isset($_POST["placeRequest"])) {
                                                         form-select
                                                         request-input
                                                     "
-                                                    name="province" 
-                                                    id="province"
+                                                    name="provinceBillingAddress" 
+                                                    id="provinceBillingAddress"
                                                 >
                                                     <option selected></option>
                                                     <option value="Drenthe">
@@ -1115,7 +1159,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="city"
+                                                    for="cityBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1124,8 +1168,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="city" 
-                                                    id="city"
+                                                    name="cityBillingAddress" 
+                                                    id="cityBillingAddress"
                                                     required
                                                     class="
                                                         form-control
@@ -1135,7 +1179,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="street"
+                                                    for="streetBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1144,8 +1188,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="street" 
-                                                    id="street"
+                                                    name="streetBillingAddress" 
+                                                    id="streetBillingAddress"
                                                     required
                                                     class="
                                                         form-control
@@ -1155,7 +1199,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-3">
                                                 <label 
-                                                    for="houseNumber"
+                                                    for="houseNumberBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1164,26 +1208,27 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="number" 
-                                                    name="houseNumber" 
-                                                    id="houseNumber"
+                                                    name="houseNumberBillingAddress" 
+                                                    id="houseNumberBillingAddress"
                                                     required
                                                     class="
                                                         form-control
                                                         request-input
                                                     "
+                                                    min="1"
                                                 >
                                             </div>
                                             <div class="col-3">
                                                 <label 
-                                                    for="annex"
+                                                    for="annexBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">Toevoeging:</span> 
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="annex" 
-                                                    id="annex"
+                                                    name="annexBillingAddress" 
+                                                    id="annexBillingAddress"
                                                     class="
                                                         form-control
                                                         request-input
@@ -1192,7 +1237,7 @@ if (isset($_POST["placeRequest"])) {
                                             </div>
                                             <div class="col-6">
                                                 <label 
-                                                    for="postalCode"
+                                                    for="postalCodeBillingAddress"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1201,8 +1246,8 @@ if (isset($_POST["placeRequest"])) {
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="postalCode" 
-                                                    id="postalCode"
+                                                    name="postalCodeBillingAddress" 
+                                                    id="postalCodeBillingAddress"
                                                     required
                                                     class="
                                                         form-control

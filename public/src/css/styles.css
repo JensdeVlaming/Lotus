@@ -66,6 +66,10 @@ body {
     font-weight: 500;
 }
 
+.form-control {
+    border: 1px solid var(--geyser);
+}
+
 
 
 /* END */
