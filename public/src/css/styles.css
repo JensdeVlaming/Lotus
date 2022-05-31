@@ -1,10 +1,18 @@
 /* Variables */
 :root {
-    --blue: #0E44BE;
+    --blue: #0a2465;
+    --orange: #f2550d;
+    --geyser: #d9dee9;
+    --bole: #7d4642;
+    --waikawa-grey: #546ca4;
+    --kashmir-blue: #546c91;
+    --crater-brown: #432028;
+    --cinereous: #958484;
     --white: #ffffff;
     --grey-text: #4A4A4A;
     --placeholder-text: #757575;
-  }
+    --red: #d9534f;
+}
 
 /* Bootstrap 5 overrides */
 
@@ -67,4 +75,23 @@
     border: 3px solid var(--blue) !important;
 }
 
+.requiredField {
+    color: var(--red);
+}
+
+textarea {
+    resize: none;
+}
+
+.submitRequestButton {
+    border-color: var(--orange) !important;
+    color: var(--white) !important;
+    background-color: var(--orange) !important;
+}
+
+.submitRequestButton:hover {
+    border-color: var(--orange) !important;
+    color: var(--orange) !important;
+    background-color: var(--white) !important;
+}
 /* END */
