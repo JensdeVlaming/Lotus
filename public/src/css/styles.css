@@ -12,7 +12,21 @@
     --grey-text: #4A4A4A;
     --placeholder-text: #757575;
     --red: #d9534f;
+    --black: #000000;
 }
+
+/* General */
+
+textarea {
+    resize: none;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
 
 /* Bootstrap 5 overrides */
 
@@ -74,13 +88,12 @@
     border-radius: 4px;
     border: 3px solid var(--blue) !important;
 }
+/* END */
+
+/* Request */
 
 .requiredField {
-    color: var(--red);
-}
-
-textarea {
-    resize: none;
+    color: var(--orange) !important;
 }
 
 .submitRequestButton {
@@ -94,4 +107,29 @@ textarea {
     color: var(--orange) !important;
     background-color: var(--white) !important;
 }
+
+.placeRequestFormContent {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.formSectionTitle {
+    font-size: 26px;
+    color: var(--blue);
+}
+
+.formMiniSectionTitle {
+    font-size: 16px;
+    color: var(--kashmir-blue);
+}
+
+.formLabel {
+    font-size: 14px;
+    color: var(--black);
+}
+
+.imgDivider {
+    background-color: var(--blue);
+    opacity: 1;
+}
+
 /* END */
