@@ -4,23 +4,19 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
     require_once($filename);
 }
 
+$app = new Application();
+
 // GET Requests
-Route::get("/login", [ViewController::class, "login"]);
+$app->router->get("/", [ViewController::class, "index"]);
+$app->router->get("/login", [ViewController::class, "login"]);
+$app->router->get("/uitloggen", [AuthController::class, "logout"]);
+$app->router->get("/authenticated", [UserController::class, "authenticatd"]);
 
 // POST Requests
-Route::post("/login", [[UserController::class, "login"], ]);
+$app->router->post("/login", [AuthController::class, "login"]);
 
-// Route::get("/login/:id", function(){
-//     // UserController::view("/user/login");
-// });
+$app->router->get("/requests", [ClientController::class, "requests"]);
 
-// Route::post("/login", function($payload){
-//     UserController::login($payload);
-// });
+$app->router->notFoundHandler([ExceptionController::class, "_404"]);
 
-// Route::get("/authenticated", function(){
-//     "Logged in!";
-// });
-
-Route::get("/requests", [ClientController::class, "requests"]);
 ?>
