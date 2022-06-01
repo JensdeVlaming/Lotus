@@ -15,7 +15,7 @@ $app->router->get("/authenticated", [UserController::class, "authenticatd"]);
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);
 
-$app->router->get("/requests", [ClientController::class, "requests"]);
+$app->router->get("/overzicht", [ClientController::class, "overview"]);
 
 $app->router->notFoundHandler([ExceptionController::class, "_404"]);
 
