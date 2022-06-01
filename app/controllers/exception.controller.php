@@ -7,10 +7,10 @@ class ExceptionController extends Controller {
     }
 
     public function _404() {
-        $this->view("exception/404");
+        $this->viewContentOnly("exception/404");
     }
 
     public function _405() {
-        $this->view("exception/405");
+        $this->viewContentOnly("exception/405");
     }
 }
