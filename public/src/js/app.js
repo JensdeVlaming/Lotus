@@ -209,9 +209,10 @@ if (viewportWidth > 768) {
   if (viewportWidth > 992) {
     placeRequestFormContent.classList.remove('w-75');
     placeRequestFormContent.classList.add('w-50');
+  } else {
+    placeRequestFormContent.classList.remove('w-50');
+    placeRequestFormContent.classList.add('w-75');
   }
-  placeRequestFormContent.classList.remove('w-50');
-  placeRequestFormContent.classList.add('w-75');
 } else {
   placeRequestFormContent.classList.remove('w-75');
   placeRequestFormContent.classList.remove('w-50');
@@ -229,9 +230,10 @@ $(window).on('resize', function () {
       if (viewportWidth > 992) {
         placeRequestFormContent.classList.remove('w-75');
         placeRequestFormContent.classList.add('w-50');
+      } else {
+        placeRequestFormContent.classList.remove('w-50');
+        placeRequestFormContent.classList.add('w-75');
       }
-      placeRequestFormContent.classList.remove('w-50');
-      placeRequestFormContent.classList.add('w-75');
     } else {
       placeRequestFormContent.classList.remove('w-75');
       placeRequestFormContent.classList.remove('w-50');
