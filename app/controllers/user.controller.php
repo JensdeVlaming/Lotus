@@ -16,20 +16,9 @@ class UserController extends Controller
     {
     }
 
-    public static function login($payload)
+    public static function register($payload)
     {
-        $data = [
-            "email" => $_POST["email"],
-            "error" => "Foutieve inlog"
-        ];
-
-        $userModel = self::model("user");
-
-        if ($userModel->authenticate($payload["email"], $payload["password"])) {
-            self::view("index");
-        } else {
-            self::view("user/login", $data);
-        }
+        // TODO register user
     }
 
     public static function logout()

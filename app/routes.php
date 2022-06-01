@@ -8,18 +8,6 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
 Route::get("/login", [ViewController::class, "login"]);
 
 // POST Requests
-Route::post("/login", [[UserController::class, "login"], ]);
-
-// Route::get("/login/:id", function(){
-//     // UserController::view("/user/login");
-// });
-
-// Route::post("/login", function($payload){
-//     UserController::login($payload);
-// });
-
-// Route::get("/authenticated", function(){
-//     "Logged in!";
-// });
+Route::post("/login", [AuthController::class, "login"]);
 
 ?>
