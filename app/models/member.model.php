@@ -23,4 +23,3 @@ class MemberModel{
         echo "test";
     }
 }
-?>

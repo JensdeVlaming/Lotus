@@ -1,7 +1,9 @@
 <?php
-class MemberController extends Controller{
+class MemberController extends Controller
+{
 
-    public static function showAssignmentOverview(){
+    public static function showAssignmentOverview()
+    {
         $memberModel = self::model("member");
 
         $resultSet = $memberModel->getOpenAssignments();
@@ -13,4 +15,3 @@ class MemberController extends Controller{
         }
     }
 }
-?>

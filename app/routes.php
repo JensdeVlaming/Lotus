@@ -22,5 +22,3 @@ Route::post("/login", [[UserController::class, "login"], ]);
 // Route::get("/authenticated", function(){
 //     "Logged in!";
 // });
-
-?>
