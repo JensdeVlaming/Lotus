@@ -5,6 +5,6 @@ class RequestController extends Controller {
     }
 
     public function addRequest() {
-        $this->view("/addRequest");
+        $this->view("/test");
     }
 }

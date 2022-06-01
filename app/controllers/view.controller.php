@@ -19,4 +19,8 @@ class ViewController extends Controller {
     public function about() {
         $this->view("user/login");
     }
+
+    public function addRequest() {
+        $this->view("/addRequest");
+    }
 }

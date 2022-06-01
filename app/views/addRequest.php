@@ -3,22 +3,6 @@
     lang="en"
 >
 
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "lotus";
-$conn = mysqli_connect(
-    $servername, 
-    $username, 
-    $password, 
-    $db
-);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-?>
-
 <head>
     <meta 
         charset="UTF-8"
@@ -47,54 +31,6 @@ if (!$conn) {
         <?php echo SITENAME ?> - Aanvraag plaatsen
     </title>
 </head>
-
-<?php
-if (isset($_POST["placeRequest"])) {
-    
-    $requestName = $_POST["requestName"];
-    $summary = $_POST["summary"];
-    $comments = $_POST["comments"];
-    $clientName = $_POST["clientName"];
-    $billingAddress = $_POST["billingAddress"];
-    $playDate = $_POST["playDate"];
-    $playTime = $_POST["playTime"];
-    $playGround = $_POST["playGround"];
-    $lotusCasualties = $_POST["lotusCasualties"];
-
-    $sql = 
-        "INSERT INTO request (
-            requestName, 
-            summary, 
-            comments, 
-            clientName, 
-            clientEmail, 
-            billingAddress, 
-            playDate, 
-            playTime, 
-            playGround, 
-            lotusCasualties, 
-            approved) 
-        VALUES(
-            '$requestName', 
-            '$summary', 
-            '$comments', 
-            '$clientName', 
-            -- TODO: change email value to users email!
-            'user.email@lotus.com', 
-            '$billingAddress', 
-            '$playDate', 
-            '$playTime', 
-            '$playGround', 
-            '$lotusCasualties', 
-            -- TODO: change default in db!
-            '0'
-        )";
-
-    if ($conn->query($sql)) {
-        echo "request geplaatst";
-    }
-}
-?>
 
 <body>
 
