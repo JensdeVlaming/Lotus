@@ -4,28 +4,16 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
     require_once($filename);
 }
 
+$app = new Application();
+
 // GET Requests
-Route::get("/login", [ViewController::class, "login"]);
+$app->router->get("/", [ViewController::class, "index"]);
+$app->router->get("/login", [ViewController::class, "login"]);
+$app->router->get("/uitloggen", [AuthController::class, "logout"]);
+$app->router->get("/authenticated", [UserController::class, "authenticatd"]);
 
-<<<<<<< HEAD
 // POST Requests
-Route::post("/login", [AuthController::class, "login"]);
-=======
-Route::get("/addRequest", function(){
-    UserController::view("/addRequest");
-});
+$app->router->post("/login", [AuthController::class, "login"]);
 
-Route::get("/login/:id", function(){
-    // UserController::view("/user/login");
-});
-
-Route::post("/login", function($payload){
-    UserController::login($payload);
-});
-
-Route::get("/authenticated", function(){
-    "Logged in!";
-});
->>>>>>> fb46c58 (added javascript functions for the checkboxes)
-
+$app->router->notFoundHandler([ExceptionController::class, "_404"]);
 ?>

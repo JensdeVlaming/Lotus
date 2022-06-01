@@ -90,11 +90,7 @@ function automateGatherLocationDataOnCheck() {
       }
     }
 
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> fb46c58 (added javascript functions for the checkboxes)
 
   } else {
     cityGatherLocation.disabled = false;
@@ -204,7 +200,6 @@ function automateBillingAddressDataOnCheck() {
     postalCodeBillingAddress.disabled = false;
 
   }
-<<<<<<< HEAD
 }
 
 const placeRequestFormContent = document.getElementById('placeRequestFormContent');
@@ -245,6 +240,3 @@ $(window).on('resize', function () {
     }
   }
 });
-=======
-}
->>>>>>> fb46c58 (added javascript functions for the checkboxes)

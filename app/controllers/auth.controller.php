@@ -2,26 +2,31 @@
 
 class AuthController extends Controller
 {
+    public function __construct() {
+        parent::__construct();
+        $this->userModel = $this->model("user");
+    }
 
-    public static function login($payload)
+    public function login($payload)
     {
         $data = [
             "email" => $_POST["email"],
             "error" => "Foutieve inlog"
         ];
 
-        $userModel = self::model("user");
+        $email= $this->userModel->authenticate($payload["email"], $payload["password"]);
 
-        if ($userModel->authenticate($payload["email"], $payload["password"])) {
-            self::view("index");
+        if ($email != null) {
+            Application::$app->session->set("user", $email);
+            $this->redirect("/authenticated");
         } else {
-            self::view("user/login", $data);
+            $this->view("user/login", $data);
         }
     }
 
-    public static function logout()
+    public function logout()
     {
-        session_start();
-        session_destroy();
+        Application::$app->session->destroy();
+        echo "logged out";
     }
 }

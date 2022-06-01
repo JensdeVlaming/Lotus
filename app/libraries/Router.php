@@ -1,12 +1,11 @@
 <?php
 
-class Route
+class Router
 {
-    // protected $currentController = "view";
-    // protected $currentMethod = "index";
-    // protected $params = [];
 
-    public static function get($route, $function){
+    // Implement callback
+    public static function get($route, $function)
+    {
         //get method, don't continue if method is not the 
         $method = $_SERVER['REQUEST_METHOD'];
         if($method !== 'GET'){ return; }
@@ -18,7 +17,19 @@ class Route
         //get the url params and run the callback passing the params
         if($struct){
             $params = self::getParams($route, $_SERVER['REQUEST_URI']);
-            $function->__invoke($params);
+
+            $controller = $function[0];
+            $method = $function[1];
+
+            $controller = new $controller;
+            Application::$app->controller = $controller;
+
+            Application::$app->controller->action = $method;
+
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute();
+            }
+            $controller->$method($params);
 
             //prevent checking all other routes
             die();
@@ -44,7 +55,25 @@ class Route
         }
     }
 
-    public static function urlToArray($url1, $url2){
+    public function notFoundHandler($function)
+    {
+        $controller = $function[0];
+        $method = $function[1];
+
+        $controller = new $controller;
+        $controller->$method();
+
+        //prevent checking all other routes
+        die();
+    }
+
+    public static function isGuest()
+    {
+        return false;
+    }
+
+    private static function urlToArray($url1, $url2)
+    {
         //convert route and requested url to an array
         //remove empty values caused by slashes
         //and refresh the indexes of the array
