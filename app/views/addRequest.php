@@ -488,7 +488,7 @@ if (isset($_POST["placeRequest"])) {
                             </label>
                             <div class="form-control">
                                 <div class="row">
-                                    <div class="col--xl12">
+                                    <div class="col-xl-12">
                                         <input 
                                             type="checkbox" 
                                             name="gatherLocationCheckbox" 
@@ -710,7 +710,7 @@ if (isset($_POST["placeRequest"])) {
                     </label>
                     <div class="form-control">
                         <div class="row">
-                            <div class="col--xl12">
+                            <div class="col-xl-12">
                                 <div>
                                     <label 
                                         for="requestName"
@@ -748,7 +748,7 @@ if (isset($_POST["placeRequest"])) {
                                 </label>
                                 <div class="form-control">
                                     <div class="row">
-                                        <div class="col--xl12">
+                                        <div class="col-xl-12">
                                             <input 
                                                 type="checkbox" 
                                                 name="clientNameCheckbox" 
@@ -852,7 +852,7 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col--xl12">
+                            <div class="col-xl-12">
                                 <div class="addresBox">
                                     <label 
                                         for="" 
@@ -1049,7 +1049,7 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col--xl12">
+                            <div class="col-xl-12">
                                 <div class="addresBox">
                                     <label 
                                         for="" 
@@ -1064,7 +1064,7 @@ if (isset($_POST["placeRequest"])) {
                                     </label>
                                     <div class="form-control">
                                         <div class="row">
-                                            <div class="col--xl12">
+                                            <div class="col-xl-12">
                                                 <input 
                                                     type="checkbox" 
                                                     name="billingAddressCheckbox"   

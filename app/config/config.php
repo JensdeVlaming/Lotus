@@ -14,4 +14,3 @@
 
     // URLROOT
     define("URLROOT", "localhost");
-
