@@ -83,13 +83,13 @@ CREATE TABLE request (
     playTime varchar(100) NOT NULl,
     -- playId int NOT NULL AUTO_INCREMENT,
     playStreet varchar(100) NOT NULL,
-    playPremise varchar(1) NULL,
+    playPremise varchar(4) NULL,
     playPCode varchar(7) NOT NULL,
     playProvince varchar(50) NOT NULL,
     playCity varchar(50) NOT NULL,
     -- grimeId int NOT NULL AUTO_INCREMENT,
     grimeStreet varchar(100) NULL DEFAULT playStreet,
-    grimePremise varchar(1) NULL DEFAULT playPremise,
+    grimePremise varchar(4) NULL DEFAULT playPremise,
     grimePCode varchar(7) NULL DEFAULT playPCode,
     grimeProvince varchar(50) NULL DEFAULT playProvince,
     grimeCity varchar(50) NULL DEFAULT playCity,
@@ -100,16 +100,16 @@ CREATE TABLE request (
 );
 -- request whithout grimeGround with comments
 INSERT INTO request (id,requestName,summary,comments,clientEmail,playDate,playTime,playStreet,playPremise,playPCode,playProvince,playCity,lotusCasualties,approved) VALUES
-(10,'Amphia ziekenhuis','Steekwonden' ,'Messen en scharen' ,'clienta@lotus.nl' ,'12-6-2022' ,'12:00' ,'Molengracht','25', '4818 CK','Noord-Brabant','Tilburg',10 ,0);
+(10,'Amphia ziekenhuis','Steekwonden' ,'Messen en scharen' ,'clienta@lotus.nl' ,'12-6-2022' ,'12:00' ,'Molengracht','21', '4818 CK','Noord-Brabant','Breda',10 ,0);
 -- request whithout grimeGround without comments
 INSERT INTO request (id,requestName,summary,clientEmail,playDate,playTime,playStreet,playPremise,playPCode,playProvince,playCity,lotusCasualties,approved) VALUES
-(20,'Huisartsenpraktijd HB','Cuts and bruises','clientb@lotus.nlv'  ,'6-12-2022' ,'10:00' ,'Haagsestraat','10a','1234LA','Noord-Brabant','Breda' ,3 ,1);
+(20,'Huisartsenpraktijd HB','Cuts and bruises','clientb@lotus.nlv'  ,'6-12-2022' ,'10:00' ,'Haagsestraat','10a','1234LA','Noord-Brabant','Den Haag' ,3 ,1);
 -- request with grimeGround with comments
 INSERT INTO request (id,requestName,summary,comments,clientEmail,playDate,playTime,playStreet,playPremise,playPCode,playProvince,playCity,grimeStreet,grimePremise,grimePCode,grimeProvince,grimeCity,lotusCasualties,approved) VALUES
-(5,'Amphia ziekenhuis','Steekwonden' ,'Messen en scharen','clienta@lotus.nl','12-6-2022' ,'12:00' , 'Molengracht','25', '4818 CK','Noord-Brabant','Tilburg','Molengracht','30', '4818 CK','Noord-Brabant','Tilburg',10 ,0);
+(5,'Amphia ziekenhuis','Steekwonden' ,'Messen en scharen','clienta@lotus.nl','12-6-2022' ,'12:00' , 'Molengracht','21', '4818 CK','Noord-Brabant','Breda','Molengracht','30', '4818 CK','Noord-Brabant','Tilburg',10 ,0);
 -- request with grimeGround without comments
 INSERT INTO request (id,requestName,summary,clientEmail,playDate,playTime,playStreet,playPremise,playPCode,playProvince,playCity,grimeStreet,grimePremise,grimePCode,grimeProvince,grimeCity,lotusCasualties,approved) VALUES
-(15,'Huisartsenpraktijd HB','Cuts and bruises','clientb@lotus.nlv' ,'6-12-2022' ,'10:00' ,'Haagsestraat','10a','1234LA','Noord-Brabant','Breda','Haagsestraat','15','1234LA','Noord-Brabant','Breda',3 ,1);
+(15,'Huisartsenpraktijd HB','Cuts and bruises','clientb@lotus.nlv' ,'6-12-2022' ,'10:00' ,'Haagsestraat','10a','1234LA','Noord-Brabant','Den Haag','Haagsestraat','15','1234LA','Noord-Brabant','Breda',3 ,1);
 
 --
 -- Table structure for table solicit
