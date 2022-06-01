@@ -14,4 +14,17 @@ class MemberController extends Controller
             echo "No open assignments found.";
         }
     }
+
+    public static function showRequestOverview()
+    {
+        $memberModel = self::model("member");
+
+        $resultSet = $memberModel->getAssignmentRequests();
+
+        if (sizeOf($resultSet) > 0) {
+            self::view("coord/requestOverview", $resultSet);
+        } else {
+            echo "No open assignments found.";
+        }
+    }
 }

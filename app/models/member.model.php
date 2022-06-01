@@ -15,6 +15,15 @@ class MemberModel{
         return $result;
     }
 
+    public function getAssignmentRequests() {
+        $this->db->query("SELECT * FROM request WHERE approved = 0");
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+
     public function getYourAssignments(){
         
     }
