@@ -90,7 +90,7 @@ function automateGatherLocationDataOnCheck() {
       }
     }
 
-    
+
 
   } else {
     cityGatherLocation.disabled = false;
@@ -201,3 +201,40 @@ function automateBillingAddressDataOnCheck() {
 
   }
 }
+
+const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+if (viewportWidth > 768) {
+  if (viewportWidth > 992) {
+    placeRequestFormContent.classList.remove('w-75');
+    placeRequestFormContent.classList.add('w-50');
+  }
+  placeRequestFormContent.classList.remove('w-50');
+  placeRequestFormContent.classList.add('w-75');
+} else {
+  placeRequestFormContent.classList.remove('w-75');
+  placeRequestFormContent.classList.remove('w-50');
+}
+
+var width = $(window).width();
+$(window).on('resize', function () {
+  if ($(this).width() !== width) {
+    width = $(this).width();
+
+    const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if (viewportWidth > 768) {
+      if (viewportWidth > 992) {
+        placeRequestFormContent.classList.remove('w-75');
+        placeRequestFormContent.classList.add('w-50');
+      }
+      placeRequestFormContent.classList.remove('w-50');
+      placeRequestFormContent.classList.add('w-75');
+    } else {
+      placeRequestFormContent.classList.remove('w-75');
+      placeRequestFormContent.classList.remove('w-50');
+    }
+  }
+});

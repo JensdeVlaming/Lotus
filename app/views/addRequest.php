@@ -3,7 +3,7 @@
     lang="en"
 >
 
-<!-- <?php
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,7 +17,7 @@ $conn = mysqli_connect(
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-?> -->
+?>
 
 <head>
     <meta 
@@ -48,7 +48,7 @@ if (!$conn) {
     </title>
 </head>
 
-<!-- <?php
+<?php
 if (isset($_POST["placeRequest"])) {
     
     $requestName = $_POST["requestName"];
@@ -94,7 +94,7 @@ if (isset($_POST["placeRequest"])) {
         echo "request geplaatst";
     }
 }
-?> -->
+?>
 
 <body>
 
@@ -111,11 +111,11 @@ if (isset($_POST["placeRequest"])) {
             placeRequestFormContent
             bg-white 
             px-5 
-            w-50 
             my-4
             row
             rounded-3
             "
+            id="placeRequestFormContent"
         >
             <img src="/src/img/logo.svg" class="img-fluid mx-auto d-block mt-4 mb-4 w-25 h-25" alt="Logo Lotus">
             <hr class="imgDivider">
@@ -153,7 +153,7 @@ if (isset($_POST["placeRequest"])) {
                         </label>
                         <div class="form-control">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-xl-6 col-md-12">
                                     <div class="">
                                         <label 
                                             for="summary"
@@ -177,7 +177,7 @@ if (isset($_POST["placeRequest"])) {
                     
                     
                                 
-                                <div class="col-6">
+                                <div class="col-xl-6 col-md-12">
                                     <div class="">
                                         <label 
                                             for="comments"
@@ -198,7 +198,7 @@ if (isset($_POST["placeRequest"])) {
                                         ></textarea>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-xl-6 col-md-12">
                                     <div class="">
                                         <label 
                                             for="playDate"
@@ -220,7 +220,7 @@ if (isset($_POST["placeRequest"])) {
                                         >
                                     </div> 
                                 </div>   
-                                <div class="col-6">
+                                <div class="col-xl-6 col-md-12">
                                     <div class="">
                                         <label 
                                             for="playTime"
@@ -242,10 +242,10 @@ if (isset($_POST["placeRequest"])) {
                                         >
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-xl-4">
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-xl-4">
                                     <div class="">
                                         <label 
                                             for="lotusCasualties"
@@ -269,7 +269,7 @@ if (isset($_POST["placeRequest"])) {
                                         >
                                         </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-xl-4">
 
                                 </div>
                             </div>
@@ -291,7 +291,7 @@ if (isset($_POST["placeRequest"])) {
                             </label>
                             <div class="form-control">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="Country"
                                             class="mt-2"
@@ -315,7 +315,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="provincePlayGround"
                                             class="mt-2"
@@ -371,7 +371,7 @@ if (isset($_POST["placeRequest"])) {
                                             </option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="cityPlayGround"
                                             class="mt-2"
@@ -391,7 +391,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="streetPlayGround"
                                             class="mt-2"
@@ -411,7 +411,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-xl-3">
                                         <label 
                                             for="houseNumberPlayGround"
                                             class="mt-2"
@@ -432,7 +432,7 @@ if (isset($_POST["placeRequest"])) {
                                             min="1"
                                         >
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-xl-3">
                                         <label 
                                             for="annexPlayGround"
                                             class="mt-2"
@@ -451,7 +451,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="postalCodePlayGround"
                                             class="mt-2"
@@ -488,7 +488,7 @@ if (isset($_POST["placeRequest"])) {
                             </label>
                             <div class="form-control">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col--xl12">
                                         <input 
                                             type="checkbox" 
                                             name="gatherLocationCheckbox" 
@@ -501,7 +501,7 @@ if (isset($_POST["placeRequest"])) {
                                             </span>
                                         </span>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="country"
                                             class="mt-2"
@@ -525,7 +525,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="provinceGatherLocation"
                                             class="mt-2"
@@ -581,7 +581,7 @@ if (isset($_POST["placeRequest"])) {
                                             </option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="cityGatherLocation"
                                             class="mt-2"
@@ -601,7 +601,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="streetGatherLocation"
                                             class="mt-2"
@@ -621,7 +621,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-xl-3">
                                         <label 
                                             for="houseNumberGatherLocation"
                                             class="mt-2"
@@ -642,7 +642,7 @@ if (isset($_POST["placeRequest"])) {
                                             min="1"
                                         >
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-xl-3">
                                         <label 
                                             for="annexGatherLocation"
                                             class="mt-2"
@@ -661,7 +661,7 @@ if (isset($_POST["placeRequest"])) {
                                             "
                                         >
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-xl-6 col-md-12">
                                         <label 
                                             for="postalCodeGatherLocation"
                                             class="mt-2"
@@ -710,7 +710,7 @@ if (isset($_POST["placeRequest"])) {
                     </label>
                     <div class="form-control">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col--xl12">
                                 <div>
                                     <label 
                                         for="requestName"
@@ -748,7 +748,7 @@ if (isset($_POST["placeRequest"])) {
                                 </label>
                                 <div class="form-control">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col--xl12">
                                             <input 
                                                 type="checkbox" 
                                                 name="clientNameCheckbox" 
@@ -761,7 +761,7 @@ if (isset($_POST["placeRequest"])) {
                                                 </span>
                                             </span>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-xl-6 col-md-12">
                                             <div>
                                                 <label 
                                                     for="clientFirstName"
@@ -783,7 +783,7 @@ if (isset($_POST["placeRequest"])) {
                                                 >
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-xl-6 col-md-12">
                                             <div>
                                                 <label 
                                                     for="clientLastName"
@@ -805,7 +805,7 @@ if (isset($_POST["placeRequest"])) {
                                                 >
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-xl-6 col-md-12">
                                             <div>
                                                 <label 
                                                     for="clientEmail"
@@ -827,7 +827,7 @@ if (isset($_POST["placeRequest"])) {
                                                 >
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-xl-6 col-md-12">
                                             <div>
                                                 <label 
                                                     for="clientPhoneNumber"
@@ -852,7 +852,7 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col--xl12">
                                 <div class="addresBox">
                                     <label 
                                         for="" 
@@ -867,7 +867,7 @@ if (isset($_POST["placeRequest"])) {
                                     </label>
                                     <div class="form-control">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="Country"
                                                     class="mt-2"
@@ -891,7 +891,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="provinceBusinessAddress"
                                                     class="mt-2"
@@ -947,7 +947,7 @@ if (isset($_POST["placeRequest"])) {
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="cityBusinessAddress"
                                                     class="mt-2"
@@ -967,7 +967,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="streetBusinessAddress"
                                                     class="mt-2"
@@ -987,7 +987,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xl-3">
                                                 <label 
                                                     for="houseNumberBusinessAddress"
                                                     class="mt-2"
@@ -1008,7 +1008,7 @@ if (isset($_POST["placeRequest"])) {
                                                     min="1"
                                                 >
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xl-3">
                                                 <label 
                                                     for="annexBusinessAddress"
                                                     class="mt-2"
@@ -1025,7 +1025,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="postalCodeBusinessAddress"
                                                     class="mt-2"
@@ -1049,7 +1049,7 @@ if (isset($_POST["placeRequest"])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col--xl12">
                                 <div class="addresBox">
                                     <label 
                                         for="" 
@@ -1064,7 +1064,7 @@ if (isset($_POST["placeRequest"])) {
                                     </label>
                                     <div class="form-control">
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col--xl12">
                                                 <input 
                                                     type="checkbox" 
                                                     name="billingAddressCheckbox"   
@@ -1077,7 +1077,7 @@ if (isset($_POST["placeRequest"])) {
                                                     </span>
                                                 </span>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="Country"
                                                     class="mt-2"
@@ -1101,7 +1101,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="provinceBillingAddress"
                                                     class="mt-2"
@@ -1157,7 +1157,7 @@ if (isset($_POST["placeRequest"])) {
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="cityBillingAddress"
                                                     class="mt-2"
@@ -1177,7 +1177,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="streetBillingAddress"
                                                     class="mt-2"
@@ -1197,7 +1197,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xl-3">
                                                 <label 
                                                     for="houseNumberBillingAddress"
                                                     class="mt-2"
@@ -1218,7 +1218,7 @@ if (isset($_POST["placeRequest"])) {
                                                     min="1"
                                                 >
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-xl-3">
                                                 <label 
                                                     for="annexBillingAddress"
                                                     class="mt-2"
@@ -1235,7 +1235,7 @@ if (isset($_POST["placeRequest"])) {
                                                     "
                                                 >
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-xl-6 col-md-12">
                                                 <label 
                                                     for="postalCodeBillingAddress"
                                                     class="mt-2"
