@@ -38,8 +38,8 @@ session_start();
                     <div class="col-md-3">
                         <div class="card-det">
                             <h5><?php echo "" . $item["requestName"] . "" ?></h3>
-                            <h6><?php echo "" . $item["playDate"] . "" ?></h4>
-                            <h6><?php echo "" . $item["playGround"] . "" ?></h4>
+                                <h6><?php echo "" . $item["playDate"] . "" ?></h4>
+                                    <h6><?php echo "" . $item["playGround"] . "" ?></h4>
                         </div>
                     </div>
 
