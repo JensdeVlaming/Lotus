@@ -20,4 +20,7 @@ Route::get("/authenticated", function(){
     "Logged in!";
 });
 
+Route::get("/requests", function(){
+    ClientController::requests();
+});
 ?>
