@@ -6,71 +6,99 @@ class Route
     // protected $currentMethod = "index";
     // protected $params = [];
 
-    public static function get($route, $function){
+    public static function get($route, $function)
+    {
         //get method, don't continue if method is not the 
         $method = $_SERVER['REQUEST_METHOD'];
-        if($method !== 'GET'){ return; }
+        if ($method !== 'GET') {
+            return;
+        }
 
         //check the structure of the url
         $struct = self::checkStructure($route, $_SERVER['REQUEST_URI']);
 
         //if the requested url matches the one from the route
         //get the url params and run the callback passing the params
-        if($struct){
+        if ($struct) {
             $params = self::getParams($route, $_SERVER['REQUEST_URI']);
-            $function->__invoke($params);
+
+            $controller = $function[0];
+            $method = $function[1];
+
+            $controller = new $controller;
+            $controller->$method($params);
 
             //prevent checking all other routes
             die();
         }
     }
 
-    public static function post($route, $function){
+    public static function post($route, $function)
+    {
         //get method, don't continue if method is not the 
         $method = $_SERVER['REQUEST_METHOD'];
-        if($method !== 'POST'){ return; }
+        if ($method !== 'POST') {
+            return;
+        }
 
         //check the structure of the url
         $struct = self::checkStructure($route, $_SERVER['REQUEST_URI']);
 
         //if the requested url matches the one from the route
         //get the url params and run the callback passing the params
-        if($struct){
+        if ($struct) {
+            $controller = $function[0];
+            $method = $function[1];
+
+            $controller = new $controller;
+            $controller->$method($_POST);
+
             // $params = self::getPayload($_POST);
-            $function->__invoke($_POST);
+            // $function->__invoke($_POST);
 
             //prevent checking all other routes
             die();
         }
     }
-
-    public static function urlToArray($url1, $url2){
+    public static function auth() {
+        
+    }
+    private static function urlToArray($url1, $url2)
+    {
         //convert route and requested url to an array
         //remove empty values caused by slashes
         //and refresh the indexes of the array
-        $a = array_values(array_filter(explode('/', $url1), function($val){ return $val !== ''; }));
-        $b = array_values(array_filter(explode('/', $url2), function($val){ return $val !== ''; }));
-        
+        $a = array_values(array_filter(explode('/', $url1), function ($val) {
+            return $val !== '';
+        }));
+        $b = array_values(array_filter(explode('/', $url2), function ($val) {
+            return $val !== '';
+        }));
+
         //debug mode for development
         // if(true) array_shift($b);
         return array($a, $b);
     }
 
-    public static function checkStructure($url1, $url2){
+    private static function checkStructure($url1, $url2)
+    {
+        //remove query parameters for structure check        
+        $url2 = explode("?", $url2)[0];
+
         list($a, $b) = self::urlToArray($url1, $url2);
 
         //if the sizes of the arrays don't match, their structures don't match either
-        if(sizeof($a) !== sizeof($b)){
+        if (sizeof($a) !== sizeof($b)) {
             return false;
         }
 
         //for each value from the route
-        foreach ($a as $key => $value){
+        foreach ($a as $key => $value) {
 
             //if the static values from the url don't match
             // or the dynamic values start with a '?' character
             //their structures don't match
-            if($value[0] !== ':' && $value !== $b[$key] || $value[0] === ':' && $b[$key][0] === '?'){
+            if ($value[0] !== ':' && $value !== $b[$key] || $value[0] === ':' && $b[$key][0] === '?') {
                 return false;
             }
         }
@@ -79,15 +107,16 @@ class Route
         return true;
     }
 
-    public static function getParams($url1, $url2){
+    private static function getParams($url1, $url2)
+    {
         list($a, $b) = self::urlToArray($url1, $url2);
 
         $params = array('params' => array(), 'query' => array());
 
         //foreach value from the route
-        foreach($a as $key => $value){
+        foreach ($a as $key => $value) {
             //if it's a dynamic value
-            if($value[0] == ':'){
+            if ($value[0] == ':') {
                 //get the value from the requested url and throw away the query string (if any)
                 $param = explode('?', $b[$key])[0];
                 $value = explode('?', $value)[0];
@@ -110,7 +139,7 @@ class Route
 
     //     return $payload;
     // }
-    
+
     // public function __construct() {
     //     $url = $this->getUrl();
 

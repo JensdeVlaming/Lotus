@@ -38,8 +38,8 @@ class UserController extends Controller
         session_destroy();
     }
 
-    public static function test()
+    public function test($payload)
     {
-        echo "test";
+        print_r($payload);
     }
 }

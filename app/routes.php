@@ -4,20 +4,22 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
     require_once($filename);
 }
 
-Route::get("/login", function(){
-    UserController::view("/user/login");
-});
+// GET Requests
+Route::get("/login", [ViewController::class, "login"]);
 
-Route::get("/login/:id", function(){
-    // UserController::view("/user/login");
-});
+// POST Requests
+Route::post("/login", [[UserController::class, "login"], ]);
 
-Route::post("/login", function($payload){
-    UserController::login($payload);
-});
+// Route::get("/login/:id", function(){
+//     // UserController::view("/user/login");
+// });
 
-Route::get("/authenticated", function(){
-    "Logged in!";
-});
+// Route::post("/login", function($payload){
+//     UserController::login($payload);
+// });
+
+// Route::get("/authenticated", function(){
+//     "Logged in!";
+// });
 
 ?>
