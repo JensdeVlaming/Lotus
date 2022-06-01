@@ -9,15 +9,12 @@ class ClientController extends Controller
 
     public function requests()
     {
-        $data = [
-            "email" => $_POST["email"],
-            "error" => "Foutieve inlog"
-        ];
-
     
+
        $resultSet=$this->clientModel->getRequests("clienta@lotus.nl");
 
-      print_r($resultSet);
+    //   print_r($resultSet);
+    $this->view("/client/requestOverview",$resultSet);
     }
 
 }

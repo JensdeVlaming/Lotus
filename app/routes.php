@@ -22,7 +22,5 @@ Route::post("/login", [[UserController::class, "login"], ]);
 //     "Logged in!";
 // });
 
-Route::get("/requests", function(){
-    ClientController::requests();
-});
+Route::get("/requests", [ClientController::class, "requests"]);
 ?>
