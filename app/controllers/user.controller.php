@@ -2,33 +2,14 @@
 
 class UserController extends Controller
 {
-    public static function index()
+    public function __construct()
     {
-        $data = [
-            "title" => "Home page"
-        ];
-
-        self::view("index", $data);
+        parent::__construct();
+        
+        $this->registerMiddleware(new AuthMiddleware(["authenticatd"]));
     }
 
-    // TODO implement roles
-    public static function create($email, $password)
-    {
-    }
-
-    public static function register($payload)
-    {
-        // TODO register user
-    }
-
-    public static function logout()
-    {
-        session_start();
-        session_destroy();
-    }
-
-    public function test($payload)
-    {
-        print_r($payload);
+    public function authenticatd() {
+        echo "You can view this page because you are logged in! ";
     }
 }

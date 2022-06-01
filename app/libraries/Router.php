@@ -1,11 +1,9 @@
 <?php
 
-class Route
+class Router
 {
-    // protected $currentController = "view";
-    // protected $currentMethod = "index";
-    // protected $params = [];
 
+    // Implement callback
     public static function get($route, $function)
     {
         //get method, don't continue if method is not the 
@@ -26,6 +24,13 @@ class Route
             $method = $function[1];
 
             $controller = new $controller;
+            Application::$app->controller = $controller;
+
+            Application::$app->controller->action = $method;
+
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute();
+            }
             $controller->$method($params);
 
             //prevent checking all other routes
@@ -54,15 +59,30 @@ class Route
             $controller->$method($_POST);
 
             // $params = self::getPayload($_POST);
-            // $function->__invoke($_POST);
+            $function->__invoke($_POST);
 
             //prevent checking all other routes
             die();
         }
     }
-    public static function auth() {
-        
+
+    public function notFoundHandler($function)
+    {
+        $controller = $function[0];
+        $method = $function[1];
+
+        $controller = new $controller;
+        $controller->$method();
+
+        //prevent checking all other routes
+        die();
     }
+
+    public static function isGuest()
+    {
+        return false;
+    }
+
     private static function urlToArray($url1, $url2)
     {
         //convert route and requested url to an array

@@ -1,1 +1,3 @@
-index: het werkt.
+<?php
+    echo $data["title"];
+?>

@@ -24,12 +24,12 @@ class UserModel {
         $this->db->bind(":email", $email);
         $this->db->bind(":password", $password);
 
-        $rows = $this->db->rowCount();
+        $result = $this->db->single();
 
-        if ($rows > 0) {
-            return true;
+        if ($result != null) {
+            return $result["email"];
         }
-        return false;
+        return null;
     }
     
     
