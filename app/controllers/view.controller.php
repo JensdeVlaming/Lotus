@@ -6,17 +6,13 @@ class ViewController extends Controller {
 
     public function index() {
         $data = [
-            "title" => "Home page"
+            "title" => "<h1>CONTENT HIER</h1>"
         ];
 
         $this->view("index", $data);
     }
 
     public function login() {
-        $this->view("user/login");
-    }
-
-    public function about() {
-        $this->view("user/login");
+        $this->viewContentOnly("user/login");
     }
 }
