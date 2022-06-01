@@ -12,6 +12,10 @@ $app->router->get("/login", [ViewController::class, "login"]);
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 $app->router->get("/authenticated", [UserController::class, "authenticatd"]);
 
+$app->router->get("/addRequest", [RequestController::class, "addRequest"]);
+
+
+
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);
 
