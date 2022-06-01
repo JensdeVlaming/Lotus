@@ -229,7 +229,7 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-md-12">
                                         <label 
-                                            for="Country"
+                                            for="country"
                                             class="mt-2"
                                         >
                                             <span class="formLabel">
@@ -238,16 +238,15 @@
                                         </label>
                                         <input 
                                             type="text" 
-                                            name="Country" 
-                                            id="Country"
+                                            name="country" 
+                                            id="country"
                                             required
                                             readonly
-                                            disabled
                                             value="Nederland"
                                             class="
                                                 form-control
                                                 request-input
-                                                disabled-input
+                                                readonly-input
                                             "
                                         >
                                     </div>
@@ -452,12 +451,11 @@
                                             id="country"
                                             required
                                             readonly
-                                            disabled
                                             value="Nederland"
                                             class="
                                                 form-control
                                                 request-input
-                                                disabled-input
+                                                readonly-input
                                             "
                                         >
                                     </div>
@@ -805,7 +803,7 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-md-12">
                                                 <label 
-                                                    for="Country"
+                                                    for="country"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -814,16 +812,15 @@
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="Country" 
-                                                    id="Country"
+                                                    name="country" 
+                                                    id="country"
                                                     required
                                                     readonly
-                                                    disabled
                                                     value="Nederland"
                                                     class="
                                                         form-control
                                                         request-input
-                                                        disabled-input
+                                                        readonly-input
                                                     "
                                                 >
                                             </div>
@@ -1015,7 +1012,7 @@
                                             </div>
                                             <div class="col-xl-6 col-md-12">
                                                 <label 
-                                                    for="Country"
+                                                    for="country"
                                                     class="mt-2"
                                                 >
                                                     <span class="formLabel">
@@ -1024,16 +1021,15 @@
                                                 </label>
                                                 <input 
                                                     type="text" 
-                                                    name="Country" 
-                                                    id="Country"
+                                                    name="country" 
+                                                    id="country"
                                                     required
                                                     readonly
-                                                    disabled
                                                     value="Nederland"
                                                     class="
                                                         form-control
                                                         request-input
-                                                        disabled-input
+                                                        readonly-input
                                                     "
                                                 >
                                             </div>

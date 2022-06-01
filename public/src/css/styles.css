@@ -148,7 +148,7 @@ body {
     border: 3px solid var(--orange) !important;
 }
 
-.disabled-input {
+.readonly-input {
     background-color: var(--white) !important;
 }
 
