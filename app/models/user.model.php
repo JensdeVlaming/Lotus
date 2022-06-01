@@ -19,7 +19,7 @@ class UserModel {
     }
 
     public function authenticate($email, $password) {
-        $this->db->query("SELECT * FROM account WHERE email = :email AND password = :password;");
+        $this->db->query("SELECT * FROM user WHERE email = :email AND password = :password;");
         
         $this->db->bind(":email", $email);
         $this->db->bind(":password", $password);
