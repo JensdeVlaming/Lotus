@@ -23,4 +23,7 @@ Route::post("/login", [[UserController::class, "login"], ]);
 // });
 
 Route::get("/requests", [ClientController::class, "requests"]);
+
+Route::get("/requestDetails", [MemberController::class, "requestDetails"]);
 ?>
+
