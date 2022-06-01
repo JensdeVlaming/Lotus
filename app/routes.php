@@ -6,6 +6,10 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
 
 // GET Requests
 Route::get("/login", [ViewController::class, "login"]);
+Route::get("/overview", function(){
+    MemberController::showAssignmentOverview;
+});
+
 
 // POST Requests
 Route::post("/login", [[UserController::class, "login"], ]);
