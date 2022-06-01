@@ -184,7 +184,7 @@ if (isset($_POST["placeRequest"])) {
                                             class="mt-2"
                                         >
                                             <span class="formLabel">
-                                                <span class="requiredField">*</span>Opmerkingen: 
+                                                Opmerkingen: 
                                             </span>
                                         </label>
                                         <textarea 
