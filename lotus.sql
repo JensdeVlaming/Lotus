@@ -63,9 +63,9 @@ CREATE TABLE `lotus`.`billingaddress` (
 ALTER TABLE `lotus`.`billingaddress` ADD PRIMARY KEY (`billingAddressId`);
 ALTER TABLE `lotus`.`billingaddress` MODIFY `billingAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2 ;
 
-INSERT INTO billingaddress (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
-INSERT INTO billingaddress (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
-INSERT INTO billingaddress (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
+INSERT INTO billingaddress (bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
+INSERT INTO billingaddress (bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
+INSERT INTO billingaddress (bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
 
 
 -- company
@@ -84,9 +84,9 @@ CREATE TABLE `lotus`.`company` (
 ALTER TABLE `lotus`.`company` ADD PRIMARY KEY (`companyId`);
 ALTER TABLE `lotus`.`company` MODIFY `companyId` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO company (country, province, city, street, houseNumber, postalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA", "Apotheek Brabantpark");
-INSERT INTO company (country, province, city, street, houseNumber, postalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV", "Amphia Ziekenhuis Langendijk");
-INSERT INTO company (country, province, city, street, houseNumber, postalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK", "Amphia Ziekenhuis Molengracht");
+INSERT INTO company (cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA", "Apotheek Brabantpark");
+INSERT INTO company (cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV", "Amphia Ziekenhuis Langendijk");
+INSERT INTO company (cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK", "Amphia Ziekenhuis Molengracht");
 
 
 -- contact
@@ -121,11 +121,11 @@ CREATE TABLE `lotus`.`grimelocation` (
 ALTER TABLE `lotus`.`grimelocation` ADD PRIMARY KEY (`grimeLocationId`);
 ALTER TABLE `lotus`.`grimelocation` MODIFY `grimeLocationId` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Lovensdijkstraat", 61, "4818 AJ");
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hogeschoollaan", 1, "4818 CR");
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
+INSERT INTO grimelocation (gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Lovensdijkstraat", 61, "4818 AJ");
+INSERT INTO grimelocation (gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hogeschoollaan", 1, "4818 CR");
+INSERT INTO grimelocation (gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
+INSERT INTO grimelocation (gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
+INSERT INTO grimelocation (gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
 
 
 -- playground
@@ -143,9 +143,9 @@ CREATE TABLE `lotus`.`playground` (
 ALTER TABLE `lotus`.`playground` ADD PRIMARY KEY (`playGroundId`);
 ALTER TABLE `lotus`.`playground` MODIFY `playGroundId` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO playground (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
-INSERT INTO playground (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
-INSERT INTO playground (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
+INSERT INTO playground (pCountry, pProvince, pCity, pStreet, pHouseNumber, pPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
+INSERT INTO playground (pCountry, pProvince, pCity, pStreet, pHouseNumber, pPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
+INSERT INTO playground (pCountry, pProvince, pCity, pStreet, pHouseNumber, pPostalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
 
 
 -- request
