@@ -2,7 +2,7 @@
 class MemberController extends Controller
 {
 
-    public function showAssignmentOverview()
+    public function getOverview()
     {
         $memberModel = $this->model("member");
 

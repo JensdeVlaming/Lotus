@@ -6,13 +6,13 @@ class CoordController extends Controller
         $this->coordModel = $this->model("coord");
     }
 
-    public function showRequestOverview()
+    public function getOverview()
     {
 
         $resultSet = $this->coordModel->getAssignmentRequests();
 
         if (sizeOf($resultSet) > 0) {
-            $this->view("coord/requestOverview", $resultSet);
+            $this->view("coord/overview", $resultSet);
         } else {
             echo "No requests found.";
         }
@@ -24,7 +24,7 @@ class CoordController extends Controller
 
         $this->coordModel->declineAssignment($id);
 
-        $this->showRequestOverview();
+        Application::$app->controller->redirect("/overzicht-coordinator");
     }
 
     public function acceptAssignment($data)
@@ -32,7 +32,7 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->acceptAssignment($id);
-        $this->showRequestOverview();
+        Application::$app->controller->redirect("/overzicht-coordinator");
 
     }
 }

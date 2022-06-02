@@ -8,11 +8,11 @@ class ClientController extends Controller
         $this->clientModel = $this->model("client");
     }
 
-    public function overview()
+    public function getOverview()
     {
         $email = Application::$app->session->get("user");
         $resultSet = $this->clientModel->getRequests($email);
 
-        $this->view("/client/requestOverview", $resultSet);
+        $this->view("/client/overview", $resultSet);
     }
 }

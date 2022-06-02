@@ -8,9 +8,11 @@
 
         public function getAssignmentRequests() {
             $this->db->query("SELECT * FROM request 
-                                JOIN company ON request.companyId = company.companyId
-                                JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
-                                JOIN playground ON request.playgroundId = playground.playgroundId
+                                LEFT JOIN company ON request.companyId = company.companyId
+                                LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                                LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                                LEFT JOIN contact ON request.contactId = contact.contactId
+                                LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
                                 WHERE request.approved = 0");
         
             $result = $this->db->resultSet();
