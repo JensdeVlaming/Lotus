@@ -53,12 +53,12 @@ INSERT INTO solicit VALUES
 DROP TABLE IF EXISTS `lotus`.`billingaddress`;
 CREATE TABLE `lotus`.`billingaddress` (
   `billingAddressId` int(11) NOT NULL,
-  `country` varchar(200) NOT NULL,
-  `province` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `street` varchar(200) NOT NULL,
-  `houseNumber` varchar(10) NOT NULL,
-  `postalCode` varchar(10) NOT NULL
+  `bCountry` varchar(200) NOT NULL,
+  `bProvince` varchar(200) NOT NULL,
+  `bCity` varchar(200) NOT NULL,
+  `bStreet` varchar(200) NOT NULL,
+  `bHouseNumber` varchar(10) NOT NULL,
+  `bPostalCode` varchar(10) NOT NULL
 );
 ALTER TABLE `lotus`.`billingaddress` ADD PRIMARY KEY (`billingAddressId`);
 ALTER TABLE `lotus`.`billingaddress` MODIFY `billingAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2 ;
@@ -74,12 +74,12 @@ DROP TABLE IF EXISTS `lotus`.`company`;
 CREATE TABLE `lotus`.`company` (
   `companyId` int(11) NOT NULL,
   `companyName` varchar(50) NULL,
-  `country` varchar(200) NOT NULL,
-  `province` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `street` varchar(200) NOT NULL,
-  `houseNumber` varchar(10) NOT NULL,
-  `postalCode` varchar(10) NOT NULL
+  `cCountry` varchar(200) NOT NULL,
+  `cProvince` varchar(200) NOT NULL,
+  `cCity` varchar(200) NOT NULL,
+  `cStreet` varchar(200) NOT NULL,
+  `cHouseNumber` varchar(10) NOT NULL,
+  `cPostalCode` varchar(10) NOT NULL
 );
 ALTER TABLE `lotus`.`company` ADD PRIMARY KEY (`companyId`);
 ALTER TABLE `lotus`.`company` MODIFY `companyId` int(11) NOT NULL AUTO_INCREMENT;
@@ -111,12 +111,12 @@ INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES ("Betty", "
 DROP TABLE IF EXISTS `lotus`.`grimelocation`;
 CREATE TABLE `lotus`.`grimelocation` (
   `grimeLocationId` int(11) NOT NULL,
-  `country` varchar(200) NOT NULL,
-  `province` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `street` varchar(200) NOT NULL,
-  `houseNumber` varchar(10) NOT NULL,
-  `postalCode` varchar(10) NOT NULL
+  `gCountry` varchar(200) NOT NULL,
+  `gProvince` varchar(200) NOT NULL,
+  `gCity` varchar(200) NOT NULL,
+  `gStreet` varchar(200) NOT NULL,
+  `gHouseNumber` varchar(10) NOT NULL,
+  `gPostalCode` varchar(10) NOT NULL
 );
 ALTER TABLE `lotus`.`grimelocation` ADD PRIMARY KEY (`grimeLocationId`);
 ALTER TABLE `lotus`.`grimelocation` MODIFY `grimeLocationId` int(11) NOT NULL AUTO_INCREMENT;
@@ -133,12 +133,12 @@ INSERT INTO grimelocation (country, province, city, street, houseNumber, postalC
 DROP TABLE IF EXISTS `lotus`.`playground`;
 CREATE TABLE `lotus`.`playground` (
   `playGroundId` int(11) NOT NULL,
-  `country` varchar(200) NOT NULL,
-  `province` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `street` varchar(200) NOT NULL,
-  `houseNumber` varchar(10) NOT NULL,
-  `postalCode` varchar(10) NOT NULL
+  `pCountry` varchar(200) NOT NULL,
+  `pProvince` varchar(200) NOT NULL,
+  `pCity` varchar(200) NOT NULL,
+  `pStreet` varchar(200) NOT NULL,
+  `pHouseNumber` varchar(10) NOT NULL,
+  `pPostalCode` varchar(10) NOT NULL
 );
 ALTER TABLE `lotus`.`playground` ADD PRIMARY KEY (`playGroundId`);
 ALTER TABLE `lotus`.`playground` MODIFY `playGroundId` int(11) NOT NULL AUTO_INCREMENT;
