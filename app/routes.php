@@ -4,24 +4,19 @@ foreach (glob("../app/controllers/*.controller.php") as $filename) {
     require_once($filename);
 }
 
+$app = new Application();
+
 // GET Requests
-Route::get("/login", [ViewController::class, "login"]);
-Route::get("/overview", [MemberController::class, "showAssignmentOverview"]);
-Route::get("/coordoverview", [CoordController::class, "showRequestOverview"]);
+$app->router->get("/", [ViewController::class, "index"]);
+$app->router->get("/login", [ViewController::class, "login"]);
+$app->router->get("/uitloggen", [AuthController::class, "logout"]);
+$app->router->get("/authenticated", [UserController::class, "authenticatd"]);
+$app->router->get("/overview", [MemberController::class, "showAssignmentOverview"]);
+$app->router->get("/coordoverview", [CoordController::class, "showRequestOverview"]);
 
 // POST Requests
-Route::post("/login", [[UserController::class, "login"], ]);
-Route::post("/coordoverview", [CoordController::class, "acceptAssignment"]);
-Route::post("/coordoverview", [CoordController::class, "declineAssignment"]);
-
-// Route::get("/login/:id", function(){
-//     // UserController::view("/user/login");
-// });
-
-// Route::post("/login", function($payload){
-//     UserController::login($payload);
-// });
-
-// Route::get("/authenticated", function(){
-//     "Logged in!";
-// });
+$app->router->post("/login", [AuthController::class, "login"]);
+$app->router->post("/coordoverview", [CoordController::class, "acceptAssignment"]);
+$app->router->post("/coordoverview", [CoordController::class, "declineAssignment"]);
+$app->router->notFoundHandler([ExceptionController::class, "_404"]);
+?>
