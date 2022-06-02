@@ -164,7 +164,8 @@ CREATE TABLE `lotus`.`request` (
   `companyId` int(11) NOT NULL,
   `contactId` int(11) NOT NULL,
   `billingAddressId` int(11) NOT NULL,
-  `postDate` datetime NOT NULL DEFAULT current_timestamp()
+  `postDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `approved` tinyint NOT NULL DEFAULT 0
 );
 ALTER TABLE `lotus`.`request` ADD PRIMARY KEY (`requestId`), ADD KEY `FK_billing_request` (`billingAddressId`), ADD KEY `FK_company_request` (`companyId`), ADD KEY `FK_grimelocation_request` (`grimeLocationId`), ADD KEY `FK_playground_request` (`playGroundId`), ADD KEY `FK_contact_request` (`contactId`);
 ALTER TABLE `lotus`.`request` MODIFY `requestId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3 ;
