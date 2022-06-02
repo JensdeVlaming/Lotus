@@ -11,6 +11,8 @@ Route::get("/coordoverview", [CoordController::class, "showRequestOverview"]);
 
 // POST Requests
 Route::post("/login", [[UserController::class, "login"], ]);
+Route::post("/coordoverview", [CoordController::class, "acceptAssignment"]);
+Route::post("/coordoverview", [CoordController::class, "declineAssignment"]);
 
 // Route::get("/login/:id", function(){
 //     // UserController::view("/user/login");
