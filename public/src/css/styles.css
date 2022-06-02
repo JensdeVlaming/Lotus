@@ -151,6 +151,7 @@ body {
 
 .readonly-input {
     border-color: #e9ecef !important;
+    background-color: #e9ecef !important;
 }
 
 /* END */

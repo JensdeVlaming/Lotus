@@ -9,6 +9,8 @@ function automateGatherLocationDataOnCheck() {
 
   const checkBox = document.getElementById("gatherLocationCheckbox");
 
+  let gatherLocationArray = [];
+
   const provinceGatherLocation = document.getElementById('provinceGatherLocation');
   const cityGatherLocation = document.getElementById('cityGatherLocation');
   const streetGatherLocation = document.getElementById('streetGatherLocation');
@@ -16,7 +18,56 @@ function automateGatherLocationDataOnCheck() {
   const annexGatherLocation = document.getElementById('annexGatherLocation');
   const postalCodeGatherLocation = document.getElementById('postalCodeGatherLocation');
 
+  gatherLocationArray.push(provinceGatherLocation);
+  gatherLocationArray.push(cityGatherLocation);
+  gatherLocationArray.push(streetGatherLocation);
+  gatherLocationArray.push(houseNumberGatherLocation);
+  gatherLocationArray.push(annexGatherLocation);
+  gatherLocationArray.push(postalCodeGatherLocation);
+
+  let provinceArray = [];
+
+  const defaultOptionGatherLocation = document.getElementById('defaultOptionGatherLocation');
+  const DrentheGatherLocation = document.getElementById('DrentheGatherLocation');
+  const FlevolandGatherLocation = document.getElementById('FlevolandGatherLocation');
+  const FrieslandGatherLocation = document.getElementById('FrieslandGatherLocation');
+  const GelderlandGatherLocation = document.getElementById('GelderlandGatherLocation');
+  const GroningenGatherLocation = document.getElementById('GroningenGatherLocation');
+  const LimburgGatherLocation = document.getElementById('LimburgGatherLocation');
+  const NoordBrabantGatherLocation = document.getElementById('NoordBrabantGatherLocation');
+  const NoordHollandGatherLocation = document.getElementById('NoordHollandGatherLocation');
+  const OverijsselGatherLocation = document.getElementById('OverijsselGatherLocation');
+  const UtrechtGatherLocation = document.getElementById('UtrechtGatherLocation');
+  const ZeelandGatherLocation = document.getElementById('ZeelandGatherLocation');
+  const ZuidHollandGatherLocation = document.getElementById('ZuidHollandGatherLocation');
+
+  provinceArray.push(defaultOptionGatherLocation);
+  provinceArray.push(DrentheGatherLocation);
+  provinceArray.push(FlevolandGatherLocation);
+  provinceArray.push(FrieslandGatherLocation);
+  provinceArray.push(GelderlandGatherLocation);
+  provinceArray.push(GroningenGatherLocation);
+  provinceArray.push(LimburgGatherLocation);
+  provinceArray.push(NoordBrabantGatherLocation);
+  provinceArray.push(NoordHollandGatherLocation);
+  provinceArray.push(OverijsselGatherLocation);
+  provinceArray.push(UtrechtGatherLocation);
+  provinceArray.push(ZeelandGatherLocation);
+  provinceArray.push(ZuidHollandGatherLocation);
+
+
   if (checkBox.checked) {
+
+    provinceArray.forEach(element => {
+
+      if (element.value === document.getElementById('provincePlayGround')) {
+        element.selected = true;
+        element.disabled = false;
+      } else {
+        element.selected = false;
+        element.disabled = true;
+      }
+    });
 
     provinceGatherLocation.value = document.getElementById('provincePlayGround').value;
     provinceGatherLocation.classList.add("readonly-input")
@@ -99,6 +150,17 @@ function automateGatherLocationDataOnCheck() {
     houseNumberGatherLocation.readOnly = false;
     annexGatherLocation.readOnly = false;
     postalCodeGatherLocation.readOnly = false;
+
+    provinceArray.forEach(element => {
+      element.disabled = false;
+      element.selected = false;
+      defaultOptionGatherLocation.selected = true;
+    });
+
+    gatherLocationArray.forEach(element => {
+      element.classList.remove("readonly-input")
+      element.readOnly = false;
+    });
   }
 };
 
@@ -110,6 +172,8 @@ function automateBillingAddressDataOnCheck() {
 
   const checkBox = document.getElementById("billingAddressCheckbox");
 
+  let billingAddressArray = [];
+
   const provinceBillingAddress = document.getElementById('provinceBillingAddress');
   const cityBillingAddress = document.getElementById('cityBillingAddress');
   const streetBillingAddress = document.getElementById('streetBillingAddress');
@@ -117,7 +181,55 @@ function automateBillingAddressDataOnCheck() {
   const annexBillingAddress = document.getElementById('annexBillingAddress');
   const postalCodeBillingAddress = document.getElementById('postalCodeBillingAddress');
 
+  billingAddressArray.push(provinceBillingAddress);
+  billingAddressArray.push(cityBillingAddress);
+  billingAddressArray.push(streetBillingAddress);
+  billingAddressArray.push(houseNumberBillingAddress);
+  billingAddressArray.push(annexBillingAddress);
+  billingAddressArray.push(postalCodeBillingAddress);
+
+  let provinceArray = [];
+
+  const defaultOptionBillingAddress = document.getElementById('defaultOptionBillingAddress');
+  const DrentheBillingAddress = document.getElementById('DrentheBillingAddress');
+  const FlevolandBillingAddress = document.getElementById('FlevolandBillingAddress');
+  const FrieslandBillingAddress = document.getElementById('FrieslandBillingAddress');
+  const GelderlandBillingAddress = document.getElementById('GelderlandBillingAddress');
+  const GroningenBillingAddress = document.getElementById('GroningenBillingAddress');
+  const LimburgBillingAddress = document.getElementById('LimburgBillingAddress');
+  const NoordBrabantBillingAddress = document.getElementById('NoordBrabantBillingAddress');
+  const NoordHollandBillingAddress = document.getElementById('NoordHollandBillingAddress');
+  const OverijsselBillingAddress = document.getElementById('OverijsselBillingAddress');
+  const UtrechtBillingAddress = document.getElementById('UtrechtBillingAddress');
+  const ZeelandBillingAddress = document.getElementById('ZeelandBillingAddress');
+  const ZuidHollandBillingAddress = document.getElementById('ZuidHollandBillingAddress');
+
+  provinceArray.push(defaultOptionBillingAddress);
+  provinceArray.push(DrentheBillingAddress);
+  provinceArray.push(FlevolandBillingAddress);
+  provinceArray.push(FrieslandBillingAddress);
+  provinceArray.push(GelderlandBillingAddress);
+  provinceArray.push(GroningenBillingAddress);
+  provinceArray.push(LimburgBillingAddress);
+  provinceArray.push(NoordBrabantBillingAddress);
+  provinceArray.push(NoordHollandBillingAddress);
+  provinceArray.push(OverijsselBillingAddress);
+  provinceArray.push(UtrechtBillingAddress);
+  provinceArray.push(ZeelandBillingAddress);
+  provinceArray.push(ZuidHollandBillingAddress);
+
   if (checkBox.checked) {
+
+    provinceArray.forEach(element => {
+
+      if (element.value === document.getElementById('provinceCompanyAddress')) {
+        element.selected = true;
+        element.disabled = false;
+      } else {
+        element.selected = false;
+        element.disabled = true;
+      }
+    });
 
     provinceBillingAddress.value = document.getElementById('provinceBusinessAddress').value;
     provinceBillingAddress.classList.add("readonly-input")
@@ -198,6 +310,17 @@ function automateBillingAddressDataOnCheck() {
     houseNumberBillingAddress.readOnly = false;
     annexBillingAddress.readOnly = false;
     postalCodeBillingAddress.readOnly = false;
+
+    billingAddressArray.forEach(element => {
+      element.classList.remove("readonly-input")
+      element.readOnly = false;
+    });
+
+    provinceArray.forEach(element => {
+      element.disabled = false;
+      element.selected = false;
+      defaultOptionGatherLocation.selected = true;
+    });
 
   }
 }

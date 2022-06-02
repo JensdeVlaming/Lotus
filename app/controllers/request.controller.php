@@ -1,17 +1,21 @@
 <?php
-class RequestController extends Controller {
-    public function __construct() {
+class RequestController extends Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->requestModel = $this->model("request");
     }
 
-    public function addRequest($payload) {
+    public function addRequest($payload)
+    {
 
         $data = [
             "msg" => "message!"
         ];
 
-        
+
+
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
         if ($payload['annexPlayGround']) {
             $houseNumberPlayGround .= $payload['annexPlayGround'];
@@ -33,13 +37,22 @@ class RequestController extends Controller {
         }
 
 
+        $provinceGatherLocation = $payload['provincePlayGround'];
+        if ($payload['provinceGatherLocation']) {
+            $provinceGatherLocation = $payload['provinceGatherLocation'];
+        }
+
+        $provinceBillingAddress = $payload['provinceBusinessAddress'];
+        if ($payload['provinceBillingAddress'] = 0) {
+            $provinceGatherLocation = $payload['provinceBillingAddress'];
+        }
+
+
         $this->requestModel->addPlayGroundRequest($payload['provincePlayGround'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround, $payload['postalCodePlayGround']);
-        $this->requestModel->addGrimeLocationRequest($payload['provinceGatherLocation'], $payload['cityGatherLocation'], $payload['streetGatherLocation'], $houseNumberGatherLocation, $payload['postalCodeGatherLocation']);
+        $this->requestModel->addGrimeLocationRequest($provinceGatherLocation, $payload['cityGatherLocation'], $payload['streetGatherLocation'], $houseNumberGatherLocation, $payload['postalCodeGatherLocation']);
         $this->requestModel->addBusinessAddressRequest($payload['provinceBusinessAddress'], $payload['cityBusinessAddress'], $payload['streetBusinessAddress'], $houseNumberBusinessAddress, $payload['postalCodeBusinessAddress']);
-        $this->requestModel->addBillingAddressRequest($payload['provinceBillingAddress'], $payload['cityBillingAddress'], $payload['streetBillingAddress'], $houseNumberBillingAddress, $payload['postalCodeBillingAddress']);
+        $this->requestModel->addBillingAddressRequest($provinceBillingAddress, $payload['cityBillingAddress'], $payload['streetBillingAddress'], $houseNumberBillingAddress, $payload['postalCodeBillingAddress']);
 
         $this->view("/addRequest", $data);
-
-        
     }
 }

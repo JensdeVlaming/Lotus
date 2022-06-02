@@ -25,7 +25,7 @@
     <link 
         rel="stylesheet" 
         type="text/css" 
-        href="src/css/styles.css"
+        href="/src/css/styles.css"
     >
     <title>
         <?php echo SITENAME ?> - Aanvraag plaatsen
@@ -260,42 +260,43 @@
                                             "
                                             name="provincePlayGround" 
                                             id="provincePlayGround"
+                                            required
                                         >
-                                            <option selected></option>
-                                            <option value="Drenthe">
+                                        <option id="defaultOptionPlayGround" selected></option>
+                                            <option id="DrenthePlayGround" value="Drenthe">
                                                 Drenthe
                                             </option>
-                                            <option value="Flevoland-Holland">
+                                            <option id="FlevolandPlayGround" value="Flevoland">
                                                 Flevoland
                                             </option>
-                                            <option value="Friesland">
+                                            <option id="FrieslandPlayGround" value="Friesland">
                                                 Friesland
                                             </option>
-                                            <option value="Gelderland">
+                                            <option id="GelderlandPlayGround" value="Gelderland">
                                                 Gelderland
                                             </option>
-                                            <option value="Groningen">
+                                            <option id ="GroningenPlayGround" value="Groningen">
                                                 Groningen
                                             </option>
-                                            <option value="Limburg">
+                                            <option id="LimburgPlayGround" value="Limburg">
                                                 Limburg
                                             </option>
-                                            <option value="Noord-Brabant">
+                                            <option id="NoordBrabantPlayGround" value="Noord-Brabant">
                                                 Noord-Brabant
                                             </option>
-                                            <option value="Noord-Holland">
+                                            <option id="NoordHollandPlayGround" value="Noord-Holland">
                                                 Noord-Holland
                                             </option>
-                                            <option value="Overijssel">
+                                            <option id="OverijsselPlayGround" value="Overijssel">
                                                 Overijssel
                                             </option>
-                                            <option value="Utrecht">
+                                            <option id="UtrechtPlayGround" value="Utrecht">
                                                 Utrecht
                                             </option>
-                                            <option value="Zeeland">
+                                            <option id="ZeelandPlayGround" value="Zeeland">
                                                 Zeeland
                                             </option>
-                                            <option value="Zuid-Holland">
+                                            <option id="ZuidHollandPlayGround" value="Zuid-Holland">
                                                 Zuid-Holland
                                             </option>
                                         </select>
@@ -469,42 +470,43 @@
                                             "
                                             name="provinceGatherLocation" 
                                             id="provinceGatherLocation"
+                                            required
                                         >
-                                            <option selected></option>
-                                            <option value="Drenthe">
+                                            <option id="defaultOptionGatherLocation" selected></option>
+                                            <option id="DrentheGatherLocation" value="Drenthe">
                                                 Drenthe
                                             </option>
-                                            <option value="Flevoland-Holland">
+                                            <option id="FlevolandGatherLocation" value="Flevoland">
                                                 Flevoland
                                             </option>
-                                            <option value="Friesland">
+                                            <option id="FrieslandGatherLocation" value="Friesland">
                                                 Friesland
                                             </option>
-                                            <option value="Gelderland">
+                                            <option id="GelderlandGatherLocation" value="Gelderland">
                                                 Gelderland
                                             </option>
-                                            <option value="Groningen">
+                                            <option id ="GroningenGatherLocation" value="Groningen">
                                                 Groningen
                                             </option>
-                                            <option value="Limburg">
+                                            <option id="LimburgGatherLocation" value="Limburg">
                                                 Limburg
                                             </option>
-                                            <option value="Noord-Brabant">
+                                            <option id="NoordBrabantGatherLocation" value="Noord-Brabant">
                                                 Noord-Brabant
                                             </option>
-                                            <option value="Noord-Holland">
+                                            <option id="NoordHollandGatherLocation" value="Noord-Holland">
                                                 Noord-Holland
                                             </option>
-                                            <option value="Overijssel">
+                                            <option id="OverijsselGatherLocation" value="Overijssel">
                                                 Overijssel
                                             </option>
-                                            <option value="Utrecht">
+                                            <option id="UtrechtGatherLocation" value="Utrecht">
                                                 Utrecht
                                             </option>
-                                            <option value="Zeeland">
+                                            <option id="ZeelandGatherLocation" value="Zeeland">
                                                 Zeeland
                                             </option>
-                                            <option value="Zuid-Holland">
+                                            <option id="ZuidHollandGatherLocation" value="Zuid-Holland">
                                                 Zuid-Holland
                                             </option>
                                         </select>
@@ -834,42 +836,43 @@
                                                     "
                                                     name="provinceBusinessAddress" 
                                                     id="provinceBusinessAddress"
+                                                    required
                                                 >
-                                                    <option selected></option>
-                                                    <option value="Drenthe">
+                                                    <option id="defaultOptionBusinessAddress" selected></option>
+                                                    <option id="DrentheBusinessAddress" value="Drenthe">
                                                         Drenthe
                                                     </option>
-                                                    <option value="Flevoland-Holland">
+                                                    <option id="FlevolandBusinessAddress" value="Flevoland">
                                                         Flevoland
                                                     </option>
-                                                    <option value="Friesland">
+                                                    <option id="FrieslandBusinessAddress" value="Friesland">
                                                         Friesland
                                                     </option>
-                                                    <option value="Gelderland">
+                                                    <option id="GelderlandBusinessAddress" value="Gelderland">
                                                         Gelderland
                                                     </option>
-                                                    <option value="Groningen">
+                                                    <option id ="GroningenBusinessAddress" value="Groningen">
                                                         Groningen
                                                     </option>
-                                                    <option value="Limburg">
+                                                    <option id="LimburgBusinessAddress" value="Limburg">
                                                         Limburg
                                                     </option>
-                                                    <option value="Noord-Brabant">
+                                                    <option id="NoordBrabantBusinessAddress" value="Noord-Brabant">
                                                         Noord-Brabant
                                                     </option>
-                                                    <option value="Noord-Holland">
+                                                    <option id="NoordHollandBusinessAddress" value="Noord-Holland">
                                                         Noord-Holland
                                                     </option>
-                                                    <option value="Overijssel">
+                                                    <option id="OverijsselBusinessAddress" value="Overijssel">
                                                         Overijssel
                                                     </option>
-                                                    <option value="Utrecht">
+                                                    <option id="UtrechtBusinessAddress" value="Utrecht">
                                                         Utrecht
                                                     </option>
-                                                    <option value="Zeeland">
+                                                    <option id="ZeelandBusinessAddress" value="Zeeland">
                                                         Zeeland
                                                     </option>
-                                                    <option value="Zuid-Holland">
+                                                    <option id="ZuidHollandBusinessAddress" value="Zuid-Holland">
                                                         Zuid-Holland
                                                     </option>
                                                 </select>
@@ -1043,42 +1046,43 @@
                                                     "
                                                     name="provinceBillingAddress" 
                                                     id="provinceBillingAddress"
+                                                    required
                                                 >
-                                                    <option selected></option>
-                                                    <option value="Drenthe">
+                                                <option id="defaultOptionBillingAddress" selected></option>
+                                                    <option id="DrentheBillingAddress" value="Drenthe">
                                                         Drenthe
                                                     </option>
-                                                    <option value="Flevoland-Holland">
+                                                    <option id="FlevolandBillingAddress" value="Flevoland">
                                                         Flevoland
                                                     </option>
-                                                    <option value="Friesland">
+                                                    <option id="FrieslandBillingAddress" value="Friesland">
                                                         Friesland
                                                     </option>
-                                                    <option value="Gelderland">
+                                                    <option id="GelderlandBillingAddress" value="Gelderland">
                                                         Gelderland
                                                     </option>
-                                                    <option value="Groningen">
+                                                    <option id ="GroningenBillingAddress" value="Groningen">
                                                         Groningen
                                                     </option>
-                                                    <option value="Limburg">
+                                                    <option id="LimburgBillingAddress" value="Limburg">
                                                         Limburg
                                                     </option>
-                                                    <option value="Noord-Brabant">
+                                                    <option id="NoordBrabantBillingAddress" value="Noord-Brabant">
                                                         Noord-Brabant
                                                     </option>
-                                                    <option value="Noord-Holland">
+                                                    <option id="NoordHollandBillingAddress" value="Noord-Holland">
                                                         Noord-Holland
                                                     </option>
-                                                    <option value="Overijssel">
+                                                    <option id="OverijsselBillingAddress" value="Overijssel">
                                                         Overijssel
                                                     </option>
-                                                    <option value="Utrecht">
+                                                    <option id="UtrechtBillingAddress" value="Utrecht">
                                                         Utrecht
                                                     </option>
-                                                    <option value="Zeeland">
+                                                    <option id="ZeelandBillingAddress" value="Zeeland">
                                                         Zeeland
                                                     </option>
-                                                    <option value="Zuid-Holland">
+                                                    <option id="ZuidHollandBillingAddress" value="Zuid-Holland">
                                                         Zuid-Holland
                                                     </option>
                                                 </select>
@@ -1228,7 +1232,7 @@
 </script>
 <script 
     type="text/javascript" 
-    src="./src/js/app.js"
+    src="/src/js/app.js"
 >
 </script>
 </html>
