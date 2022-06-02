@@ -59,7 +59,7 @@ class Router
             $controller->$method($_POST);
 
             // $params = self::getPayload($_POST);
-            $function->__invoke($_POST);
+            // $function->__invoke($_POST);
 
             //prevent checking all other routes
             die();

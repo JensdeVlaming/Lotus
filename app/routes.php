@@ -24,10 +24,17 @@ $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOver
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
 
+// Requests
+$app->router->get("/addRequest", [ViewController::class, "addRequest"]);
+
+
 
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);
 
+$app->router->post("/addRequest", [RequestController::class, "addRequest"]);
+
 // Exceptions
+
 $app->router->notFoundHandler([ExceptionController::class, "_404"]);
 ?>
