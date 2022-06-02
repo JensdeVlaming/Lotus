@@ -14,11 +14,11 @@ class AuthController extends Controller
             "error" => "Foutieve inlog"
         ];
 
-        $email= $this->userModel->authenticate($payload["email"], $payload["password"]);
+        $email = $this->userModel->authenticate($payload["email"], $payload["password"]);
 
         if ($email != null) {
             Application::$app->session->set("user", $email);
-            $this->redirect("/authenticated");
+            $this->redirect("/overzicht");
         } else {
             $this->view("user/login", $data);
         }
