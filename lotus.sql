@@ -11,7 +11,6 @@ CREATE TABLE user (
     city varchar(50) NOT NULL,
     postalCode varchar(7) NOT NULL,
     gender varchar(1) NOT NULL,
-    companyName varchar(50) NULL,
     roles varchar(25) NOT NULL,
     password varchar(15) DEFAULT "secret",
     PRIMARY KEY(email)
@@ -70,6 +69,7 @@ ALTER TABLE `lotus`.`billingaddress` MODIFY `billingAddressId` int(11) NOT NULL 
 DROP TABLE IF EXISTS `lotus`.`company`;
 CREATE TABLE `lotus`.`company` (
   `companyId` int(11) NOT NULL,
+  `companyName` varchar(50) NULL,
   `country` varchar(200) NOT NULL,
   `province` varchar(200) NOT NULL,
   `city` varchar(200) NOT NULL,
