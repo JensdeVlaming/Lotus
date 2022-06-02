@@ -85,12 +85,10 @@ ALTER TABLE `lotus`.`company` MODIFY `companyId` int(11) NOT NULL AUTO_INCREMENT
 DROP TABLE IF EXISTS `lotus`.`contact`;
 CREATE TABLE `lotus`.`contact` (
   `contactId` int(11) NOT NULL,
-  `country` varchar(200) NOT NULL,
-  `province` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `street` varchar(200) NOT NULL,
-  `houseNumber` varchar(10) NOT NULL,
-  `postalCode` varchar(10) NOT NULL
+  `firstName` varchar(200) NOT NULL,
+  `lastName` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `phoneNumber` varchar(15) NOT NULL
 );
 ALTER TABLE `lotus`.`contact` ADD PRIMARY KEY (`contactId`);
 ALTER TABLE `lotus`.`contact` MODIFY `contactId` int(11) NOT NULL AUTO_INCREMENT;
