@@ -102,8 +102,8 @@ CREATE TABLE `lotus`.`contact` (
 ALTER TABLE `lotus`.`contact` ADD PRIMARY KEY (`contactId`);
 ALTER TABLE `lotus`.`contact` MODIFY `contactId` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES ("Jan", "Jansen", "janjansen@gmail.com", "06-12345678")
-INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES ("Betty", "Bezem", "bettybezem@gmail.com", "06-12345678")
+INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES ("Jan", "Jansen", "janjansen@gmail.com", "06-12345678");
+INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES ("Betty", "Bezem", "bettybezem@gmail.com", "06-12345678");
 
 
 -- grimelocation
