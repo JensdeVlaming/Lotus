@@ -22,7 +22,7 @@ INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,posta
 ('clienta@lotus.nl','Client','A','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M','client'),
 ('clientb@lotus.nl','Client','B','lotusstreet','2b','+316 12345678', 'tilburg','1234AL','M','client');
 -- member users
-INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,companyName,roles) VALUES
+INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles) VALUES
 ('membera@lotus.nl','Member','A','memberstreet','1a','+316 12345678', 'Breda','1234AL','M','member'),
 ('memberb@lotus.nl','Member','B','memberstreet','2b','+316 12345678', 'tilburg','1234AL','M','member');
 -- coord users
