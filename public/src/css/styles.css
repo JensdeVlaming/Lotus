@@ -78,3 +78,19 @@
     background-color: var(--placeholder-text) !important;
     color: var(--white) !important;
 }
+
+/* Cards */
+
+.customCard {
+    background: var(--white) !important;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 4px !important;
+    border: 0px !important;
+}
+
+.customCardList {
+    border-top: 1px solid rgba(0,0,0,.125) !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
