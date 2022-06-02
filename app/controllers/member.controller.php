@@ -2,6 +2,11 @@
 class MemberController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
+    }
+    
     public function getOverview()
     {
         $memberModel = $this->model("member");

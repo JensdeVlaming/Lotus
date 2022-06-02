@@ -11,6 +11,7 @@
                 <a class="nav-link active" aria-current="page" href="/overzicht-lid">Overzicht lid</a>
                 <a class="nav-link active" aria-current="page" href="/overzicht-coordinator">Overzicht coordinator</a>
                 <a class="nav-link active" aria-current="page" href="/overzicht-opdrachtgever">Overzicht opdrachtgever</a>
+                <a class="nav-link active" aria-current="page" href="/uitloggen">Uitloggen</a>
             </div>
         </div>
     </div>

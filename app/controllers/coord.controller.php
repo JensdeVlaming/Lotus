@@ -4,6 +4,7 @@ class CoordController extends Controller
     public function __construct()
     {
         $this->coordModel = $this->model("coord");
+        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
 
     public function getOverview()
