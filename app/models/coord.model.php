@@ -7,30 +7,27 @@
         }
 
         public function getAssignmentRequests() {
-            $this->db->query("SELECT * FROM request WHERE approved = 0");
-            
+            $this->db->query("SELECT * FROM request 
+                                JOIN company ON request.companyId = company.companyId
+                                JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                                JOIN playground ON request.playgroundId = playground.playgroundId
+                                WHERE request.approved = 0");
+        
             $result = $this->db->resultSet();
 
             return $result;
         }
 
         public function declineAssignment($id) {
-            $this->db->query("SELECT * FROM request WHERE approved = 0");
+            $this->db->query("UPDATE request SET approved = 2 WHERE requestId = $id;");
             
             $result = $this->db->resultSet();
-
-            return $result;
         }
 
         public function acceptAssignment($id) {
-            $this->db->query("UPDATE request SET approved = 2 WHERE id = :id;");
-              
-            $this->db->bind(":id", $id);
+            $this->db->query("UPDATE request SET approved = 1 WHERE requestId = $id;");
             
-            print_r($this->db->resultSet());
-            $result = "Assignment accepted!";
-
-            return $result;
+            $result = $this->db->resultSet();
         }
     }
 ?>

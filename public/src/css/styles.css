@@ -69,7 +69,7 @@
 /* END */
 
 
-.acceptButton {
+.nextButton {
     background-color: var(--blue) !important;
     color: var(--white) !important;
 }
