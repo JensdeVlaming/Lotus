@@ -7,7 +7,6 @@
 }
 
 /* Bootstrap 5 overrides */
-
 .btn-primary {
     background-color: var(--blue) !important;
     color: var(--white) !important;
@@ -68,3 +67,14 @@
 }
 
 /* END */
+
+
+.nextButton {
+    background-color: var(--blue) !important;
+    color: var(--white) !important;
+}
+
+.cancelButton {
+    background-color: var(--placeholder-text) !important;
+    color: var(--white) !important;
+}

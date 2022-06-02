@@ -33,13 +33,26 @@
 -- Table structure for table account
 --
 
+DROP TABLE IF EXISTS account;
+CREATE TABLE account (
+    email varchar(100) NOT NULL,
+    roles varchar(25) NOT NULL,
+    PRIMARY KEY (email, roles)
+);
+
+INSERT INTO account VALUES
+('kasper@lotus.nl','member'),
+('juliet@lotus.nl','member'),
+('daniel@lotus.nl','member'),
+('jens@lotus.nl','member'),
+('admin@lotus.nl','coordinator');
 
 --
 -- Table structure for table client_account
 --
 
-DROP TABLE IF EXISTS user;
-CREATE TABLE user (
+DROP TABLE IF EXISTS client_account;
+CREATE TABLE client_account (
     email varchar(100) NOT NULL,
     firstName varchar(50) NOT NULL,
     lastName varchar(50) NOT NULL,
@@ -122,7 +135,7 @@ CREATE TABLE solicit (
     approved tinyint NOT NULL DEFAULT 2,
     PRIMARY KEY (email, requestId)
 );
--- 0 = denied / 1 = appointed / 2 = pending
+-- 0 = pending  / 1 = appointed / 2 = denied
 INSERT INTO solicit VALUES
 ('kasper@lotus.nl','1',2),
 ('juliet@lotus.nl','1',0),

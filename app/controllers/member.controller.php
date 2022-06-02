@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 class MemberController extends Controller
 {
@@ -19,3 +20,21 @@ class MemberController extends Controller
     
 
 }
+=======
+class MemberController extends Controller
+{
+
+    public function showAssignmentOverview()
+    {
+        $memberModel = $this->model("member");
+
+        $resultSet = $memberModel->getOpenAssignments();
+
+        if (sizeOf($resultSet) > 0) {
+            self::view("member/overview", $resultSet);
+        } else {
+            echo "No open assignments found.";
+        }
+    }
+}
+>>>>>>> 24b8c92678babfc3602175d7ceecc7f10f8d985f
