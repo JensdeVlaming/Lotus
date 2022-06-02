@@ -94,6 +94,7 @@ body {
     border-radius: 4px;
     border: 3px solid var(--blue) !important;
 }
+
 /* END */
 
 /* Request */
@@ -103,15 +104,14 @@ body {
 }
 
 .submitRequestButton {
-    border-color: var(--orange) !important;
+    border: 7px solid var(--orange) !important;
     color: var(--white) !important;
+    font-size: 17px;
     background-color: var(--orange) !important;
 }
 
 .submitRequestButton:hover {
-    border-color: var(--orange) !important;
-    color: var(--orange) !important;
-    background-color: var(--white) !important;
+    opacity: 0.9;
 }
 
 .placeRequestFormContent {
@@ -133,7 +133,8 @@ body {
     color: var(--black);
 }
 
-.imgDivider, .sectionDivider {
+.imgDivider,
+.sectionDivider {
     background-color: var(--blue);
     opacity: 1;
 }
@@ -149,7 +150,7 @@ body {
 }
 
 .readonly-input {
-    background-color: var(--white) !important;
+    border-color: #e9ecef !important;
 }
 
 /* END */

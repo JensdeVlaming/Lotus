@@ -179,9 +179,6 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4">
-
-                                </div>
-                                <div class="col-xl-4">
                                     <div class="">
                                         <label 
                                             for="lotusCasualties"
@@ -204,9 +201,6 @@
                                             max="50"
                                         >
                                         </div>
-                                </div>
-                                <div class="col-xl-4">
-
                                 </div>
                             </div>
                         </div>

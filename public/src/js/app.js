@@ -20,33 +20,33 @@ function automateGatherLocationDataOnCheck() {
 
     provinceGatherLocation.value = document.getElementById('provincePlayGround').value;
     provinceGatherLocation.classList.add("readonly-input")
-    provinceGatherLocation.readonly = true;
+    provinceGatherLocation.readOnly = true;
 
     cityGatherLocation.value = document.getElementById('cityPlayGround').value;
     cityGatherLocation.classList.add("readonly-input")
-    cityGatherLocation.readonly = true;
+    cityGatherLocation.readOnly = true;
 
     streetGatherLocation.value = document.getElementById('streetPlayGround').value;
     streetGatherLocation.classList.add("readonly-input")
-    streetGatherLocation.readonly = true;
+    streetGatherLocation.readOnly = true;
 
     houseNumberGatherLocation.value = document.getElementById('houseNumberPlayGround').value;
     houseNumberGatherLocation.classList.add("readonly-input")
-    houseNumberGatherLocation.readonly = true;
+    houseNumberGatherLocation.readOnly = true;
 
     annexGatherLocation.value = document.getElementById('annexPlayGround').value;
     annexGatherLocation.classList.add("readonly-input")
-    annexGatherLocation.readonly = true;
+    annexGatherLocation.readOnly = true;
 
     postalCodeGatherLocation.value = document.getElementById('postalCodePlayGround').value;
     postalCodeGatherLocation.classList.add("readonly-input")
-    postalCodeGatherLocation.readonly = true;
+    postalCodeGatherLocation.readOnly = true;
 
     document.getElementById('provincePlayGround').onchange = function () {
       if (checkBox.checked) {
         provinceGatherLocation.value = document.getElementById('provincePlayGround').value;
         provinceGatherLocation.classList.add("readonly-input")
-        provinceGatherLocation.readonly = true;
+        provinceGatherLocation.readOnly = true;
       }
     }
 
@@ -54,7 +54,7 @@ function automateGatherLocationDataOnCheck() {
       if (checkBox.checked) {
         cityGatherLocation.value = document.getElementById('cityPlayGround').value;
         cityGatherLocation.classList.add("readonly-input")
-        cityGatherLocation.readonly = true;
+        cityGatherLocation.readOnly = true;
       }
     }
 
@@ -62,7 +62,7 @@ function automateGatherLocationDataOnCheck() {
       if (checkBox.checked) {
         streetGatherLocation.value = document.getElementById('streetPlayGround').value;
         streetGatherLocation.classList.add("readonly-input")
-        streetGatherLocation.readonly = true;
+        streetGatherLocation.readOnly = true;
       }
     }
 
@@ -70,7 +70,7 @@ function automateGatherLocationDataOnCheck() {
       if (checkBox.checked) {
         houseNumberGatherLocation.value = document.getElementById('houseNumberPlayGround').value;
         houseNumberGatherLocation.classList.add("readonly-input")
-        houseNumberGatherLocation.readonly = true;
+        houseNumberGatherLocation.readOnly = true;
       }
     }
 
@@ -78,7 +78,7 @@ function automateGatherLocationDataOnCheck() {
       if (checkBox.checked) {
         annexGatherLocation.value = document.getElementById('annexPlayGround').value;
         annexGatherLocation.classList.add("readonly-input")
-        annexGatherLocation.readonly = true;
+        annexGatherLocation.readOnly = true;
       }
     }
 
@@ -86,19 +86,19 @@ function automateGatherLocationDataOnCheck() {
       if (checkBox.checked) {
         postalCodeGatherLocation.value = document.getElementById('postalCodePlayGround').value;
         postalCodeGatherLocation.classList.add("readonly-input")
-        postalCodeGatherLocation.readonly = true;
+        postalCodeGatherLocation.readOnly = true;
       }
     }
 
 
 
   } else {
-    cityGatherLocation.readonly = false;
-    provinceGatherLocation.readonly = false;
-    streetGatherLocation.readonly = false;
-    houseNumberGatherLocation.readonly = false;
-    annexGatherLocation.readonly = false;
-    postalCodeGatherLocation.readonly = false;
+    cityGatherLocation.readOnly = false;
+    provinceGatherLocation.readOnly = false;
+    streetGatherLocation.readOnly = false;
+    houseNumberGatherLocation.readOnly = false;
+    annexGatherLocation.readOnly = false;
+    postalCodeGatherLocation.readOnly = false;
   }
 };
 
@@ -121,33 +121,33 @@ function automateBillingAddressDataOnCheck() {
 
     provinceBillingAddress.value = document.getElementById('provinceBusinessAddress').value;
     provinceBillingAddress.classList.add("readonly-input")
-    provinceBillingAddress.readonly = true;
+    provinceBillingAddress.readOnly = true;
 
     cityBillingAddress.value = document.getElementById('cityBusinessAddress').value;
     cityBillingAddress.classList.add("readonly-input")
-    cityBillingAddress.readonly = true;
+    cityBillingAddress.readOnly = true;
 
     streetBillingAddress.value = document.getElementById('streetBusinessAddress').value;
     streetBillingAddress.classList.add("readonly-input")
-    streetBillingAddress.readonly = true;
+    streetBillingAddress.readOnly = true;
 
     houseNumberBillingAddress.value = document.getElementById('houseNumberBusinessAddress').value;
     houseNumberBillingAddress.classList.add("readonly-input")
-    houseNumberBillingAddress.readonly = true;
+    houseNumberBillingAddress.readOnly = true;
 
     annexBillingAddress.value = document.getElementById('annexBusinessAddress').value;
     annexBillingAddress.classList.add("readonly-input")
-    annexBillingAddress.readonly = true;
+    annexBillingAddress.readOnly = true;
 
     postalCodeBillingAddress.value = document.getElementById('postalCodeBusinessAddress').value;
     postalCodeBillingAddress.classList.add("readonly-input")
-    postalCodeBillingAddress.readonly = true;
+    postalCodeBillingAddress.readOnly = true;
 
     document.getElementById('provinceBusinessAddress').onchange = function () {
       if (checkBox.checked) {
         provinceBillingAddress.value = document.getElementById('provinceBusinessAddress').value;
         provinceBillingAddress.classList.add("readonly-input")
-        provinceBillingAddress.readonly = true;
+        provinceBillingAddress.readOnly = true;
       }
     }
 
@@ -155,7 +155,7 @@ function automateBillingAddressDataOnCheck() {
       if (checkBox.checked) {
         cityBillingAddress.value = document.getElementById('cityBusinessAddress').value;
         cityBillingAddress.classList.add("readonly-input")
-        cityBillingAddress.readonly = true;
+        cityBillingAddress.readOnly = true;
       }
     }
 
@@ -163,7 +163,7 @@ function automateBillingAddressDataOnCheck() {
       if (checkBox.checked) {
         streetBillingAddress.value = document.getElementById('streetBusinessAddress').value;
         streetBillingAddress.classList.add("readonly-input")
-        streetBillingAddress.readonly = true;
+        streetBillingAddress.readOnly = true;
       }
     }
 
@@ -171,7 +171,7 @@ function automateBillingAddressDataOnCheck() {
       if (checkBox.checked) {
         houseNumberBillingAddress.value = document.getElementById('houseNumberBusinessAddress').value;
         houseNumberBillingAddress.classList.add("readonly-input")
-        houseNumberBillingAddress.readonly = true;
+        houseNumberBillingAddress.readOnly = true;
       }
     }
 
@@ -179,7 +179,7 @@ function automateBillingAddressDataOnCheck() {
       if (checkBox.checked) {
         annexBillingAddress.value = document.getElementById('annexBusinessAddress').value;
         annexBillingAddress.classList.add("readonly-input")
-        annexBillingAddress.readonly = true;
+        annexBillingAddress.readOnly = true;
       }
     }
 
@@ -187,17 +187,17 @@ function automateBillingAddressDataOnCheck() {
       if (checkBox.checked) {
         postalCodeBillingAddress.value = document.getElementById('postalCodeBusinessAddress').value;
         postalCodeBillingAddress.classList.add("readonly-input")
-        postalCodeBillingAddress.readonly = true;
+        postalCodeBillingAddress.readOnly = true;
       }
     }
 
   } else {
-    cityBillingAddress.readonly = false;
-    provinceBillingAddress.readonly = false;
-    streetBillingAddress.readonly = false;
-    houseNumberBillingAddress.readonly = false;
-    annexBillingAddress.readonly = false;
-    postalCodeBillingAddress.readonly = false;
+    cityBillingAddress.readOnly = false;
+    provinceBillingAddress.readOnly = false;
+    streetBillingAddress.readOnly = false;
+    houseNumberBillingAddress.readOnly = false;
+    annexBillingAddress.readOnly = false;
+    postalCodeBillingAddress.readOnly = false;
 
   }
 }
