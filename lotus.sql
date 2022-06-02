@@ -18,13 +18,13 @@ CREATE TABLE user (
 
 
 -- client users
-INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,companyName,roles) VALUES
-('clienta@lotus.nl','Client','A','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M','CLIENTAL B.V.','client'),
-('clientb@lotus.nl','Client','B','lotusstreet','2b','+316 12345678', 'tilburg','1234AL','M','CLIENT INC.','client');
+INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles) VALUES
+('clienta@lotus.nl','Client','A','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M','client'),
+('clientb@lotus.nl','Client','B','lotusstreet','2b','+316 12345678', 'tilburg','1234AL','M','client');
 -- member users
 INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,companyName,roles) VALUES
-('membera@lotus.nl','Member','A','memberstreet','1a','+316 12345678', 'Breda','1234AL','M','CLIENTAL B.V.','member'),
-('memberb@lotus.nl','Member','B','memberstreet','2b','+316 12345678', 'tilburg','1234AL','M','CLIENT INC.','member');
+('membera@lotus.nl','Member','A','memberstreet','1a','+316 12345678', 'Breda','1234AL','M','member'),
+('memberb@lotus.nl','Member','B','memberstreet','2b','+316 12345678', 'tilburg','1234AL','M','member');
 -- coord users
 INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles) VALUES
 ('coord@lotus.nl','Coord','Inator','coordstreet','1a','+316 12345678', 'Breda','1234AL','M','coordinator');
