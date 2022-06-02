@@ -175,5 +175,5 @@ INSERT INTO request (description, comments, date, time, casualties, playGroundId
 INSERT INTO request (description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES ("Hersenschudding", "Hoofdpijn", "14-06-2022", "12:00", 10, 3, 3, 2, 2, 5);
 
 
-INSERT INTO request(requestId,description,comments,date,time,casualties,playGroundId,grimelocationId,companyId,contactId,billingAddressId) VALUES
-(20, 'desc','comm','6-12-22','11:00',5,1,1,1,1,1);
+-- INSERT INTO request(requestId,description,comments,date,time,casualties,playGroundId,grimelocationId,companyId,contactId,billingAddressId) VALUES
+-- (20, 'desc','comm','6-12-22','11:00',5,1,1,1,1,1);
