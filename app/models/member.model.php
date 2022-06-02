@@ -1,43 +1,28 @@
 <?php
 
-<<<<<<< HEAD
-class ClientModel {
-
-=======
 class MemberModel{
->>>>>>> 24b8c92678babfc3602175d7ceecc7f10f8d985f
     private $db;
 
     public function __construct() {
         $this->db = new Database;
     }
 
-<<<<<<< HEAD
-    public function getRequestDetail($requestId) {
-        $this->db->query("SELECT * FROM  request INNER JOIN user ON request.clientEmail=user.email WHERE id = :id;");
-        $this->db->bind(":id",$requestId);
-=======
     public function getOpenAssignments() {
         $this->db->query("SELECT * FROM request WHERE approved = 1");
->>>>>>> 24b8c92678babfc3602175d7ceecc7f10f8d985f
         
         $result = $this->db->resultSet();
 
         return $result;
     }
 
-<<<<<<< HEAD
-    // function getRequestDetails($requestId) {
-    //     $this->db->query("SELECT * FROM request WHERE id = :id;");
-    //     $this->db->bind(":id", $requestId);
-        
-    //     $result = $this->db->resultSet();
+    public function getRequestDetails($requestId) {
+        $this->db->query("SELECT * FROM request JOIN playground ON playground.playGroundId=request.playGroundId JOIN grimeLocation ON grimeLocation.grimeLocationId=request.grimeLocationId JOIN company ON company.companyId=request.companyId JOIN contact ON contact.contactId=request.contactId WHERE requestId=$requestId;");
+            
+        $result = $this->db->resultSet();
 
-    //     return $result;
-      
-    // }
+        return $result;
+    }
 
-=======
     public function getYourAssignments(){
         
     }
@@ -45,5 +30,4 @@ class MemberModel{
     public function test(){
         echo "test";
     }
->>>>>>> 24b8c92678babfc3602175d7ceecc7f10f8d985f
 }

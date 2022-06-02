@@ -1,6 +1,4 @@
 <?php
-<<<<<<< HEAD
-
 class MemberController extends Controller
 {
 
@@ -13,8 +11,13 @@ class MemberController extends Controller
     
        $resultSet=$this->memberModel->getRequestDetails(20);
 
-    //   print_r($resultSet);
-    $this->view("/member/requestDetails",$resultSet);
+      print_r($resultSet);
+        // $this->view("/member/requestDetails",$resultSet);
+        if (sizeOf($resultSet) > 0) {
+            self::view("member/requestDetails", $resultSet);
+        } else {
+            echo "No open assignments found.";
+        }
     }
 
     
