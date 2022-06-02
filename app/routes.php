@@ -18,5 +18,6 @@ $app->router->get("/coordoverview", [CoordController::class, "showRequestOvervie
 $app->router->post("/login", [AuthController::class, "login"]);
 $app->router->post("/coordoverview", [CoordController::class, "acceptAssignment"]);
 $app->router->post("/coordoverview", [CoordController::class, "declineAssignment"]);
+$app->router->get("/overzicht", [ClientController::class, "overview"]);
 $app->router->notFoundHandler([ExceptionController::class, "_404"]);
 ?>
