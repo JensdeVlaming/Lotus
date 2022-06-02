@@ -125,7 +125,7 @@ INSERT INTO grimelocation (country, province, city, street, houseNumber, postalC
 INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hogeschoollaan", 1, "4818 CR");
 INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA");
 INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Langendijk", 75, "4819 EV");
-INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK",);
+INSERT INTO grimelocation (country, province, city, street, houseNumber, postalCode) VALUES ("Nederland", "Noord-Brabant", "Breda", "Molengracht", 21, "4818 CK");
 
 
 -- playground
