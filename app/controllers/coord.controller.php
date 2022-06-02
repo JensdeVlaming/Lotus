@@ -1,9 +1,9 @@
 <?php
 class CoordController extends Controller
 {
-    public static function showRequestOverview()
+    public function showRequestOverview()
     {
-        $coordModel = self::model("coord");
+        $coordModel = $this->model("coord");
 
         $resultSet = $coordModel->getAssignmentRequests();
 

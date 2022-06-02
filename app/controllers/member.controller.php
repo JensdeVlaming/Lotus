@@ -2,9 +2,9 @@
 class MemberController extends Controller
 {
 
-    public static function showAssignmentOverview()
+    public function showAssignmentOverview()
     {
-        $memberModel = self::model("member");
+        $memberModel = $this->model("member");
 
         $resultSet = $memberModel->getOpenAssignments();
 
