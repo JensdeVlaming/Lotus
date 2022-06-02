@@ -1,16 +1,38 @@
 <?php
 class CoordController extends Controller
 {
+    public function __construct()
+    {
+        $this->coordModel = $this->model("coord");
+    }
+
     public function showRequestOverview()
     {
-        $coordModel = $this->model("coord");
 
-        $resultSet = $coordModel->getAssignmentRequests();
+        $resultSet = $this->coordModel->getAssignmentRequests();
 
         if (sizeOf($resultSet) > 0) {
-            self::view("coord/requestOverview", $resultSet);
+            $this->view("coord/requestOverview", $resultSet);
         } else {
             echo "No requests found.";
         }
+    }
+
+    public function declineAssignment($data)
+    {
+        $id = $data["params"]["id"];
+
+        $this->coordModel->declineAssignment($id);
+
+        $this->showRequestOverview();
+    }
+
+    public function acceptAssignment($data)
+    {
+        $id = $data["params"]["id"];
+
+        $this->coordModel->acceptAssignment($id);
+        $this->showRequestOverview();
+
     }
 }
