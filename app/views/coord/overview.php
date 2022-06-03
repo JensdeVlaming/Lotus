@@ -4,11 +4,11 @@
         <?php
         foreach ($data as $item) {
             if ($item["approved"] == 0) {
-                $approved = '<span class="text-muted">Je hebt deze opdracht afgewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+                $approved = '<span class="text-muted">Wachtende: </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>'; 
             } else if ($item["approved"] == 1) {
                 $approved = '<span class="text-muted">Je hebt deze opdracht goedgekeurd </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
             } else if ($item["approved"] == 2) {
-                $approved = '<span class="text-muted">Wachtende: </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+                $approved = '<span class="text-muted">Je hebt deze opdracht afgewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
             }
         ?>
 
