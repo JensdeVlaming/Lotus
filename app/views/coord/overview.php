@@ -26,7 +26,7 @@
                                 <div class="embed-responsive text-center col-12">
                                     <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                                 </div>
-                                <?php if ($item["approved"] == 2) { ?>
+                                <?php if ($item["approved"] == 0) { ?>
                                 <div class="row g-0">
                                     <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
                                     <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
