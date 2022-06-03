@@ -678,7 +678,7 @@
                                 </label>
                                 <div class="form-control">
                                     <div class="row">
-                                        <div class="col-xl-12">
+                                        <!-- <div class="col-xl-12">
                                             <input 
                                                 type="checkbox" 
                                                 name="clientNameCheckbox" 
@@ -690,7 +690,7 @@
                                                     De ingelogde gebruiker is het contactpersoon.
                                                 </span>
                                             </span>
-                                        </div>
+                                        </div> -->
                                         <div class="col-xl-6 col-md-12">
                                             <div>
                                                 <label 

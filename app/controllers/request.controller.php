@@ -17,28 +17,28 @@ class RequestController extends Controller
 
 
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
-        if ($payload['annexPlayGround']) {
+        if (isset($payload['annexPlayGround'])) {
             $houseNumberPlayGround .= $payload['annexPlayGround'];
         }
 
         $houseNumberGatherLocation = $payload['houseNumberGatherLocation'];
-        if ($payload['annexGatherLocation']) {
+        if (isset($payload['annexGatherLocation'])) {
             $houseNumberGatherLocation .= $payload['annexGatherLocation'];
         }
 
         $houseNumberBusinessAddress = $payload['houseNumberBusinessAddress'];
-        if ($payload['annexBusinessAddress']) {
+        if (isset($payload['annexBusinessAddress'])) {
             $houseNumberBusinessAddress .= $payload['annexBusinessAddress'];
         }
 
         $houseNumberBillingAddress = $payload['houseNumberBillingAddress'];
-        if ($payload['annexBillingAddress']) {
+        if (isset($payload['annexBillingAddress'])) {
             $houseNumberBillingAddress .= $payload['annexBillingAddress'];
         }
 
 
         $provinceGatherLocation = $payload['provincePlayGround'];
-        if ($payload['provinceGatherLocation']) {
+        if (isset($payload['provinceGatherLocation'])) {
             $provinceGatherLocation = $payload['provinceGatherLocation'];
         }
 

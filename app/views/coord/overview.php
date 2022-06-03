@@ -3,6 +3,13 @@
 
         <?php
         foreach ($data as $item) {
+            if ($item["approved"] == 0) {
+                $approved = '<span class="text-muted">Je hebt deze opdracht afgewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+            } else if ($item["approved"] == 1) {
+                $approved = '<span class="text-muted">Je hebt deze opdracht goedgekeurd </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
+            } else if ($item["approved"] == 2) {
+                $approved = '<span class="text-muted">Wachtende: </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+            }
         ?>
 
             <div class="col-md-12 col-lg-4">
@@ -13,16 +20,18 @@
                                 <h5 class="card-title"><?php echo $item["description"] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["companyName"] ?></h6>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["date"] ?> - <?php echo $item["time"] ?></h6>
-                                <!-- <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6> -->
+                                <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
                             </div>
                             <div class="col col-12">
                                 <div class="embed-responsive text-center col-12">
                                     <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                                 </div>
+                                <?php if ($item["approved"] == 2) { ?>
                                 <div class="row g-0">
                                     <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
                                     <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

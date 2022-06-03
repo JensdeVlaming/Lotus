@@ -24,12 +24,16 @@ class MemberModel
         return $result;
     }
 
-    public function getYourAssignments()
-    {
-    }
+    public function participateAssignment($id) {
+        $email = Application::$app->session->get("user");
+        
+        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
 
-    public function test()
-    {
-        echo "test";
+        $this->db->bind(":email", $email);
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->execute();
+        
+        return $result;
     }
 }

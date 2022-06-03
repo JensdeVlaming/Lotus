@@ -91,7 +91,8 @@ class RequestModel
 
     public function addRequest($description, $comments, $date, $time, $casualties)
     {
-        $this->db->query("INSERT INTO request (description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (:description, :comments, :date, :time, :casualties, :playGroundId, :grimeLocationId, :companyId, :contactId, :billingAddressId);");
+        $client = Application::$app->session->get("user");
+        $this->db->query("INSERT INTO request (description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, clientEmail) VALUES (:description, :comments, :date, :time, :casualties, :playGroundId, :grimeLocationId, :companyId, :contactId, :billingAddressId, :clientEmail);");
 
         $this->db->bind(':description', $description);
         $this->db->bind(':comments', $comments);
@@ -103,6 +104,7 @@ class RequestModel
         $this->db->bind(':companyId', $this->companyId);
         $this->db->bind(':contactId', $this->contactId);
         $this->db->bind(':billingAddressId', $this->billingAddressId);
+        $this->db->bind(':clientEmail', $client);
 
         $this->db->execute();
     }

@@ -12,8 +12,7 @@
                                 LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
                                 LEFT JOIN playground ON request.playgroundId = playground.playgroundId
                                 LEFT JOIN contact ON request.contactId = contact.contactId
-                                LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
-                                WHERE request.approved = 0");
+                                LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId");
         
             $result = $this->db->resultSet();
 
