@@ -23,5 +23,16 @@ class ClientModel {
         return $results;
     }
 
+    public function cancelRequest($id) {
+
+        $this->db->query("UPDATE request SET approved = 666 WHERE requestId = :id;");
+        $this->db->bind(":id", $id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+
 }
 

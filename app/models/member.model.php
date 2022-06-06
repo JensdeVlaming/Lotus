@@ -36,4 +36,20 @@ class MemberModel
         
         return $result;
     }
+
+    public function requestDetails($id) {
+            $this->db->query("SELECT * FROM request 
+                            LEFT JOIN company ON request.companyId = company.companyId
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                            LEFT JOIN contact ON request.contactId = contact.contactId
+                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+                            WHERE request.requestId = :id;");
+
+            $this->db->bind(":id", $id);
+            $result = $this->db->resultSet();
+            
+            return $result;
+
+    }
 }

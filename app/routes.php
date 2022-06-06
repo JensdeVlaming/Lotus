@@ -25,10 +25,14 @@ $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAss
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 
+
+
+// Details
+$app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
+
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
-
-
+$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);
@@ -39,3 +43,4 @@ $app->router->post("/addRequest", [RequestController::class, "addRequest"]);
 
 $app->router->notFoundHandler([ExceptionController::class, "_404"]);
 ?>
+
