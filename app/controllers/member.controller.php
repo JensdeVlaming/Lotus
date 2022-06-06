@@ -9,9 +9,9 @@ class MemberController extends Controller
     public function requestDetails()
     {
     
-       $resultSet=$this->memberModel->getRequestDetails(20);
+       $resultSet=$this->memberModel->getRequestDetails(3);
 
-      print_r($resultSet);
+    //   print_r($resultSet);
         // $this->view("/member/requestDetails",$resultSet);
         if (sizeOf($resultSet) > 0) {
             self::view("member/requestDetails", $resultSet);
@@ -24,7 +24,7 @@ class MemberController extends Controller
     public function showAssignmentOverview()
     {
 
-        $resultSet = $memberModel->getOpenAssignments();
+        $resultSet = $this->memberModel->getOpenAssignments();
 
         if (sizeOf($resultSet) > 0) {
             self::view("member/overview", $resultSet);

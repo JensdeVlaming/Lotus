@@ -29,6 +29,7 @@
             } else if ($item["approved"] == 2) {
                 $approved = '<span class="text-muted">Wachtende:</span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
             }
+
         ?>
 
             <div class="card shadow-lg my-2 mx-1 mx-auto">
@@ -45,7 +46,7 @@
                                 <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                             </div>
                             <div class="row">
-                                <span class="col-12" href="/opdracht/<?php echo $item["requestId"] ?>/aanmelden"><button type="button" class="btn btn-success m-0 col-12">Aanmelden</button></span>
+                                <span class="col-12" href="/opdracht/<?php echo $item["requestId"] ?>/aanmelden"><button type="button" class="btn btn-success m-0 col-12" name="solicit">Aanmelden</button></span>
                             </div>
                         </div>
                     </div>

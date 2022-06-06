@@ -15,7 +15,7 @@ class MemberModel
                             JOIN company ON request.companyId = company.companyId
                             JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
                             JOIN playground ON request.playgroundId = playground.playgroundId
-                            WHERE request.approved = 1;");
+                            WHERE request.approved = 0;");
 
         $result = $this->db->resultSet();
 

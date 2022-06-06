@@ -11,25 +11,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 
     <!-- APPROOT file create so a variable can be here below! -->
     <title>Lotus</title>
 </head>
 
 <body>
-
-    <nav>
-        <div class="wrapper">
-            <a href="index.php"></a>
-            <ul>
-         
-            </ul>
-        </div>
-    </nav>
-
-    <div class="wrapper">
-
     <?php 
          if(isset($_POST['solicit'])) {
           
@@ -47,93 +35,66 @@
             // }
             echo"solicit button is called";
         }
+        // print_r($data);
     ?>
-        <section class="details">
-            <div class="container border shadow-lg rounded-3" style="width:90%" >
-
         
-                <div class="det-req">
-                    <div class="row"> 
-                        <div class="col-sm">
-                            <h1><?php echo $data['companyName'] ?> </h1>
-                            <p class="lead"><?php echo $data['description']?> </p>
-                            <form method="POST">
-                            <input type="submit" class="btn btn-warning" name="solicit" value="Aanmelden">
-                            </form>
-                            <hr class="dropdown-divider">
-                        </div>
-                        <div class="col-sm">
-                    
-                            <h2>Details</h2>
+            <div class="container-sm m-auto border shadow-lg rounded-3" >
+                <div class="row gx-5">
+                    <div class="col col-12 col-md-auto">
+                        <h2>CompanyName temp</h2>
                         
-                                <table class="table">
-                                    <thead>
+                        <hr class="dropdown-divider">
+                            <table class="table table-sm table-hover">
+                                <thead>
                                     <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Details</th>
                                     <th scope="col">Info</th>
                                     </tr>
-                                    </thead>
+                                </thead>
                                     <tr>
                                     <td scope="row">PlayDate</td>
-                                    <td><?php echo $data["date"]?></td>
+                                    <td><?php echo "date"?></td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">PlayTime</td>
-                                    <td><?php echo $data["time"]?></td>
+                                    <td><?php echo "date"?></td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">PlayGround</td>
-                                    <td><?php echo $data["playGround"]?></td>
+                                    <td><?php echo "date"?></td>
                                     </tr>
 
                                     
                                     <tr>
                                     <td scope="row">GrimeGround</td>
-                                    <td><?php echo $data["gStreet"] + ", " + $data["gPostalCode"] + " " + $data["gCity"]?></td>
+                                    <td>
+                                        <?php echo "date"?></td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">Leden nodig</td>
-                                    <td><?php echo $data["casualties"]?></td>
+                                    <td><?php echo "date"?></td>
                                     </tr>
-                                </table>
-                            </div>
-                            <div class="col-sm">
-                                <!-- // echo gegevens opdrachtgever -->
-                                <h2>Gegevens opdrachtgever</h2>
-                                    <p>
-                                    <?php echo $data["firstName"].' '.$data["lastName"].' </br>
-                                    '.$data["email"].' </br>
-                                    '.$data["phoneNumber"]?>
-                                    </p>
-                            </div>
-                            <div class="col-sm">
-    
-                                <!-- if comments is filled echo comments header and info -->
-                                <?php
-                                if (!empty($data["comments"])) {
-                                echo '<h2>Opmerkingen</h2>
-                                        <p> '.$data["comments"].'</p>';
-                                }
-                                ?>
-                                    
-                                <!-- // echo google maps -->
-                                <hr class="dropdown-divider">
-                                    <h2>Google Maps</h2>
-                                    <p>
-                                    <iframe src="https://maps.google.com/maps?q=<?php echo $data["pCity"] + "+" + $data["pStreet"] + "+" + $data["pPostalCode"] ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                                        style="border:0" allowfullscreen></iframe>
-                                    </p>
-                            </div>
-                        </div>
+                            </table> 
 
-             
+                    </div>
+                    <div class="col col-12 col-md-auto">
+                        <hr class="dropdown-divider">
+                        <!-- // echo gegevens opdrachtgever -->
+                        <h2>Gegevens opdrachtgever</h2>
+
+                        <hr class="dropdown-divider">
+                        <h2>Google Maps</h2>
+                            <iframe src="https://maps.google.com/maps?q=Breda+Heinoord+7+4824LT?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                                        style="border:0" allowfullscreen></iframe>
+
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+       
+    
 </body>
     <script 
         type="text/javascript" 
