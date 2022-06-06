@@ -12,35 +12,28 @@ class MemberModel
     public function getOpenAssignments()
     {
         $this->db->query("SELECT * FROM request 
-                            JOIN company ON request.companyId = company.companyId
-                            JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
-                            JOIN playground ON request.playgroundId = playground.playgroundId
-                            WHERE request.approved = 0;");
+                            LEFT JOIN company ON request.companyId = company.companyId
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                            LEFT JOIN contact ON request.contactId = contact.contactId
+                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+                            WHERE request.approved = 1;");
 
         $result = $this->db->resultSet();
 
         return $result;
     }
 
-    public function getRequestDetails($requestId) {
-        $this->db->query("SELECT * FROM request 
-                            JOIN playground ON playground.playGroundId=request.playGroundId 
-                            JOIN grimeLocation ON grimeLocation.grimeLocationId=request.grimeLocationId 
-                            JOIN company ON company.companyId=request.companyId 
-                            JOIN contact ON contact.contactId=request.contactId 
-                            WHERE requestId=$requestId;");
-            
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
+    public function participateAssignment($id) {
+        $email = Application::$app->session->get("user");
         
-    public function getYourAssignments() {
-    }
+        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
 
-    public function test()
-    {
-        echo "test";
+        $this->db->bind(":email", $email);
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->execute();
+        
+        return $result;
     }
 }

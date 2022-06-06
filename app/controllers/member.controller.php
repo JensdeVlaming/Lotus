@@ -2,28 +2,14 @@
 class MemberController extends Controller
 {
 
-    public function __construct() {
-        $this->memberModel=$this->model("member");
-    }
-
-    public function requestDetails()
+    public function __construct()
     {
-    
-       $resultSet=$this->memberModel->getRequestDetails(3);
-
-    //   print_r($resultSet);
-        // $this->view("/member/requestDetails",$resultSet);
-        if (sizeOf($resultSet) > 0) {
-            self::view("member/requestDetails", $resultSet);
-        } else {
-            echo "No open assignments found.";
-        }
+        $this->memberModel = $this->model("member");
+        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
-
     
-    public function showAssignmentOverview()
+    public function getOverview()
     {
-
         $resultSet = $this->memberModel->getOpenAssignments();
 
         if (sizeOf($resultSet) > 0) {
@@ -32,8 +18,18 @@ class MemberController extends Controller
             echo "No open assignments found.";
         }
     }
-    
 
+    public function participateAssignment($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->memberModel->participateAssignment($id);
+    
+        if ($result) {
+            echo "Succesvol aangemeld voor opdracht ".$id;
+        } else {
+            echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht ".$id;
+        }
+    }
 }
 
 
