@@ -16,4 +16,16 @@ class ClientController extends Controller
 
         $this->view("/client/overview", $resultSet);
     }
+
+    public function cancelRequest($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->clientModel->cancelRequest($id);
+    
+        if ($result) {
+            echo "Opdracht is succesvol geannuleerd met id ".$id;
+        } else {
+            echo "Er is iets fout gegegaan tijdens het annuleren van opdracht ".$id;
+        }
+    }
 }

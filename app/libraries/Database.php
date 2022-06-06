@@ -1,5 +1,8 @@
 <?php
+// error_reporting(0);
 class Database {
+
+
     private $dbHost = DB_HOST;
     private $dbUser = DB_USER;
     private $dbPass = DB_PASS;
