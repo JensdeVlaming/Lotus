@@ -22,13 +22,13 @@
         public function declineAssignment($id) {
             $this->db->query("UPDATE request SET approved = 2 WHERE requestId = $id;");
             
-            // $result = $this->db->resultSet();
+            $result = $this->db->resultSet();
         }
 
         public function acceptAssignment($id) {
             $this->db->query("UPDATE request SET approved = 1 WHERE requestId = $id;");
             
-            // $result = $this->db->resultSet();
+            $result = $this->db->resultSet();
         }
     }
 ?>
