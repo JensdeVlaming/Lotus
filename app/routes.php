@@ -24,9 +24,11 @@ $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOver
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
+$app->router->get("/opdracht/:id/afmelden", [MemberController::class, "unsuscribeAssignment"]);
 
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
+$app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);

@@ -45,6 +45,19 @@ class MemberController extends Controller
         }
 
     }
+
+    public function getRequestDetailsAssigned($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->memberModel->requestDetails($id);
+
+        if ($result) {
+            self::view("/member/requestDetailsAssigned", $result);
+        } else {
+            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
+        }
+
+    }
 }
 
 
