@@ -187,7 +187,7 @@ CREATE TABLE `lotus`.`request` (
   `billingAddressId` int(11) NOT NULL,
   `postDate` datetime NOT NULL DEFAULT current_timestamp(),
   `approved` tinyint NOT NULL DEFAULT 0,
-  `clientEmail` varchar(100) NOT NULL,
+  `clientEmail` varchar(100) NOT NULL
 
 );
 ALTER TABLE `lotus`.`request` ADD PRIMARY KEY (`requestId`), ADD KEY `FK_billing_request` (`billingAddressId`), ADD KEY `FK_company_request` (`companyId`), ADD KEY `FK_grimelocation_request` (`grimeLocationId`), ADD KEY `FK_playground_request` (`playGroundId`), ADD KEY `FK_contact_request` (`contactId`);
