@@ -29,7 +29,7 @@ $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "unsuscrib
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
-$app->router->get("/opdracht/:id/details-coordinator-accept-deny", [CoordController::class, "getRequestDetailsAcceptDeny"]);
+$app->router->get("/opdracht/:id/details-coordinator", [CoordController::class, "getRequestDetailsAcceptDeny"]);
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
