@@ -30,7 +30,17 @@ class MemberController extends Controller
             echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht ".$id;
         }
     }
-    
+
+    public function getRegisteredOverview()
+    {
+        $resultSet = $this->memberModel->getRegisteredAssignments();
+
+        if (sizeOf($resultSet) > 0) {
+            self::view("member/registeredAssignments", $resultSet);
+        } else {
+            echo "No open assignments found.";
+        }
+    }
 
     public function getRequestDetails($data) {
         $id = $data["params"]["id"];
