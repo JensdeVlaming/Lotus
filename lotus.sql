@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS solicit;
 CREATE TABLE solicit (
     email varchar(100) NOT NULL,
     requestId int NOT NULL,
-    assigned tinyint NOT NULL DEFAULT 2,
+    assigned tinyint NOT NULL DEFAULT 0,
     PRIMARY KEY (email, requestId)
 );
 -- 0 = denied / 1 = appointed / 2 = pending
