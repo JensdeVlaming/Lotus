@@ -37,10 +37,6 @@ class ClientModel
         return $results;
     }
     
-
-<<<<<<< HEAD
-    
-=======
     public function requestDetails($id)
     {
         $this->db->query("SELECT * FROM request 
@@ -50,7 +46,6 @@ class ClientModel
                         LEFT JOIN contact ON request.contactId = contact.contactId
                         LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
                         WHERE request.requestId = :id;");
->>>>>>> ec79e81f29b62be2bb2c88d03f6524a157e87ac8
 
         $this->db->bind(":id", $id);
         $result = $this->db->resultSet();
