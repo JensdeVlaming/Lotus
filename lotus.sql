@@ -64,8 +64,8 @@ INSERT INTO solicit VALUES
 ('kasper@lotus.nl','3',1),
 ('juliet@lotus.nl','4',0),
 ('daniel@lotus.nl','3',0),
-('jens@lotus.nl','5',2);
-('membera@lotus.nl','3',1);
+('jens@lotus.nl','5',2),
+('membera@lotus.nl','3',1),
 ('memberb@lotus.nl','5',2);
 
 -- billingaddress
