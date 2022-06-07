@@ -48,7 +48,7 @@ class MemberController extends Controller
 
         $resultSet = $this->memberModel->deregister($requestId);
 
-        Application::$app->controller->redirect("/overzicht-lid-ingeschreven");
+        Application::$app->controller->redirect("/opdrachten");
     }
 
     public function getRequestDetails($data) {

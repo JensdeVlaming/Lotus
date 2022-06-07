@@ -17,7 +17,7 @@ $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews
 $app->router->get("/overzicht-lid", [MemberController::class, "getOverview"]);
-$app->router->get("/overzicht-lid-ingeschreven", [MemberController::class, "getRegisteredOverview"]);
+$app->router->get("/opdrachten", [MemberController::class, "getRegisteredOverview"]);
 $app->router->get("/overzicht-coordinator", [CoordController::class, "getOverview"]);
 $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOverview"]);
 
@@ -26,7 +26,7 @@ $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAss
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
 
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
-$app->router->get("/overzicht-lid-ingeschreven/:id/afmelden", [MemberController::class, "deregister"]);
+$app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregister"]);
 
 
 // Details
