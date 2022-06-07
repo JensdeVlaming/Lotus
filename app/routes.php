@@ -33,7 +33,7 @@ $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getReq
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
-$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
+$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRequest"]);
 
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);
