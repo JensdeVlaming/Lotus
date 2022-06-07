@@ -30,5 +30,25 @@
             
             $result = $this->db->resultSet();
         }
+
+        public function getRequestDetailsAcceptDeny($id){
+            $this->db->query("SELECT * FROM request 
+                                LEFT JOIN playground ON request.playGroundId = playground.playGroundId 
+                                LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId 
+                                LEFT JOIN company ON request.companyId = company.companyId 
+                                LEFT JOIN contact ON request.contactId = contact.contactId 
+                                LEFT JOIN billingaddress ON request.billingAddressId = billingaddress.billingAddressId 
+                                WHERE requestId = :id;");
+                                
+            $this->db->bind(":id", $id);
+    
+            $results = $this->db->resultSet();
+    
+            return $results;
+        }
+
+
+
+
     }
 ?>

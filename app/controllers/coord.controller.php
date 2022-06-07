@@ -36,4 +36,18 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht-coordinator");
 
     }
+
+    public function getRequestDetailsAcceptDeny($data) {
+        $id = $data["params"]["id"];
+
+        $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
+
+        if ($result) {
+            self::view("/coord/requestDetails", $result);
+        } else {
+            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
+        }
+    }
+
+
 }

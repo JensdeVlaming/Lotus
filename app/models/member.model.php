@@ -52,4 +52,17 @@ class MemberModel
             return $result;
 
     }
+
+    public function unsuscribeAssignment($id) {
+        $email = Application::$app->session->get("user");
+        
+        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->execute();
+        
+        return $result;
+    }
 }
