@@ -1,13 +1,12 @@
 <div class="row row-cols-md-1 row-cols-lg-3 g-2 m-2">
     <?php
     foreach ($data as $item) {
-
         if ($item["approved"] == 0) {
-            $approved = '<span class="text-muted">Afgewezen:</span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+            $approved = '<span class="text-muted">Wachtende: </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
         } else if ($item["approved"] == 1) {
-            $approved = '<span class="text-muted">Goedgekeurd:</span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
+            $approved = '<span class="text-muted">Je hebt deze opdracht goedgekeurd </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
         } else if ($item["approved"] == 2) {
-            $approved = '<span class="text-muted">Wachtende:</span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+            $approved = '<span class="text-muted">Je hebt deze opdracht afgewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
         }
     ?>
 
@@ -26,6 +25,12 @@
                                 <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="row g-0">
+                                <button type="button" class="btn btn-warning text-white col-6" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
+                                <button type="button" class="btn btn-danger col-6" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -33,6 +38,42 @@
                     <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                 </ul>
             </div>
+
+            <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-client"></a>
+
+            <div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cancelRequestLabel">Weet u het zeker?</h5>
+                        </div>
+                        <div class="modal-body">
+                            U staat op het punt een door u gemaakte opdracht te verwijderen. Wilt u verder gaan met deze actie?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
+                            <a href="/opdracht/<?php echo $item["requestId"] ?>/annuleren"><button type="button" class="nextButton btn">Ga verder</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="updateRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="updateRequestLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updateRequestLabel">Weet u het zeker?</h5>
+                        </div>
+                        <div class="modal-body">
+                            Deze actie is nog NIET ondersteunt. Wilt u deze actie afbreken?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     <?php
     }

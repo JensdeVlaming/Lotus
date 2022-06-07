@@ -1,14 +1,17 @@
 <?php
 
-class ClientModel {
+class ClientModel
+{
 
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function getRequests($email) {
+    public function getRequests($email)
+    {
         $this->db->query("SELECT * FROM request 
                             LEFT JOIN playground ON request.playGroundId = playground.playGroundId 
                             LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId 
@@ -17,15 +20,16 @@ class ClientModel {
                             LEFT JOIN billingaddress ON request.billingAddressId = billingaddress.billingAddressId 
                             WHERE clientEmail = :email;");
         $this->db->bind(":email", $email);
-        
+
         $results = $this->db->resultSet();
 
         return $results;
     }
 
-    public function cancelRequest($id) {
+    public function cancelRequest($id)
+    {
 
-        $this->db->query("UPDATE request SET approved = 666 WHERE requestId = :id;");
+        $this->db->query("DELETE FROM request WHERE requestId = :id");
         $this->db->bind(":id", $id);
 
         $results = $this->db->resultSet();
@@ -34,7 +38,23 @@ class ClientModel {
     }
     
 
+<<<<<<< HEAD
     
+=======
+    public function requestDetails($id)
+    {
+        $this->db->query("SELECT * FROM request 
+                        LEFT JOIN company ON request.companyId = company.companyId
+                        LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                        LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                        LEFT JOIN contact ON request.contactId = contact.contactId
+                        LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+                        WHERE request.requestId = :id;");
+>>>>>>> ec79e81f29b62be2bb2c88d03f6524a157e87ac8
 
+        $this->db->bind(":id", $id);
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }
-

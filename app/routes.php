@@ -17,6 +17,7 @@ $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews
 $app->router->get("/overzicht-lid", [MemberController::class, "getOverview"]);
+$app->router->get("/overzicht-lid-ingeschreven", [MemberController::class, "getRegisteredOverview"]);
 $app->router->get("/overzicht-coordinator", [CoordController::class, "getOverview"]);
 $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOverview"]);
 
@@ -30,10 +31,11 @@ $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "unsuscrib
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
 $app->router->get("/opdracht/:id/details-coordinator", [CoordController::class, "getRequestDetailsAcceptDeny"]);
+$app->router->get("/opdracht/:id/details-client", [ClientController::class, "getRequestDetails"]);
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
-$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
+$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRequest"]);
 
 // POST Requests
 $app->router->post("/login", [AuthController::class, "login"]);

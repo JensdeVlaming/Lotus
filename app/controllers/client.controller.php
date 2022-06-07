@@ -20,12 +20,22 @@ class ClientController extends Controller
     public function cancelRequest($data) {
         $id = $data["params"]["id"];
 
-        $result = $this->clientModel->cancelRequest($id);
-    
+        $this->clientModel->cancelRequest($id);
+
+        echo "U heeft opdracht " . $id . " verwijderd.";
+
+    }
+
+    public function getRequestDetails($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->clientModel->requestDetails($id);
+
         if ($result) {
-            echo "Opdracht is succesvol geannuleerd met id ".$id;
+            self::view("/client/requestDetails", $result);
         } else {
-            echo "Er is iets fout gegegaan tijdens het annuleren van opdracht ".$id;
+            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
         }
+
     }
 }
