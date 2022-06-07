@@ -27,9 +27,12 @@ $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "particip
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 
 
+$app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
+
+
 
 // POST Requests
-$app->router->post("/login", [AuthController::class, "login"]);
+$app->router->post("/inloggen", [AuthController::class, "login"]);
 
 $app->router->post("/addRequest", [RequestController::class, "addRequest"]);
 

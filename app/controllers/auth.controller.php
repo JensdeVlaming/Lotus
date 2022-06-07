@@ -30,6 +30,18 @@ class AuthController extends Controller
         }
     }
 
+    public function changeActiveRole($data)
+    {
+        $role = $data["role"];
+        $url = $data["destination"];
+
+        Application::$app->session->set("activeRole", $role);
+
+        $this->redirect("$url");
+
+    }
+
+
     public function logout()
     {
         Application::$app->session->destroy();

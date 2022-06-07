@@ -4,13 +4,13 @@ $activeRole = Application::$app->session->get("activeRole");
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow mb-3 rounded-3">
     <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/src/img/logo.svg" alt="" width="100" height="100" class="d-inline-block align-text-bottom">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="/">
-                <img src="/src/img/logo.svg" alt="" width="100" height="100" class="d-inline-block align-text-bottom">
-            </a>
             <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
                 <?php if (strtolower($activeRole) == "lid") { ?>
                     <li class="nav-item">
@@ -19,6 +19,30 @@ $activeRole = Application::$app->session->get("activeRole");
                     <li class="nav-item">
                         <a class="nav-link active" href="/opdrachten">Jouw opdrachten</a>
                     </li>
+                    <?php
+                    if ($roles > 1) {
+                    ?>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jouw rol
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+
+                                <?php
+                                foreach ($roles as $role) {
+                                ?>
+                                    <form action="/role/<?php echo strtolower($role) ?>" method="POST">
+                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
+                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item <?php if (strtolower($role) == strtolower($activeRole)) { echo "roleIsActive"; } ?>"></li>
+                                    </form>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+
+                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
                     </li>
@@ -29,6 +53,30 @@ $activeRole = Application::$app->session->get("activeRole");
                     <li class="nav-item">
                         <a class="nav-link active" href="/leden">Leden</a>
                     </li>
+                    <?php
+                    if ($roles > 1) {
+                    ?>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jouw rol
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+
+                                <?php
+                                foreach ($roles as $role) {
+                                ?>
+                                    <form action="/role/<?php echo strtolower($role) ?>" method="POST">
+                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
+                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item <?php if (strtolower($role) == strtolower($activeRole)) { echo "roleIsActive"; } ?>"></li>
+                                    </form>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+
+                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
                     </li>

@@ -52,7 +52,7 @@ INSERT INTO `role` (id, name) VALUES
 (3, 'Opdrachtgever');
 
 INSERT INTO `role` (id, name) VALUES
-(4, 'Coordinator, Lid');
+(4, 'Coordinator,Lid');
 
 -- user
 
