@@ -12,13 +12,11 @@ $app = new Application();
 $app->router->get("/", [ViewController::class, "index"]);
 
 // Authentication
-$app->router->get("/login", [ViewController::class, "login"]);
+$app->router->get("/inloggen", [ViewController::class, "login"]);
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews
-$app->router->get("/overzicht-lid", [MemberController::class, "getOverview"]);
-$app->router->get("/overzicht-coordinator", [CoordController::class, "getOverview"]);
-$app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOverview"]);
+$app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
@@ -26,7 +24,7 @@ $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAs
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 
 // Requests
-$app->router->get("/addRequest", [ViewController::class, "addRequest"]);
+$app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 
 
 
