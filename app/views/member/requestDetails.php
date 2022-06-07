@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col">
                      <!-- Column 1 -->
-            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
                 
                         <h2 class="formSectionTitle fw-bold"><?php echo $item["companyName"];?></h2>
                         <p><?php echo $item["description"];?></p>
@@ -61,30 +61,29 @@
                                 ?>
 
                    
-            </div>
-            <!-- Column 1 end -->
+                    </div>
+                    <!-- Column 1 end -->
                 </div>
 
                 <div class="col">
                      <!-- Column 2 start -->
-            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto" >
-                <h2 class="formSectionTitle fw-bold">Gegevens opdrachtgever</h2>
-                        <p>
-                        <?php echo $item["firstName"].' '.$item["lastName"].' </br>
-                                    '.$item["clientEmail"].' </br>
-                                    '.$item["phoneNumber"]?>
-                                    </p>
-            </div>
-            
-            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto" >
-              
-                <h2 class="formSectionTitle fw-bold">Google Maps</h2>
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto" >
+                        <h2 class="formSectionTitle fw-bold">Gegevens opdrachtgever</h2>
+                                <p>
+                                <?php echo $item["firstName"].' '.$item["lastName"].' </br>
+                                            '.$item["clientEmail"].' </br>
+                                            '.$item["phoneNumber"]?>
+                                            </p>
+                    </div>
+                    
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto" >
+                        <h2 class="formSectionTitle fw-bold">Google Maps</h2>
                             <iframe src="https://maps.google.com/maps?q=<?php echo "".$item["pStreet"]."+".$item["pHouseNumber"]."+".$item["pPostalCode"].""?>?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                                         style="border:0" allowfullscreen></iframe>
-            </div> 
-            <!-- Column 2 end  -->
+                    </div> 
+                    <!-- Column 2 end  -->
                 </div>
-        </div>
+            </div>
 
            
            
