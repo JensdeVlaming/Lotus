@@ -25,11 +25,15 @@
                             </div>
                             <?php if ($item["assigned"] == 0) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#participateModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
                                 </div>
                             <?php } else if ($item["assigned"] == 1) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#participateModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
+                                </div>
+                            <?php } else if ($item["assigned"] == 1) { ?>
+                                <div class="row g-0">
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#24hderegisterModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
                                 </div>
                             <?php } ?>
                         </div>
@@ -44,18 +48,35 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="participateModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="participateModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deregisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="participateModalLabel">Weet u het zeker?</h5>
+                        <h5 class="modal-title" id="deregisterModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
-                        Weet je zeker dat je je wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                        Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                        <a href="/opdracht/<?php echo $item["requestId"] ?>/aanmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
+                        <a href="/overzicht-lid-ingeschreven/<?php echo $item['requestId']?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="deregisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deregisterModalLabel">Weet u het zeker?</h5>
+                    </div>
+                    <div class="modal-body">
+                        Weet je zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
+                        <a href="/overzicht-lid-ingeschreven/<?php echo $item['requestId']?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
                     </div>
                 </div>
             </div>

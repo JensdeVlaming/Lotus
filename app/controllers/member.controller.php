@@ -42,6 +42,15 @@ class MemberController extends Controller
         }
     }
 
+    public function deregister($data)
+    {
+        $requestId = $data["params"]["id"];
+
+        $resultSet = $this->memberModel->deregister($requestId);
+
+        Application::$app->controller->redirect("/overzicht-lid-ingeschreven");
+    }
+
     public function getRequestDetails($data) {
         $id = $data["params"]["id"];
 

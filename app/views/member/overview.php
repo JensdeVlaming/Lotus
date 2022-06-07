@@ -38,7 +38,7 @@
                         <h5 class="modal-title" id="participateModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
-                        Weet je zeker dat je je wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                        Weet u zeker dat u zich wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>

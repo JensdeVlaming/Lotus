@@ -24,8 +24,9 @@ $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOver
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
-$app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 
+$app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
+$app->router->get("/overzicht-lid-ingeschreven/:id/afmelden", [MemberController::class, "deregister"]);
 
 
 // Details
