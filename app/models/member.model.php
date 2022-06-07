@@ -51,6 +51,9 @@ class MemberModel
 
         $this->db->bind(":email", $email);
 
+        $result = $this->db->resultSet();
+
+        return $result;
     }
 
 
@@ -61,9 +64,9 @@ class MemberModel
         $this->db->bind(":requestId", $requestId);
         $this->db->bind(":email", $email);
 
-        $result = $this->db->resultSet();
+        // $result = $this->db->resultSet();
 
-        return $result;
+        // return $result;
     }
 
     public function requestDetails($id) {
