@@ -22,13 +22,13 @@
                                     </tr>
                                 </thead>
                                     <tr>
-                                    <td scope="row">PlayDate</td>
+                                    <td scope="row">Datum</td>
                                     <td>:</td>
                                     <td><?php echo $item["date"];?></td>
                                     </tr>
                 
                                     <tr>
-                                    <td scope="row">PlayTime</td>
+                                    <td scope="row">Tijd</td>
                                     <td>:</td>
                                     <td><?php echo $item["time"];?></td>
                                     </tr>
@@ -40,14 +40,14 @@
                                     </tr>
                 
                                     <tr>
-                                    <td scope="row">PlayGround</td>
+                                    <td scope="row">Locatie</td>
                                     <td>:</td>
                                     <td><?php echo "".$item["pStreet"]." ".$item["pHouseNumber"].", ".$item["pPostalCode"].""?> </td>
                                     </tr>
 
                                     
                                     <tr>
-                                    <td scope="row">GrimeGround</td>
+                                    <td scope="row">Grimeerlocatie</td>
                                     <td>:</td>
                                     <td><?php echo "".$item["gStreet"]." ".$item["gHouseNumber"].", ".$item["gPostalCode"].""?></td>
                                     </tr>
@@ -77,14 +77,15 @@
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
                                 <p>
-                                <?php echo $item["firstName"].' '.$item["lastName"].' </br>
+                                <?php echo $item["companyName"].' </br>	                                
+                                            '.$item["firstName"].' '.$item["lastName"].' </br>
                                             '.$item["clientEmail"].' </br>
                                             '.$item["phoneNumber"]?>
                                             </p>
                     </div>
                     
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Google Maps</h2>
+                        <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
                             <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "".$item["pStreet"]."+".$item["pHouseNumber"]."+".$item["pPostalCode"].""?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                                         style="border:0" allowfullscreen></iframe>
                     </div> 

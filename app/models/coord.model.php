@@ -32,7 +32,8 @@
         }
 
         public function getRequestDetailsAcceptDeny($id){
-            $this->db->query("SELECT * FROM request 
+            $this->db->query("SELECT * FROM request
+                                LEFT JOIN user ON user.email = request.clientEmail 
                                 LEFT JOIN playground ON request.playGroundId = playground.playGroundId 
                                 LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId 
                                 LEFT JOIN company ON request.companyId = company.companyId 
