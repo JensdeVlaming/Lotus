@@ -25,6 +25,7 @@ class MemberController extends Controller
         $result = $this->memberModel->participateAssignment($id);
     
         if ($result) {
+            
             echo "Succesvol aangemeld voor opdracht ".$id;
         } else {
             echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht ".$id;
