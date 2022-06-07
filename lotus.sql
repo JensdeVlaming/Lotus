@@ -56,16 +56,17 @@ DROP TABLE IF EXISTS solicit;
 CREATE TABLE solicit (
     email varchar(100) NOT NULL,
     requestId int NOT NULL,
-    approved tinyint NOT NULL DEFAULT 2,
+    assigned tinyint NOT NULL DEFAULT 2,
     PRIMARY KEY (email, requestId)
 );
 -- 0 = denied / 1 = appointed / 2 = pending
 INSERT INTO solicit VALUES
-('kasper@lotus.nl','1',2),
-('juliet@lotus.nl','1',0),
-('daniel@lotus.nl','1',1),
-('jens@lotus.nl','1',0);
-
+('kasper@lotus.nl','3',1),
+('juliet@lotus.nl','4',0),
+('daniel@lotus.nl','3',0),
+('jens@lotus.nl','5',2);
+('membera@lotus.nl','3',1);
+('memberb@lotus.nl','5',2);
 
 -- billingaddress
 
@@ -186,7 +187,7 @@ CREATE TABLE `lotus`.`request` (
   `billingAddressId` int(11) NOT NULL,
   `postDate` datetime NOT NULL DEFAULT current_timestamp(),
   `approved` tinyint NOT NULL DEFAULT 0,
-  `clientEmail` varchar(100) NOT NULL,
+  `clientEmail` varchar(100) NOT NULL
 
 );
 ALTER TABLE `lotus`.`request` ADD PRIMARY KEY (`requestId`), ADD KEY `FK_billing_request` (`billingAddressId`), ADD KEY `FK_company_request` (`companyId`), ADD KEY `FK_grimelocation_request` (`grimeLocationId`), ADD KEY `FK_playground_request` (`playGroundId`), ADD KEY `FK_contact_request` (`contactId`);

@@ -41,4 +41,20 @@ class MemberController extends Controller
             echo "No open assignments found.";
         }
     }
+
+    public function getRequestDetails($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->memberModel->requestDetails($id);
+
+        if ($result) {
+            self::view("/member/requestDetails", $result);
+        } else {
+            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
+        }
+
+    }
 }
+
+
+
