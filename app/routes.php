@@ -30,6 +30,7 @@ $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "particip
 
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
+$app->router->get("/opdracht/:id/details-client", [ClientController::class, "getRequestDetails"]);
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);

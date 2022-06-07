@@ -1,102 +1,134 @@
-<?php 
-         if(isset($_POST['delete'])) {
-          
-            // $conn = mysqli_connect($servername, $username, $password,$db);
-            //  $_SESSION["request"] & $_SESSION["userId"]
-            // $_SESSION["userEmail"]
-            // $sqlAlreadydelete = "SELECT * FROM delete WHERE requestId = 10 AND email = 'kasper@lotus.nl';";
-            // $sqlAlreadydeleteResult = mysqli_query($conn, $sqlAlreadydelete);
-    
-            // if (mysqli_num_rows($sqlAlreadydeleteResult) > 0) { 
-            //   echo '<script> alert("Je bent al aangemeld voor deze opdracht!")</script>';
-            // } else {
-            //   // $sqldelete = "INSERT INTO delete VALUES (".$row["requestId"].",20);";
-            //   echo '<script> alert("Jij bent aangemeld voor deze opdracht!")</script>';
-            // }
-            echo"delete button is called";
-        }
-        print_r($data);
-    ?>
-        
-            <div class="container-sm m-auto border shadow-lg rounded-3" >
-                <div class="row gx-5">
-                    <div class="col col-12 col-md-auto">
-                        <h2>CompanyName temp</h2>
-                        <p>description</p>
-                        <button type="button" class="btn btn-success " style="z-index: 10" data-bs-toggle="modal" data-bs-target="#cancelModal<?php echo $data["requestId"]; ?>">Aanmelden</button>
+<?php
+foreach ($data as $item) {
+?>
+    <div class="container">
 
-                        
-                        <hr class="dropdown-divider">
-                            <table class="table table-sm table-hover w-auto ">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Details</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Info</th>
-                                    </tr>
-                                </thead>
-                                    <tr>
-                                    <td scope="row">PlayDate</td>
-                                    <td>:</td>
-                                    <td><?php echo "".$data["date"].""?></td>
-                                    </tr>
-                
-                                    <tr>
-                                    <td scope="row">PlayTime</td>
-                                    <td>:</td>
-                                    <td><?php echo "date"?></td>
-                                    </tr>
-                
-                                    <tr>
-                                    <td scope="row">PlayGround</td>
-                                    <td>:</td>
-                                    <td><?php echo "date"?></td>
-                                    </tr>
+        <div class="row">
+            <div class="col">
+                <!-- Column 1 -->
+                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
 
-                                    
-                                    <tr>
-                                    <td scope="row">GrimeGround</td>
-                                    <td>:</td>
-                                    <td>
-                                        <?php echo "date"?></td>
-                                    </tr>
-                
-                                    <tr>
-                                    <td scope="row">Leden nodig</td>
-                                    <td>:</td>
-                                    <td><?php echo "date"?></td>
-                                    </tr>
-                            </table> 
+                    <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"]; ?></h2>
+                    <p><?php echo $item["description"]; ?></p>
+                    <button type="button" class="btn btn-warning text-white" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
+                    <button type="button" class="btn btn-danger" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
 
-                    </div>
-                    <div class="col col-12 col-md-auto">
-                        <hr class="dropdown-divider">
-                        <!-- // echo gegevens opdrachtgever -->
-                        <h2>Gegevens opdrachtgever</h2>
+                    <hr class="dropdown-divider">
+                    <table class="table table-sm table-hover w-auto ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Details</th>
+                                <th scope="col"></th>
+                                <th scope="col">Info</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td scope="row">PlayDate</td>
+                            <td>:</td>
+                            <td><?php echo $item["date"]; ?></td>
+                        </tr>
 
-                        <hr class="dropdown-divider">
-                        <h2>Google Maps</h2>
-                            <iframe src="https://maps.google.com/maps?q=Breda+Heinoord+7+4824LT?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                                        style="border:0" allowfullscreen></iframe>
+                        <tr>
+                            <td scope="row">PlayTime</td>
+                            <td>:</td>
+                            <td><?php echo $item["time"]; ?></td>
+                        </tr>
 
-                    </div>
+                        <tr>
+                            <td scope="row">Stad</td>
+                            <td>:</td>
+                            <td><?php echo $item["pCity"]; ?> </td>
+                        </tr>
+
+                        <tr>
+                            <td scope="row">PlayGround</td>
+                            <td>:</td>
+                            <td><?php echo "" . $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pPostalCode"] . "" ?> </td>
+                        </tr>
+
+
+                        <tr>
+                            <td scope="row">GrimeGround</td>
+                            <td>:</td>
+                            <td><?php echo "" . $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gPostalCode"] . "" ?></td>
+                        </tr>
+
+                        <tr>
+                            <td scope="row">Leden nodig</td>
+                            <td>:</td>
+                            <td><?php echo $item["casualties"]; ?></td>
+                        </tr>
+                    </table>
+
+                    <?php
+                    if (!empty($item["comments"])) {
+                        echo '  <hr class="dropdown-divider">
+                                        <h2 class="formSectionTitle fw-bold mt-3">Opmerkingen</h2>
+                                        <p> ' . $item["comments"] . '</p>';
+                    }
+                    ?>
+
+
                 </div>
+
+                <!-- Column 1 end -->
             </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="cancelModal<?php echo $data["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cancelModalLabel">Weet u het zeker?</h5>
-                    </div>
-                    <div class="modal-body">
-                        Weet je zeker dat je je deze opdracht wilt annuleren? Deze actie kan niet ongedaan worden.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                        <a href="/opdracht/<?php echo $data["requestId"] ?>/annuleren"><button type="button" class="nextButton btn">Ga verder</button></a>
-                    </div>
+            <div class="col">
+                <!-- Column 2 start -->
+                <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
+                    <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
+                    <p>
+                        <?php echo $item["firstName"] . ' ' . $item["lastName"] . ' </br>
+                                            ' . $item["clientEmail"] . ' </br>
+                                            ' . $item["phoneNumber"] ?>
+                    </p>
                 </div>
+
+                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
+                    <h2 class="formSectionTitle fw-bold mt-3">Google Maps</h2>
+                    <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <!-- Column 2 end  -->
             </div>
         </div>
+
+
+
+    </div>
+
+<?php } ?>
+
+<!-- Modal -->
+<div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelRequestLabel">Weet u het zeker?</h5>
+            </div>
+            <div class="modal-body">
+                U staat op het punt een door u gemaakte opdracht te verwijderen. Wilt u verder gaan met deze actie?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
+                <a href="/opdracht/<?php echo $item["requestId"] ?>/annuleren"><button type="button" class="nextButton btn">Ga verder</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="updateRequestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateRequestLabel">Weet u het zeker?</h5>
+            </div>
+            <div class="modal-body">
+                Deze actie is nog NIET ondersteunt. Wilt u deze actie afbreken?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -39,6 +39,8 @@
                 </ul>
             </div>
 
+            <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-client"></a>
+
             <div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
