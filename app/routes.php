@@ -17,6 +17,7 @@ $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews
 $app->router->get("/overzicht-lid", [MemberController::class, "getOverview"]);
+$app->router->get("/overzicht-lid-ingeschreven", [MemberController::class, "getRegisteredOverview"]);
 $app->router->get("/overzicht-coordinator", [CoordController::class, "getOverview"]);
 $app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOverview"]);
 

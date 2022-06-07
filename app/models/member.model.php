@@ -24,16 +24,35 @@ class MemberModel
         return $result;
     }
 
-    public function participateAssignment($id) {
+    public function participateAssignment($id)
+    {
         $email = Application::$app->session->get("user");
-        
+
         $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":id", $id);
-        
+
         $result = $this->db->execute();
-        
+
+        return $result;
+    }
+
+    public function getRegisteredAssignments()
+    {
+        $email = Application::$app->session->get("user");
+        $this->db->query("SELECT * FROM solicit 
+                            LEFT JOIN request ON solicit.requestId = request.requestId
+                            LEFT JOIN company ON request.companyId = company.companyId 
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId 
+                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId 
+                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId 
+                            WHERE solicit.email = :email;");
+
+        $this->db->bind(":email", $email);
+
+        $result = $this->db->resultSet();
+
         return $result;
     }
 }
