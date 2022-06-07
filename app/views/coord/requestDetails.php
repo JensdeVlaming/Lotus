@@ -1,5 +1,5 @@
 <?php 
-        print_r($data);
+       
         foreach ($data as $item) {
             if ($item["approved"] == 0) {
                 $approved = '<span class="text-muted">Wachtende: </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>'; 
