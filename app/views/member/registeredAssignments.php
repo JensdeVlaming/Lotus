@@ -80,7 +80,7 @@
                         Deze opdracht is al toegewezen aan u, gelieve u niet af te melden zonder geldige reden. <br>
                         Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
-                    <form>
+                    <form method="POST">
                         <div class="m-3">
                             <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
                             <textarea class="form-control" id="message-text"></textarea>
