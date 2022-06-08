@@ -225,38 +225,10 @@ INSERT INTO request (requestId, description, comments, date, time, casualties, p
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (3, "Hersenschudding", "Hoofdpijn", "14-06-2022", "12:00", 10, 3, 3, 2, 2, 3);
 
 -- solicit
--- 0 = ingeschreven / 1 = toegewezen / 2 = niet toegewezen
-INSERT INTO solicit VALUES
-('kasper@lotus.nl','1',2),
+INSERT INTO solicit(email, requestId, assigned) VALUES
+('kasper@lotus.nl','1',1),
 ('juliet@lotus.nl','2',0),
 ('daniel@lotus.nl','1',1),
 ('jens@lotus.nl','1',0),
 ('membera@lotus.nl','3',1),
-('memberb@lotus.nl','3',2);
-
-
-
-
-<<<<<<< HEAD
-DROP TABLE IF EXISTS `lotus`.`request`;
-CREATE TABLE `lotus`.`request` (
-  `requestId` int(11) NOT NULL,
-  `description` text NOT NULL,
-  `comments` text DEFAULT NULL,
-  `date` varchar(10) NOT NULL,
-  `time` varchar(5) NOT NULL,
-  `casualties` int(3) NOT NULL,
-  `playGroundId` int(11) NOT NULL,
-  `grimeLocationId` int(11) NOT NULL,
-  `companyId` int(11) NOT NULL,
-  `contactId` int(11) NOT NULL,
-  `billingAddressId` int(11) NOT NULL,
-  `postDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `approved` tinyint NOT NULL DEFAULT 0,
-  `clientEmail` varchar(100) NOT NULL
-=======
->>>>>>> feature-roles
-
-
-
-
+('memberb@lotus.nl','3',1);

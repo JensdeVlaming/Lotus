@@ -2,12 +2,13 @@
     <?php
     foreach ($data as $item) {
         if ($item["assigned"] == 0) {
-            $assignStatus = '<span class="text-muted">Ingeschreven </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+            $assignStatus = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanmelding ontvangen</span>';
         } else if ($item["assigned"] == 1) {
-            $assignStatus = '<span class="text-muted">Toegewezen </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
+            $assignStatus = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
         } else if ($item["assigned"] == 2) {
-            $assignStatus = '<span class="text-muted">Niet toegewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
         }
+
 
         $currentDate = new DateTime('now');
         $playDate = new DateTime($item['date']);

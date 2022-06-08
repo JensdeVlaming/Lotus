@@ -90,6 +90,7 @@ class MemberModel
     }
 
     private function getCountOfCompletedAssigments($email) {
+        // TODO check on date
         $assignedId = 1;
         $approvedId = 2;
 

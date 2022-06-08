@@ -3,11 +3,15 @@
     foreach ($data as $item) {
 
         if ($item["approved"] == 0) {
-            $approved = '<span class="text-muted">Afgewezen:</span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+            $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanvraag ontvangen</span>';
         } else if ($item["approved"] == 1) {
-            $approved = '<span class="text-muted">Goedgekeurd:</span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
+            $approved = '<i class="fa fa-clock-o text-warning" aria-hidden="true"></i> <span class="text-muted">In behandeling</span>';
         } else if ($item["approved"] == 2) {
-            $approved = '<span class="text-muted">Wachtende:</span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+            $approved = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Goedgekeurd</span>';
+        } else if ($item["approved"] == 3) {
+            $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
+        } else if ($item["approved"] == 4) {
+            $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
         }
     ?>
 
