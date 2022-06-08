@@ -185,7 +185,7 @@ DROP TABLE IF EXISTS solicit;
 CREATE TABLE solicit (
     email varchar(100) NOT NULL,
     requestId int NOT NULL,
-    approved tinyint NOT NULL DEFAULT 2,
+    approved tinyint NOT NULL DEFAULT 0,
     PRIMARY KEY (email, requestId),
     CONSTRAINT FK_SolicitUser FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_SolicitRequest FOREIGN KEY (requestId) REFERENCES request(requestId) ON UPDATE CASCADE ON DELETE CASCADE
@@ -229,4 +229,14 @@ INSERT INTO solicit VALUES
 ('kasper@lotus.nl','1',2),
 ('juliet@lotus.nl','2',0),
 ('daniel@lotus.nl','1',1),
-('jens@lotus.nl','1',0);
+('jens@lotus.nl','1',0),
+('membera@lotus.nl','3',1),
+('memberb@lotus.nl','5',2);
+
+
+
+
+
+
+
+
