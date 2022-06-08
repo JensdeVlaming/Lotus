@@ -185,7 +185,8 @@ DROP TABLE IF EXISTS solicit;
 CREATE TABLE solicit (
     email varchar(100) NOT NULL,
     requestId int NOT NULL,
-    approved tinyint NOT NULL DEFAULT 2,
+    assigned tinyint NOT NULL DEFAULT 0,
+    deregisterReason varchar(100),
     PRIMARY KEY (email, requestId),
     CONSTRAINT FK_SolicitUser FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_SolicitRequest FOREIGN KEY (requestId) REFERENCES request(requestId) ON UPDATE CASCADE ON DELETE CASCADE
@@ -224,9 +225,19 @@ INSERT INTO request (requestId, description, comments, date, time, casualties, p
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (3, "Hersenschudding", "Hoofdpijn", "14-06-2022", "12:00", 10, 3, 3, 2, 2, 3);
 
 -- solicit
--- 0 = denied / 1 = appointed / 2 = pending
+-- 0 = ingeschreven / 1 = toegewezen / 2 = niet toegewezen
 INSERT INTO solicit VALUES
 ('kasper@lotus.nl','1',2),
 ('juliet@lotus.nl','2',0),
 ('daniel@lotus.nl','1',1),
-('jens@lotus.nl','1',0);
+('jens@lotus.nl','1',0),
+('membera@lotus.nl','3',1),
+('memberb@lotus.nl','3',2);
+
+
+
+
+
+
+
+
