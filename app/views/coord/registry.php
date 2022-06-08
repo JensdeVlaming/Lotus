@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="stretched-link" href="/lid/<?php echo $item["requestId"] ?? 1 ?>/details"></a>
+                <a class="stretched-link" href="/lid/<?php echo $item["email"] ?>/details"></a>
             </div>
         </div>
     <?php

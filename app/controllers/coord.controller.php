@@ -58,10 +58,11 @@ class CoordController extends Controller
         }
     }
 
-    public function getMemberDetails($data) {
+    public function getMemberAndRequestDetails($data) {
         $email = $data["params"]["email"];
 
-        $result = $this->coordModel->getMemberDetails($email);
+        $result = $this->memberModel->getMemberDetails($email);
+        // $results = $this->memberModel->getAllMemberRequests($email);
         if ($result) {
             self::view("/coord/memberDetails", $result);
         } else {
@@ -69,18 +70,6 @@ class CoordController extends Controller
         }
     }
 
-    public function getMemberRequestsByEmail($data) {
-        $email = $data["params"]["email"];
-
-        $result = $this->coordModel->getMemberRequestsByEmail($email);
-        if ($result) {
-            self::view("/coord/memberDetails", $result);
-        } else {
-            echo "This user has no requests";
-        }
-
-
-    }
 
 
 }

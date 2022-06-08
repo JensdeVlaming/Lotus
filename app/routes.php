@@ -26,15 +26,12 @@ $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "particip
 $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "unsuscribeAssignment"]);
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 
-
-
-
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
 $app->router->get("/opdracht/:id/details-coordinator", [CoordController::class, "getRequestDetailsAcceptDeny"]);
 $app->router->get("/opdracht/:id/details-client", [ClientController::class, "getRequestDetails"]);
-$app->router->get("/member/:email/details", [CoordController::class, "getMemberDetails"]);
+$app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
