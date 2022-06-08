@@ -150,16 +150,10 @@
                                             '.$item["phoneNumber"]?>
                                             </p>
 
-                                            <!-- <h2 class="formSectionTitle fw-bold">Contact gegevens</h2>
-                                <p>
-                                <?php echo $item["firstName"].' '.$item["lastName"].' </br>
-                                            '.$item["email"].' </br>
-                                            '.$item["phoneNumber"]?>
-                                            </p> -->
                     </div>
 
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Contact gegevens</h2>
+                        <h2 class="formSectionTitle fw-bold mt-3">Contactgegevens</h2>
                                 <p>
                                 <?php echo $item["firstName"].' '.$item["lastName"].' </br>
                                             '.$item["email"].' </br>

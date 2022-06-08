@@ -49,5 +49,29 @@ class CoordController extends Controller
         }
     }
 
+    public function getMemberDetails($data) {
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->getMemberDetails($email);
+        if ($result) {
+            self::view("/coord/memberDetails", $result);
+        } else {
+            echo "The request with email: ".$email." is not found. Make sure you got the right email!";
+        }
+    }
+
+    public function getMemberRequestsByEmail($data) {
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->getMemberRequestsByEmail($email);
+        if ($result) {
+            self::view("/coord/memberDetails", $result);
+        } else {
+            echo "This user has no requests";
+        }
+
+
+    }
+
 
 }

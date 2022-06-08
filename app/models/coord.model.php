@@ -48,7 +48,26 @@
             return $results;
         }
 
+        public function getMemberDetails($email) {
+            $this->db->query("SELECT * FROM user WHERE email = :email;");
+            $this->db->bind(":email", $email);
 
+
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getMemberRequestsByEmail($email) {
+            $this->db->query("SELECT * FROM solicit 
+                                    LEFT JOIN user ON user.email = solicit.email
+                                    LEFT JOIN request ON request.requestId = solicit.requestId
+                                    WHERE user.email = :email AND assigned = 1;");
+                                    
+                $this->db->bind(":email", $email);
+                $results = $this->db->resultSet();
+                return $results;
+
+        }
 
 
     }

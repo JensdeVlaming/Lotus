@@ -32,6 +32,7 @@ $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getReq
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
 $app->router->get("/opdracht/:id/details-coordinator", [CoordController::class, "getRequestDetailsAcceptDeny"]);
 $app->router->get("/opdracht/:id/details-client", [ClientController::class, "getRequestDetails"]);
+$app->router->get("/member/:email/details", [CoordController::class, "getMemberDetails"]);
 
 // Requests
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
