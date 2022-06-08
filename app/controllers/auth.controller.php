@@ -15,10 +15,13 @@ class AuthController extends Controller
             "error" => "Foutieve inlog"
         ];
 
-        $email = $this->userModel->authenticate($payload["email"], $payload["password"]);
+        $result = $this->userModel->authenticate($payload["email"], $payload["password"]);
 
-        if ($email != null) {
-            Application::$app->session->set("user", $email);
+        $initials = substr(explode(" ", $result["firstName"])[0], 0, 1) . substr(explode(" ", $result["lastName"])[0], 0, 1);
+
+        if ($result != null) {
+            Application::$app->session->set("user", $result["email"]);
+            Application::$app->session->set("initials", $initials);
             $this->redirect("/overzicht-opdrachtgever");
         } else {
             $this->view("user/login", $data);

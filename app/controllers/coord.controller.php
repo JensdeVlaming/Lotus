@@ -4,6 +4,7 @@ class CoordController extends Controller
     public function __construct()
     {
         $this->coordModel = $this->model("coord");
+        $this->memberModel = $this->model("member");
         $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
 
@@ -17,6 +18,14 @@ class CoordController extends Controller
         } else {
             echo "No requests found.";
         }
+    }
+
+    public function getRegistry()
+    {
+
+        $result = $this->memberModel->getAllMembers();
+
+        $this->view("coord/registry", $result);
     }
 
     public function declineAssignment($data)
