@@ -2,7 +2,7 @@
     <?php
     foreach ($data as $item) {
         if ($item["assigned"] == 0) {
-            $approved = '<span class="text-muted">Ingeschreven </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>'; 
+            $approved = '<span class="text-muted">Ingeschreven </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
         } else if ($item["assigned"] == 1) {
             $approved = '<span class="text-muted">Toegewezen </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
         } else if ($item["assigned"] == 2) {
@@ -29,7 +29,7 @@
                                 </div>
                             <?php } else if ($item["assigned"] == 1) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
                                 </div>
                             <?php } else if ($item["assigned"] == 1) { ?>
                                 <div class="row g-0">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                        <a href="/opdracht/<?php echo $item['requestId']?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
+                        <a href="/opdracht/<?php echo $item['requestId'] ?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
                     </div>
                 </div>
             </div>
@@ -72,15 +72,23 @@
                         <h5 class="modal-title" id="deregisterAssignedModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
-                        Weet je zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                        Deze opdracht is al toegewezen aan u, gelieve u niet af te melden zonder geldige reden. <br>
+                        Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
                     <div class="modal-footer">
                         <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                        <a href="/opdracht/<?php echo $item['requestId']?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
+                        <a href="/opdracht/<?php echo $item['requestId'] ?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
                     </div>
                 </div>
             </div>
         </div>
+
     <?php
     }
     ?>
