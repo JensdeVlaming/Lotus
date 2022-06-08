@@ -5,7 +5,7 @@ class OverviewHandler extends Controller
     {
         $this->memberController = new MemberController;
         $this->clientController = new ClientController;
-        $this->coordController = new ClientController;
+        $this->coordController = new CoordController;
         $this->exceptionController = new ExceptionController;
         
     }
