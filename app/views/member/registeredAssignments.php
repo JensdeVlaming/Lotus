@@ -2,12 +2,17 @@
     <?php
     foreach ($data as $item) {
         if ($item["assigned"] == 0) {
-            $approved = '<span class="text-muted">Ingeschreven </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
+            $assignStatus = '<span class="text-muted">Ingeschreven </span> <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>';
         } else if ($item["assigned"] == 1) {
-            $approved = '<span class="text-muted">Toegewezen </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
+            $assignStatus = '<span class="text-muted">Toegewezen </span> <i class="fa fa-check text-success" aria-hidden="true"></i>';
         } else if ($item["assigned"] == 2) {
-            $approved = '<span class="text-muted">Niet toegewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
+            $assignStatus = '<span class="text-muted">Niet toegewezen </span> <i class="fa fa-times text-danger" aria-hidden="true"></i>';
         }
+
+        $currentDate = new DateTime('now');
+        $playDate = new DateTime($item['date']);
+        $days = $playDate ->diff($currentDate);
+        $diffDate = $days->format("%a") + 1;
     ?>
         <div class="col-md-12 col-lg-4">
             <div class="customCard card shadow-sm col-12 h-100">
@@ -17,7 +22,7 @@
                             <h5 class="card-title"><?php echo $item["description"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["companyName"] ?></h6>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["date"] ?> - <?php echo $item["time"] ?></h6>
-                            <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
+                            <h6 class="card-subtitle mb-2"><?php echo $assignStatus ?></h6>
                         </div>
                         <div class="col col-12">
                             <div class="embed-responsive text-center col-12">
@@ -27,11 +32,11 @@
                                 <div class="row g-0">
                                     <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterNotAssignedModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
                                 </div>
-                            <?php } else if ($item["assigned"] == 1) { ?>
+                            <?php } else if ($item["assigned"] == 1 && $diffDate > 1) { ?>
                                 <div class="row g-0">
                                     <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
                                 </div>
-                            <?php } else if ($item["assigned"] == 1) { ?>
+                            <?php } else if ($item["assigned"] == 1 && $diffDate <= 1) { ?>
                                 <div class="row g-0">
                                     <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#24hderegisterModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
                                 </div>
@@ -47,7 +52,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modals -->
         <div class="modal fade" id="deregisterNotAssignedModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterNotAssignedModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -76,7 +81,7 @@
                         Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
                     <form>
-                        <div class="mb-3">
+                        <div class="m-3">
                             <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
@@ -89,6 +94,22 @@
             </div>
         </div>
 
+
+        <div class="modal fade" id="24hderegisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="24hderegisterModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="24hderegisterModalLabel">Afmeldtermijn te kort</h5>
+                    </div>
+                    <div class="modal-body">
+                        Deze opdracht vindt binnen 1 dag plaats. Neem contact op met de coördinator om u af te melden.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php
     }
     ?>
