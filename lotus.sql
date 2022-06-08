@@ -186,6 +186,7 @@ CREATE TABLE solicit (
     email varchar(100) NOT NULL,
     requestId int NOT NULL,
     assigned tinyint NOT NULL DEFAULT 0,
+    deregisterReason varchar(100),
     PRIMARY KEY (email, requestId),
     CONSTRAINT FK_SolicitUser FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_SolicitRequest FOREIGN KEY (requestId) REFERENCES request(requestId) ON UPDATE CASCADE ON DELETE CASCADE
