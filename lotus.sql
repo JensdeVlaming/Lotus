@@ -235,28 +235,3 @@ INSERT INTO solicit VALUES
 ('memberb@lotus.nl','3',2);
 
 
-
-
-<<<<<<< HEAD
-DROP TABLE IF EXISTS `lotus`.`request`;
-CREATE TABLE `lotus`.`request` (
-  `requestId` int(11) NOT NULL,
-  `description` text NOT NULL,
-  `comments` text DEFAULT NULL,
-  `date` varchar(10) NOT NULL,
-  `time` varchar(5) NOT NULL,
-  `casualties` int(3) NOT NULL,
-  `playGroundId` int(11) NOT NULL,
-  `grimeLocationId` int(11) NOT NULL,
-  `companyId` int(11) NOT NULL,
-  `contactId` int(11) NOT NULL,
-  `billingAddressId` int(11) NOT NULL,
-  `postDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `approved` tinyint NOT NULL DEFAULT 0,
-  `clientEmail` varchar(100) NOT NULL
-=======
->>>>>>> feature-roles
-
-
-
-
