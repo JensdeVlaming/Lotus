@@ -96,4 +96,10 @@
         public function getMiddlewares() {
             return $this->middlewares;
         }
+
+        public function getInitials($firstName, $lastName) {
+            $initials = substr(explode(" ", $firstName)[0], 0, 1) . substr(explode(" ", $lastName)[0], 0, 1);
+
+            return $initials;
+        }
     }

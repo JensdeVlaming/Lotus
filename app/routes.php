@@ -24,6 +24,10 @@ $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAss
 $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "unsuscribeAssignment"]);
+$app->router->get("/leden", [CoordController::class, "getRegistry"]);
+
+
+
 
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
