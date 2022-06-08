@@ -28,7 +28,7 @@ class MemberModel
     {
         $email = Application::$app->session->get("user");
 
-        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
+        $this->db->query("INSERT INTO solicit (email, requestId, assigned) VALUES (:email, :id, 0);");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":id", $id);
@@ -56,6 +56,19 @@ class MemberModel
         return $result;
     }
 
+
+    public function deregister($requestId){
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("DELETE FROM solicit WHERE email = :email AND requestId = :requestId;");
+        $this->db->bind(":requestId", $requestId);
+        $this->db->bind(":email", $email);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
     public function requestDetails($id) {
             $this->db->query("SELECT * FROM request 
                             LEFT JOIN company ON request.companyId = company.companyId
@@ -69,6 +82,5 @@ class MemberModel
             $result = $this->db->resultSet();
             
             return $result;
-
     }
 }
