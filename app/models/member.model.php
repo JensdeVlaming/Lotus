@@ -75,7 +75,7 @@ class MemberModel
 
     public function getAllMembers()
     {
-        $id = "member";
+        $id = 1;
 
         $this->db->query("SELECT * FROM user WHERE roles = :id");
         $this->db->bind(":id", $id);
