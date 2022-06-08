@@ -87,7 +87,7 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Ok</button>
+                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
                         <a href="/opdracht/<?php echo $item['requestId'] ?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         Deze opdracht vindt binnen 1 dag plaats. Neem contact op met de coördinator om u af te melden.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
+                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Oke</button>
                     </div>
                 </div>
             </div>
