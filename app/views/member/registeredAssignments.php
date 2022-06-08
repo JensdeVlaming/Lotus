@@ -38,7 +38,7 @@
                                 </div>
                             <?php } else if ($item["assigned"] == 1 && $diffDate <= 1) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#24hderegisterModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#lateDeregisterAssignedModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
                                 </div>
                             <?php } ?>
                         </div>
@@ -87,7 +87,7 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
+                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Ok</button>
                         <a href="/opdracht/<?php echo $item['requestId'] ?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
                     </div>
                 </div>
@@ -95,11 +95,11 @@
         </div>
 
 
-        <div class="modal fade" id="24hderegisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="24hderegisterModalLabel" aria-hidden="true">
+        <div class="modal fade" id="lateDeregisterAssignedModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="lateDeregisterAssignedModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="24hderegisterModalLabel">Afmeldtermijn te kort</h5>
+                        <h5 class="modal-title" id="lateDeregisterAssignedModalLabel">Afmeldtermijn te kort</h5>
                     </div>
                     <div class="modal-body">
                         Deze opdracht vindt binnen 1 dag plaats. Neem contact op met de coördinator om u af te melden.
