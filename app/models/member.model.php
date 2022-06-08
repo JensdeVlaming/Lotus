@@ -75,7 +75,7 @@ class MemberModel
 
     public function getAllMembers()
     {
-        $id = 1;
+        $id = "member";
 
         $this->db->query("SELECT * FROM user WHERE roles = :id");
         $this->db->bind(":id", $id);
@@ -90,12 +90,14 @@ class MemberModel
     }
 
     private function getCountOfCompletedAssigments($email) {
-        $id = 1;
+        $assignedId = 1;
+        $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM solicit WHERE email = :email AND assigned = :id");
+        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
 
         $this->db->bind(":email", $email);
-        $this->db->bind(":id", $id);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->single();
         
