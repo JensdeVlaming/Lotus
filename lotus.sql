@@ -225,9 +225,8 @@ INSERT INTO request (requestId, description, comments, date, time, casualties, p
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (3, "Hersenschudding", "Hoofdpijn", "14-06-2022", "12:00", 10, 3, 3, 2, 2, 3);
 
 -- solicit
--- 0 = ingeschreven / 1 = toegewezen / 2 = niet toegewezen
-INSERT INTO solicit VALUES
-('kasper@lotus.nl','1',2),
+INSERT INTO solicit(email, requestId, assigned) VALUES
+('kasper@lotus.nl','1',1),
 ('juliet@lotus.nl','2',0),
 ('daniel@lotus.nl','1',1),
 ('jens@lotus.nl','1',0),

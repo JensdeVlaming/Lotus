@@ -20,10 +20,11 @@ $app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
-$app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAssignment"]);
+$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssigmentInProgress"]);
 
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregister"]);
+$app->router->get("/opdrachten", [MemberController::class, "getRegisteredOverview"]);
 
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 
