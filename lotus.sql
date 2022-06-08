@@ -232,5 +232,3 @@ INSERT INTO solicit(email, requestId, assigned) VALUES
 ('jens@lotus.nl','1',0),
 ('membera@lotus.nl','3',1),
 ('memberb@lotus.nl','3',2);
-
-
