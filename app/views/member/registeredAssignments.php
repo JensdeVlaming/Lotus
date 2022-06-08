@@ -25,11 +25,11 @@
                             </div>
                             <?php if ($item["assigned"] == 0) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterNotAssignedModal<?php echo $item["requestId"]; ?>">Inschrijving annuleren</button>
                                 </div>
                             <?php } else if ($item["assigned"] == 1) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
+                                    <button type="button" class="btn btn-danger m-0 col-12" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal<?php echo $item["requestId"]; ?>">Aanvraag voor afmelding</button>
                                 </div>
                             <?php } else if ($item["assigned"] == 1) { ?>
                                 <div class="row g-0">
@@ -48,11 +48,11 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="deregisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deregisterNotAssignedModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterNotAssignedModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deregisterModalLabel">Weet u het zeker?</h5>
+                        <h5 class="modal-title" id="deregisterNotAssignedModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
                         Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
@@ -65,11 +65,11 @@
             </div>
         </div>
 
-        <div class="modal fade" id="deregisterModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deregisterAssignedModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="deregisterAssignedModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deregisterModalLabel">Weet u het zeker?</h5>
+                        <h5 class="modal-title" id="deregisterAssignedModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
                         Weet je zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
