@@ -180,3 +180,9 @@ body {
 }
 
 /* END */
+
+/* navbar */
+
+.roleIsActive {
+    background-color: lightgreen;
+}
