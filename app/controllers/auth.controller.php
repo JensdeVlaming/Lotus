@@ -38,13 +38,12 @@ class AuthController extends Controller
         Application::$app->session->set("activeRole", $role);
 
         $this->redirect("$url");
-
     }
 
 
     public function logout()
     {
         Application::$app->session->destroy();
-        echo "logged out";
+        $this->redirect("/inloggen");
     }
 }

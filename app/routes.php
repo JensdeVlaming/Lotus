@@ -27,7 +27,7 @@ $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "particip
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 
 
-$app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
+$app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 
 

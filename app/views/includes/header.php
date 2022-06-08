@@ -19,33 +19,34 @@ $activeRole = Application::$app->session->get("activeRole");
                     <li class="nav-item">
                         <a class="nav-link active" href="/opdrachten">Jouw opdrachten</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
+                    </li>
                     <?php
                     if ($roles > 1) {
                     ?>
+                    <form action="/role/change" method="POST">
                         <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Jouw rol
+                            <a class="btn btn-primary dropdown-toggle col-12 col-md-auto" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $activeRole ?>
                             </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+                            <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rolesDropdown">
 
                                 <?php
                                 foreach ($roles as $role) {
+                                    if ($role != $activeRole) {
                                 ?>
-                                    <form action="/role/<?php echo strtolower($role) ?>" method="POST">
-                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
-                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item <?php if (strtolower($role) == strtolower($activeRole)) { echo "roleIsActive"; } ?>"></li>
-                                    </form>
+                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" />
+                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item"></li>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </ul>
                         </div>
-
+                    </form>
                     <?php } ?>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
-                    </li>
                 <?php } elseif (strtolower($activeRole) == "coordinator") { ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/overzicht">Overzicht</a>
@@ -53,33 +54,34 @@ $activeRole = Application::$app->session->get("activeRole");
                     <li class="nav-item">
                         <a class="nav-link active" href="/leden">Leden</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
+                    </li>
                     <?php
                     if ($roles > 1) {
                     ?>
+                    <form action="/role/change" method="POST">
                         <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Jouw rol
+                            <a class="btn btn-primary dropdown-toggle col-12 col-md-auto" href="#" role="button" id="rolesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $activeRole ?>
                             </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+                            <ul class="dropdown-menu dropdown-menu-middle" aria-labelledby="rolesDropdown">
 
                                 <?php
                                 foreach ($roles as $role) {
+                                    if ($role != $activeRole) {
                                 ?>
-                                    <form action="/role/<?php echo strtolower($role) ?>" method="POST">
-                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
-                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item <?php if (strtolower($role) == strtolower($activeRole)) { echo "roleIsActive"; } ?>"></li>
-                                    </form>
+                                        <input type="hidden" name="destination" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" />
+                                        <li><input type="submit" name="role" value="<?php echo $role ?>" class="dropdown-item"></li>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </ul>
                         </div>
-
+                    </form>
                     <?php } ?>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
-                    </li>
                 <?php } elseif (strtolower($activeRole) == "opdrachtgever") { ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/overzicht">Overzicht</a>

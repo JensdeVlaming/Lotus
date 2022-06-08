@@ -4,8 +4,8 @@ class OverviewHandler extends Controller
     public function __construct()
     {
         $this->memberController = new MemberController;
+        $this->coordController = new CoordController;
         $this->clientController = new ClientController;
-        $this->coordController = new ClientController;
         $this->exceptionController = new ExceptionController;
         
     }
@@ -18,7 +18,7 @@ class OverviewHandler extends Controller
         } else if (strtolower($activeRole) == "coordinator") {
             $this->coordController->getOverview();
         } else if (strtolower($activeRole) == "opdrachtgever") {
-            $this->coordController->getOverview();
+            $this->clientController->getOverview();
         } else {
             $this->exceptionController->_500();
         }
