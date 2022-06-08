@@ -233,7 +233,7 @@ INSERT INTO solicit VALUES
 ('daniel@lotus.nl','1',1,""),
 ('jens@lotus.nl','1',0,""),
 ('membera@lotus.nl','3',1,""),
-('memberb@lotus.nl','3',2,"");
+('memberb@lotuSs.nl','3',2,"");
 
 
 

@@ -10,7 +10,6 @@
                             <h5 class="card-title"><?php echo $item["description"] ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["companyName"] ?></h6>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["date"] ?> - <?php echo $item["time"] ?></h6>
-                            <!-- <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6> -->
                         </div>
                         <div class="col col-12">
                             <div class="embed-responsive text-center col-12">
@@ -38,7 +37,7 @@
                         <h5 class="modal-title" id="participateModalLabel">Weet u het zeker?</h5>
                     </div>
                     <div class="modal-body">
-                        Weet je zeker dat je je wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                        Weet u zeker dat u zich wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>

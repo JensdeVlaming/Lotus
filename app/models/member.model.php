@@ -28,7 +28,7 @@ class MemberModel
     {
         $email = Application::$app->session->get("user");
 
-        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
+        $this->db->query("INSERT INTO solicit (email, requestId, assigned) VALUES (:email, :id, 0);");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":id", $id);
@@ -90,6 +90,7 @@ class MemberModel
     }
 
     private function getCountOfCompletedAssigments($email) {
+        // TODO check on date
         $assignedId = 1;
         $approvedId = 2;
 

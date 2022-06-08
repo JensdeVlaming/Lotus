@@ -181,11 +181,6 @@ body {
 
 /* END */
 
-/* navbar */
-
-.roleIsActive {
-    background-color: lightgreen;
-}
 /* User Icon */
 
 [data-initials]:before {
@@ -210,4 +205,11 @@ body {
 
 #accordion-header {
     color: #0a2465;
+}
+
+
+/* navbar */
+
+.roleIsActive {
+    background-color: lightgreen;
 }

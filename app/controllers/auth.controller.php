@@ -17,11 +17,13 @@ class AuthController extends Controller
 
         $result = $this->userModel->authenticate($payload["email"], $payload["password"]);
 
+        $initials = substr(explode(" ", $result["firstName"])[0], 0, 1) . substr(explode(" ", $result["lastName"])[0], 0, 1);
         $email = $result["email"];
         $roles = explode(",", $result["name"]);
 
         if ($email != null) {
             Application::$app->session->set("user", $email);
+            Application::$app->session->set("initials", $initials);
             Application::$app->session->set("roles", $roles);
             Application::$app->session->set("activeRole", $roles[0]);
             $this->redirect("/overzicht");
@@ -45,13 +47,12 @@ class AuthController extends Controller
         Application::$app->session->set("activeRole", $role);
 
         $this->redirect("$url");
-
     }
 
 
     public function logout()
     {
         Application::$app->session->destroy();
-        echo "logged out";
+        $this->redirect("/inloggen");
     }
 }

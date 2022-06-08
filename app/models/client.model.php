@@ -29,7 +29,7 @@ class ClientModel
     public function cancelRequest($id)
     {
 
-        $this->db->query("DELETE FROM request WHERE requestId = :id");
+        $this->db->query("UPDATE request SET approved = 4 WHERE requestId = :id;");
         $this->db->bind(":id", $id);
 
         $results = $this->db->resultSet();
