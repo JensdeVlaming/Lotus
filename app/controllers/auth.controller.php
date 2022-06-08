@@ -22,13 +22,9 @@ class AuthController extends Controller
 
         if ($email != null) {
             Application::$app->session->set("user", $email);
-<<<<<<< HEAD
-            $this->redirect("/overzicht-opdrachtgever");
-=======
             Application::$app->session->set("roles", $roles);
             Application::$app->session->set("activeRole", $roles[0]);
             $this->redirect("/overzicht");
->>>>>>> 5373770d8314b53ff07081e47fb56cfdf229cff5
         } else {
             $this->view("user/login", $data);
         }

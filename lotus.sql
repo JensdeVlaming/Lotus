@@ -223,16 +223,17 @@ INSERT INTO playground (playGroundId, pCountry, pProvince, pCity, pStreet, pHous
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (1, "Steekwonden", "Cuts and bruises", "12-06-2022", "10:00", 10, 1, 1, 1, 1, 2);
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (2, "Benauwdheid", "Paars gezicht", "14-06-2022", "12:00", 10, 2, 3, 1, 1, 1);
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (3, "Hersenschudding", "Hoofdpijn", "14-06-2022", "12:00", 10, 3, 3, 2, 2, 3);
+INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (4, "Botbreuken", "Onderarm", "25-07-2022", "13:00", 5, 3, 3, 2, 2, 3);
 
 -- solicit
 -- 0 = ingeschreven / 1 = toegewezen / 2 = niet toegewezen
 INSERT INTO solicit VALUES
-('kasper@lotus.nl','1',2),
-('juliet@lotus.nl','2',0),
-('daniel@lotus.nl','1',1),
-('jens@lotus.nl','1',0),
-('membera@lotus.nl','3',1),
-('memberb@lotus.nl','3',2);
+('kasper@lotus.nl','1',2,""),
+('juliet@lotus.nl','2',0,""),
+('daniel@lotus.nl','1',1,""),
+('jens@lotus.nl','1',0,""),
+('membera@lotus.nl','3',1,""),
+('memberb@lotus.nl','3',2,"");
 
 
 
