@@ -199,4 +199,10 @@ body {
     height: 80px; 
     line-height: 80px; 
     text-align: center; 
-    }
+}
+
+/* navbar */
+
+.roleIsActive {
+    background-color: lightgreen;
+}

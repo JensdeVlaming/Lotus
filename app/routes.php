@@ -12,14 +12,11 @@ $app = new Application();
 $app->router->get("/", [ViewController::class, "index"]);
 
 // Authentication
-$app->router->get("/login", [ViewController::class, "login"]);
+$app->router->get("/inloggen", [ViewController::class, "login"]);
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews
-$app->router->get("/overzicht-lid", [MemberController::class, "getOverview"]);
-$app->router->get("/opdrachten", [MemberController::class, "getRegisteredOverview"]);
-$app->router->get("/overzicht-coordinator", [CoordController::class, "getOverview"]);
-$app->router->get("/overzicht-opdrachtgever", [ClientController::class, "getOverview"]);
+$app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
@@ -31,6 +28,11 @@ $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregiste
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 
 
+// Requests
+$app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
+
+
+$app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 
 // Details
@@ -41,7 +43,7 @@ $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
 // POST Requests
-$app->router->post("/login", [AuthController::class, "login"]);
+$app->router->post("/inloggen", [AuthController::class, "login"]);
 
 $app->router->post("/addRequest", [RequestController::class, "addRequest"]);
 
