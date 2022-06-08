@@ -10,14 +10,6 @@ class UserModel {
         $this->db = new Database;
     }
 
-    public function getUsers() {
-        $this->db->query("SELECT * FROM account;");
-        
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
     public function authenticate($email, $password) {
         $this->db->query("SELECT * FROM user WHERE email = :email AND password = :password;");
         
@@ -27,7 +19,7 @@ class UserModel {
         $result = $this->db->single();
 
         if ($result != null) {
-            return $result["email"];
+            return $result;
         }
         return null;
     }

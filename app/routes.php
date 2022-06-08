@@ -28,6 +28,10 @@ $app->router->get("/opdracht/:id/accepteren", [CoordController::class, "acceptAs
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregister"]);
 
+$app->router->get("/leden", [CoordController::class, "getRegistry"]);
+
+
+
 
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);

@@ -56,21 +56,9 @@ class MemberModel
         return $result;
     }
 
-
-    public function deregister($requestId){
-        $email = Application::$app->session->get("user");
-
-        $this->db->query("DELETE FROM solicit WHERE email = :email AND requestId = :requestId;");
-        $this->db->bind(":requestId", $requestId);
-        $this->db->bind(":email", $email);
-
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
-    public function requestDetails($id) {
-            $this->db->query("SELECT * FROM request 
+    public function requestDetails($id)
+    {
+        $this->db->query("SELECT * FROM request 
                             LEFT JOIN company ON request.companyId = company.companyId
                             LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
                             LEFT JOIN playground ON request.playgroundId = playground.playgroundId
@@ -78,9 +66,41 @@ class MemberModel
                             LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
                             WHERE request.requestId = :id;");
 
-            $this->db->bind(":id", $id);
-            $result = $this->db->resultSet();
-            
-            return $result;
+        $this->db->bind(":id", $id);
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+
+    public function getAllMembers()
+    {
+        $id = "member";
+
+        $this->db->query("SELECT * FROM user WHERE roles = :id");
+        $this->db->bind(":id", $id);
+
+        $result = $this->db->resultSet();
+
+        foreach ($result as $key=>$member) {
+            $result[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
+        }
+
+        return $result;
+    }
+
+    private function getCountOfCompletedAssigments($email) {
+        $assignedId = 1;
+        $approvedId = 2;
+
+        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->single();
+        
+        return $result["CompletedAssignments"];
     }
 }
