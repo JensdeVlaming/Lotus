@@ -29,6 +29,7 @@ $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "particip
 $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregister"]);
 
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
+$app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
 
 
 

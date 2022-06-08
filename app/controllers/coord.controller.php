@@ -45,4 +45,9 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht-coordinator");
 
     }
+
+    public function addMember()
+    {
+        $this->view("/coord/memberForm");
+    }
 }
