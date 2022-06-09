@@ -1,8 +1,4 @@
 <?php 
-    // print_r($data["completedAssignments"]);
-    // print_r($data["solicitAssignments"]);
-    print_r($data["upcommingAssignments"]);
-
     if ($data["gender"] === "M") {
         $gender = "Man";
     } else if ($data["gender"] === "V") {
@@ -10,7 +6,6 @@
     } else {
         $gender = "Other";
     }
-              
     ?>
         <div class="container">
             <div class="row">
@@ -18,9 +13,7 @@
                      <!-- Column 1 -->
                      <!-- Gebruikersgegevens -->
                     <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                
                         <h2 class="formSectionTitle fw-bold mt-3">Gebruikersgegevens</h2>
-                        
                         <table class="table table-sm table-hover w-auto ">
                                 <thead>
                                     <tr>
@@ -61,12 +54,10 @@
                                 
                             </table>
                     </div>
-
                    
                     <!-- Locatie -->
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
-                        <!-- straat en huisnummer toevoegen, maar dummy data eerst aanpassen -->
                         <iframe class="embed-responsive-item mb-3" src="https://maps.google.com/maps?q=<?php echo "" .$data["city"]. "+" .$data["street"]."+" .$data["premise"]."+" .$data["postalCode"].""?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                                         style="border:0" allowfullscreen></iframe>
                     </div> 
@@ -75,154 +66,125 @@
 
                 <div class="col">
                      <!-- Column 2 start -->
-                                       
-                    
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
-                    
-                    <h2 class="formSectionTitle fw-bold mt-3">Opdrachten</h2>
-                    
-                    <!-- Toegewezen opdrachten -->
-                    <div class="accordion accordion-color mt-3 mb-3" id="chapters">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="header-1">
-                                <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#chapter-1" aria-expended="true" 
-                                aria-controls="chapter-1">Toegewezen opdrachten (<?php echo $data["upcommingAssignments"];?>)</button>
-                            </h2>
-                            <div id="chapter-1" class="accordion-collapse show collapse m-2" aria-labelledby="header-1">
-                                <?php if ($data["upcommingAssignmentList"] == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-hover w-auto ">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Bedrijf</th>
-                                        <th scope="col">Stad</th>
-                                        <th scope="col">Datum</th>
-                                        <th scope="col">Tijd</th>
-                                        </tr>
-                                    </thead>
-                                        <?php foreach($data['upcommingAssignmentList'] as $request) { ?> 
-                                            <tr class='clickable' 
-                                            onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'" >
-                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                                <td>:</td>
-                                                <td class="text-left"><?php echo $request["companyName"];?></td>
-                                                <td class="text-center"><?php echo $request["cCity"];?></td>
-                                                <td class="text-center"><?php echo $request["date"];?></td>
-                                                <td class="text-center"><?php echo $request["time"];?></td>
+                        <h2 class="formSectionTitle fw-bold mt-3">Opdrachten</h2>
+                        <div class="accordion accordion-color mt-3 mb-3" id="chapters">
+                            <!-- Toegewezen opdrachten -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="header-1">
+                                    <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#chapter-1" aria-expended="true" 
+                                    aria-controls="chapter-1">Toegewezen opdrachten (<?php echo $data["upcommingAssignments"];?>)</button>
+                                </h2>
+                                <div id="chapter-1" class="accordion-collapse show collapse m-2" aria-labelledby="header-1">
+                                    <?php if ($data["upcommingAssignmentList"] == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-hover w-auto ">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Bedrijf</th>
+                                            <th scope="col">Stad</th>
+                                            <th scope="col">Datum</th>
+                                            <th scope="col">Tijd</th>
                                             </tr>
-                                        <?php } ?> 
-                                    </table>
-                                </div>            
-                             <?php }?> 
-
+                                        </thead>
+                                            <?php foreach($data['upcommingAssignmentList'] as $request) { ?> 
+                                                <tr class='clickable' 
+                                                onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'" >
+                                                    <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                    <td>:</td>
+                                                    <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                    <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                    <td class="text-center"><?php echo $request["date"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                </tr>
+                                            <?php } ?> 
+                                        </table>
+                                    </div>            
+                                <?php }?> 
+                                </div>
                             </div>
-                        </div>
 
-
-                        <!-- Wachtende opdrachten -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="header-2">
-                                <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#chapter-2" aria-expended="true" 
-                                aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignments"];?>)</button>
-                            </h2>
-                            <div id="chapter-2" class="accordion-collapse collapse m-2" aria-labelledby="header-2">
-                                <?php if ($data["solicitAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-hover w-auto ">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Bedrijf</th>
-                                        <th scope="col">Stad</th>
-                                        <th scope="col">Datum</th>
-                                        <th scope="col">Tijd</th>
-                                        </tr>
-                                    </thead>
-                                        <?php 
-                                        
-                                        
-                                        foreach($data["solicitAssignmentList"] as $request) { ?>
-                                            <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
-                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                                <td>:</td>
-                                                <td class="text-left"><?php echo $request["companyName"];?></td>
-                                                <td class="text-center"><?php echo $request["cCity"];?></td>
-                                                <td class="text-center"><?php echo $request["date"];?></td>
-                                                <td class="text-center"><?php echo $request["time"];?></td>
+                            <!-- Wachtende opdrachten -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="header-2">
+                                    <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#chapter-2" aria-expended="true" 
+                                    aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignments"];?>)</button>
+                                </h2>
+                                <div id="chapter-2" class="accordion-collapse collapse m-2" aria-labelledby="header-2">
+                                    <?php if ($data["solicitAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-hover w-auto ">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Bedrijf</th>
+                                            <th scope="col">Stad</th>
+                                            <th scope="col">Datum</th>
+                                            <th scope="col">Tijd</th>
                                             </tr>
-                                        <?php } ?>
-                            
+                                        </thead>
+                                            <?php foreach($data["solicitAssignmentList"] as $request) { ?>
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
+                                                    <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                    <td>:</td>
+                                                    <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                    <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                    <td class="text-center"><?php echo $request["date"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </table>
+                                    </div>
+                                <?php }?>           
+                                </div>
+                            </div>
+
+                            <!-- Voltooide opdrachten -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="header-3">
+                                    <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#chapter-3" aria-expended="true" 
+                                    aria-controls="chapter-3">Voltooide opdrachen (<?php echo $data["completedAssignments"];?>)</button>
+                                </h2>
+                                <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
+                                    <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-hover w-auto ">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Bedrijf</th>
+                                            <th scope="col">Stad</th>
+                                            <th scope="col">Datum</th>
+                                            <th scope="col">Tijd</th>
+                                            </tr>
+                                        </thead>
+                                            <?php foreach($data["completedAssignmentList"] as $request) { ?>
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
+                                                    <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                    <td>:</td>
+                                                    <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                    <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                    <td class="text-center"><?php echo $request["date"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                </tr>
+                                            <?php } ?>
                                     </table>
                                 </div>
-                            <?php }?>           
-
+                                <?php }?>           
+                                </div>
                             </div>
                         </div>
-
-
-                        <!-- Voltooide opdrachten -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="header-3">
-                                <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#chapter-3" aria-expended="true" 
-                                aria-controls="chapter-3">Voltooide opdrachen (<?php echo $data["completedAssignments"];?>)</button>
-                            </h2>
-                            <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
-                                <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-hover w-auto ">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Bedrijf</th>
-                                        <th scope="col">Stad</th>
-                                        <th scope="col">Datum</th>
-                                        <th scope="col">Tijd</th>
-                                        </tr>
-                                    </thead>
-                                        <?php 
-                                        
-                                        
-                                        foreach($data["completedAssignmentList"] as $request) { ?>
-                                            <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
-                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                                <td>:</td>
-                                                <td class="text-left"><?php echo $request["companyName"];?></td>
-                                                <td class="text-center"><?php echo $request["cCity"];?></td>
-                                                <td class="text-center"><?php echo $request["date"];?></td>
-                                                <td class="text-center"><?php echo $request["time"];?></td>
-                                            </tr>
-                                        <?php } ?>
-                            
-                                </table>
-                            </div>
-                            <?php }?>           
-
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-
-
-                
-                  
-                        
                     </div> 
                     <!-- Column 2 end  -->
                 </div>
             </div>
-
-           
-           
         </div>   
 
 
