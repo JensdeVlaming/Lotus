@@ -79,7 +79,7 @@ INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,posta
 ('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, "secret"),
 ('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"),
 ('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"),
-('juliet@lotus.nl', 'Juliet', 'van Bezooyen', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret");
+('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, "secret");
 -- member users
 INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles, password) VALUES
 ('membera@lotus.nl','Member','A','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, "secret"),
