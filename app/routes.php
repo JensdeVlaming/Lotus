@@ -23,18 +23,14 @@ $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAss
 $app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssigmentInProgress"]);
 
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
-$app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregister"]);
+$app->router->post("/opdracht/afmelden", [MemberController::class, "deregister"]);
 $app->router->get("/opdrachten", [MemberController::class, "getRegisteredOverview"]);
 
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 
-
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
-
-
-$app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
-
+$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
 // Details
 $app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
@@ -49,10 +45,11 @@ $app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
+
 // POST Requests
 $app->router->post("/inloggen", [AuthController::class, "login"]);
-
-$app->router->post("/addRequest", [RequestController::class, "addRequest"]);
+$app->router->post("/opdracht/aanvragen", [RequestController::class, "addRequest"]);
+$app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 // Exceptions
 

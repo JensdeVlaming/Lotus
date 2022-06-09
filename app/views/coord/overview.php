@@ -77,7 +77,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                                <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="nextButton btn">Ga verder</button></a>
+                                <a href="/opdracht/<?php echo $item["requestId"] ?>/behandelen"><button type="button" class="nextButton btn">Ga verder</button></a>
                             </div>
                         </div>
                     </div>

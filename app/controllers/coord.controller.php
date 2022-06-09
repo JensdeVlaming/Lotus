@@ -41,8 +41,8 @@ class CoordController extends Controller
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->acceptAssignment($id);
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        $this->coordModel->AssigmentInProgress($id);
+        Application::$app->controller->redirect("/overzicht");
 
     }
 

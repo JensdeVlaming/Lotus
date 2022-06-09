@@ -82,14 +82,15 @@ class MemberModel
 
         $result = $this->db->resultSet();
 
-        foreach ($result as $key=>$member) {
+        foreach ($result as $key => $member) {
             $result[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
         }
 
         return $result;
     }
 
-    private function getCountOfCompletedAssigments($email) {
+    private function getCountOfCompletedAssigments($email)
+    {
         // TODO check on date
         $assignedId = 1;
         $approvedId = 2;
@@ -101,7 +102,7 @@ class MemberModel
         $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->single();
-        
+
         return $result["CompletedAssignments"];
     }
 
@@ -261,4 +262,16 @@ class MemberModel
 
 
 
+    public function deregister($requestId, $reasonFor = null)
+    {
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("UPDATE solicit SET assigned = 3, deregisterReason = :reasonFor WHERE email = :email AND requestId = :requestId;");
+        $this->db->bind(":reasonFor", $reasonFor);
+        $this->db->bind(":requestId", $requestId);
+        $this->db->bind(":email", $email);
+
+        $this->db->execute();
+
+    }
 }

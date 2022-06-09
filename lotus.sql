@@ -61,7 +61,7 @@ CREATE TABLE `lotus`.`user` (
     firstName varchar(50) NOT NULL,
     lastName varchar(50) NOT NULL,
     street varchar(100) NOT NULL,
-    premise varchar(1) NULL,
+    premise varchar(5) NULL,
     phoneNumber varchar(15) NOT NULL,
     city varchar(50) NOT NULL,
     postalCode varchar(7) NOT NULL,
@@ -79,7 +79,7 @@ INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,posta
 ('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, "secret"),
 ('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"),
 ('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"),
-('juliet@lotus.nl', 'Juliet', 'van Bezooyen', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret");
+('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, "secret");
 -- member users
 INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles, password) VALUES
 ('membera@lotus.nl','Member','A','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, "secret"),
@@ -226,18 +226,10 @@ INSERT INTO request (requestId, description, comments, date, time, casualties, p
 INSERT INTO request (requestId, description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId) VALUES (4, "Botbreuken", "Onderarm", "25-07-2022", "13:00", 5, 3, 3, 2, 2, 3);
 
 -- solicit
-INSERT INTO solicit VALUES
-('kasper@lotus.nl','1',2,""),
-('juliet@lotus.nl','2',0,""),
-('daniel@lotus.nl','1',1,""),
-('jens@lotus.nl','1',0,""),
-('membera@lotus.nl','3',1,""),
-('memberb@lotus.nl','3',2,"");
-
-
-
-
-
-
-
-
+INSERT INTO solicit(email, requestId, assigned) VALUES
+('kasper@lotus.nl','1',1),
+('juliet@lotus.nl','2',0),
+('daniel@lotus.nl','1',1),
+('jens@lotus.nl','1',0),
+('membera@lotus.nl','3',1),
+('memberb@lotus.nl','3',1);
