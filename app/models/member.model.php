@@ -139,14 +139,10 @@ class MemberModel
         $this->db->bind(":email", $email);
 
 
-        $results = $this->db->resultset();
+        $result = $this->db->single();
 
-        foreach ($results as $key=>$member) {
-        $results[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
-        $results[$key]["solicitAssignment"] = $this->getCountOfSolicitAssigments($member["email"]);
-        }
-
-        return $results;
+        
+        return $result;
     }
 
     public function getMemberRequestsByEmail($email) {
@@ -164,20 +160,24 @@ class MemberModel
     
 
     // memberdetail page
-    public function getAllMemberRequests($email) {
-        $assigned = $this->db->getAllMemberAssignedAssigments($email);
-        $solicit = $this->db->getAllMemberHisSolicitAssigments($email);
+    public function getMemberDetailsStatisticsAndHistory($email) {
+        $result = $this->getMemberDetails($email);
 
-        return $assigned + $solicit;
+        $result["completedAssignment"] = $this->getCountOfCompletedAssigments($result["email"]);
+        $result["solicitAssignment"] = $this->getCountOfSolicitAssigments($result["email"]);
+        $result["completedAssignmentList"] = $this->getAllMemberAssignedAssigments($email);
+        $result["solicitAssignmentList"] = $this->getAllMemberHisSolicitAssigments($email);
+        
+        return $result;
     }
-
 
     private function getAllMemberAssignedAssigments($email) {
         $assignedId = 1;
         $approvedId = 2;
 
         $this->db->query("SELECT * FROM request 
-                                    LEFT JOIN solicit ON request.requestId = solicit.requestId 
+                                    LEFT JOIN solicit ON request.requestId = solicit.requestId
+                                    LEFT JOIN company ON request.companyId = company.companyId 
                                     WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
 
         $this->db->bind(":email", $email);
@@ -185,8 +185,12 @@ class MemberModel
         $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
         
-        return $result;
+        return 0;
     }
 
     private function getAllMemberHisSolicitAssigments($email) {
@@ -195,6 +199,7 @@ class MemberModel
 
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
+                                    LEFT JOIN company ON request.companyId = company.companyId
                                     WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
 
         $this->db->bind(":email", $email);
@@ -202,8 +207,12 @@ class MemberModel
         $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
         
-        return $result;
+        return 0;
     }
 
 

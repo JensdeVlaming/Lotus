@@ -37,11 +37,11 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht-coordinator");
     }
 
-    public function AssigmentInProgress($data)
+    public function acceptAssignment($data)
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->AssigmentInProgress($id);
+        $this->coordModel->acceptAssignment($id);
         Application::$app->controller->redirect("/overzicht-coordinator");
 
     }
@@ -61,10 +61,9 @@ class CoordController extends Controller
     public function getMemberAndRequestDetails($data) {
         $email = $data["params"]["email"];
 
-        $result = $this->memberModel->getMemberDetails($email);
-        // $results = $this->memberModel->getAllMemberRequests($email);
+        $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
         if ($result) {
-            self::view("/coord/memberDetails", $result);
+            self::view("/coord/memberDetails", $result );
         } else {
             echo "The request with email: ".$email." is not found. Make sure you got the right email!";
         }
