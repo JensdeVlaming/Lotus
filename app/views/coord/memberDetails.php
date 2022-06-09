@@ -91,32 +91,31 @@
                             </h2>
                             <div id="chapter-1" class="accordion-collapse show collapse m-2" aria-labelledby="header-1">
                                 <?php if ($data["upcommingAssignmentList"] == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
-                                <table class="table table-sm table-hover w-auto ">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Bedrijf</th>
-                                    <!-- <th scope="col">Stad</th> -->
-                                    <th scope="col">Datum</th>
-                                    <!-- <th scope="col">Tijd</th> -->
-                                    </tr>
-                                </thead>
-                                    <?php foreach($data['upcommingAssignmentList'] as $request) { ?> 
-                                        <tr class='clickable' 
-                                        onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'" >
-                                            <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                            <td>:</td>
-                                            <td class="text-left"><?php echo $request["companyName"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["cCity"];?></td> -->
-                                            <td class="text-center"><?php echo $request["date"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["time"];?></td> -->
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover w-auto ">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Bedrijf</th>
+                                        <th scope="col">Stad</th>
+                                        <th scope="col">Datum</th>
+                                        <th scope="col">Tijd</th>
                                         </tr>
-                                  
-                                      <?php } ?> 
-                           
-                            </table>
-
+                                    </thead>
+                                        <?php foreach($data['upcommingAssignmentList'] as $request) { ?> 
+                                            <tr class='clickable' 
+                                            onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'" >
+                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                <td>:</td>
+                                                <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                <td class="text-center"><?php echo $request["date"];?></td>
+                                                <td class="text-center"><?php echo $request["time"];?></td>
+                                            </tr>
+                                        <?php } ?> 
+                                    </table>
+                                </div>            
                              <?php }?> 
 
                             </div>
@@ -132,32 +131,34 @@
                             </h2>
                             <div id="chapter-2" class="accordion-collapse collapse m-2" aria-labelledby="header-2">
                                 <?php if ($data["solicitAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
-                                <table class="table table-sm table-hover w-auto ">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Bedrijf</th>
-                                    <!-- <th scope="col">Stad</th> -->
-                                    <th scope="col">Datum</th>
-                                    <!-- <th scope="col">Tijd</th> -->
-                                    </tr>
-                                </thead>
-                                    <?php 
-                                    
-                                     
-                                    foreach($data["solicitAssignmentList"] as $request) { ?>
-                                        <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
-                                            <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                            <td>:</td>
-                                            <td class="text-left"><?php echo $request["companyName"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["cCity"];?></td> -->
-                                            <td class="text-center"><?php echo $request["date"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["time"];?></td> -->
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover w-auto ">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Bedrijf</th>
+                                        <th scope="col">Stad</th>
+                                        <th scope="col">Datum</th>
+                                        <th scope="col">Tijd</th>
                                         </tr>
-                                       <?php } ?>
-                           
-                            </table>
+                                    </thead>
+                                        <?php 
+                                        
+                                        
+                                        foreach($data["solicitAssignmentList"] as $request) { ?>
+                                            <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
+                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                <td>:</td>
+                                                <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                <td class="text-center"><?php echo $request["date"];?></td>
+                                                <td class="text-center"><?php echo $request["time"];?></td>
+                                            </tr>
+                                        <?php } ?>
+                            
+                                    </table>
+                                </div>
                             <?php }?>           
 
                             </div>
@@ -173,32 +174,34 @@
                             </h2>
                             <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
                                 <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
-                                <table class="table table-sm table-hover w-auto ">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Bedrijf</th>
-                                    <!-- <th scope="col">Stad</th> -->
-                                    <th scope="col">Datum</th>
-                                    <!-- <th scope="col">Tijd</th> -->
-                                    </tr>
-                                </thead>
-                                    <?php 
-                                    
-                                     
-                                    foreach($data["completedAssignmentList"] as $request) { ?>
-                                        <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
-                                            <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                            <td>:</td>
-                                            <td class="text-left"><?php echo $request["companyName"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["cCity"];?></td> -->
-                                            <td class="text-center"><?php echo $request["date"];?></td>
-                                            <!-- <td class="text-center"><?php echo $request["time"];?></td> -->
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover w-auto ">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Bedrijf</th>
+                                        <th scope="col">Stad</th>
+                                        <th scope="col">Datum</th>
+                                        <th scope="col">Tijd</th>
                                         </tr>
-                                       <?php } ?>
-                           
-                            </table>
+                                    </thead>
+                                        <?php 
+                                        
+                                        
+                                        foreach($data["completedAssignmentList"] as $request) { ?>
+                                            <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
+                                                <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                <td>:</td>
+                                                <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                <td class="text-center"><?php echo $request["date"];?></td>
+                                                <td class="text-center"><?php echo $request["time"];?></td>
+                                            </tr>
+                                        <?php } ?>
+                            
+                                </table>
+                            </div>
                             <?php }?>           
 
                             </div>
