@@ -77,37 +77,16 @@
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                     
                     <h2 class="formSectionTitle fw-bold mt-3">Opdrachten</h2>
-                    <table class="table table-sm table-hover w-auto ">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Aantal</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <td scope="row">Toegewezen opdrachten</td>
-                                    <td>:</td>
-                                    <td class="text-center"><?php echo $data["completedAssignment"];?></td>
-                                    </tr>
-
-                                    <tr>
-                                    <td scope="row">Ingeschreven opdrachten</td>
-                                    <td>:</td>
-                                    <td class="text-center"><?php echo $data["solicitAssignment"];?></td>
-                                    </tr>   
-                            </table>
-                            <hr class="dropdown-divider">
-
+                    
                     <!-- Toegewezen opdrachten -->
                     <div class="accordion accordion-color mt-3 mb-3" id="chapters">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="header-1">
                                 <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#chapter-1" aria-expended="true" 
-                                aria-controls="chapter-1">Toegewezen opdrachten</button>
+                                aria-controls="chapter-1">Toegewezen opdrachten (<?php echo $data["completedAssignment"];?>)</button>
                             </h2>
-                            <div id="chapter-1" class="accordion-collapse collapse m-2" aria-labelledby="header-1">
+                            <div id="chapter-1" class="accordion-collapse show collapse m-2" aria-labelledby="header-1">
                                 <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
                                 <table class="table table-sm table-hover w-auto ">
                                 <thead>
@@ -146,7 +125,7 @@
                             <h2 class="accordion-header" id="header-2">
                                 <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#chapter-2" aria-expended="true" 
-                                aria-controls="chapter-2">Ingeschreven opdrachten</button>
+                                aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignment"];?>)</button>
                             </h2>
                             <div id="chapter-2" class="accordion-collapse collapse m-2" aria-labelledby="header-2">
                                 <?php if ($data["solicitAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
