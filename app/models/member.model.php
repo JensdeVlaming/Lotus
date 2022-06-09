@@ -124,7 +124,7 @@ class MemberModel
         $assignedId = 1;
         $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS UpcommingAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+        $this->db->query("SELECT COUNT(*) AS UpcommingAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -240,7 +240,7 @@ class MemberModel
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
