@@ -61,7 +61,7 @@ CREATE TABLE `lotus`.`user` (
     firstName varchar(50) NOT NULL,
     lastName varchar(50) NOT NULL,
     street varchar(100) NOT NULL,
-    premise varchar(1) NULL,
+    premise varchar(5) NULL,
     phoneNumber varchar(15) NOT NULL,
     city varchar(50) NOT NULL,
     postalCode varchar(7) NOT NULL,
@@ -231,4 +231,4 @@ INSERT INTO solicit(email, requestId, assigned) VALUES
 ('daniel@lotus.nl','1',1),
 ('jens@lotus.nl','1',0),
 ('membera@lotus.nl','3',1),
-('memberb@lotus.nl','3',2);
+('memberb@lotus.nl','3',1);
