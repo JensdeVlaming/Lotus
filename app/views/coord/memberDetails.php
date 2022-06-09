@@ -3,10 +3,6 @@
     // print_r($data["solicitAssignments"]);
     print_r($data["upcommingAssignments"]);
 
-
-
-
-   
     if ($data["gender"] === "M") {
         $gender = "Man";
     } else if ($data["gender"] === "V") {
