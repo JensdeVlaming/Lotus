@@ -42,7 +42,7 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->AssigmentInProgress($id);
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        Application::$app->controller->redirect("/overzicht");
 
     }
 }
