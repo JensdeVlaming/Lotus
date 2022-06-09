@@ -173,7 +173,7 @@
                                 aria-controls="chapter-3">Voltooide opdrachen (<?php echo $data["completedAssignments"];?>)</button>
                             </h2>
                             <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
-                                <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
+                                <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
                                 <div class="table-responsive">
                                     <table class="table table-sm table-hover w-auto ">
                                     <thead>
