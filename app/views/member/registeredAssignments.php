@@ -6,9 +6,8 @@
         } else if ($item["assigned"] == 1) {
             $assignStatus = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
         } else if ($item["assigned"] == 2) {
-            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
+            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Niet toegewezen</span>';
         }
-
 
         $currentDate = new DateTime('now');
         $playDate = new DateTime($item['date']);
