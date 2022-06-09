@@ -110,7 +110,7 @@
                             <!-- Wachtende opdrachten -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="header-2">
-                                    <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#chapter-2" aria-expended="true" 
                                     aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignments"];?>)</button>
                                 </h2>
@@ -147,7 +147,7 @@
                             <!-- Voltooide opdrachten -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="header-3">
-                                    <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#chapter-3" aria-expended="true" 
                                     aria-controls="chapter-3">Voltooide opdrachen (<?php echo $data["completedAssignments"];?>)</button>
                                 </h2>
