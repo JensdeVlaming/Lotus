@@ -7,27 +7,28 @@ class MemberController extends Controller
         $this->memberModel = $this->model("member");
         $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
-    
+
     public function getOverview()
     {
         $resultSet = $this->memberModel->getOpenAssignments();
 
         if (sizeOf($resultSet) > 0) {
-            self::view("member/overview", $resultSet);
+            $this->view("member/overview", $resultSet);
         } else {
             echo "No open assignments found.";
         }
     }
 
-    public function participateAssignment($data) {
+    public function participateAssignment($data)
+    {
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->participateAssignment($id);
-    
+
         if ($result) {
-            echo "Succesvol aangemeld voor opdracht ".$id;
+            echo "Succesvol aangemeld voor opdracht " . $id;
         } else {
-            echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht ".$id;
+            echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht " . $id;
         }
     }
 
@@ -42,16 +43,18 @@ class MemberController extends Controller
         }
     }
 
-    public function deregister($data)
+    public function deregister($payload)
     {
-        $requestId = $data["params"]["id"];
+        $requestId = $payload["requestId"];
+        $reasonFor = $payload["reasonFor"];
 
-        $resultSet = $this->memberModel->deregister($requestId);
+        $resultSet = $this->memberModel->deregister($requestId, $reasonFor);
 
-        Application::$app->controller->redirect("/opdrachten");
+        $this->redirect("/opdrachten");
     }
 
-    public function getRequestDetails($data) {
+    public function getRequestDetails($data)
+    {
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->requestDetails($id);
@@ -59,11 +62,7 @@ class MemberController extends Controller
         if ($result) {
             self::view("/member/requestDetails", $result);
         } else {
-            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
+            echo "The request with id: " . $id . " is not found. Make sure you got the right id!";
         }
-
     }
 }
-
-
-

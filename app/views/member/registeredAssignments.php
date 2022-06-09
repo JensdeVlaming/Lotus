@@ -6,13 +6,14 @@
         } else if ($item["assigned"] == 1) {
             $assignStatus = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
         } else if ($item["assigned"] == 2) {
-            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
+            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Niet toegewezen</span>';
+        } else if ($item["assigned"] == 3) {
+            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgemeld</span>';
         }
-
 
         $currentDate = new DateTime('now');
         $playDate = new DateTime($item['date']);
-        $days = $playDate ->diff($currentDate);
+        $days = $playDate->diff($currentDate);
         $diffDate = $days->format("%a") + 1;
     ?>
         <div class="col-md-12 col-lg-4">
@@ -81,16 +82,17 @@
                         Deze opdracht is al toegewezen aan u, gelieve u niet af te melden zonder geldige reden. <br>
                         Weet u zeker dat u zich wilt afmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
                     </div>
-                    <form method="POST">
+                    <form action="/opdracht/afmelden" method="POST">
                         <div class="m-3">
                             <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <textarea class="form-control" name="reasonFor" id="message-text"></textarea>
+                            <input type="hidden" name="requestId" value="<?php echo $item["requestId"] ?>">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="cancelButton btn" data-bs-dismiss="modal" value="Anuleren">
+                            <input type="submit" class="nextButton btn" value="Ga verder">
                         </div>
                     </form>
-                    <div class="modal-footer">
-                        <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
-                        <a href="/opdracht/<?php echo $item['requestId'] ?>/afmelden"><button type="button" class="nextButton btn">Ga verder</button></a>
-                    </div>
                 </div>
             </div>
         </div>
