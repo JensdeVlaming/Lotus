@@ -2,6 +2,7 @@
     <div class="row row-cols-md-1 row-cols-lg-3 g-2 m-2">
 
         <?php
+        if (!empty($data)){
         foreach ($data as $item) {
             if ($item["approved"] == 0) {
                 $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanvraag ontvangen</span>';
@@ -84,6 +85,18 @@
                 </div>
             </div>
         <?php
-        }
-        ?>
+        }} else {
+                ?>
+                <div class="container">
+                    
+                    <div class="row">
+                            <div class="col">
+                                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn momenteel geen opdrachten gevonden!</h2>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            
+                <?php }?>
     </div>

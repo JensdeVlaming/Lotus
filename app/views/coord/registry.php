@@ -2,7 +2,7 @@
     <button class="btn btn-primary mb-2 col-12 col-md-2">Lid aanmaken</button>
     <div class="row row-cols-md-1 row-cols-lg-3 g-2">
     <?php
-    
+    if (!empty($data)) {
     foreach ($data as $item) {
     ?>
     
@@ -25,7 +25,19 @@
             </div>
         </div>
     <?php
-    }
-    ?>
+    }} else {
+            ?>
+            <div class="container">
+                
+                <div class="row">
+                        <div class="col">
+                            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                            <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn momenteel nog geen leden toegevoegd!</h2>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        
+            <?php }?>
     </div>
 </div>

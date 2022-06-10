@@ -51,22 +51,17 @@ class CoordController extends Controller
 
         $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
 
-        if ($result) {
-            self::view("/coord/requestDetails", $result);
-        } else {
-            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
-        }
+        self::view("/coord/requestDetails", $result);
+      
     }
 
     public function getMemberAndRequestDetails($data) {
         $email = $data["params"]["email"];
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
-        if ($result) {
-            self::view("/coord/memberDetails", $result );
-        } else {
-            echo "The request with email: ".$email." is not found. Make sure you got the right email!";
-        }
+        
+        self::view("/coord/memberDetails", $result );
+        
     }
 
 

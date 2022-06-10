@@ -51,8 +51,7 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        
-            self::view("/member/requestDetails", $result);
+        self::view("/member/requestDetails", $result);
        
     }
 
