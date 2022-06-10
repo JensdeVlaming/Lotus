@@ -95,7 +95,7 @@ class MemberModel
         $assignedId = 1;
         $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -125,7 +125,7 @@ class MemberModel
         $assignedId = 1;
         $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS UpcommingAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+        $this->db->query("SELECT COUNT(*) AS UpcommingAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -179,13 +179,13 @@ class MemberModel
     public function getMemberDetailsStatisticsAndHistory($email) {
         $result = $this->getMemberDetails($email);
 
-        $result["completedAssignments"] = $this->getCountOfCompletedAssigments($result["email"]);
-        $result["solicitAssignments"] = $this->getCountOfSolicitAssigments($result["email"]);
-        $result["upcommingAssignments"] = $this->getCountOfUpcomingAssigments($result["email"]);
-
         $result["completedAssignmentList"] = $this->getAllMemberCompletedAssigments($email);
         $result["solicitAssignmentList"] = $this->getAllMemberSolicitAssigments($email);
         $result["upcommingAssignmentList"] = $this->getAllMemberUpcommingAssigments($email);
+
+        $result["completedAssignments"] = count($result["completedAssignmentList"]);
+        $result["solicitAssignments"] = count($result["solicitAssignmentList"]);
+        $result["upcommingAssignments"] = count($result["upcommingAssignmentList"]);
 
         return $result;
     }
@@ -197,7 +197,7 @@ class MemberModel
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId 
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -209,7 +209,7 @@ class MemberModel
             return $result;
         }
         
-        return 0;
+        return [];
     }
 
     private function getAllMemberSolicitAssigments($email) {
@@ -231,7 +231,7 @@ class MemberModel
             return $result;
         }
         
-        return 0;
+        return [];
     }
 
     private function getAllMemberUpcommingAssigments($email) {
@@ -241,7 +241,7 @@ class MemberModel
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -253,7 +253,7 @@ class MemberModel
             return $result;
         }
         
-        return 0;
+        return [];
     }
 
 

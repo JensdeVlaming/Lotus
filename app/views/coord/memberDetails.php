@@ -70,6 +70,44 @@
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Opdrachten</h2>
                         <div class="accordion accordion-color mt-3 mb-3" id="chapters">
+                            
+                            <!-- Wachtende opdrachten -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="header-2">
+                                    <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#chapter-2" aria-expended="true" 
+                                    aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignments"];?>)</button>
+                                </h2>
+                                <div id="chapter-2" class="accordion-collapse show collapse m-2" aria-labelledby="header-2">
+                                    <?php if (count($data["solicitAssignmentList"]) == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-hover w-auto ">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Bedrijf</th>
+                                            <th scope="col">Stad</th>
+                                            <th scope="col">Datum</th>
+                                            <th scope="col">Tijd</th>
+                                            </tr>
+                                        </thead>
+                                            <?php foreach($data["solicitAssignmentList"] as $request) { ?>
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
+                                                    <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
+                                                    <td>:</td>
+                                                    <td class="text-left"><?php echo $request["companyName"];?></td>
+                                                    <td class="text-center"><?php echo $request["cCity"];?></td>
+                                                    <td class="text-center"><?php echo $request["date"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </table>
+                                    </div>
+                                <?php }?>           
+                                </div>
+                            </div>
+
                             <!-- Toegewezen opdrachten -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="header-1">
@@ -77,8 +115,8 @@
                                     data-bs-target="#chapter-1" aria-expended="true" 
                                     aria-controls="chapter-1">Toegewezen opdrachten (<?php echo $data["upcommingAssignments"];?>)</button>
                                 </h2>
-                                <div id="chapter-1" class="accordion-collapse show collapse m-2" aria-labelledby="header-1">
-                                    <?php if ($data["upcommingAssignmentList"] == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
+                                <div id="chapter-1" class="accordion-collapse collapse m-2" aria-labelledby="header-1">
+                                    <?php if (count($data["upcommingAssignmentList"]) == 0) { echo "Dit lid heeft nog geen opdrachten toegewezen gekregen";} else { ?>
                                     <div class="table-responsive">
                                         <table class="table table-sm table-hover w-auto ">
                                         <thead>
@@ -108,42 +146,6 @@
                                 </div>
                             </div>
 
-                            <!-- Wachtende opdrachten -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="header-2">
-                                    <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" 
-                                    data-bs-target="#chapter-2" aria-expended="true" 
-                                    aria-controls="chapter-2">Ingeschreven opdrachten (<?php echo $data["solicitAssignments"];?>)</button>
-                                </h2>
-                                <div id="chapter-2" class="accordion-collapse collapse m-2" aria-labelledby="header-2">
-                                    <?php if ($data["solicitAssignmentList"] == 0) { echo "Dit lid heeft geen openstaande aanmeldingen";} else {?>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-hover w-auto ">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col"></th>
-                                            <th scope="col">Bedrijf</th>
-                                            <th scope="col">Stad</th>
-                                            <th scope="col">Datum</th>
-                                            <th scope="col">Tijd</th>
-                                            </tr>
-                                        </thead>
-                                            <?php foreach($data["solicitAssignmentList"] as $request) { ?>
-                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
-                                                    <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
-                                                    <td>:</td>
-                                                    <td class="text-left"><?php echo $request["companyName"];?></td>
-                                                    <td class="text-center"><?php echo $request["cCity"];?></td>
-                                                    <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </div>
-                                <?php }?>           
-                                </div>
-                            </div>
 
                             <!-- Voltooide opdrachten -->
                             <div class="accordion-item">
@@ -153,7 +155,7 @@
                                     aria-controls="chapter-3">Voltooide opdrachten (<?php echo $data["completedAssignments"];?>)</button>
                                 </h2>
                                 <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
-                                    <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
+                                    <?php if (count($data["completedAssignmentList"]) == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
                                     <div class="table-responsive">
                                         <table class="table table-sm table-hover w-auto ">
                                         <thead>
