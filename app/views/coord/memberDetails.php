@@ -150,7 +150,7 @@
                                 <h2 class="accordion-header" id="header-3">
                                     <button class="accordion-button collapsed bg-light text-dark" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#chapter-3" aria-expended="true" 
-                                    aria-controls="chapter-3">Voltooide opdrachen (<?php echo $data["completedAssignments"];?>)</button>
+                                    aria-controls="chapter-3">Voltooide opdrachten (<?php echo $data["completedAssignments"];?>)</button>
                                 </h2>
                                 <div id="chapter-3" class="accordion-collapse collapse m-2" aria-labelledby="header-3">
                                     <?php if ($data["completedAssignmentList"] == 0) { echo "Dit lid heeft geen voltooide opdrachten";} else {?>
