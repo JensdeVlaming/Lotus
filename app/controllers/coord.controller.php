@@ -67,17 +67,12 @@ class CoordController extends Controller
         $password = substr(str_shuffle($chars), 0, 6);
 
         $result = $this->userModel->create($email, $firstName, $lastName, $street, $premise, $city, $postalCode, $phoneNumber, $gender, $password);
-        
+
         if ($result == 1) {
             $this->redirect("/leden");
-        } else if ($result == 2) {
-            $data = [
-                "error" => "Lid bestaat al"
-            ];
-            $this->view("/coord/memberForm", $data);
         } else {
             $data = [
-                "error" => "Er is iets fout gegaan. Probeer het opnieuw."
+                "error" => "Lid bestaat al of er is iets fout gegaan."
             ];
             $this->view("/coord/memberForm", $data);
         }
