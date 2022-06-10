@@ -1,4 +1,5 @@
 <?php 
+        if(!empty($data)){
         foreach ($data as $item) {
             if ($item["approved"] == 0) {
                 $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanvraag ontvangen</span>';
@@ -180,7 +181,20 @@
            
         </div>   
 
-            <?php } ?>
+            <?php }} else {
+                        ?>
+                        <div class="container">
+                            
+                            <div class="row">
+                                    <div class="col">
+                                        <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                        <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <?php }?>
 
         <!-- Modal accept -->
         <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">

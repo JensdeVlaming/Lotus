@@ -12,11 +12,7 @@ class MemberController extends Controller
     {
         $resultSet = $this->memberModel->getOpenAssignments();
 
-        if (sizeOf($resultSet) > 0) {
-            $this->view("member/overview", $resultSet);
-        } else {
-            echo "No open assignments found.";
-        }
+        $this->view("member/overview", $resultSet);
     }
 
     public function participateAssignment($data)
@@ -36,11 +32,7 @@ class MemberController extends Controller
     {
         $resultSet = $this->memberModel->getRegisteredAssignments();
 
-        if (sizeOf($resultSet) > 0) {
-            self::view("member/registeredAssignments", $resultSet);
-        } else {
-            echo "No open assignments found.";
-        }
+        self::view("member/registeredAssignments", $resultSet);
     }
 
     public function deregister($payload)
@@ -59,11 +51,9 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        if ($result) {
+        
             self::view("/member/requestDetails", $result);
-        } else {
-            echo "The request with id: " . $id . " is not found. Make sure you got the right id!";
-        }
+       
     }
 
     public function getRequestDetailsAssigned($data) {
@@ -71,11 +61,9 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        if ($result) {
+        
             self::view("/member/requestDetailsAssigned", $result);
-        } else {
-            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
-        }
+        
 
     }
 }

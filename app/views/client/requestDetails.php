@@ -1,4 +1,5 @@
 <?php
+if (!empty($data)) {
 foreach ($data as $item) {
 ?>
     <div class="container">
@@ -167,7 +168,20 @@ foreach ($data as $item) {
 
     </div>
 
-<?php } ?>
+<?php }} else {
+            ?>
+            <div class="container">
+                
+                <div class="row">
+                        <div class="col">
+                            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                            <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <?php }?>
 
 <!-- Modal -->
 <div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">

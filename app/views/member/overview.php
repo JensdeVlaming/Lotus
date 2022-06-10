@@ -1,5 +1,6 @@
 <div class="row row-cols-md-1 row-cols-lg-3 g-2 m-2">
     <?php
+    if (!empty($data)) {
     foreach ($data as $item) {
     ?>
         <div class="col-md-12 col-lg-4">
@@ -47,6 +48,18 @@
             </div>
         </div>
     <?php
-    }
+    }} else {
     ?>
+    <div class="container">
+        
+        <div class="row">
+                <div class="col">
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                    <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn momenteel geen opdrachten waar u zich voor kan aanmelden!</h2>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <?php }?>
 </div>

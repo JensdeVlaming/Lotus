@@ -31,11 +31,7 @@ class ClientController extends Controller
 
         $result = $this->clientModel->requestDetails($id);
 
-        if ($result) {
-            self::view("/client/requestDetails", $result);
-        } else {
-            echo "The request with id: ".$id." is not found. Make sure you got the right id!";
-        }
-
+        self::view("/client/requestDetails", $result);
+       
     }
 }
