@@ -37,7 +37,7 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht-coordinator");
     }
 
-    public function AssigmentInProgress($data)
+    public function acceptAssignment($data)
     {
         $id = $data["params"]["id"];
 
@@ -45,4 +45,25 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht");
 
     }
+
+    public function getRequestDetailsAcceptDeny($data) {
+        $id = $data["params"]["id"];
+
+        $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
+
+        self::view("/coord/requestDetails", $result);
+      
+    }
+
+    public function getMemberAndRequestDetails($data) {
+        $email = $data["params"]["email"];
+
+        $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
+        
+        self::view("/coord/memberDetails", $result );
+        
+    }
+
+
+
 }

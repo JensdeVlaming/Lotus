@@ -199,7 +199,14 @@ body {
     height: 80px; 
     line-height: 80px; 
     text-align: center; 
+    }
+
+/* Accordion */
+
+#accordion-header {
+    color: #0a2465;
 }
+
 
 /* navbar */
 

@@ -2,6 +2,7 @@
     <div class="row row-cols-md-1 row-cols-lg-3 g-2 m-2">
 
         <?php
+        if (!empty($data)){
         foreach ($data as $item) {
             if ($item["approved"] == 0) {
                 $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanvraag ontvangen</span>';
@@ -44,6 +45,7 @@
                         <li class="customCardList list-group-item"><strong>Speellocatie: </strong> <?php echo $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pCity"] ?></li>
                         <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                     </ul>
+                    <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-coordinator"></a>
                 </div>
 
                 <!-- Modal -->
@@ -83,6 +85,18 @@
                 </div>
             </div>
         <?php
-        }
-        ?>
+        }} else {
+                ?>
+                <div class="container">
+                    
+                    <div class="row">
+                            <div class="col">
+                                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn momenteel geen opdrachten gevonden!</h2>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            
+                <?php }?>
     </div>

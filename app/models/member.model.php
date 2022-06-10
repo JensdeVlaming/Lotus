@@ -95,7 +95,7 @@ class MemberModel
         $assignedId = 1;
         $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -105,6 +105,162 @@ class MemberModel
 
         return $result["CompletedAssignments"];
     }
+
+    private function getCountOfSolicitAssigments($email) {
+        $assignedId = 0;
+        $approvedId = 2;
+
+        $this->db->query("SELECT COUNT(*) AS SolicitAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->single();
+        
+        return $result["SolicitAssignments"];
+    }
+
+    private function getCountOfUpcomingAssigments($email) {
+        $assignedId = 1;
+        $approvedId = 2;
+
+        $this->db->query("SELECT COUNT(*) AS UpcommingAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->single();
+        
+        return $result["UpcommingAssignments"];
+    }
+
+    public function unsuscribeAssignment($id) {
+        $email = Application::$app->session->get("user");
+        
+        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->execute();
+        
+        return $result;
+    }
+
+
+    public function getMemberDetails($email) {
+        $this->db->query("SELECT * FROM user WHERE email = :email;");
+        $this->db->bind(":email", $email);
+
+
+        $result = $this->db->single();
+
+        
+        return $result;
+    }
+
+    public function getMemberRequestsByEmail($email) {
+        $this->db->query("SELECT * FROM solicit 
+                                LEFT JOIN user ON user.email = solicit.email
+                                LEFT JOIN request ON request.requestId = solicit.requestId
+                                WHERE user.email = :email AND assigned = 1;");
+                                
+            $this->db->bind(":email", $email);
+            $results = $this->db->resultSet();
+            return $results;
+
+    }
+
+    
+
+    // memberdetail page
+    public function getMemberDetailsStatisticsAndHistory($email) {
+        $result = $this->getMemberDetails($email);
+
+        $result["completedAssignments"] = $this->getCountOfCompletedAssigments($result["email"]);
+        $result["solicitAssignments"] = $this->getCountOfSolicitAssigments($result["email"]);
+        $result["upcommingAssignments"] = $this->getCountOfUpcomingAssigments($result["email"]);
+
+        $result["completedAssignmentList"] = $this->getAllMemberCompletedAssigments($email);
+        $result["solicitAssignmentList"] = $this->getAllMemberSolicitAssigments($email);
+        $result["upcommingAssignmentList"] = $this->getAllMemberUpcommingAssigments($email);
+
+        return $result;
+    }
+
+    private function getAllMemberCompletedAssigments($email) {
+        $assignedId = 1;
+        $approvedId = 2;
+
+        $this->db->query("SELECT * FROM request 
+                                    LEFT JOIN solicit ON request.requestId = solicit.requestId
+                                    LEFT JOIN company ON request.companyId = company.companyId 
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
+        
+        return 0;
+    }
+
+    private function getAllMemberSolicitAssigments($email) {
+        $assignedId = 0;
+        $approvedId = 2;
+
+        $this->db->query("SELECT * FROM request 
+                                    LEFT JOIN solicit ON request.requestId = solicit.requestId
+                                    LEFT JOIN company ON request.companyId = company.companyId
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
+        
+        return 0;
+    }
+
+    private function getAllMemberUpcommingAssigments($email) {
+        $assignedId = 1;
+        $approvedId = 2;
+
+        $this->db->query("SELECT * FROM request 
+                                    LEFT JOIN solicit ON request.requestId = solicit.requestId
+                                    LEFT JOIN company ON request.companyId = company.companyId
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%m/%d/%Y ');");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":assignedId", $assignedId);
+        $this->db->bind(":approvedId", $approvedId);
+
+        $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
+        
+        return 0;
+    }
+
+
+   
+
+
+
 
     public function deregister($requestId, $reasonFor = null)
     {
