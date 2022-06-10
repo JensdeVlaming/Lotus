@@ -27,6 +27,8 @@ $app->router->post("/opdracht/afmelden", [MemberController::class, "deregister"]
 $app->router->get("/opdrachten", [MemberController::class, "getRegisteredOverview"]);
 
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
+$app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
+$app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
