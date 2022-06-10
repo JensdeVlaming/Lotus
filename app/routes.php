@@ -30,6 +30,7 @@ $app->router->get("/opdracht/:id/afmelden", [MemberController::class, "deregiste
 
 $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 $app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
+$app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
 
 
