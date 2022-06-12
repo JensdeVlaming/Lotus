@@ -5,6 +5,6 @@
                 <use xlink:href="#bootstrap"></use>
             </svg>
         </a>
-        <span class="text-muted">© 2021 Lotus</span>
+        <span class="text-muted">© 2022 Lotus</span>
     </div>
 </footer>

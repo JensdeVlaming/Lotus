@@ -11,7 +11,7 @@
                 
                         <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"];?></h2>
                         <p><?php echo $item["description"];?></p>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#participateModal">Aanmelden</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#participateModal">Afmelden</button>
                         
                         <hr class="dropdown-divider">
                             <table class="table table-sm table-hover w-auto ">
@@ -78,7 +78,7 @@
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
                                 <p>
-                                <?php echo $item["companyName"].' </br>	                                
+                                <?php echo  $item["companyName"].' </br>	                                
                                             '.$item["firstName"].' '.$item["lastName"].' </br>
                                             '.$item["clientEmail"].' </br>
                                             '.$item["phoneNumber"]?>
@@ -111,24 +111,54 @@
                                 </div>
                         </div>
 
-    <?php }?>
-        <!-- Modal -->
-            <div class="modal fade" id="participateModal" tabindex="-1" aria-labelledby="participateModalLabel" aria-hidden="true">
+                        <?php }?>
+
+        <!-- Modal Weet u het zeker -->
+        <div class="modal fade" id="participateModal" tabindex="-1" aria-labelledby="participateModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="participateModalLabel">Weet u het zeker?</h5>
+                    <h5 class="modal-title" id="participateModalLabel">Afmelden</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Weet je zeker dat je je wilt aanmelden voor deze opdracht? Deze actie kan niet ongedaan worden.
+                    Afmelden voor een opdracht het liefst minimaal 2 dagen van tevoren met een geldige reden!
+
+                        <form>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                        </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                    <a href="/opdracht/<?php echo $item["requestId"] ?>/aanmelden"><button type="button" class="btn btn-primary" >Ga verder</button></a>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afmelden"><button class="btn btn-primary" data-bs-target="#confirmationModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Verstuur</button></a>
+                    <!--  -->
                 </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Modal verzoek tot afmelding is verstuurd -->
+        <div class="modal fade" id="confirmationModalToggle" aria-hidden="true" aria-labelledby="confirmationModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalToggleLabel">Verzoek verstuurd</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Verzoek tot afmelding is verstuurd naar de coördinator. Afmelding is pas compleet wanneer het verzoek is goedgekeurd!
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#confirmationModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Ga verder</button>
+                </div>
+                </div>
             </div>
+        </div>                       
+    
+
+
 
          

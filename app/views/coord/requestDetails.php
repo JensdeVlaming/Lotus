@@ -1,20 +1,39 @@
-<?php
-if (!empty($data)) {
-foreach ($data as $item) {
-?>
-    <div class="container">
+<?php 
+        if(!empty($data)){
+        foreach ($data as $item) {
+            if ($item["approved"] == 0) {
+                $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanvraag ontvangen</span>';
+            } else if ($item["approved"] == 1) {
+                $approved = '<i class="fa fa-clock-o text-warning" aria-hidden="true"></i> <span class="text-muted">In behandeling</span>';
+            } else if ($item["approved"] == 2) {
+                $approved = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Goedgekeurd</span>';
+            } else if ($item["approved"] == 3) {
+                $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
+            } else if ($item["approved"] == 4) {
+                $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
+            }
+    ?>
+        <div class="container">
+                
+                
 
-        <div class="row">
-            <div class="col">
-                <!-- Column 1 -->
-                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
 
-                    <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"]; ?></h2>
-                    <p><?php echo $item["description"]; ?></p>
-                    <button type="button" class="btn btn-warning text-white" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
-                    <button type="button" class="btn btn-danger" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+            <div class="row">
+                <div class="col">
+                     <!-- Column 1 -->
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                
+                        <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"];?></h2>
+                        <p><?php echo $item["description"];?></p>
+                        <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
 
-                    <hr class="dropdown-divider">
+                        <?php if ($item["approved"] == 0) { ?>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
+                                <?php } ?>
+                        
+                        
+                        <hr class="dropdown-divider">
                             <table class="table table-sm table-hover w-auto ">
                                 <thead>
                                     <tr>
@@ -120,14 +139,14 @@ foreach ($data as $item) {
                                 }
                                 ?>
 
+                   
+                    </div>
+                    <!-- Column 1 end -->
                 </div>
 
-                <!-- Column 1 end -->
-            </div>
-
-            <div class="col">
-                <!-- Column 2 start -->
-                <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
+                <div class="col">
+                     <!-- Column 2 start -->
+                    <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
                                 <p>
                                 <?php echo  $item["companyName"].' </br>	                                
@@ -136,12 +155,6 @@ foreach ($data as $item) {
                                             '.$item["phoneNumber"]?>
                                             </p>
 
-                                            <!-- <h2 class="formSectionTitle fw-bold">Contactgegevens</h2>
-                                <p>
-                                <?php echo $item["firstName"].' '.$item["lastName"].' </br>
-                                            '.$item["email"].' </br>
-                                            '.$item["phoneNumber"]?>
-                                            </p> -->
                     </div>
 
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
@@ -161,58 +174,64 @@ foreach ($data as $item) {
                             </div>
                     </div> 
                     <!-- Column 2 end  -->
+                </div>
             </div>
-        </div>
 
+           
+           
+        </div>   
 
-
-    </div>
-
-<?php }} else {
-            ?>
-            <div class="container">
-                
-                <div class="row">
-                        <div class="col">
-                            <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                            <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
-                            </div>
+            <?php }} else {
+                        ?>
+                        <div class="container">
+                            
+                            <div class="row">
+                                    <div class="col">
+                                        <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                        <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                    </div>
-            </div>
 
-            <?php }?>
+                        <?php }?>
 
-<!-- Modal -->
-<div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cancelRequestLabel">Weet u het zeker?</h5>
-            </div>
-            <div class="modal-body">
-                U staat op het punt een door u gemaakte opdracht te verwijderen. Wilt u verder gaan met deze actie?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
-                <a href="/opdracht/<?php echo $item["requestId"] ?>/annuleren"><button type="button" class="nextButton btn">Ga verder</button></a>
+        <!-- Modal accept -->
+        <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptModalLabel">Weet u het zeker?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Weet je zeker dat je opdracht wilt accepteren?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="btn btn-primary" >Ga verder</button></a>
+                </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="modal fade" id="updateRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="updateRequestLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateRequestLabel">Weet u het zeker?</h5>
-            </div>
-            <div class="modal-body">
-                Deze actie is nog NIET ondersteunt. Wilt u deze actie afbreken?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
+        <!-- Modal deny -->
+        <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="denyModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="denyModalLabel">Weet u het zeker?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Weet je zeker dat je deze opdracht wilt afwijzen? Deze actie kan niet ongedaan worden gemaakt.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afwijzen"><button type="button" class="btn btn-primary" >Ga verder</button></a>
+                </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
+         
