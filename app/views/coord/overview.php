@@ -32,8 +32,10 @@
                                 </div>
                                 <?php if ($item["approved"] == 0) { ?>
                                 <div class="row g-0">
-                                    <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
-                                    <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
+                                        <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
+                                    </div>
                                 </div>
                                 <?php } ?>
                             </div>
