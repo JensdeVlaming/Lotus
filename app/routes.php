@@ -35,10 +35,8 @@ $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
 // Details
-$app->router->get("/opdracht/:id/details-lid", [MemberController::class, "getRequestDetails"]);
-$app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]);
-$app->router->get("/opdracht/:id/details-coordinator", [CoordController::class, "getRequestDetailsAcceptDeny"]);
-$app->router->get("/opdracht/:id/details-client", [ClientController::class, "getRequestDetails"]);
+$app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "getDetails"]);
+$app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
 
 // Requests

@@ -216,11 +216,11 @@ INSERT INTO playground (playGroundId, pCountry, pProvince, pCity, pStreet, pHous
 
 -- request
 INSERT INTO request (requestId, description, comments, date, time, clientEmail, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, approved) VALUES 
-(1, "Steekwonden", "Cuts and bruises", "12-06-2022", "10:00", "coordinator@lotus.nl", 5, 1, 1, 1, 1, 1, 0),
-(2, "Benauwdheid", "Paars gezicht", "14-06-2022", "12:00", "coordinator@lotus.nl", 3, 2, 2, 2, 2, 2, 1),
-(3, "Brandoefening", "Hoofdpijn", "14-06-2022", "12:00", "coordinator@lotus.nl", 10, 3, 3, 3, 3, 3, 2),
-(4, "Aanrijding", "Slachtoffer na aanrijding bewusteloos", "05-07-2022", "13:00", "coordinator@lotus.nl", 2, 4, 4, 4, 4, 4, 3),
-(5, "Kneuzing", "Voet", "20-08-2022", "10:00", "coordinator@lotus.nl", 1, 5, 5, 5, 5, 5, 4);
+(1, "Steekwonden", "Cuts and bruises", "12-06-2022", "10:00", "client@lotus.nl", 5, 1, 1, 1, 1, 1, 0),
+(2, "Benauwdheid", "Paars gezicht", "14-06-2022", "12:00", "client@lotus.nl", 3, 2, 2, 2, 2, 2, 1),
+(3, "Brandoefening", "Hoofdpijn", "14-06-2022", "12:00", "client@lotus.nl", 10, 3, 3, 3, 3, 3, 2),
+(4, "Aanrijding", "Slachtoffer na aanrijding bewusteloos", "05-07-2022", "13:00", "client@lotus.nl", 2, 4, 4, 4, 4, 4, 3),
+(5, "Kneuzing", "Voet", "20-08-2022", "10:00", "client@lotus.nl", 1, 5, 5, 5, 5, 5, 4);
 
 -- solicit
 INSERT INTO solicit(email, requestId, assigned) VALUES
@@ -228,12 +228,12 @@ INSERT INTO solicit(email, requestId, assigned) VALUES
 ('juliet@lotus.nl', 2, 1),
 ('daniel@lotus.nl', 2, 2),
 ('jens@lotus.nl', 2, 3),
-('member@lotus.nl', 2, 3),
+('member@lotus.nl', 2, 1),
 ('kasper@lotus.nl', 3, 0),
 ('juliet@lotus.nl', 3, 1),
 ('daniel@lotus.nl', 3, 2),
 ('jens@lotus.nl', 3, 3),
-('member@lotus.nl', 3, 3),
+('member@lotus.nl', 3, 2),
 ('kasper@lotus.nl', 4, 0),
 ('juliet@lotus.nl', 4, 1),
 ('daniel@lotus.nl', 4, 2),
@@ -243,4 +243,4 @@ INSERT INTO solicit(email, requestId, assigned) VALUES
 ('juliet@lotus.nl', 5, 1),
 ('daniel@lotus.nl', 5, 2),
 ('jens@lotus.nl', 5, 3),
-('member@lotus.nl', 5, 3);
+('member@lotus.nl', 5, 1);

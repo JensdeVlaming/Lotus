@@ -47,7 +47,7 @@
                         <li class="customCardList list-group-item"><strong>Speellocatie: </strong> <?php echo $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pCity"] ?></li>
                         <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                     </ul>
-                    <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-coordinator"></a>
+                    <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
                 </div>
 
                 <!-- Modal -->
