@@ -1,5 +1,5 @@
 <div class="m-2">
-    <button class="btn btn-primary mb-2 col-12 col-md-2" href="/leden/aanmaken">Lid aanmaken</button>
+    <a class="btn btn-primary mb-2 col-12 col-md-2" href="/leden/aanmaken">Lid aanmaken</a>
     <div class="row row-cols-md-1 row-cols-lg-3 g-2">
     <?php
     if (!empty($data)) {
