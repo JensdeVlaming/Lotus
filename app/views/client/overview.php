@@ -32,8 +32,10 @@
                         </div>
                         <div class="col-12">
                             <div class="row g-0">
-                                <button type="button" class="btn btn-warning text-white col-6" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
-                                <button type="button" class="btn btn-danger col-6" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-warning text-white col-6" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
+                                    <button type="button" class="btn btn-danger col-6" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,9 +44,9 @@
                     <li class="customCardList list-group-item"><strong>Speellocatie: </strong> <?php echo $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pCity"] ?></li>
                     <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                 </ul>
+                <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
             </div>
 
-            <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-client"></a>
 
             <div class="modal fade" id="cancelRequest<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="cancelRequestLabel" aria-hidden="true">
                 <div class="modal-dialog">
