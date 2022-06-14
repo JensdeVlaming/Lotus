@@ -11,6 +11,8 @@ $app = new Application();
 // Base URL
 $app->router->get("/", [ViewController::class, "index"]);
 
+$app->router->get("/mail", [MailController::class, "mail"]);
+
 // Authentication
 $app->router->get("/inloggen", [ViewController::class, "login"]);
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
