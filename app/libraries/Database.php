@@ -14,7 +14,7 @@ class Database {
     private $error;
 
     public function __construct() {
-        $conn = "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName . ";dbport=" . $this->dbPort;
+        $conn = "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName . ";port=" . $this->dbPort;
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
