@@ -32,7 +32,7 @@ $app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
-$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
+$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRequest"]);
 
 // Details
 $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "getDetails"]);
@@ -43,7 +43,6 @@ $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndR
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 $app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
 $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
-$app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
 
 
 // POST Requests
