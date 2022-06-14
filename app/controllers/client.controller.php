@@ -22,8 +22,7 @@ class ClientController extends Controller
 
         $this->clientModel->cancelRequest($id);
 
-        echo "U heeft opdracht " . $id . " verwijderd.";
-
+        $this->redirect("/overzicht");
     }
 
     public function getRequestDetails($data) {

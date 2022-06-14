@@ -52,9 +52,9 @@
                     <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                 </ul>
                 <?php if ($item["assigned"] == 1) { ?>
-                <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details-lid-assigned"></a>
+                <a class="stretched-link"  style="z-index: 9" href="/opdracht/<?php echo $item["requestId"] ?>/details-lid-assigned"></a>
                 <?php } else { ?>
-                <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
+                <a class="stretched-link"  style="z-index: 9" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
                 <?php } ?>
             </div>
         </div>
