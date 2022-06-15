@@ -38,6 +38,7 @@ $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAs
 $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "getDetails"]);
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
+$app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);

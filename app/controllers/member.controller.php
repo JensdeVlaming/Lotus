@@ -51,8 +51,15 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        self::view("/member/requestDetails", $result);
-       
+        self::view("/member/requestDetails", $result);   
+    }
+
+    public function getMemberProfile() {
+        $email = Application::$app->session->get("user");
+
+        $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
+        
+        self::view("/member/memberDetails", $result );
     }
 
     public function getRequestDetailsAssigned($data) {
