@@ -22,8 +22,7 @@ class ClientController extends Controller
 
         $this->clientModel->cancelRequest($id);
 
-        echo "U heeft opdracht " . $id . " verwijderd.";
-
+        $this->redirect("/overzicht");
     }
 
     public function getRequestDetails($data) {
@@ -35,6 +34,7 @@ class ClientController extends Controller
        
     }
 
+<<<<<<< HEAD
     public function getRequestDetailsForEdit($data) {
         $id = $data["params"]["id"];
 
@@ -45,4 +45,13 @@ class ClientController extends Controller
     }
 
     
+=======
+    public function getClientProfile() {
+        $email = Application::$app->session->get("user");
+
+
+        $result = $this->clientModel->getProfile($email);
+        self::view("/client/profile", $result );
+    }
+>>>>>>> a54ff9987fef7c2e27450d3241d97c9b6cd1eb78
 }

@@ -20,6 +20,9 @@ $activeRole = Application::$app->session->get("activeRole");
                         <a class="nav-link active" href="/opdrachten">Jouw opdrachten</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="/profiel">Profiel</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
                     </li>
                     <?php
@@ -53,6 +56,9 @@ $activeRole = Application::$app->session->get("activeRole");
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/leden">Leden</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/profiel">Profiel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
@@ -91,6 +97,9 @@ $activeRole = Application::$app->session->get("activeRole");
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/opdracht/aanvragen" tabindex="-1" aria-disabled="true">Opdracht indienen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/profiel">Profiel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>

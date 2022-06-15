@@ -11,7 +11,9 @@ class MemberModel
 
     public function getOpenAssignments()
     {
-        $this->db->query("SELECT * FROM request 
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("SELECT DISTINCT * FROM request 
                             LEFT JOIN company ON request.companyId = company.companyId
                             LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
                             LEFT JOIN playground ON request.playgroundId = playground.playgroundId
@@ -19,8 +21,18 @@ class MemberModel
                             LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
                             WHERE request.approved = 1;");
 
-        $result = $this->db->resultSet();
+        // $this->db->bind(":email", $email);
 
+
+        $result = $this->db->resultSet();
+        
+        // $temp_array = [];
+        // $key = "requestId";
+        // foreach ($result as &$v) {
+        //     if (!isset($temp_array[$v[$key]]))
+        //     $temp_array[$v[$key]] =& $v;
+        // }
+        // $result = array_values($temp_array);
         return $result;
     }
 
@@ -106,7 +118,8 @@ class MemberModel
         return $result["CompletedAssignments"];
     }
 
-    private function getCountOfSolicitAssigments($email) {
+    private function getCountOfSolicitAssigments($email)
+    {
         $assignedId = 0;
         $approvedId = 2;
 
@@ -117,11 +130,12 @@ class MemberModel
         $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->single();
-        
+
         return $result["SolicitAssignments"];
     }
 
-    private function getCountOfUpcomingAssigments($email) {
+    private function getCountOfUpcomingAssigments($email)
+    {
         $assignedId = 1;
         $approvedId = 2;
 
@@ -132,51 +146,54 @@ class MemberModel
         $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->single();
-        
+
         return $result["UpcommingAssignments"];
     }
 
-    public function unsuscribeAssignment($id) {
+    public function unsuscribeAssignment($id)
+    {
         $email = Application::$app->session->get("user");
-        
+
         $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":id", $id);
-        
+
         $result = $this->db->execute();
-        
+
         return $result;
     }
 
 
-    public function getMemberDetails($email) {
+    public function getMemberDetails($email)
+    {
         $this->db->query("SELECT * FROM user WHERE email = :email;");
         $this->db->bind(":email", $email);
 
 
         $result = $this->db->single();
 
-        
+
         return $result;
     }
 
-    public function getMemberRequestsByEmail($email) {
+    public function getMemberRequestsByEmail($email)
+    {
         $this->db->query("SELECT * FROM solicit 
                                 LEFT JOIN user ON user.email = solicit.email
                                 LEFT JOIN request ON request.requestId = solicit.requestId
                                 WHERE user.email = :email AND assigned = 1;");
-                                
-            $this->db->bind(":email", $email);
-            $results = $this->db->resultSet();
-            return $results;
 
+        $this->db->bind(":email", $email);
+        $results = $this->db->resultSet();
+        return $results;
     }
 
-    
+
 
     // memberdetail page
-    public function getMemberDetailsStatisticsAndHistory($email) {
+    public function getMemberDetailsStatisticsAndHistory($email)
+    {
         $result = $this->getMemberDetails($email);
 
         $result["completedAssignmentList"] = $this->getAllMemberCompletedAssigments($email);
@@ -190,7 +207,8 @@ class MemberModel
         return $result;
     }
 
-    private function getAllMemberCompletedAssigments($email) {
+    private function getAllMemberCompletedAssigments($email)
+    {
         $assignedId = 1;
         $approvedId = 2;
 
@@ -208,11 +226,12 @@ class MemberModel
         if ($result) {
             return $result;
         }
-        
+
         return [];
     }
 
-    private function getAllMemberSolicitAssigments($email) {
+    private function getAllMemberSolicitAssigments($email)
+    {
         $assignedId = 0;
         $approvedId = 2;
 
@@ -230,11 +249,12 @@ class MemberModel
         if ($result) {
             return $result;
         }
-        
+
         return [];
     }
 
-    private function getAllMemberUpcommingAssigments($email) {
+    private function getAllMemberUpcommingAssigments($email)
+    {
         $assignedId = 1;
         $approvedId = 2;
 
@@ -252,12 +272,12 @@ class MemberModel
         if ($result) {
             return $result;
         }
-        
+
         return [];
     }
 
 
-   
+
 
 
 
@@ -272,6 +292,5 @@ class MemberModel
         $this->db->bind(":email", $email);
 
         $this->db->execute();
-
     }
 }
