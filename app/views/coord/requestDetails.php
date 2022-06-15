@@ -172,6 +172,8 @@ if (!empty($data)) {
                 <!-- Column 2 end  -->
             </div>
         </div>
+
+        <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
         <!-- Overview registered members -->
         <div class="accordion-item m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
             <h2 class="accordion-header" id="header-1">
