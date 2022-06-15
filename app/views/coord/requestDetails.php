@@ -173,15 +173,15 @@ if (!empty($data)) {
             </div>
         </div>
 
-        <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
+        <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
             <!-- Overview registered members -->
-            <div class="accordion-item mt-2 mb-2 border-0">
+            <div class="accordion-item mt-2 mb-2  border-0">
                 <h2 class="accordion-header" id="header-1">
-                    <button class="accordion-button bg-white formSectionTitle fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
+                    <button class="formSectionTitle accordion-button bg-white  fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
                 </h2>
             </div>
 
-            <div id="registeredMembers" class="accordion-collapse collapse m-2 table-responsive" aria-labelledby="header-1">
+            <div id="registeredMembers" class="accordion-collapse show collapse m-2 table-responsive" aria-labelledby="header-1">
 
                 <table class="table table-xxl table-hover w-auto ">
                     <thead>
