@@ -1,11 +1,10 @@
 <?php
  
 // Import PHPMailer classes into the global namespace 
+require '../vendor/autoload.php';
+// Import PHPMailer classes into the global namespace 
 use PHPMailer\PHPMailer\PHPMailer;
- 
-require 'C:/Users/danie/Bureaublad/Lotus/PHPMailer/PHPMailer/src/PHPMailer.php'; 
-require 'C:/Users/danie/Bureaublad/Lotus/PHPMailer/PHPMailer/src/Exception.php'; 
-require 'C:/Users/danie/Bureaublad/Lotus/PHPMailer/PHPMailer/src/SMTP.php'; 
+
 
 
 class MailController extends Controller {
