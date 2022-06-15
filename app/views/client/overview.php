@@ -24,10 +24,24 @@
             $month_now = $orderdate_now[1];
             $day_now   = $orderdate_now[2];
 
+
+            $split_m_now = str_split($month_now);
+            if ($split_m_now[0] == '0') { $month_now = $split_m_now[1];}
+            $split_d_now = str_split($day_now);
+            if ($split_d_now[0] == '0') { $day_now = $split_d_now[1];}
+
         $orderdate_request = explode('-', $item['date']);
             $year_request  = $orderdate_request[0];
             $month_request = $orderdate_request[1];
             $day_request   = $orderdate_request[2] - 1;
+
+            $split_m_request = str_split($month_request);
+            if ($split_m_request[0] == '0') { $month_request = $split_m_request[1];}
+            $split_d_request = str_split($day_request);
+            if ($split_d_request[0] == '0') { $day_request = $split_d_request[1];}
+
+                    
+            
         
     ?>
 
@@ -50,7 +64,7 @@
                             <div class="row g-0">
                                 <div class="btn-group" role="group" aria-label="Basic example">
 
-                                <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+                                <?php if ($year_now <= $year_request && $month_now <= $month_request && $day_now < $day_request) { // Wel aanpassen ?> 
                                    <a  class="btn btn-warning text-white col-6" style="z-index: 10" href="/opdracht/<?php echo $item["requestId"];?>/wijzigen">Wijzigen</a>
 
                                 <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>

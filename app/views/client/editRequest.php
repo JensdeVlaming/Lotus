@@ -116,6 +116,11 @@ foreach($data as $item) {
         $year_request  = $orderdate_request[0];
         $month_request = $orderdate_request[1];
         $day_request   = $orderdate_request[2] - 1;
+
+        $split_m_request = str_split($month_request);
+        if ($split_m_request[0] == '0') { $month_request = $split_m_request[1];}
+        $split_d_request = str_split($day_request);
+        if ($split_d_request[0] == '0') { $day_request = $split_d_request[1];}
         
     }
 ?>
@@ -1397,7 +1402,7 @@ foreach($data as $item) {
                 </div>
             <div>
 
-        <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+        <?php if ($year_now <= $year_request && $month_now <= $month_request && $day_now < $day_request) { // Wel aanpassen ?> 
             <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
         <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
             <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
