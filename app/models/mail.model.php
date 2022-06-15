@@ -24,10 +24,11 @@ class MailModel
         $mail->Port = 587;                    // TCP port to connect to 
 
         // Sender info 
-        $mail->setFrom('lotus.herewego@gmail.com', 'Lotus');
+        $mail->setFrom('projectlotus2023@gmail.com', 'Lotus');
 
         // Add a recipient 
-        $mail->addAddress('dvzdanieldvz@gmail.com');
+        $emailAddress = Application::$app->session->get("user");
+        $mail->addAddress($emailAddress);
 
         //$mail->addCC('cc@example.com'); 
         //$mail->addBCC('bcc@example.com'); 
@@ -36,18 +37,14 @@ class MailModel
         $mail->isHTML(true);
 
         // Mail subject 
-        $mail->Subject = 'Email from Localhost by CodexWorld';
+        $mail->Subject = 'Bevestiging ingediende opdracht';
 
         // Mail body content 
-        $bodyContent = '<h1>How to Send Email from Localhost using PHP by CodexWorld</h1>';
-        $bodyContent .= '<p>This HTML email is sent from the localhost server using PHP by <b>CodexWorld</b></p>';
+        $bodyContent = '<h1>Bedankt voor het indienen van een opdracht bij LOTUS!</h1>';
+        $bodyContent .= '<p>U ontvangt deze email ter bevestiging van uw indiening.</b></p>';
         $mail->Body    = $bodyContent;
 
         // Send email 
-        if (!$mail->send()) {
-            echo 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;
-        } else {
-            echo 'Message has been sent.';
-        }
+        $mail->send();
     }
 }
