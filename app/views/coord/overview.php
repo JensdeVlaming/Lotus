@@ -15,7 +15,7 @@
             } else if ($item["approved"] == 4) {
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
             } else if ($item["approved"] == 5) {
-                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Aangepast</span>';
+                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
             }
         ?>
 

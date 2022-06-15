@@ -23,4 +23,12 @@ class ProfileHandler extends Controller
             $this->exceptionController->_500();
         }
     }
+
+    public function changeProfile($data) {
+
+               
+        $this->userModel->editProfile($data);
+
+        $this->view("/profiel" ,$data);
+    }
 }

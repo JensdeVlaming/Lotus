@@ -201,57 +201,121 @@
 
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Profiel wijzigen</h2>
-                        <p><button type="button" class="btn btn-warning text-white" data-bs-toggle="" data-bs-target="">Profiel wijzigen</button> </p>
+                        <button type="button" class="btn btn-warning text-white mb-3" data-bs-toggle="modal" data-bs-target="#profileModal">Profiel wijzigen</button>
                         <button type="button" class="btn btn-warning text-white mb-3 " data-bs-toggle="modal" data-bs-target="#passwordModal">Wachtwoord wijzigen</button>
                     </div> 
                     <!-- Column 2 end  -->
                 </div>
-            </div>
-        </div>   
+                </div>
+            </div>   
 
 
           <!-- MODALS -->
-          <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="passwordModalLabel">Wachtwoord wijzigen!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-                <small id="passwordHelpInline" class="text-muted">
-                    Must be 8-20 characters long.
-                </small>
-            <form action="post" class=" align-items-center justify-content-center">
+            <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="passwordModalLabel">Wachtwoord wijzigen!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <small id="passwordHelpInline" class="text-muted">
+                                Must be 8-20 characters long.
+                            </small>
+                        <form action="POST" class=" align-items-center justify-content-center">
 
-            <div class="row">
-                <div class="col-12">
-                    <input type="password" class="form-control request-input m-1 w-75" id="old-pwd" placeholder="Oud wachtwoord"> 
-                    <i class="bi bi-eye-slash" id="togglePassword"></i>
-                </div>
-                <div class="col-12">
-                    <input type="password" class="form-control request-input m-1 w-75" id="new-pwd" placeholder="Nieuw wachtwoord">
-                </div>
-                <div class="col-12">
-                    <input type="password" class="form-control request-input m-1 w-75   " id="copy-pwd" placeholder="Herhaal wachtwoord">
-                    <i class="bi bi-eye-slash" id="togglePassword"></i>
-                     
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="password" class="form-control request-input m-1 w-75" id="old-pwd" name="old-pwd" placeholder="Oud wachtwoord">                              
+                            </div>
+                            <div class="col-12">
+                                <input type="password" class="form-control request-input m-1 w-75" id="new-pwd" name="new-pwd" placeholder="Nieuw wachtwoord">
+                            </div>
+                            <div class="col-12">
+                                <input type="password" class="form-control request-input m-1 w-75" id="copy-pwd" name="copy-pwd"  placeholder="Herhaal wachtwoord">                             
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-1" data-bs-dismiss="modal">Wijzig wachtwoord</button>
+                        <?php if (isset($data["error"])) { ?>
+
+                            <div class="alert alert-danger" id="alert-login" role="alert">
+                                <span class="text-center"><?php echo $data["error"]; ?></span>
+                            </div>
+
+                            <?php } ?>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ga terug</button>
+                    </div>
+                    </div>
                 </div>
             </div>
 
-                    
-                  
 
+            <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="profileModalLabel">Wachtwoord wijzigen!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <small id="profileHelpInline" class="text-muted">
+                                Wijzig uw gegevens
+                            </small>
+                        <form action="POST" class=" align-items-center justify-content-center">
 
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ga terug</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Verder</button>
-        </div>
-        </div>
-    </div>
-    </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="postalCodeBillingAddress"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="firstName" name="firstName" value="<?php echo $data["firstName"];?>"> 
+                            </div>
+                            <div class="col-12">
+                            <label for="postalCodeBillingAddress"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="lastName" name="lastName" value="<?php echo $data["lastName"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editEmail"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="email" name="email"  value="<?php echo $data["email"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editPhoneNumber"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="phoneNumber" name="phoneNumber"  value="<?php echo $data["phoneNumber"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editCity"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="city" name="city"  value="<?php echo $data["city"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editStreet"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="street" name="street"  value="<?php echo $data["street"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editPremise"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="premise" name="premise"  value="<?php echo $data["premise"];?>">
+                            </div>
+                            <div class="col-12">
+                            <label for="editPostalCode"class="mt-2"><span class="formLabel">Voornaam:</span></label>
+                                <input type="text" class="form-control request-input m-1 w-75" id="postalCode" name="postalCode"  value="<?php echo $data["postalCode"];?>">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-1" data-bs-dismiss="modal">Wijzig wachtwoord</button>
+                        <?php if (isset($data["error"])) { ?>
+
+                            <div class="alert alert-danger" id="alert-login" role="alert">
+                                <span class="text-center"><?php echo $data["error"]; ?></span>
+                            </div>
+
+                            <?php } ?>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ga terug</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
  
 

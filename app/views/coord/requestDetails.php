@@ -12,7 +12,7 @@
             } else if ($item["approved"] == 4) {
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
             } else if ($item["approved"] == 5) {
-                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Aangepast</span>';
+                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
             }
     ?>
         <div class="container">
@@ -211,7 +211,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                    <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="btn btn-primary" >Ga verder</button></a>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/behandelen"><button type="button" class="btn btn-primary" >Ga verder</button></a>
                 </div>
                 </div>
             </div>

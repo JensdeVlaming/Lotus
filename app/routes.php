@@ -20,7 +20,7 @@ $app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 $app->router->get("/overzicht-lid-ingeschreven", [MemberController::class, "getRegisteredOverview"]);
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
-$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssigmentInProgress"]);
+$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "acceptAssignment"]);
 
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 $app->router->post("/opdracht/afmelden", [MemberController::class, "deregister"]);
@@ -42,6 +42,7 @@ $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "get
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
 $app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
+$app->router->post("/profiel", [ProfileHandler::class, "changeProfile"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
