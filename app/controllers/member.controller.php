@@ -22,7 +22,7 @@ class MemberController extends Controller
         $result = $this->memberModel->participateAssignment($id);
 
         if ($result) {
-            echo "Succesvol aangemeld voor opdracht " . $id;
+            $this->redirect("/opdrachten");
         } else {
             echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht " . $id;
         }
