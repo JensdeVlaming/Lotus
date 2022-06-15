@@ -129,7 +129,7 @@
                                                 <div class="row">
                                                         <div class="col">
                                                             <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                                                            <h2 class="formSectionTitle fw-bold m-3 text-center">Het lid dat u zoekt is niet gevonden! Check of het juiste email is meegegeven!.</h2>
+                                                            <h2 class="formSectionTitle fw-bold m-3 text-center">Het profiel dat u zoekt is niet gevonden! Check of het juiste email is meegegeven!.</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -143,6 +143,6 @@
                 </div>
             </div>
         </div>   
-
+       
 
          

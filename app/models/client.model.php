@@ -53,7 +53,7 @@ class ClientModel
         return $result;
     }
 
-<<<<<<< HEAD
+
     public function getRequestDetailsForEdit($id) {
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN company ON request.companyId = company.companyId
@@ -78,10 +78,8 @@ class ClientModel
 
         $this->db->bind(":id", $id);
         $this->db->execute();
+    }
 
-
-       
-=======
     public function getProfile($email)
     {
 
@@ -92,6 +90,6 @@ class ClientModel
 
         $results = $this->db->resultSet();
         return $results;
->>>>>>> a54ff9987fef7c2e27450d3241d97c9b6cd1eb78
+
     }
 }

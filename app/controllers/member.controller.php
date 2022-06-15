@@ -59,7 +59,7 @@ class MemberController extends Controller
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
         
-        self::view("/member/memberDetails", $result );
+        self::view("/member/profile", $result );
     }
 
     public function getRequestDetailsAssigned($data) {

@@ -16,18 +16,9 @@
             $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Aangepast</span>';
         }
 
-        // date comparison
-        $date_now = date("Y-m-d"); // this format is string comparable
-
-        $orderdate_now = explode('-', date("Y-m-d"));
-            $year_now  = $orderdate_now[0];
-            $month_now = $orderdate_now[1];
-            $day_now   = $orderdate_now[2];
-
-        $orderdate_request = explode('-', $item['date']);
-            $year_request  = $orderdate_request[0];
-            $month_request = $orderdate_request[1];
-            $day_request   = $orderdate_request[2] - 1;
+        // date comparison variables
+        $date_now = date("Y-m-d");
+        $date_request = date('Y-m-d', strtotime('-1 days', strtotime($item['date'])));            
         
     ?>
 
@@ -48,21 +39,17 @@
                         </div>
                         <div class="col-12">
                             <div class="row g-0">
-<<<<<<< HEAD
+
                                 <div class="btn-group" role="group" aria-label="Basic example">
 
-                                <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+                                <?php if ($date_now < $date_request) { // Wel aanpassen ?> 
                                    <a  class="btn btn-warning text-white col-6" style="z-index: 10" href="/opdracht/<?php echo $item["requestId"];?>/wijzigen">Wijzigen</a>
 
                                 <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
                                     <button type="button" class="btn btn-warning text-white col-6" style="z-index: 10" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
                                 <?php } ?>
                                     <button type="button" class="btn btn-danger col-6" style="z-index: 10" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
-=======
-                                <div class="btn-group" style="z-index: 10" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-warning text-white col-6" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
-                                    <button type="button" class="btn btn-danger col-6" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
->>>>>>> a54ff9987fef7c2e27450d3241d97c9b6cd1eb78
+
                                 </div>
                             </div>
                         </div>

@@ -104,18 +104,9 @@ foreach($data as $item) {
     $bStreet = $item["bStreet"];
     $bPostalCode = $item["bPostalCode"];
 
-    // date comparison
-    $date_now = date("Y-m-d"); // this format is string comparable
-
-    $orderdate_now = explode('-', date("Y-m-d"));
-        $year_now  = $orderdate_now[0];
-        $month_now = $orderdate_now[1];
-        $day_now   = $orderdate_now[2];
-
-    $orderdate_request = explode('-', $date);
-        $year_request  = $orderdate_request[0];
-        $month_request = $orderdate_request[1];
-        $day_request   = $orderdate_request[2] - 1;
+     // date comparison variables
+     $date_now = date("Y-m-d");
+     $date_request = date('Y-m-d', strtotime('-1 days', strtotime($item['date'])));  
         
     }
 ?>
@@ -1397,7 +1388,7 @@ foreach($data as $item) {
                 </div>
             <div>
 
-        <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+        <?php if ($date_now < $date_request) { // Wel aanpassen ?> 
             <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
         <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
             <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
