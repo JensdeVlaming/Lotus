@@ -6,6 +6,7 @@ class CoordController extends Controller
         $this->coordModel = $this->model("coord");
         $this->memberModel = $this->model("member");
         $this->userModel = $this->model("user");
+        $this->mailModel = $this->model("mail");
         $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
 
@@ -34,6 +35,7 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->declineAssignment($id);
+        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
 
         Application::$app->controller->redirect("/overzicht-coordinator");
     }
@@ -43,6 +45,8 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->AssigmentInProgress($id);
+        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetailsAcceptDeny($id));
+
         Application::$app->controller->redirect("/overzicht");
 
     }
