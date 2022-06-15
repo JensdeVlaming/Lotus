@@ -22,7 +22,7 @@ class MemberController extends Controller
         $result = $this->memberModel->participateAssignment($id);
 
         if ($result) {
-            echo "Succesvol aangemeld voor opdracht " . $id;
+            $this->redirect("/opdrachten");
         } else {
             echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht " . $id;
         }
@@ -51,8 +51,15 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        self::view("/member/requestDetails", $result);
-       
+        self::view("/member/requestDetails", $result);   
+    }
+
+    public function getMemberProfile() {
+        $email = Application::$app->session->get("user");
+
+        $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
+        
+        self::view("/member/memberDetails", $result );
     }
 
     public function getRequestDetailsAssigned($data) {

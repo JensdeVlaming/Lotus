@@ -77,8 +77,19 @@ class ClientModel
 
         $this->db->bind(":id", $id);
         $this->db->execute();
+    }
 
 
        
+    public function getProfile($email)
+    {
+
+        $this->db->query("SELECT * FROM user                
+                        WHERE email = :email;");
+
+        $this->db->bind(":email", $email);
+
+        $results = $this->db->resultSet();
+        return $results;
     }
 }

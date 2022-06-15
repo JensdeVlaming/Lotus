@@ -7,13 +7,14 @@ class Database {
     private $dbUser = DB_USER;
     private $dbPass = DB_PASS;
     private $dbName = DB_NAME;
+    private $dbPort = DB_PORT;
 
     private $statement;
     private $dbHandler;
     private $error;
 
     public function __construct() {
-        $conn = "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName;
+        $conn = "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName . ";port=" . $this->dbPort;
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

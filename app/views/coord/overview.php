@@ -35,7 +35,7 @@
                                 </div>
                                 <?php if ($item["approved"] == 0 || $item["approved"] == 5) { ?>
                                 <div class="row g-0">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                    <div class="btn-group" style="z-index: 10" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
                                         <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
                                     </div>
@@ -49,7 +49,7 @@
                         <li class="customCardList list-group-item"><strong>Speellocatie: </strong> <?php echo $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pCity"] ?></li>
                         <li class="customCardList list-group-item"><strong>Grimeerlocatie: </strong> <?php echo $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gCity"] ?></li>
                     </ul>
-                    <a class="stretched-link" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
+                    <a class="stretched-link" style="z-index: 9" style="z-index: 0" href="/opdracht/<?php echo $item["requestId"] ?>/details"></a>
                 </div>
 
                 <!-- Modal -->
