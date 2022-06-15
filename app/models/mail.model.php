@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 class MailModel
 {
 
-    public function mail()
+    public function confirmationEmail()
     {
 
         $mail = new PHPMailer;
