@@ -286,9 +286,7 @@ class MemberModel
 
     public function getAllOpenMembersByRequestId($id) {
 
-        $this->db->query("SELECT * FROM user WHERE email IN (SELECT email FROM solicit WHERE solicit.requestId != :id)
-                            UNION
-                            SELECT * FROM user WHERE email IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned NOT IN (0, 1));");
+        $this->db->query("SELECT * FROM user WHERE email NOT IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned IN (0,1)) AND user.roles = 1 OR user.roles = 4;");
 
         $this->db->bind(":id", $id);
         
