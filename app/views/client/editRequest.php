@@ -158,7 +158,7 @@ foreach($data as $item) {
                     "
                 >
                     <span class="formSectionTitle">
-                        Aanvraag Informatie:
+                        Wijzigen Aanvraag:
                     </span>
                 </label>
                 <div class="form-control">
