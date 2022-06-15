@@ -108,4 +108,98 @@ class RequestModel
 
         $this->db->execute();
     }
+
+    public function editPlayGroundRequest($playGroundId,$province, $city, $street, $houseNumber, $postalCode)
+    {
+
+        $this->db->query("UPDATE playGround SET pProvince = :province, pCity = :city, pStreet = :street, pHouseNumber = :houseNumber, pPostalCode = :postalCode WHERE playGroundId = :id;");
+
+        $this->db->bind(':province', $province);
+        $this->db->bind(':city', $city);
+        $this->db->bind(':street', $street);
+        $this->db->bind(':houseNumber', $houseNumber);
+        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':id', $playGroundId);
+
+        $this->db->execute();
+    }
+
+    public function editGrimeLocationRequest($grimeLocationId,$province, $city, $street, $houseNumber, $postalCode)
+    {
+
+        $this->db->query("UPDATE grimeLocation SET gProvince = :province, gCity = :city, gStreet = :street, gHouseNumber = :houseNumber, gPostalCode = :postalCode WHERE grimeLocationId = :id;");
+
+        $this->db->bind(':province', $province);
+        $this->db->bind(':city', $city);
+        $this->db->bind(':street', $street);
+        $this->db->bind(':houseNumber', $houseNumber);
+        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':id', $grimeLocationId);
+
+        $this->db->execute();
+    }
+
+    public function editBusinessAddressRequest($companyId,$companyName, $province, $city, $street, $houseNumber, $postalCode)
+    {
+
+        $this->db->query("UPDATE company SET companyName = :companyName, cProvince = :province, cCity = :city, cStreet = :street, cHouseNumber = :houseNumber, cPostalCode = :postalCode WHERE companyId = :id;");
+
+        $this->db->bind(':companyName', $companyName);
+        $this->db->bind(':province', $province);
+        $this->db->bind(':city', $city);
+        $this->db->bind(':street', $street);
+        $this->db->bind(':houseNumber', $houseNumber);
+        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':id', $companyId);
+
+        $this->db->execute();
+    }
+
+    public function editBillingAddressRequest($billingAddressId,$province, $city, $street, $houseNumber, $postalCode)
+    {
+
+        $this->db->query("UPDATE billingAddress SET bProvince = :province, bCity = :city, bStreet = :street, bHouseNumber = :houseNumber, bPostalCode = :postalCode WHERE billingAddressId = :id;");
+
+        $this->db->bind(':province', $province);
+        $this->db->bind(':city', $city);
+        $this->db->bind(':street', $street);
+        $this->db->bind(':houseNumber', $houseNumber);
+        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':id', $billingAddressId);
+
+        $this->db->execute();
+    }
+
+    public function editContactRequest($contactId,$firstName, $lastName, $email, $phoneNumber)
+    {
+        $this->db->query("UPDATE contact SET firstName = :firstName, lastName = :lastName, email = :email, phoneNumber = :phoneNumber WHERE contactId = :id;");
+
+        $this->db->bind(':firstName', $firstName);
+        $this->db->bind(':lastName', $lastName);
+        $this->db->bind(':email', $email);
+        $this->db->bind(':phoneNumber', $phoneNumber);
+        $this->db->bind(':id', $contactId);
+
+        $this->db->execute();
+    }
+
+    public function editRequest($requestId,$description, $comments, $date, $time, $casualties)
+    {
+        $client = Application::$app->session->get("user");
+        $this->db->query("UPDATE request SET description = :description ,comments = :comments ,date = :date ,time = :time ,casualties = :casualties WHERE requestId = :id;");
+
+        $this->db->bind(':description', $description);
+        $this->db->bind(':comments', $comments);
+        $this->db->bind(':date', $date);
+        $this->db->bind(':time', $time);
+        $this->db->bind(':casualties', $casualties);
+        $this->db->bind(':id', $requestId);
+
+
+        $this->db->execute();
+    }
+
+
+
+
 }

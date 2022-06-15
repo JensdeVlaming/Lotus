@@ -30,6 +30,9 @@ $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 $app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
 $app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
+$app->router->get("/opdracht/:id/wijzigen", [ClientController::class, "getRequestDetailsForEdit"]);
+
+
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAssignment"]);
@@ -49,6 +52,7 @@ $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelAs
 // POST Requests
 $app->router->post("/inloggen", [AuthController::class, "login"]);
 $app->router->post("/opdracht/aanvragen", [RequestController::class, "addRequest"]);
+$app->router->post("/opdracht/:id/wijzigen", [RequestController::class, "editRequest"]);
 $app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 // Exceptions
