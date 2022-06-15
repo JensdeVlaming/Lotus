@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 class MailModel
 {
 
-    public function confirmationEmail()
+    public function confirmationEmail($description, $date, $pCity, $pStreet, $pHouse, )
     {
 
         $mail = new PHPMailer;
@@ -39,9 +39,17 @@ class MailModel
         // Mail subject 
         $mail->Subject = 'Bevestiging ingediende opdracht';
 
+        //  Set up for location format
+
+        $playGround = $pStreet . ' ' . $pHouse . ', ' . $pCity;
+
         // Mail body content 
         $bodyContent = '<h1>Bedankt voor het indienen van een opdracht bij LOTUS!</h1>';
-        $bodyContent .= '<p>U ontvangt deze email ter bevestiging van uw indiening.</b></p>';
+        $bodyContent .= '<p>U ontvangt deze email ter bevestiging van uw indiening. Hieronder vind u een overzicht met de details van uw opdracht.</b></b></p>';
+        $bodyContent .= '<h3>' . $description . ' </h3>';
+        $bodyContent .= '<p>Datum: ' . $date . ' </p>';
+        $bodyContent .= '<p>Locatie: ' . $playGround . ' </p>';
+
         $mail->Body    = $bodyContent;
 
         // Send email 
