@@ -16,7 +16,7 @@ class AssigmentDetailsHandler extends Controller
         if (strtolower($activeRole) == "lid") {
             $this->memberController->getRequestDetails($data);
         } else if (strtolower($activeRole) == "coordinator") {
-            $this->coordController->getRequestDetailsAcceptDeny($data);
+            $this->coordController->getRequestDetails($data);
         } else if (strtolower($activeRole) == "opdrachtgever") {
             $this->clientController->getRequestDetails($data);
         } else {

@@ -47,12 +47,20 @@ class CoordController extends Controller
 
     }
 
-    public function getRequestDetailsAcceptDeny($data) {
+    public function getRequestDetails($data) {
         $id = $data["params"]["id"];
 
-        $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
+        $result =  $this->coordModel->getRequestDetails($id);
+        $openMembers = $this->memberModel->getAllOpenMembersByRequestId($id);
+        $assignedMembers = $this->memberModel->getAllAssignedMembersByRequestId($id);
 
-        self::view("/coord/requestDetails", $result);
+        $result = Array(
+            "details" => $result,
+            "openMembers" => $openMembers,
+            "assignedMembers" => $assignedMembers
+        );
+
+        $this->view("/coord/requestDetails", $result);
       
     }
 

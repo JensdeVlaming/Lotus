@@ -31,7 +31,7 @@
             $result = $this->db->resultSet();
         }
 
-        public function getRequestDetailsAcceptDeny($id){
+        public function getRequestDetails($id){
             $this->db->query("SELECT * FROM request
                                 LEFT JOIN user ON user.email = request.clientEmail 
                                 LEFT JOIN playground ON request.playGroundId = playground.playGroundId 

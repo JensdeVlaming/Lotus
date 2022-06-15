@@ -9,6 +9,34 @@ class MemberModel
         $this->db = new Database;
     }
 
+    public function getAllMembers()
+    {
+        $id = 1;
+
+        $this->db->query("SELECT * FROM user WHERE roles = :id");
+        $this->db->bind(":id", $id);
+
+        $result = $this->db->resultSet();
+
+        foreach ($result as $key => $member) {
+            $result[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
+        }
+
+        return $result;
+    }
+
+    public function getMemberDetails($email)
+    {
+        $this->db->query("SELECT * FROM user WHERE email = :email;");
+        $this->db->bind(":email", $email);
+
+
+        $result = $this->db->single();
+
+
+        return $result;
+    }
+
     public function getOpenAssignments()
     {
         $email = Application::$app->session->get("user");
@@ -50,6 +78,20 @@ class MemberModel
         return $result;
     }
 
+    public function unsuscribeAssignment($id) // Juliet, weet jij waarvoor deze functie dient? Zie ook regel 275.
+    {
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":id", $id);
+
+        $result = $this->db->execute();
+
+        return $result;
+    }
+
     public function getRegisteredAssignments()
     {
         $email = Application::$app->session->get("user");
@@ -80,23 +122,6 @@ class MemberModel
 
         $this->db->bind(":id", $id);
         $result = $this->db->resultSet();
-
-        return $result;
-    }
-
-
-    public function getAllMembers()
-    {
-        $id = 1;
-
-        $this->db->query("SELECT * FROM user WHERE roles = :id");
-        $this->db->bind(":id", $id);
-
-        $result = $this->db->resultSet();
-
-        foreach ($result as $key => $member) {
-            $result[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
-        }
 
         return $result;
     }
@@ -150,33 +175,6 @@ class MemberModel
         return $result["UpcommingAssignments"];
     }
 
-    public function unsuscribeAssignment($id)
-    {
-        $email = Application::$app->session->get("user");
-
-        $this->db->query("INSERT INTO solicit (email, requestId) VALUES (:email, :id);");
-
-        $this->db->bind(":email", $email);
-        $this->db->bind(":id", $id);
-
-        $result = $this->db->execute();
-
-        return $result;
-    }
-
-
-    public function getMemberDetails($email)
-    {
-        $this->db->query("SELECT * FROM user WHERE email = :email;");
-        $this->db->bind(":email", $email);
-
-
-        $result = $this->db->single();
-
-
-        return $result;
-    }
-
     public function getMemberRequestsByEmail($email)
     {
         $this->db->query("SELECT * FROM solicit 
@@ -188,8 +186,6 @@ class MemberModel
         $results = $this->db->resultSet();
         return $results;
     }
-
-
 
     // memberdetail page
     public function getMemberDetailsStatisticsAndHistory($email)
@@ -276,12 +272,6 @@ class MemberModel
         return [];
     }
 
-
-
-
-
-
-
     public function deregister($requestId, $reasonFor = null)
     {
         $email = Application::$app->session->get("user");
@@ -292,5 +282,37 @@ class MemberModel
         $this->db->bind(":email", $email);
 
         $this->db->execute();
+    }
+
+    public function getAllOpenMembersByRequestId($id) {
+
+        $this->db->query("SELECT * FROM user WHERE email IN (SELECT email FROM solicit WHERE solicit.requestId != :id)
+                            UNION
+                            SELECT * FROM user WHERE email IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned NOT IN (0, 1));");
+
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
+
+        return [];
+    }
+
+    public function getAllAssignedMembersByRequestId($id) {
+
+        $this->db->query("SELECT * FROM user LEFT JOIN solicit ON user.email = solicit.email WHERE solicit.requestId = :id AND solicit.assigned = 1;");
+
+        $this->db->bind(":id", $id);
+        
+        $result = $this->db->resultset();
+
+        if ($result) {
+            return $result;
+        }
+
+        return [];
     }
 }
