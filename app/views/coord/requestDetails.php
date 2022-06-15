@@ -211,7 +211,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                    <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="btn btn-primary" >Ga verder</button></a>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/behandelen"><button type="button" class="btn btn-primary" >Ga verder</button></a>
                 </div>
                 </div>
             </div>
