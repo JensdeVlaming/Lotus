@@ -174,102 +174,102 @@ if (!empty($data)) {
         </div>
 
         <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
-        <!-- Overview registered members -->
-        <div class="accordion-item m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
-            <h2 class="accordion-header" id="header-1">
-                <button class="accordion-button bg-white formSectionTitle fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
-            </h2>
+            <!-- Overview registered members -->
+            <div class="accordion-item mt-2 mb-2 border-0">
+                <h2 class="accordion-header" id="header-1">
+                    <button class="accordion-button bg-white formSectionTitle fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
+                </h2>
+            </div>
+
+            <div id="registeredMembers" class="accordion-collapse collapse m-2 table-responsive" aria-labelledby="header-1">
+
+                <table class="table table-xxl table-hover w-auto ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Voornaam</th>
+                            <th scope="col">Achteraam</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefoonnummer</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+
+                    <?php foreach ($data as $item) { ?>
+                        <tr>
+                            <td class="text-left" scope="row"><?php echo $item["uFirstName"]; ?></td>
+                            <td class="text-left"><?php echo $item["uLastName"]; ?></td>
+                            <td class="text-left"><?php echo $item["uEmail"]; ?></td>
+                            <td class="text-left"><?php echo $item["uPhoneNumber"]; ?></td>
+                            <td class="text-left">
+                                <?php
+                                if ($item["assigned"] == 0) {
+                                    echo 'Aanmelding ontvangen';
+                                } else if ($item["assigned"] == 1) {
+                                    echo 'Toegewezen';
+                                } else if ($item["assigned"] == 2) {
+                                    echo 'Niet toegewezen';
+                                } else if ($item["assigned"] == 3) {
+                                    echo 'Afgemeld';
+                                } ?></td>
+                        </tr>
+                    <?php } ?>
+
+                </table>
+            </div>
         </div>
 
-        <div id="registeredMembers" class="accordion-collapse collapse m-2" aria-labelledby="header-1">
 
-            <table class="table table-sm table-hover w-auto ">
-                <thead>
-                    <tr>
-                        <th scope="col">Voornaam</th>
-                        <th scope="col">Achteraam</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Telefoonnummer</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-
-                <?php foreach ($data as $item) { ?>
-                    <tr>
-                        <td class="text-left" scope="row"><?php echo $item["uFirstName"]; ?></td>
-                        <td class="text-left"><?php echo $item["uLastName"]; ?></td>
-                        <td class="text-left"><?php echo $item["uEmail"]; ?></td>
-                        <td class="text-left"><?php echo $item["uPhoneNumber"]; ?></td>
-                        <td class="text-left">
-                            <?php
-                            if ($item["assigned"] == 0) {
-                                echo 'Aanmelding ontvangen';
-                            } else if ($item["assigned"] == 1) {
-                                echo 'Toegewezen';
-                            } else if ($item["assigned"] == 2) {
-                                echo 'Niet toegewezen';
-                            } else if ($item["assigned"] == 3) {
-                                echo 'Afgemeld';
-                            } ?></td>
-                    </tr>
-                <?php } ?>
-
-            </table>
         </div>
 
+    <?php } else {
+    ?>
+        <div class="container">
 
+            <div class="row">
+                <div class="col">
+                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                        <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </div>
+    <?php } ?>
 
-<?php } else {
-?>
-    <div class="container">
-
-        <div class="row">
-            <div class="col">
-                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+    <!-- Modal accept -->
+    <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptModalLabel">Weet u het zeker?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Weet je zeker dat je opdracht wilt accepteren?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="btn btn-primary">Ga verder</button></a>
                 </div>
             </div>
         </div>
     </div>
 
-<?php } ?>
-
-<!-- Modal accept -->
-<div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="acceptModalLabel">Weet u het zeker?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Weet je zeker dat je opdracht wilt accepteren?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                <a href="/opdracht/<?php echo $item["requestId"] ?>/accepteren"><button type="button" class="btn btn-primary">Ga verder</button></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal deny -->
-<div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="denyModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="denyModalLabel">Weet u het zeker?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Weet je zeker dat je deze opdracht wilt afwijzen? Deze actie kan niet ongedaan worden gemaakt.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                <a href="/opdracht/<?php echo $item["requestId"] ?>/afwijzen"><button type="button" class="btn btn-primary">Ga verder</button></a>
+    <!-- Modal deny -->
+    <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="denyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="denyModalLabel">Weet u het zeker?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Weet je zeker dat je deze opdracht wilt afwijzen? Deze actie kan niet ongedaan worden gemaakt.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afwijzen"><button type="button" class="btn btn-primary">Ga verder</button></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
