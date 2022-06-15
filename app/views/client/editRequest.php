@@ -1397,20 +1397,11 @@ foreach($data as $item) {
                 </div>
             <div>
 
-    <?php 
-    if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) {
-    // Wel aanpassen
-        ?> <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
-    <?php
-    }else{
-        // Niet aanpassen, contact opnemenen met coordinator
-        ?>
-            <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">
-            Opdracht aanpassen
-            </button>
-        <?php
-    }
-    ?>
+        <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+            <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
+        <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
+            <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
+        <?php } ?>
                
             </div>
         </div>

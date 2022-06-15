@@ -15,6 +15,19 @@
         } else if ($item["approved"] == 5) {
             $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Aangepast</span>';
         }
+
+        // date comparison
+        $date_now = date("Y-m-d"); // this format is string comparable
+
+        $orderdate_now = explode('-', date("Y-m-d"));
+            $year_now  = $orderdate_now[0];
+            $month_now = $orderdate_now[1];
+            $day_now   = $orderdate_now[2];
+
+        $orderdate_request = explode('-', $item['date']);
+            $year_request  = $orderdate_request[0];
+            $month_request = $orderdate_request[1];
+            $day_request   = $orderdate_request[2] - 1;
         
     ?>
 
@@ -36,8 +49,14 @@
                         <div class="col-12">
                             <div class="row g-0">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-warning text-white col-6" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
-                                    <button type="button" class="btn btn-danger col-6" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+
+                                <?php if ($day_request > $day_now && $month_request >= $month_now && $year_request >= $year_now) { // Wel aanpassen ?> 
+                                   <a  class="btn btn-warning text-white col-6" style="z-index: 10" href="/opdracht/<?php echo $item["requestId"];?>/wijzigen">Wijzigen</a>
+
+                                <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
+                                    <button type="button" class="btn btn-warning text-white col-6" style="z-index: 10" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
+                                <?php } ?>
+                                    <button type="button" class="btn btn-danger col-6" style="z-index: 10" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
                                 </div>
                             </div>
                         </div>
@@ -72,10 +91,10 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="updateRequestLabel">Weet u het zeker?</h5>
+                            <h5 class="modal-title" id="updateRequestLabel">Contact opnemen!</h5>
                         </div>
                         <div class="modal-body">
-                            Deze actie is nog NIET ondersteunt. Wilt u deze actie afbreken?
+                            Een opdracht wijzigen moet minimaal 2 dagen van tevoren! Neem contact op met de coordinator!
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Afbreken</button>
