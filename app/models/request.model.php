@@ -127,7 +127,7 @@ class RequestModel
     public function editGrimeLocationRequest($grimeLocationId,$province, $city, $street, $houseNumber, $postalCode)
     {
 
-        $this->db->query("UPDATE grimeLocation SET gProvince = :province, gCity = :city, gStreet = :street, gHouseNumber = :houseNumber, gPostalCode = :postalCode WHERE grimeLocationId = :id;");
+        $this->db->query("UPDATE grimelocation SET gProvince = :province, gCity = :city, gStreet = :street, gHouseNumber = :houseNumber, gPostalCode = :postalCode WHERE grimeLocationId = :id;");
 
         $this->db->bind(':province', $province);
         $this->db->bind(':city', $city);
@@ -186,7 +186,7 @@ class RequestModel
     public function editRequest($requestId,$description, $comments, $date, $time, $casualties)
     {
         $client = Application::$app->session->get("user");
-        $this->db->query("UPDATE request SET description = :description ,comments = :comments ,date = :date ,time = :time ,casualties = :casualties WHERE requestId = :id;");
+        $this->db->query("UPDATE request SET description = :description ,comments = :comments ,date = :date ,time = :time ,casualties = :casualties, approved = 5 WHERE requestId = :id;");
 
         $this->db->bind(':description', $description);
         $this->db->bind(':comments', $comments);

@@ -4,7 +4,7 @@ $activeRole = Application::$app->session->get("activeRole");
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow mb-3 rounded-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/overzicht">
             <img src="/src/img/logo.svg" alt="" width="100" height="100" class="d-inline-block align-text-bottom">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

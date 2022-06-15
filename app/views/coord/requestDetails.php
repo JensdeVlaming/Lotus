@@ -11,6 +11,8 @@
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
             } else if ($item["approved"] == 4) {
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
+            } else if ($item["approved"] == 5) {
+                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Aangepast</span>';
             }
     ?>
         <div class="container">
@@ -27,7 +29,7 @@
                         <p><?php echo $item["description"];?></p>
                         <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
 
-                        <?php if ($item["approved"] == 0) { ?>
+                        <?php if ($item["approved"] == 0  || $item["approved"] == 5) { ?>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
                                 <?php } ?>
