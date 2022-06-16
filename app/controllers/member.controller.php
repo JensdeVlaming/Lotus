@@ -80,7 +80,7 @@ class MemberController extends Controller
         // change pwd
         if (!empty($payload['oldPdw'])) {$this->editPwd($payload);}
         
-        $this->redirect("/profiel");
+        // $this->redirect("/profiel");
     }
 
     public function editProfile($payload) {

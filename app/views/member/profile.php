@@ -9,7 +9,8 @@
         $gender = "Other";
     }
     ?>
-    
+
+                     
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -226,8 +227,15 @@
                     <div class="modal-body">
                            
                         <form method="POST" class=" align-items-center justify-content-center">
-
+                                    
                         <div class="row">
+                        <?php if (isset($data["error"])) { ?>
+                                <div class="col-12">
+                                    <div class="alert alert-danger" id="alert-login" role="alert">
+                                        <span class="text-center"><?php echo $data["error"]; ?></span>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         <div class="col-12">
                                 <input type="text" class="form-control d-none request-input m-1 w-75" id="email" name="email" value="<?php echo $data["email"];?>">                              
                             </div>
@@ -246,7 +254,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary m-1 mt-3" data-bs-dismiss="modal">Wijzig wachtwoord</button>
                                 
-
+                            
 
                         </form>
                     </div>
