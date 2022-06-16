@@ -26,7 +26,7 @@ $activeRole = Application::$app->session->get("activeRole");
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
                     </li>
                     <?php
-                    if ($roles > 1) {
+                    if (count($roles) > 1) {
                     ?>
                     <form action="/role/change" method="POST">
                         <div class="dropdown">
@@ -64,7 +64,7 @@ $activeRole = Application::$app->session->get("activeRole");
                         <a class="nav-link active" href="/uitloggen" tabindex="-1" aria-disabled="true">Uitloggen</a>
                     </li>
                     <?php
-                    if ($roles > 1) {
+                    if (count($roles) > 1) {
                     ?>
                     <form action="/role/change" method="POST">
                         <div class="dropdown">
@@ -91,9 +91,6 @@ $activeRole = Application::$app->session->get("activeRole");
                 <?php } elseif (strtolower($activeRole) == "opdrachtgever") { ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/overzicht">Overzicht</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/opdrachten">Aangevraagde opdrachten</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/opdracht/aanvragen" tabindex="-1" aria-disabled="true">Opdracht indienen</a>

@@ -93,7 +93,7 @@
                                             </tr>
                                         </thead>
                                             <?php foreach($data["solicitAssignmentList"] as $request) { ?>
-                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-inschrijvingen'">
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details'">
                                                     <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
                                                     <td>:</td>
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
@@ -169,7 +169,7 @@
                                             </tr>
                                         </thead>
                                             <?php foreach($data["completedAssignmentList"] as $request) { ?>
-                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details'">
                                                     <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
                                                     <td>:</td>
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>

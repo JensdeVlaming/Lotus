@@ -28,6 +28,24 @@ class MemberModel extends Model
         return $result;
     }
 
+    public function getOpenRequests($email)
+    {
+        $this->db->query("SELECT * FROM request 
+                            LEFT JOIN playground ON request.playGroundId = playground.playGroundId 
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId 
+                            LEFT JOIN company ON request.companyId = company.companyId 
+                            LEFT JOIN contact ON request.contactId = contact.contactId 
+                            LEFT JOIN billingaddress ON request.billingAddressId = billingaddress.billingAddressId
+                            WHERE requestId NOT IN (SELECT requestId FROM solicit WHERE assigned IN (0,1,2,4) AND email = :email);");
+
+        $this->db->bind(":email", $email);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+
     public function getCountOfParticipationsByMember($email)
     {
         $this->db->query("SELECT COUNT(*) as participations FROM solicit WHERE email = :email AND assigned IN (0,1);");
@@ -38,43 +56,30 @@ class MemberModel extends Model
         return $result["participations"];
     }
 
-    public function getOpenAssignments()
+    public function participateAssignment($id, $email)
     {
-        $email = Application::$app->session->get("user");
+        $this->db->query("SELECT * FROM solicit WHERE requestId = :id AND email = :email;");
 
-        $this->db->query("SELECT DISTINCT * FROM request 
-                            LEFT JOIN company ON request.companyId = company.companyId
-                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
-                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
-                            LEFT JOIN contact ON request.contactId = contact.contactId
-                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
-                            WHERE request.approved = 1;");
-
-        // $this->db->bind(":email", $email);
-
-
-        $result = $this->db->resultSet();
-
-        // $temp_array = [];
-        // $key = "requestId";
-        // foreach ($result as &$v) {
-        //     if (!isset($temp_array[$v[$key]]))
-        //     $temp_array[$v[$key]] =& $v;
-        // }
-        // $result = array_values($temp_array);
-        return $result;
-    }
-
-    public function participateAssignment($id)
-    {
-        $email = Application::$app->session->get("user");
-
-        $this->db->query("INSERT INTO solicit (email, requestId, assigned) VALUES (:email, :id, 0);");
-
-        $this->db->bind(":email", $email);
         $this->db->bind(":id", $id);
+        $this->db->bind(":email", $email);
 
-        $result = $this->db->execute();
+        $check = $this->db->resultSet();
+
+        if (count($check) > 0) {
+            $this->db->query("UPDATE solicit SET assigned = 0 WHERE email = :email AND requestId = :id;");
+    
+            $this->db->bind(":email", $email);
+            $this->db->bind(":id", $id);
+    
+            $result = $this->db->execute();
+        } else {
+            $this->db->query("INSERT INTO solicit (email, requestId, assigned) VALUES (:email, :id, 0);");
+    
+            $this->db->bind(":email", $email);
+            $this->db->bind(":id", $id);
+    
+            $result = $this->db->execute();
+        }
 
         return $result;
     }
