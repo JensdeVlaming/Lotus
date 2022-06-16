@@ -130,4 +130,60 @@ class MailModel
         // Send email 
         $this->mail->send();
     }
+
+    public function memberAssignedToRequest($results)
+    {
+
+        foreach ($results as $item) {
+            $emailAddress = $item['email'];
+            $description = $item['description'];
+        }
+
+        // Add a recipient 
+        $this->mail->addAddress($emailAddress); 
+
+        // Set email format to HTML 
+        $this->mail->isHTML(true);
+
+        // Mail subject 
+        $this->mail->Subject = 'U bent geselecteerd voor een opdracht';
+
+
+        // Mail body content 
+        $bodyContent = '<h1>De coordinator heeft u uitgekozen voor het uitvoeren van de opdracht: ' . $description . '</h1>';
+        $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
+
+        $this->mail->Body    = $bodyContent;
+
+        // Send email 
+        $this->mail->send();
+    }
+
+    public function clientRequestAssigned($results)
+    {
+
+        foreach ($results as $item) {
+            $emailAddress = $item['clientEmail'];
+            $description = $item['description'];
+        }
+
+        // Add a recipient 
+        $this->mail->addAddress($emailAddress); 
+
+        // Set email format to HTML 
+        $this->mail->isHTML(true);
+
+        // Mail subject 
+        $this->mail->Subject = 'Uw opdracht is verdeeld onder de leden';
+
+
+        // Mail body content 
+        $bodyContent = '<h1>De coordinator heeft uw opdracht: ' . $description . ' verdeeld.</h1>';
+        $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
+
+        $this->mail->Body    = $bodyContent;
+
+        // Send email 
+        $this->mail->send();
+    }
 }
