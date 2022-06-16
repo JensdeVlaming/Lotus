@@ -37,7 +37,7 @@ class CoordController extends Controller
         $this->coordModel->declineAssignment($id);
         $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
 
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        Application::$app->controller->redirect("/overzicht");
     }
 
     public function acceptAssignment($data)

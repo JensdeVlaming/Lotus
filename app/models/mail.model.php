@@ -82,8 +82,10 @@ class MailModel
         $title = null;
         if ($type === 0) {
             $title = "Uw opdracht is helaas afgewezen!";
+            $subtitle = "De coordinator heeft uw opdracht afgekeurd. Bij eventuele vragen over waarom uw opdracht afgewezen is, kunt u contact opnemen met de coordinator.";
         } else {
             $title = "Uw opdracht is geaccepteerd!";
+            $subtitle = "De coordinator heeft uw opdracht goedgekeurd. Leden van LOTUS kunnen zich vanaf nu aanmelden voor uw opdracht. U zal op de hoogte worden gehouden van eventuele verdere ontwikkelingen rondom uw opdracht.";
         }
 
         // Mail subject 
@@ -93,10 +95,7 @@ class MailModel
 
         // Mail body content 
         $bodyContent = '<h1> ' . $title . '</h1>';
-        $bodyContent .= '<p>U ontvangt deze email ter bevestiging van uw indiening. Hieronder vind u een overzicht met de details van uw opdracht.</b></b></p>';
-        $bodyContent .= '<h3></h3>';
-        $bodyContent .= '<p>Datum:</p>';
-        $bodyContent .= '<p>Locatie:</p>';
+        $bodyContent .= '<p> '. $subtitle . '</p>';
 
         $this->mail->Body    = $bodyContent;
 
