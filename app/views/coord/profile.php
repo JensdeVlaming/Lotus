@@ -55,6 +55,10 @@
                                     </tr>
                                 
                             </table>
+
+                            <hr class="dropdown-divider">
+                            <button type="button" class="btn btn-warning text-white mb-3" data-bs-toggle="modal" data-bs-target="#profileModal">Profiel wijzigen</button>
+                            <button type="button" class="btn btn-warning text-white mb-3 " data-bs-toggle="modal" data-bs-target="#passwordModal">Wachtwoord wijzigen</button>
                     </div>
                    
                     <!-- Locatie -->
@@ -68,13 +72,7 @@
 
                 <div class="col">
                      <!-- Column 2 start -->
-                     <div class="container-sm m-1 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Profiel wijzigen</h2>
-                        <p><button type="button" class="btn btn-warning text-white" data-bs-toggle="" data-bs-target="">Profiel wijzigen</button> </p>
-                        <button type="button" class="btn btn-warning text-white mb-3 " data-bs-toggle="" data-bs-target="">Wachtwoord wijzigen</button>
-
-                    </div> 
-                   
+            
                                 <?php }} else {
                                             ?>
                                             <div class="container">

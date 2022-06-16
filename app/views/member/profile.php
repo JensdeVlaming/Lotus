@@ -1,3 +1,4 @@
+
 <?php 
     if (!empty($data)){
     if ($data["gender"] === "M") {
@@ -8,6 +9,7 @@
         $gender = "Other";
     }
     ?>
+    
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -173,7 +175,7 @@
                                             </tr>
                                         </thead>
                                             <?php foreach($data["completedAssignmentList"] as $request) { ?>
-                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'">
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details'">
                                                     <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
                                                     <td>:</td>
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
@@ -243,7 +245,9 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary m-1 mt-3" data-bs-dismiss="modal">Wijzig wachtwoord</button>
-                        <!-- <?php if (isset($data["error"])) { ?><div class="alert alert-danger" id="alert-password" role="alert"><span class="text-center"><?php echo $data["error"]; ?></span></div> <?php } ?> -->
+                                
+
+
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -270,40 +274,45 @@
                                 <input type="text" class="form-control request-input m-1 w-75" id="firstName" name="firstName" value="<?php echo $data["firstName"];?>"> 
                             </div>
                             <div class="col-12">
-                            <label for="postalCodeBillingAddress"class="mt-2 ms-2"><span class="formLabel">Achternaam:</span></label>
+                                <label for="postalCodeBillingAddress"class="mt-2 ms-2"><span class="formLabel">Achternaam:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="lastName" name="lastName" value="<?php echo $data["lastName"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editEmail"class="mt-2 ms-2"><span class="formLabel">Email:</span></label>
+                                <label for="editEmail"class="mt-2 ms-2"><span class="formLabel">Email:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="email" name="email"  value="<?php echo $data["email"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editPhoneNumber"class="mt-2 ms-2"><span class="formLabel">Telefoonnummer:</span></label>
+                                <label for="editPhoneNumber"class="mt-2 ms-2"><span class="formLabel">Telefoonnummer:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="phoneNumber" name="phoneNumber"  value="<?php echo $data["phoneNumber"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editCity"class="mt-2 ms-2"><span class="formLabel">Stad:</span></label>
+                                <label for="editCity"class="mt-2 ms-2"><span class="formLabel">Stad:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="city" name="city"  value="<?php echo $data["city"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editStreet"class="mt-2 ms-2"><span class="formLabel">Straatnaam:</span></label>
+                                <label for="editStreet"class="mt-2 ms-2"><span class="formLabel">Straatnaam:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="street" name="street"  value="<?php echo $data["street"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editPremise"class="mt-2 ms-2"><span class="formLabel">Huisnummer:</span></label>
+                                <label for="editPremise"class="mt-2 ms-2"><span class="formLabel">Huisnummer:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="premise" name="premise"  value="<?php echo $data["premise"];?>">
                             </div>
                             <div class="col-12">
-                            <label for="editPostalCode"class="mt-2 ms-2"><span class="formLabel">Postcode:</span></label>
+                                <label for="editPostalCode"class="mt-2 ms-2"><span class="formLabel">Postcode:</span></label>
                                 <input type="text" class="form-control request-input m-1 w-75" id="postalCode" name="postalCode"  value="<?php echo $data["postalCode"];?>">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control request-input m-1 w-75 d-none" id="checkEmail" name="checkEmail"  value="<?php echo $data["email"];?>">
+                                <label for="editPostalCode"class="mt-2 ms-2"><span class="formLabel">Geslacht:</span></label>
+                                <select class="form-select mt-2 ms-2 w-25" aria-label="Default select example" id="gender" name="gender">
+                                    <option selected></option>
+                                    <option value="1" <?php if ($data['gender'] == 'M') echo ' selected="selected"'; ?>>Man</option>
+                                    <option value="2"<?php if ($data['gender'] == 'V') echo ' selected="selected"'; ?>>Vrouw</option>
+                                    <option value="3"<?php if ($data['gender'] == 'O') echo ' selected="selected"'; ?>>Anders</option>
+                                </select>
+                                <input type="text" class="form-control request-input m-1 w-75 d-none" id="userEmail" name="userEmail"  value="<?php echo $data["email"];?>">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary m-1 mt-3" data-bs-dismiss="modal">Wijzig gegevens</button>
-                        <!-- <?php if (isset($data["error"])) { ?><div class="alert alert-danger" id="alert-profile" role="alert"><span class="text-center"><?php echo $data["error"]; ?></span></div> <?php } ?> -->
-
                         </form>
                     </div>
                     <div class="modal-footer">
