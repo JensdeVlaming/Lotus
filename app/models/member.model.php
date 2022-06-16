@@ -1,14 +1,7 @@
 <?php
 
-class MemberModel
+class MemberModel extends Model
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
-
     public function getOpenAssignments()
     {
         $email = Application::$app->session->get("user");

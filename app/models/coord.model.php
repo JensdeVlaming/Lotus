@@ -1,13 +1,6 @@
 <?php
-class CoordModel
+class CoordModel extends Model
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
-
     public function getAssignmentRequests()
     {
         $this->db->query("SELECT * FROM request 

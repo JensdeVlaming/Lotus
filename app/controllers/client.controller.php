@@ -6,18 +6,20 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->clientModel = $this->model("client");
-        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
+        $this->registerMiddleware(new AuthMiddleware(["getOverview", "cancelRequest", "getRequestDetails", "editRequest", "getClientProfile"]));
     }
 
     public function getOverview()
     {
         $email = Application::$app->session->get("user");
+
         $resultSet = $this->clientModel->getRequests($email);
 
         $this->view("/client/overview", $resultSet);
     }
 
-    public function cancelRequest($data) {
+    public function cancelRequest($data)
+    {
         $id = $data["params"]["id"];
 
         $this->clientModel->cancelRequest($id);
@@ -25,30 +27,30 @@ class ClientController extends Controller
         $this->redirect("/overzicht");
     }
 
-    public function getRequestDetails($data) {
+    public function getRequestDetails($data)
+    {
         $id = $data["params"]["id"];
 
         $result = $this->clientModel->requestDetails($id);
 
-        self::view("/client/requestDetails", $result);
-       
+        $this->view("/client/requestDetails", $result);
     }
 
-    public function getRequestDetailsForEdit($data) {
+    public function editRequest($data)
+    {
         $id = $data["params"]["id"];
 
-        $result = $this->clientModel->getRequestDetailsForEdit($id);
+        $result = $this->clientModel->requestDetails($id);
 
-        self::view("/client/editRequest", $result);
-       
+        $this->view("/client/editRequest", $result);
     }
 
-    
-    public function getClientProfile() {
+    public function getClientProfile()
+    {
         $email = Application::$app->session->get("user");
 
-
         $result = $this->clientModel->getProfile($email);
-        self::view("/client/profile", $result );
+
+        $this->view("/client/profile", $result);
     }
 }

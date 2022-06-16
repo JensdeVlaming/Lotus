@@ -30,7 +30,7 @@ $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 $app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
 $app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
-$app->router->get("/opdracht/:id/wijzigen", [ClientController::class, "getRequestDetailsForEdit"]);
+$app->router->get("/opdracht/:id/wijzigen", [ClientController::class, "editRequest"]);
 
 
 // Requests

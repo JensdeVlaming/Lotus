@@ -5,7 +5,7 @@ class MemberController extends Controller
     public function __construct()
     {
         $this->memberModel = $this->model("member");
-        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
+        $this->registerMiddleware(new AuthMiddleware(["getOverview", "participateAssignment", "getRegisteredOverview", "deregister", "getRequestDetails", "getMemberProfile", "getRequestDetailsAssigned"]));
     }
 
     public function getOverview()
@@ -32,7 +32,7 @@ class MemberController extends Controller
     {
         $resultSet = $this->memberModel->getRegisteredAssignments();
 
-        self::view("member/registeredAssignments", $resultSet);
+        $this->view("member/registeredAssignments", $resultSet);
     }
 
     public function deregister($payload)
@@ -40,7 +40,7 @@ class MemberController extends Controller
         $requestId = $payload["requestId"];
         $reasonFor = $payload["reasonFor"];
 
-        $resultSet = $this->memberModel->deregister($requestId, $reasonFor);
+        $this->memberModel->deregister($requestId, $reasonFor);
 
         $this->redirect("/opdrachten");
     }
@@ -51,25 +51,24 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        self::view("/member/requestDetails", $result);   
+        $this->view("/member/requestDetails", $result);
     }
 
-    public function getMemberProfile() {
+    public function getMemberProfile()
+    {
         $email = Application::$app->session->get("user");
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
-        
-        self::view("/member/profile", $result );
+
+        $this->view("/member/profile", $result);
     }
 
-    public function getRequestDetailsAssigned($data) {
+    public function getRequestDetailsAssigned($data)
+    {
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->requestDetails($id);
 
-        
-            self::view("/member/requestDetailsAssigned", $result);
-        
-
+        $this->view("/member/requestDetailsAssigned", $result);
     }
 }

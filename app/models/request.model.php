@@ -1,19 +1,12 @@
 <?php
 
-class RequestModel
+class RequestModel extends Model
 {
-
-    private $db;
     private $playGroundId;
     private $grimeLocationId;
     private $companyId;
     private $billingAddressId;
     private $contactId;
-
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
 
     public function addPlayGroundRequest($province, $city, $street, $houseNumber, $postalCode)
     {

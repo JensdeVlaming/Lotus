@@ -6,12 +6,11 @@ class CoordController extends Controller
         $this->coordModel = $this->model("coord");
         $this->memberModel = $this->model("member");
         $this->userModel = $this->model("user");
-        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
+        $this->registerMiddleware(new AuthMiddleware(["getOverview", "getRegistry", "declineAssignment", "acceptAssignment", "getRequestDetails", "getMemberAndRequestDetails", "getCoordProfile", "addMember", "createMember"]));
     }
 
     public function getOverview()
     {
-
         $resultSet = $this->coordModel->getAssignmentRequests();
 
         if (sizeOf($resultSet) > 0) {
@@ -23,7 +22,6 @@ class CoordController extends Controller
 
     public function getRegistry()
     {
-
         $result = $this->memberModel->getAllMembers();
 
         $this->view("coord/registry", $result);
@@ -35,7 +33,7 @@ class CoordController extends Controller
 
         $this->coordModel->declineAssignment($id);
 
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        Application::$app->controller->redirect("/overzicht");
     }
 
     public function acceptAssignment($data)
@@ -44,32 +42,33 @@ class CoordController extends Controller
 
         $this->coordModel->AssigmentInProgress($id);
         Application::$app->controller->redirect("/overzicht");
-
     }
 
-    public function getRequestDetailsAcceptDeny($data) {
+    public function getRequestDetails($data)
+    {
         $id = $data["params"]["id"];
 
-        $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
+        $result =  $this->coordModel->getRequestDetails($id);
 
-        self::view("/coord/requestDetails", $result);
-      
+        $this->view("/coord/requestDetails", $result);
     }
 
-    public function getMemberAndRequestDetails($data) {
+    public function getMemberAndRequestDetails($data)
+    {
         $email = $data["params"]["email"];
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
-        
-        self::view("/coord/memberDetails", $result );
+
+        $this->view("/coord/memberDetails", $result);
     }
 
-    public function getCoordProfile(){
+    public function getCoordProfile()
+    {
         $email = Application::$app->session->get("user");
 
         $result = $this->coordModel->getProfile($email);
-        
-        self::view("/coord/profile", $result );
+
+        $this->view("/coord/profile", $result);
     }
 
     public function addMember()

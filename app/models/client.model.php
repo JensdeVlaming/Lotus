@@ -1,15 +1,7 @@
 <?php
 
-class ClientModel
+class ClientModel extends Model
 {
-
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
-
     public function getRequests($email)
     {
         $this->db->query("SELECT * FROM request 
@@ -28,7 +20,6 @@ class ClientModel
 
     public function cancelRequest($id)
     {
-
         $this->db->query("UPDATE request SET approved = 4 WHERE requestId = :id;");
         $this->db->bind(":id", $id);
 
@@ -36,7 +27,7 @@ class ClientModel
 
         return $results;
     }
-    
+
     public function requestDetails($id)
     {
         $this->db->query("SELECT * FROM request 
@@ -53,25 +44,24 @@ class ClientModel
         return $result;
     }
 
-    public function getRequestDetailsForEdit($id) {
-        $this->db->query("SELECT * FROM request 
-                                    LEFT JOIN company ON request.companyId = company.companyId
-                                    LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
-                                    LEFT JOIN playground ON request.playgroundId = playground.playgroundId
-                                    LEFT JOIN contact ON request.contactId = contact.contactId
-                                    LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
-                                    WHERE request.requestId = :id;");
+    // public function getRequestDetailsForEdit($id) {
+    //     $this->db->query("SELECT * FROM request 
+    //                                 LEFT JOIN company ON request.companyId = company.companyId
+    //                                 LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+    //                                 LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+    //                                 LEFT JOIN contact ON request.contactId = contact.contactId
+    //                                 LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+    //                                 WHERE request.requestId = :id;");
 
-        $this->db->bind(":id", $id);
-        $result = $this->db->resultSet();
+    //     $this->db->bind(":id", $id);
+    //     $result = $this->db->resultSet();
 
-        return $result;
-       
-    }
+    //     return $result;
+    // }
 
-    public function editRequest($data,$id) {
-
-       $this->db->query("UPDATE request
+    public function editRequest($id)
+    {
+        $this->db->query("UPDATE request
                                 SET column1 = value1, column2 = value2, ...
                                 WHERE requestId = :id;");
 
@@ -80,7 +70,7 @@ class ClientModel
     }
 
 
-       
+
     public function getProfile($email)
     {
 
