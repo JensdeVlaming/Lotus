@@ -56,13 +56,12 @@ class CoordModel
 
     public function assignMemberToAssigment($id, $email)
     {
-        
         $this->db->query("SELECT * FROM solicit WHERE requestId = :id AND email = :email;");
 
         $this->db->bind(":id", $id);
         $this->db->bind(":email", $email);
 
-        $check = $this->db->single();
+        $check = $this->db->resultSet();
 
         if (count($check) > 0) {
             $this->db->query("UPDATE solicit SET assigned = 1 WHERE email = :email AND requestId = :id;");

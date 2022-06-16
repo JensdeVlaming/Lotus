@@ -254,6 +254,7 @@ if (!empty($data["details"])) {
                                                 <h5 class="card-title fw-bold"><?php echo $member["firstName"] . " " . $member["lastName"] ?></h5>
                                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["email"] ?></h6>
                                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["phoneNumber"] ?></h6>
+                                                <h6 class="card-subtitle mb-2 text-muted">Deelnemingen: <?php echo $member["participations"] ?></h6>
                                             </div>
                                             <div class="col-12">
                                                 <div class="float-end">

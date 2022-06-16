@@ -11,10 +11,8 @@ class MemberModel
 
     public function getAllMembers()
     {
-        $id = 1;
-
         $this->db->query("SELECT * FROM user WHERE roles = :id");
-        $this->db->bind(":id", $id);
+        $this->db->bind(":id", 1);
 
         $result = $this->db->resultSet();
 
@@ -37,6 +35,16 @@ class MemberModel
         return $result;
     }
 
+    public function getCountOfParticipationsByMember($email)
+    {
+        $this->db->query("SELECT COUNT(*) as participations FROM solicit WHERE email = :email AND assigned IN (0,1);");
+        $this->db->bind(":email", $email);
+
+        $result = $this->db->single();
+
+        return $result["participations"];
+    }
+
     public function getOpenAssignments()
     {
         $email = Application::$app->session->get("user");
@@ -53,7 +61,7 @@ class MemberModel
 
 
         $result = $this->db->resultSet();
-        
+
         // $temp_array = [];
         // $key = "requestId";
         // foreach ($result as &$v) {
@@ -284,12 +292,13 @@ class MemberModel
         $this->db->execute();
     }
 
-    public function getAllOpenMembersByRequestId($id) {
+    public function getAllOpenMembersByRequestId($id)
+    {
 
-        $this->db->query("SELECT * FROM user WHERE email NOT IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned IN (0,1)) AND user.roles = 1 OR user.roles = 4;");
+        $this->db->query("SELECT *, (SELECT COUNT(*) as Participations FROM solicit WHERE email = user.email AND assigned IN (0,1)) AS participations FROM user WHERE email NOT IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned IN (1)) AND user.roles = 1 OR user.roles = 4;");
 
         $this->db->bind(":id", $id);
-        
+
         $result = $this->db->resultset();
 
         if ($result) {
@@ -299,12 +308,13 @@ class MemberModel
         return [];
     }
 
-    public function getAllAssignedMembersByRequestId($id) {
+    public function getAllAssignedMembersByRequestId($id)
+    {
 
         $this->db->query("SELECT * FROM user LEFT JOIN solicit ON user.email = solicit.email WHERE solicit.requestId = :id AND solicit.assigned = 1;");
 
         $this->db->bind(":id", $id);
-        
+
         $result = $this->db->resultset();
 
         if ($result) {
