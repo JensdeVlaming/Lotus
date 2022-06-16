@@ -35,7 +35,7 @@ class CoordController extends Controller
 
         $this->coordModel->declineAssignment($id);
 
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        Application::$app->controller->redirect("/overzicht");
     }
 
     public function acceptAssignment($data)
