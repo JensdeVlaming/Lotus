@@ -102,4 +102,28 @@ class MailModel
         // Send email 
         $this->mail->send();
     }
+
+    public function participateAssignment()
+    {
+
+        // Add a recipient 
+        $emailAddress = Application::$app->session->get("user");
+        $this->mail->addAddress($emailAddress); 
+
+        // Set email format to HTML 
+        $this->mail->isHTML(true);
+
+        // Mail subject 
+        $this->mail->Subject = 'U heeft zich ingeschreven voor een opdracht';
+
+
+        // Mail body content 
+        $bodyContent = '<h1>Bedankt voor het inschrijven voor de opdracht ...</h1>';
+        $bodyContent .= '<p>De coordinator zal nu bepalen of u uitgekozen word om deze opdracht uit te voeren.</b></b></p>';
+
+        $this->mail->Body    = $bodyContent;
+
+        // Send email 
+        $this->mail->send();
+    }
 }

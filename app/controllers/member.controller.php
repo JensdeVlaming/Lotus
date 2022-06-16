@@ -5,6 +5,7 @@ class MemberController extends Controller
     public function __construct()
     {
         $this->memberModel = $this->model("member");
+        $this->mailModel = $this->model("mail");
         $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
     }
 
@@ -20,6 +21,7 @@ class MemberController extends Controller
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->participateAssignment($id);
+        $this->mailModel->participateAssignment();
 
         if ($result) {
             $this->redirect("/opdrachten");
