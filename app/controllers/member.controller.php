@@ -10,7 +10,9 @@ class MemberController extends Controller
 
     public function getOverview()
     {
-        $resultSet = $this->memberModel->getOpenAssignments();
+        $email = Application::$app->session->get("user");
+
+        $resultSet = $this->memberModel->getOpenRequests($email);
 
         $this->view("member/overview", $resultSet);
     }
@@ -18,13 +20,14 @@ class MemberController extends Controller
     public function participateAssignment($data)
     {
         $id = $data["params"]["id"];
+        $email = Application::$app->session->get("user");
 
-        $result = $this->memberModel->participateAssignment($id);
+        $result = $this->memberModel->participateAssignment($id, $email);
 
-        if ($result) {
+        if ($result == 1) {
             $this->redirect("/opdrachten");
         } else {
-            echo "Er is iets fout gegegaan tijdens het aanmelden voor opdracht " . $id;
+            $this->exceptionController->_500();
         }
     }
 
@@ -51,20 +54,18 @@ class MemberController extends Controller
 
         $result = $this->memberModel->requestDetails($id);
 
-        $this->view("/member/requestDetails", $result);
+        $this->view("/member/requestDetails", $result);   
     }
 
-    public function getMemberProfile()
-    {
+    public function getMemberProfile() {
         $email = Application::$app->session->get("user");
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
-
-        $this->view("/member/profile", $result);
+        
+        $this->view("/member/profile", $result );
     }
 
-    public function getRequestDetailsAssigned($data)
-    {
+    public function getRequestDetailsAssigned($data) {
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->requestDetails($id);

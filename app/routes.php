@@ -19,7 +19,7 @@ $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 $app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 
 // Coordinator opdracht in behandeling nemen
-$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssigmentInProgress"]);
+$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssignmentInProgress"]);
 // Coordinator opdracht afwijzen
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
 
