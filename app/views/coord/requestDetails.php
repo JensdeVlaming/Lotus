@@ -14,15 +14,12 @@
             } else if ($item["approved"] == 5) {
                 $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
             }
+        }
     ?>
         <div class="container">
-                
-                
-
 
             <div class="row">
                 <div class="col">
-                     <!-- Column 1 -->
                     <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
                 
                         <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"];?></h2>
@@ -141,67 +138,110 @@
                                 }
                                 ?>
 
-                   
-                    </div>
-                    <!-- Column 1 end -->
-                </div>
-
-                <div class="col">
-                     <!-- Column 2 start -->
-                    <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
-                                <p>
-                                <?php echo  $item["companyName"].' </br>	                                
-                                            '.$item["firstName"].' '.$item["lastName"].' </br>
-                                            '.$item["clientEmail"].' </br>
-                                            '.$item["phoneNumber"]?>
-                                            </p>
-
-                    </div>
-
-                    <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Contactgegevens</h2>
-                                <p>
-                                <?php echo $item["firstName"].' '.$item["lastName"].' </br>
-                                            '.$item["email"].' </br>
-                                            '.$item["phoneNumber"]?>
-                                            </p>
-                    </div>
-                    
-                    <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
-                        <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item mb-3" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . ""?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                                        style="border:0" allowfullscreen></iframe>
+                                </div>
+                                <!-- Column 1 end -->
                             </div>
-                    </div> 
-                    <!-- Column 2 end  -->
-                </div>
-            </div>
-
-           
-           
-        </div>   
-
-            <?php }} else {
-                        ?>
-                        <div class="container">
-                            
-                            <div class="row">
-                                    <div class="col">
-                                        <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                                        <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
-                                        </div>
+                
+                            <div class="col">
+                                <!-- Column 2 start -->
+                                <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
+                                    <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
+                                    <p>
+                                        <?php echo  $item["companyName"] . ' </br>	                                
+                                                            ' . $item["firstName"] . ' ' . $item["lastName"] . ' </br>
+                                                            ' . $item["clientEmail"] . ' </br>
+                                                            ' . $item["phoneNumber"] ?>
+                                    </p>
+                
+                                </div>
+                
+                                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
+                                    <h2 class="formSectionTitle fw-bold mt-3">Contactgegevens</h2>
+                                    <p>
+                                        <?php echo $item["firstName"] . ' ' . $item["lastName"] . ' </br>
+                                                            ' . $item["email"] . ' </br>
+                                                            ' . $item["phoneNumber"] ?>
+                                    </p>
+                                </div>
+                
+                                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
+                                    <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item mb-3" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
                                     </div>
                                 </div>
+                                <!-- Column 2 end  -->
+                            </div>
                         </div>
+                
+                        <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
+                            <!-- Overview registered members -->
+                            <div class="accordion-item mt-2 mb-2  border-0">
+                                <h2 class="accordion-header" id="header-1">
+                                    <button class="formSectionTitle accordion-button bg-white  fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
+                                </h2>
+                            </div>
+                
+                            <div id="registeredMembers" class="accordion-collapse show collapse m-2 table-responsive" aria-labelledby="header-1">
+                
+                                <table class="table table-xxl table-hover w-auto ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Voornaam</th>
+                                            <th scope="col">Achteraam</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Telefoonnummer</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                
+                                    <?php foreach ($data as $item) { ?>
+                                        <tr>
+                                            <td class="text-left" scope="row"><?php echo $item["uFirstName"]; ?></td>
+                                            <td class="text-left"><?php echo $item["uLastName"]; ?></td>
+                                            <td class="text-left"><?php echo $item["uEmail"]; ?></td>
+                                            <td class="text-left"><?php echo $item["uPhoneNumber"]; ?></td>
+                                            <td class="text-left">
+                                                <?php
+                                                if ($item["assigned"] == 0) {
+                                                    echo 'Aanmelding ontvangen';
+                                                } else if ($item["assigned"] == 1) {
+                                                    echo 'Toegewezen';
+                                                } else if ($item["assigned"] == 2) {
+                                                    echo 'Niet toegewezen';
+                                                } else if ($item["assigned"] == 3) {
+                                                    echo 'Afgemeld';
+                                                } ?></td>
+                                        </tr>
+                                    <?php } ?>
+                
+                                </table>
+                            </div>
+                        </div>
+                
+                
+                        </div>
+                
+                    <?php } else {
+                    ?>
+                        <div class="container">
+                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                        <h2 class="formSectionTitle fw-bold m-3 text-center">De opdracht die u zoekt is niet gevonden! Check of het juiste id is meegegeven!</h2>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        <?php }?>
+    <?php } ?>
 
-        <!-- Modal accept -->
-        <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    <!-- Modal accept -->
+    <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="acceptModalLabel">Weet u het zeker?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -216,11 +256,12 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal deny -->
-        <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="denyModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    <!-- Modal deny -->
+    <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="denyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="denyModalLabel">Weet u het zeker?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -230,10 +271,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afwijzen"><button type="button" class="btn btn-primary" >Ga verder</button></a>
-                </div>
+                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afwijzen"><button type="button" class="btn btn-primary">Ga verder</button></a>
                 </div>
             </div>
         </div>
-
-         
+    </div>
