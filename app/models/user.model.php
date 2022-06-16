@@ -48,6 +48,7 @@ class UserModel {
     }
 
     public function editProfile($data) {
+
         $this->db->query("UPDATE user SET email=:email, firstName=:firstName, lastName=:lastName, phoneNumber=:phoneNumber, city=:city, street=:street, premise=:premise, postalCode=:postalCode;");
 
         $this->db->bind(":email", $data['email']);
@@ -74,5 +75,16 @@ class UserModel {
 
     }
 
+    public function changePwd($data) {
+
+            $this->db->query("UPDATE user SET password=:password WHERE email=:email;");
+            $this->db->bind(":email", $data['email']);
+            $this->db->bind(":password", $data['new-pwd']);
+
+            $result = $this->db->execute();
+
+            
+    }
+ 
 
 }

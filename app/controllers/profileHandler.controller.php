@@ -25,10 +25,20 @@ class ProfileHandler extends Controller
     }
 
     public function changeProfile($data) {
+        // change pwd
+        if (!empty($date['old-pwd'])) { 
+            $result = $this->userModel->authenticate($data["email"], $data["old-pwd"]);
 
-               
-        $this->userModel->editProfile($data);
+            if ($result != null && $datap["new-pwd"] == $data['copy-pwd']){
+                $this->userModel->changePwd($data["new"]);
+            }
+        } 
 
-        $this->view("/profiel" ,$data);
+        // change profile info
+        if (!empyt($date['email'])) {
+            $this->userModel->editProfile($data);
+        }
+       
+        $this->view("member/profile");
     }
 }

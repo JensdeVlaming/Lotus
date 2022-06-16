@@ -225,6 +225,9 @@
                         <form action="POST" class=" align-items-center justify-content-center">
 
                         <div class="row">
+                        <div class="col-12">
+                                <input type="text" class="form-control d-none request-input m-1 w-75" id="email" name="email" value="<?php echo $data["email"];?>">                              
+                            </div>
                             <div class="col-12">
                                 <input type="password" class="form-control request-input m-1 w-75" id="old-pwd" name="old-pwd" placeholder="Oud wachtwoord">                              
                             </div>
