@@ -23,4 +23,6 @@ class AssigmentDetailsHandler extends Controller
             $this->exceptionController->_500();
         }
     }
+
+    
 }
