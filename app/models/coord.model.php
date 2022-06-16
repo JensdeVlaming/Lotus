@@ -55,7 +55,7 @@ class CoordModel extends Model
 
         $this->db->bind(":email", $email);
 
-        $results = $this->db->resultSet();
+        $results = $this->db->single();
 
         return $results;
     }

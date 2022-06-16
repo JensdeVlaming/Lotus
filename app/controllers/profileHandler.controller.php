@@ -7,6 +7,8 @@ class ProfileHandler extends Controller
         $this->coordController = new CoordController;
         $this->clientController = new ClientController;
         $this->exceptionController = new ExceptionController;
+       
+        
     }
 
     public function getProfile() {
@@ -22,4 +24,5 @@ class ProfileHandler extends Controller
             $this->exceptionController->_500();
         }
     }
+    
 }

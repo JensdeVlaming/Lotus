@@ -57,6 +57,23 @@ $app->router->post("/opdracht/aanvragen", [RequestController::class, "addRequest
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRequest"]);
 
 // Role in applicatie aanpassen
+// Details
+$app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "getDetails"]);
+$app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
+$app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
+$app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
+$app->router->post("/profiel", [MemberController::class, "changeProfile"]);
+
+// Requests
+$app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
+$app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
+$app->router->get("/addRequest", [ViewController::class, "addRequest"]);
+
+
+// POST Requests
+$app->router->post("/inloggen", [AuthController::class, "login"]);
+$app->router->post("/opdracht/aanvragen", [RequestController::class, "addRequest"]);
+$app->router->post("/opdracht/:id/wijzigen", [RequestController::class, "editRequest"]);
 $app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 // Exceptions

@@ -71,4 +71,98 @@ class MemberController extends Controller
 
         $this->view("/member/requestDetailsAssigned", $result);
     }
+
+    public function changeProfile($payload) {
+        $activeRole = Application::$app->session->get("activeRole");
+        // change profile info
+        if (!empty($payload['userEmail'])) {$this->editProfile($payload);}
+        // change pwd
+        if (!empty($payload['oldPdw'])) {$this->editPwd($payload);}
+        
+        // $this->redirect("/profiel");
+    }
+
+    public function editProfile($payload) {
+            $email = $payload['email'];
+            $firstName = $payload['firstName'];
+            $lastName = $payload['lastName'];
+            $street = $payload['street'];
+            $premise = $payload['premise'];
+            $city = $payload['city'];
+            $postalCode = $payload['postalCode'];
+            $phoneNumber = $payload['phoneNumber'];
+            $gender = $payload['gender'];
+            $userEmail = $payload['userEmail'];
+            
+
+            if ($gender == "1") {
+                $gender="M";
+            } else if ($gender == "2") {
+                $gender="V";
+            } else if ($gender == "3"){
+                $gender="O";
+            }
+
+         
+            
+            if ($email != $userEmail) {
+                $result = $this->memberModel->userExists($email);
+            } else {$result = null;}
+            
+            if ($result != null) {
+                $data = [
+                    "error" => "Gebruiker met deze email bestaat al!"
+                ];
+                // $this->view("/member/profile", $data);
+                $this->redirect("/profiel");
+            } 
+
+            Application::$app->session->set("user", $email);
+            $result = $this->memberModel->editProfile($email,$firstName,$lastName,$street,$premise,$city,$postalCode,$phoneNumber,$gender,$userEmail);
+            
+            if ($result != null){
+                $this->redirect("/profiel",$data);
+            } else {
+                $data = [
+                    "error" => "Er is iets fout gegaan met het wijzigen van je profiel!"
+                ];
+                // $this->view("/member/profile", $data);
+                $this->redirect("/profiel");
+            }
+    }
+
+    public function editPwd($payload) {
+        $email = $payload['email'];
+        $oldPwd = $payload['oldPdw'];
+        $newPwd = $payload['newPdw'];
+        $copyPwd = $payload['copyPdw'];
+
+
+        $result = $this->memberModel->authenticate($email,$oldPwd);
+
+        if ($result != null){
+            
+            if ($newPwd == $payload['copyPdw']) {
+                $this->memberModel->changePwd($email,$newPwd);
+                $this->redirect("/profiel");
+            } else {
+                $data = [
+                    "error" => "Herhaald wachtwoord komt niet overeen"
+                ];
+                // $this->view("/member/profile", $data);
+                $this->redirect("/profiel");
+            }
+
+        } else {
+            $data = [
+                "error" => "Wachtwoord is onjuist"
+            ];
+            // $this->view("/member/profile", $data);
+            $this->redirect("/profiel");
+        }
+
+        $this->redirect("/profiel");
+    }
+
+
 }

@@ -315,4 +315,73 @@ class MemberModel extends Model
 
         return [];
     }
+    // Edit profile functions
+    public function userExists($email) {
+        $this->db->query("SELECT * FROM user WHERE email=:email;");
+        $this->db->bind(':email',$email);
+
+        $result = $this->db->single();
+
+        return $result;
+        
+    }
+
+    public function editProfile($email,$firstName,$lastName,$street,$premise,$city,$postalCode,$phoneNumber,$gender,$userEmail) {
+        
+        $this->db->query("UPDATE user SET email=:email, firstName=:firstName, lastName=:lastName, phoneNumber=:phoneNumber, city=:city, street=:street, premise=:premise, postalCode=:postalCode, gender=:gender WHERE email=:userEmail;");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":firstName", $firstName);
+        $this->db->bind(":lastName", $lastName);
+        $this->db->bind(":street", $street);
+        $this->db->bind(":premise", $premise);
+        $this->db->bind(":city", $city);
+        $this->db->bind(":postalCode", $postalCode);
+        $this->db->bind(":phoneNumber", $phoneNumber);
+        $this->db->bind(":gender", $gender);
+        $this->db->bind(":userEmail", $userEmail);
+
+    
+        $result = $this->db->execute();
+
+        if ($result != null) {
+            return $result;
+        }
+        return null;
+
+    }
+
+    public function changePwd($email,$newPwd) {
+
+        print_r('reached pwd changer');
+
+            $this->db->query("UPDATE user SET password=:password WHERE email=:email;");
+            $this->db->bind(":email", $email);
+            $this->db->bind(":password", $newPwd);
+
+            $result = $this->db->execute();
+
+            if ($result != null) {
+                return $result;
+            }
+            return null;
+
+            
+    }
+
+    public function authenticate($email, $password) {
+        $this->db->query("SELECT * FROM user LEFT JOIN role ON user.roles = role.id WHERE email = :email AND password = :password;");
+        
+        $this->db->bind(":email", $email);
+        $this->db->bind(":password", $password);
+
+        $result = $this->db->single();
+
+        if ($result != null) {
+            return $result;
+        }
+        return null;
+    }
+
+
 }

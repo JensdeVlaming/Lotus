@@ -39,6 +39,7 @@
                         </div>
                         <div class="col-12">
                             <div class="row g-0">
+
                                 <div class="btn-group" role="group" aria-label="Basic example">
 
                                 <?php if ($date_now < $date_request) { // Wel aanpassen ?> 
@@ -48,6 +49,7 @@
                                     <button type="button" class="btn btn-warning text-white col-6" style="z-index: 10" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
                                 <?php } ?>
                                     <button type="button" class="btn btn-danger col-6" style="z-index: 10" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
+
                                 </div>
                             </div>
                         </div>
