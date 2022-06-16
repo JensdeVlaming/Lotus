@@ -21,7 +21,7 @@ class MemberController extends Controller
         $id = $data["params"]["id"];
 
         $result = $this->memberModel->participateAssignment($id);
-        $this->mailModel->participateAssignment();
+        $this->mailModel->participateAssignment($this->memberModel->getAssignmentDetailsByMailAndId($id));
 
         if ($result) {
             $this->redirect("/opdrachten");

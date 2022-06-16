@@ -103,8 +103,12 @@ class MailModel
         $this->mail->send();
     }
 
-    public function participateAssignment()
+    public function participateAssignment($results)
     {
+
+        foreach ($results as $item) {
+            $description = $item['description'];
+        }
 
         // Add a recipient 
         $emailAddress = Application::$app->session->get("user");
@@ -118,8 +122,8 @@ class MailModel
 
 
         // Mail body content 
-        $bodyContent = '<h1>Bedankt voor het inschrijven voor de opdracht ...</h1>';
-        $bodyContent .= '<p>De coordinator zal nu bepalen of u uitgekozen word om deze opdracht uit te voeren.</p>';
+        $bodyContent = '<h1>Bedankt voor het inschrijven voor de opdracht: ' . $description . '</h1>';
+        $bodyContent .= '<p>De coordinator zal nu bepalen of u uitgekozen word om deze opdracht uit te voeren. Hieronder vind u nog enige details over uw inschrijving.</p>';
 
         $this->mail->Body    = $bodyContent;
 

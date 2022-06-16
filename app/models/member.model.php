@@ -25,7 +25,7 @@ class MemberModel
 
 
         $result = $this->db->resultSet();
-        
+
         // $temp_array = [];
         // $key = "requestId";
         // foreach ($result as &$v) {
@@ -277,6 +277,19 @@ class MemberModel
     }
 
 
+    public function getAssignmentDetailsByMailAndId($id)
+    {
+        $this->db->query("SELECT * FROM solicit 
+                                LEFT JOIN user ON user.email = solicit.email
+                                LEFT JOIN request ON request.requestId = solicit.requestId
+                                WHERE user.email = :email AND request.requestId = :id;");
+
+        
+        $this->db->bind(":email", Application::$app->session->get("user"));
+        $this->db->bind(":id", $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
 
 
 
