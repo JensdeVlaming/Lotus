@@ -54,10 +54,15 @@ class MemberController extends Controller
         self::view("/member/requestDetails", $result);   
     }
 
-    public function getMemberProfile() {
+    public function getMemberProfile($error = null) {
+        
         $email = Application::$app->session->get("user");
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
+
+        if ($error != null) {
+            $result ['error'] = $error;
+        }
         
         self::view("/member/profile", $result );
     }
@@ -94,24 +99,17 @@ class MemberController extends Controller
             $phoneNumber = $payload['phoneNumber'];
             $gender = $payload['gender'];
             $userEmail = $payload['userEmail'];
+            
 
-            if ($gender =="Man") {
+            if ($gender == "1") {
                 $gender="M";
-            } else if ($gender =="Vrouw") {
+            } else if ($gender == "2") {
                 $gender="V";
-            } else {
+            } else if ($gender == "3"){
                 $gender="O";
             }
 
-            if (empty( $email) || empty($firstName) || empty($lastName) || empty($street) 
-                                || empty($premise) || empty($city) || empty($postalCode) 
-                                || empty($phoneNumber) || empty($gender)) {
-                $data = [
-                    "error" => "Controleer of alle velden zijn ingevuld"
-                ];
-                // $this->view("/member/profile", $data);
-                $this->redirect("/profiel");
-            }
+         
             
             if ($email != $userEmail) {
                 $result = $this->memberModel->userExists($email);
@@ -145,13 +143,6 @@ class MemberController extends Controller
         $newPwd = $payload['newPdw'];
         $copyPwd = $payload['copyPdw'];
 
-        if (empty( $oldPwd) || empty($newPwd) || empty($copyPwd)) {
-            $data = [
-                "error" => "Controleer of alle velden zijn ingevuld"
-            ];
-            // $this->view("/member/profile", $data);
-            $this->redirect("/profiel");
-        }
 
         $result = $this->memberModel->authenticate($email,$oldPwd);
 
