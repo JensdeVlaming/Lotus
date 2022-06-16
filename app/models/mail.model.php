@@ -89,7 +89,7 @@ class MailModel
         }
 
         // Mail subject 
-        $this->mail->Subject = 'Uw opdracht is gereviewed';
+        $this->mail->Subject = 'Uw ingediende opdracht is beoordeeld';
 
         // Set up for location format
 
@@ -119,7 +119,7 @@ class MailModel
 
         // Mail body content 
         $bodyContent = '<h1>Bedankt voor het inschrijven voor de opdracht ...</h1>';
-        $bodyContent .= '<p>De coordinator zal nu bepalen of u uitgekozen word om deze opdracht uit te voeren.</b></b></p>';
+        $bodyContent .= '<p>De coordinator zal nu bepalen of u uitgekozen word om deze opdracht uit te voeren.</p>';
 
         $this->mail->Body    = $bodyContent;
 
