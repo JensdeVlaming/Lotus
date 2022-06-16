@@ -102,6 +102,16 @@ class MemberController extends Controller
             } else {
                 $gender="O";
             }
+
+            if (empty( $email) || empty($firstName) || empty($lastName) || empty($street) 
+                                || empty($premise) || empty($city) || empty($postalCode) 
+                                || empty($phoneNumber) || empty($gender)) {
+                $data = [
+                    "error" => "Controleer of alle velden zijn ingevuld"
+                ];
+                // $this->view("/member/profile", $data);
+                $this->redirect("/profiel");
+            }
             
             if ($email != $userEmail) {
                 $result = $this->memberModel->userExists($email);
