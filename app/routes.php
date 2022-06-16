@@ -42,7 +42,7 @@ $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "get
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
 $app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
-$app->router->post("/profiel", [ProfileHandler::class, "changeProfile"]);
+$app->router->post("/profiel", [MemberController::class, "changeProfile"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);

@@ -47,44 +47,5 @@ class UserModel {
         }
     }
 
-    public function editProfile($data) {
-
-        $this->db->query("UPDATE user SET email=:email, firstName=:firstName, lastName=:lastName, phoneNumber=:phoneNumber, city=:city, street=:street, premise=:premise, postalCode=:postalCode;");
-
-        $this->db->bind(":email", $data['email']);
-        $this->db->bind(":firstName", $data['firstName']);
-        $this->db->bind(":lastName", $data['lastName']);
-        $this->db->bind(":street", $data['street']);
-        $this->db->bind(":premise", $data['premise']);
-        $this->db->bind(":city", $data['city']);
-        $this->db->bind(":postalCode", $data['postalCode']);
-        $this->db->bind(":phoneNumber", $data['phoneNumber']);
-
-        try {
-            $result = $this->db->execute();
-
-            if ($result == 1) {
-                return 1;
-            } else {
-                return 2;
-            }
-        } catch(Exception $e) {
-            return 3;
-        }
-       
-
-    }
-
-    public function changePwd($data) {
-
-            $this->db->query("UPDATE user SET password=:password WHERE email=:email;");
-            $this->db->bind(":email", $data['email']);
-            $this->db->bind(":password", $data['new-pwd']);
-
-            $result = $this->db->execute();
-
-            
-    }
- 
 
 }

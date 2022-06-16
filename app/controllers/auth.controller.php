@@ -33,7 +33,7 @@ class AuthController extends Controller
         if ($result != null) {
             Application::$app->session->set("user", $result["email"]);
             Application::$app->session->set("initials", $initials);
-            $this->redirect("/overzicht-opdrachtgever");
+            $this->redirect("/overzicht");
         } else {
             $this->view("user/login", $data);
         }

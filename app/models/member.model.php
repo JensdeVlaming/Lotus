@@ -276,12 +276,6 @@ class MemberModel
         return [];
     }
 
-
-
-
-
-
-
     public function deregister($requestId, $reasonFor = null)
     {
         $email = Application::$app->session->get("user");
@@ -293,4 +287,57 @@ class MemberModel
 
         $this->db->execute();
     }
+
+    // Edit profile functions
+    public function userExists($email) {
+        $this->db->query("SELECT * FROM user WHERE email=:email;");
+        $this->db->bind(':email',$email);
+
+        $result = $this->db->single();
+
+        return $result;
+        
+    }
+
+    public function editProfile($email,$firstName,$lastName,$street,$premise,$city,$postalCode,$phoneNumber,$checkEmail) {
+
+        $this->db->query("UPDATE user SET email=:email, firstName=:firstName, lastName=:lastName, phoneNumber=:phoneNumber, city=:city, street=:street, premise=:premise, postalCode=:postalCode WHERE email=:checkEmail;");
+
+        $this->db->bind(":email", $email);
+        $this->db->bind(":firstName", $firstName['firstName']);
+        $this->db->bind(":lastName", $lastName['lastName']);
+        $this->db->bind(":street", $street['street']);
+        $this->db->bind(":premise", $premise['premise']);
+        $this->db->bind(":city", $city['city']);
+        $this->db->bind(":postalCode", $postalCode['postalCode']);
+        $this->db->bind(":phoneNumber", $phoneNumber['phoneNumber']);
+        $this->db->bind(":checkEmail", $checkEmail['email']);
+
+    
+        $result = $this->db->execute();
+
+        if ($result != null) {
+            return $result;
+        }
+        return [];
+
+    }
+
+    public function changePwd($email,$newPwd) {
+
+            $this->db->query("UPDATE user SET password=:password WHERE email=:email;");
+            $this->db->bind(":email", $email);
+            $this->db->bind(":password", $newPwd);
+
+            $result = $this->db->execute();
+
+            if ($result != null) {
+                return $result;
+            }
+            return null;
+
+            
+    }
+
+
 }
