@@ -33,4 +33,22 @@ class ClientController extends Controller
         self::view("/client/requestDetails", $result);
        
     }
+
+    public function getRequestDetailsForEdit($data) {
+        $id = $data["params"]["id"];
+
+        $result = $this->clientModel->getRequestDetailsForEdit($id);
+
+        self::view("/client/editRequest", $result);
+       
+    }
+
+    
+    public function getClientProfile() {
+        $email = Application::$app->session->get("user");
+
+
+        $result = $this->clientModel->getProfile($email);
+        self::view("/client/profile", $result );
+    }
 }

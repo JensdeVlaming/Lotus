@@ -62,7 +62,14 @@ class CoordController extends Controller
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
         
         self::view("/coord/memberDetails", $result );
+    }
+
+    public function getCoordProfile(){
+        $email = Application::$app->session->get("user");
+
+        $result = $this->coordModel->getProfile($email);
         
+        self::view("/coord/profile", $result );
     }
 
     public function addMember()

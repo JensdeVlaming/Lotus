@@ -131,7 +131,7 @@
                                         </thead>
                                             <?php foreach($data['upcommingAssignmentList'] as $request) { ?> 
                                                 <tr class='clickable' 
-                                                onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details'" >
+                                                onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-coordinator'" >
                                                     <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
                                                     <td>:</td>
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
@@ -198,10 +198,61 @@
                             </div>
                         </div>
                     </div> 
+
+                    <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
+                        <h2 class="formSectionTitle fw-bold mt-3">Profiel wijzigen</h2>
+                        <p><button type="button" class="btn btn-warning text-white" data-bs-toggle="" data-bs-target="">Profiel wijzigen</button> </p>
+                        <button type="button" class="btn btn-warning text-white mb-3 " data-bs-toggle="modal" data-bs-target="#passwordModal">Wachtwoord wijzigen</button>
+                    </div> 
                     <!-- Column 2 end  -->
                 </div>
             </div>
         </div>   
 
+
+          <!-- MODALS -->
+          <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="passwordModalLabel">Wachtwoord wijzigen!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <small id="passwordHelpInline" class="text-muted">
+                    Must be 8-20 characters long.
+                </small>
+            <form action="post" class=" align-items-center justify-content-center">
+
+            <div class="row">
+                <div class="col-12">
+                    <input type="password" class="form-control request-input m-1 w-75" id="old-pwd" placeholder="Oud wachtwoord"> 
+                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                </div>
+                <div class="col-12">
+                    <input type="password" class="form-control request-input m-1 w-75" id="new-pwd" placeholder="Nieuw wachtwoord">
+                </div>
+                <div class="col-12">
+                    <input type="password" class="form-control request-input m-1 w-75   " id="copy-pwd" placeholder="Herhaal wachtwoord">
+                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                     
+                </div>
+            </div>
+
+                    
+                  
+
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ga terug</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Verder</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+ 
 
          
