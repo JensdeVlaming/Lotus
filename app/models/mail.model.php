@@ -25,7 +25,7 @@ class MailModel
         $this->mail->Port = 587;                    // TCP port to connect to 
 
         // Sender info 
-        $this->mail->setFrom('projectlotus2023@gmail.com', 'Lotus');
+        $this->mail->setFrom('projectlotus2023@gmail.com', 'LOTUS Here We Go');
 
         $this->db = new Database;
     }
