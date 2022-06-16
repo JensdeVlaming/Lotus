@@ -11,7 +11,7 @@ foreach ($data as $item) {
 
                     <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"]; ?></h2>
                     <p><?php echo $item["description"]; ?></p>
-                    <button type="button" class="btn btn-warning text-white" name="updateButton" data-bs-toggle="modal" data-bs-target="#updateRequest<?php echo $item["requestId"]; ?>">Wijzigen</button>
+                    <a class="btn btn-warning text-white" href="/opdracht/<?php echo $item["requestId"]; ?>/wijzigen" tabindex="-1" aria-disabled="true">Wijzigen</a>
                     <button type="button" class="btn btn-danger" name="deleteButton" data-bs-toggle="modal" data-bs-target="#cancelRequest<?php echo $item["requestId"]; ?>">Verwijderen</button>
 
                     <hr class="dropdown-divider">
@@ -119,6 +119,8 @@ foreach ($data as $item) {
                                         <p> '.$item["comments"].'</p>';
                                 }
                                 ?>
+
+
 
                 </div>
 

@@ -1,5 +1,5 @@
 <?php
-class AssigmentDetailsHandler extends Controller
+class ProfileHandler extends Controller
 {
     public function __construct()
     {
@@ -10,19 +10,17 @@ class AssigmentDetailsHandler extends Controller
         
     }
 
-    public function getDetails($data) {
+    public function getProfile() {
         $activeRole = Application::$app->session->get("activeRole");
 
         if (strtolower($activeRole) == "lid") {
-            $this->memberController->getRequestDetails($data);
+            $this->memberController->getMemberProfile();
         } else if (strtolower($activeRole) == "coordinator") {
-            $this->coordController->getRequestDetailsAcceptDeny($data);
+            $this->coordController->getCoordProfile();
         } else if (strtolower($activeRole) == "opdrachtgever") {
-            $this->clientController->getRequestDetails($data);
+            $this->clientController->getClientProfile();
         } else {
             $this->exceptionController->_500();
         }
     }
-
-    
 }

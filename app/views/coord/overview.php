@@ -14,6 +14,8 @@
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
             } else if ($item["approved"] == 4) {
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
+            } else if ($item["approved"] == 5) {
+                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
             }
         ?>
 
@@ -31,7 +33,7 @@
                                 <div class="embed-responsive text-center col-12">
                                     <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                                 </div>
-                                <?php if ($item["approved"] == 0) { ?>
+                                <?php if ($item["approved"] == 0 || $item["approved"] == 5) { ?>
                                 <div class="row g-0">
                                     <div class="btn-group" style="z-index: 10" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>

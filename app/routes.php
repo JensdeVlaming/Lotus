@@ -20,7 +20,7 @@ $app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 $app->router->get("/overzicht-lid-ingeschreven", [MemberController::class, "getRegisteredOverview"]);
 // Assigments
 $app->router->get("/opdracht/:id/afwijzen", [CoordController::class, "declineAssignment"]);
-$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "AssigmentInProgress"]);
+$app->router->get("/opdracht/:id/behandelen", [CoordController::class, "acceptAssigment"]);
 
 $app->router->get("/opdracht/:id/aanmelden", [MemberController::class, "participateAssignment"]);
 $app->router->post("/opdracht/afmelden", [MemberController::class, "deregister"]);
@@ -30,6 +30,9 @@ $app->router->get("/leden", [CoordController::class, "getRegistry"]);
 $app->router->get("/leden/aanmaken", [CoordController::class, "addMember"]);
 $app->router->post("/leden/aanmaken", [CoordController::class, "createMember"]);
 
+$app->router->get("/opdracht/:id/wijzigen", [ClientController::class, "getRequestDetailsForEdit"]);
+
+
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRequest"]);
@@ -38,6 +41,7 @@ $app->router->get("/opdracht/:id/annuleren", [ClientController::class, "cancelRe
 $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "getDetails"]);
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
+$app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
 
 // Requests
 $app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
@@ -48,6 +52,7 @@ $app->router->get("/addRequest", [ViewController::class, "addRequest"]);
 // POST Requests
 $app->router->post("/inloggen", [AuthController::class, "login"]);
 $app->router->post("/opdracht/aanvragen", [RequestController::class, "addRequest"]);
+$app->router->post("/opdracht/:id/wijzigen", [RequestController::class, "editRequest"]);
 $app->router->post("/role/change", [AuthController::class, "changeActiveRole"]);
 
 // Exceptions
