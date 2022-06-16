@@ -44,11 +44,18 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht");
     }
 
-    public function getRequestDetails($data)
-    {
+    public function getRequestDetails($data) {
         $id = $data["params"]["id"];
 
         $result =  $this->coordModel->getRequestDetails($id);
+        $openMembers = $this->memberModel->getAllOpenMembersByRequestId($id);
+        $assignedMembers = $this->memberModel->getAllAssignedMembersByRequestId($id);
+
+        $result = Array(
+            "details" => $result,
+            "openMembers" => $openMembers,
+            "assignedMembers" => $assignedMembers
+        );
 
         $this->view("/coord/requestDetails", $result);
     }
@@ -100,6 +107,32 @@ class CoordController extends Controller
                 "error" => "Lid bestaat al of er is iets fout gegaan."
             ];
             $this->view("/coord/memberForm", $data);
+        }
+    }
+
+    public function assignMemberToAssigment($data) {
+        $id = $data["params"]["id"];
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->assignMemberToAssigment($id, $email);
+
+        if ($result) {
+            $this->redirect("/opdracht/$id/details");
+        } else {
+            echo "Er is iets fout gegegaan tijdens het toewijzen van lid voor opdracht " . $id;
+        }
+    }
+
+    public function deleteMemberFromAssigment($data) {
+        $id = $data["params"]["id"];
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->deleteMemberFromAssigment($id, $email);
+
+        if ($result) {
+            $this->redirect("/opdracht/$id/details");
+        } else {
+            echo "Er is iets fout gegegaan tijdens het verwijderen van lid voor opdracht " . $id;
         }
     }
 }
