@@ -6,6 +6,22 @@ class MemberModel extends Model
     {
         $this->db->query("SELECT * FROM user WHERE roles = :id");
         $this->db->bind(":id", 1);
+    }
+
+    public function getOpenAssignments()
+    {
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("SELECT DISTINCT * FROM request 
+                            LEFT JOIN company ON request.companyId = company.companyId
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                            LEFT JOIN contact ON request.contactId = contact.contactId
+                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+                            WHERE request.approved = 1;");
+
+        // $this->db->bind(":email", $email);
+
 
         $result = $this->db->resultSet();
 
@@ -277,6 +293,25 @@ class MemberModel extends Model
 
         return [];
     }
+
+
+    public function getAssignmentDetailsByMailAndId($id)
+    {
+        $this->db->query("SELECT * FROM solicit 
+                                LEFT JOIN user ON user.email = solicit.email
+                                LEFT JOIN request ON request.requestId = solicit.requestId
+                                WHERE user.email = :email AND request.requestId = :id;");
+
+        
+        $this->db->bind(":email", Application::$app->session->get("user"));
+        $this->db->bind(":id", $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+
+
+
 
     public function deregister($requestId, $reasonFor = null)
     {

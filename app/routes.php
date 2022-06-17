@@ -9,6 +9,8 @@ $app = new Application();
 // Base URL
 $app->router->get("/", [ViewController::class, "index"]);
 
+$app->router->get("/mail", [MailController::class, "mail"]);
+
 // Authentication
 $app->router->get("/inloggen", [ViewController::class, "login"]);
 $app->router->post("/inloggen", [AuthController::class, "login"]);
@@ -65,9 +67,7 @@ $app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
 $app->router->post("/profiel", [MemberController::class, "changeProfile"]);
 
 // Requests
-$app->router->get("/opdracht/aanvragen", [ViewController::class, "addRequest"]);
 $app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);
-$app->router->get("/addRequest", [ViewController::class, "addRequest"]);
 
 
 // POST Requests

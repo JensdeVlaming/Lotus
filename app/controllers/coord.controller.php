@@ -7,6 +7,7 @@ class CoordController extends Controller
         $this->memberModel = $this->model("member");
         $this->userModel = $this->model("user");
         $this->registerMiddleware(new AuthMiddleware(["getOverview", "getRegistry", "declineAssignment", "acceptAssignment", "getRequestDetails", "getMemberAndRequestDetails", "getCoordProfile", "addMember", "createMember"]));
+        $this->mailModel = $this->model("mail");
     }
 
     public function getOverview()
@@ -32,6 +33,7 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->declineAssignment($id);
+        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
 
         Application::$app->controller->redirect("/overzicht");
     }
@@ -40,7 +42,9 @@ class CoordController extends Controller
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->AssignmentInProgress($id);
+        $this->coordModel->AssigmentInProgress($id);
+        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetailsAcceptDeny($id));
+
         Application::$app->controller->redirect("/overzicht");
     }
 
