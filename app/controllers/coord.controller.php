@@ -36,11 +36,11 @@ class CoordController extends Controller
         Application::$app->controller->redirect("/overzicht");
     }
 
-    public function acceptAssignment($data)
+    public function AssignmentInProgress($data)
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->AssigmentInProgress($id);
+        $this->coordModel->AssignmentInProgress($id);
         Application::$app->controller->redirect("/overzicht");
     }
 
