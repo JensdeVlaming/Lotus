@@ -37,7 +37,8 @@ class AuthController extends Controller
         } else {
             $this->view("user/login", $data);
         }
-    }  } 
+    }  
+} 
 
     public function changeActiveRole($data)
     {
