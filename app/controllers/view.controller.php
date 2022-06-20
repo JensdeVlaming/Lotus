@@ -16,6 +16,10 @@ class ViewController extends Controller {
         $this->viewContentOnly("user/login");
     }
 
+    public function register() {
+        $this->viewContentOnly("user/register");
+    }
+
     public function addRequest() {
         $this->view("/addRequest");
     }

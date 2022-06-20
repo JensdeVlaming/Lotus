@@ -15,6 +15,10 @@ $app->router->get("/mail", [MailController::class, "mail"]);
 $app->router->get("/inloggen", [ViewController::class, "login"]);
 $app->router->post("/inloggen", [AuthController::class, "login"]);
 
+// Register
+$app->router->get("/registreren", [ViewController::class, "register"]);
+
+
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
 // Overviews

@@ -1,9 +1,104 @@
-$("textarea").each(function () {
-  this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-}).on("input", function () {
-  this.style.height = "auto";
-  this.style.height = (this.scrollHeight) + "px";
-});
+var currentTab = 0;
+switchTabs(currentTab);
+
+function nextTab() {
+  if (currentTab <= 1) {
+    currentTab++;
+  }
+  switchTabs(currentTab);
+}
+
+function prevTab() {
+  if (currentTab >= 1) {
+    currentTab--;
+  }
+  switchTabs(currentTab);
+}
+
+function switchTabs(currentTab) {
+  console.log(currentTab);
+
+  const tabOne = document.getElementById('tabOne');
+  const tabTwo = document.getElementById('tabTwo');
+  const tabThree = document.getElementById('tabThree');
+
+  tabs = [];
+
+  tabs.push(tabOne);
+  tabs.push(tabTwo);
+  tabs.push(tabThree);
+
+  const one = document.getElementById('1');
+  const two = document.getElementById('2');
+  const three = document.getElementById('3');
+
+  numbers = [];
+
+  numbers.push(one);
+  numbers.push(two);
+  numbers.push(three);
+
+  switch (currentTab) {
+    case 0:
+      tabs.forEach(tab => {
+        if (tab === tabOne) {
+          tab.classList.add('d-block');
+          tab.classList.remove('d-none');
+        } else {
+          tab.classList.add('d-none');
+          tab.classList.remove('d-block');
+        }
+      });
+
+      numbers.forEach(number => {
+        if (!(number === one)) {
+          number.classList.remove('btn-number-current');
+        }
+      });
+
+      break;
+
+    case 1:
+      tabs.forEach(tab => {
+        if (tab === tabTwo) {
+          tab.classList.add('d-block');
+          tab.classList.remove('d-none');
+        } else {
+          tab.classList.add('d-none');
+          tab.classList.remove('d-block');
+        }
+      });
+
+      numbers.forEach(number => {
+        if (number === three) {
+          number.classList.remove('btn-number-current');
+        } else {
+          number.classList.add('btn-number-current');
+        }
+      });
+      break;
+
+    case 2:
+      tabs.forEach(tab => {
+        if (tab === tabThree) {
+          tab.classList.add('d-block');
+          tab.classList.remove('d-none');
+        } else {
+          tab.classList.add('d-none');
+          tab.classList.remove('d-block');
+        }
+      });
+
+      numbers.forEach(number => {
+        number.classList.add('btn-number-current');
+      });
+      break;
+
+    default:
+      console.log('problem');
+      break;
+  }
+}
 
 function automateGatherLocationDataOnCheck() {
 
@@ -347,13 +442,13 @@ var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
 
 if (dd < 10) {
-   dd = '0' + dd;
+  dd = '0' + dd;
 }
 
 if (mm < 10) {
-   mm = '0' + mm;
-} 
-    
+  mm = '0' + mm;
+}
+
 today = yyyy + '-' + mm + '-' + dd;
 document.getElementById("playDate").setAttribute("min", today);
 
@@ -400,7 +495,7 @@ function hideGatherInfo() {
   if (gatherBoxes[0].classList.contains('d-block')) {
     chevron.outerHTML = chevronDown;
   } else {
-    chevron.outerHTML = chevronUp;    
+    chevron.outerHTML = chevronUp;
   }
 }
 
@@ -425,7 +520,17 @@ function hideBillingInfo() {
   if (billingBoxes[0].classList.contains('d-block')) {
     chevron.outerHTML = chevronDown;
   } else {
-    chevron.outerHTML = chevronUp;    
+    chevron.outerHTML = chevronUp;
   }
 }
 
+
+
+// !Keep down here
+
+$("textarea").each(function () {
+  this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+}).on("input", function () {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+});
