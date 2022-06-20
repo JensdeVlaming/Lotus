@@ -17,7 +17,7 @@ $app->router->post("/inloggen", [AuthController::class, "login"]);
 
 // Register
 $app->router->get("/registreren", [ViewController::class, "register"]);
-
+$app->router->post("/registreren", [RegisterController::class, "register"]);
 
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 

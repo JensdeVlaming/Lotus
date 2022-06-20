@@ -2,6 +2,7 @@ var currentTab = 0;
 switchTabs(currentTab);
 
 function nextTab() {
+  // TODO alleen wanneer alle velden ingevuld zijn vervolgen ->
   if (currentTab <= 1) {
     currentTab++;
   }
