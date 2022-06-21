@@ -37,7 +37,7 @@ class ClientController extends Controller
     }
 
 
-    public function getRequestDetailsForEdit($data) {
+    public function editRequest($data) {
         $id = $data["params"]["id"];
 
         $result = $this->clientModel->requestDetails($id);

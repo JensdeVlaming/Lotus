@@ -17,6 +17,9 @@ $app->router->post("/inloggen", [AuthController::class, "login"]);
 
 $app->router->get("/uitloggen", [AuthController::class, "logout"]);
 
+$app->router->get("/registreren", [ViewController::class, "register"]);
+$app->router->post("/registreren", [RegisterController::class, "register"]);
+
 // Overviews
 $app->router->get("/overzicht", [OverviewHandler::class, "getOverview"]);
 

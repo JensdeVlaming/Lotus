@@ -65,10 +65,10 @@ class MailModel
 
     public function requestReviewEmail($type, $results)
     {
-        $emailAddress = null;
-        foreach ($results as $item) {
-            $emailAddress = $item['clientEmail'];
-        }
+
+        
+        $emailAddress = $results['clientEmail'];
+        
 
         // Add a recipient 
         $this->mail->addAddress($emailAddress);

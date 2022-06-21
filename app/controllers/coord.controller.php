@@ -33,7 +33,7 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->declineAssignment($id);
-        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
+        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetails($id));
 
         Application::$app->controller->redirect("/overzicht");
     }
@@ -42,8 +42,8 @@ class CoordController extends Controller
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->AssigmentInProgress($id);
-        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetailsAcceptDeny($id));
+        $this->coordModel->AssignmentInProgress($id);
+        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetails($id));
 
         Application::$app->controller->redirect("/overzicht");
     }
