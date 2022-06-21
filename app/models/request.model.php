@@ -102,7 +102,11 @@ class RequestModel extends Model
         $this->db->bind(':billingAddressId', $this->billingAddressId);
         $this->db->bind(':clientEmail', $client);
 
-        $this->db->execute();
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getLoggedInUser()

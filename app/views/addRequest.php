@@ -20,14 +20,14 @@ if ($data) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="updateRequestLabel"><?php echo '' . $data["msg"] . ''; ?></h5>
+                    <h5 class="modal-title fw-bold" id="updateRequestLabel"><?php echo '' . $data["title"] . ''; ?></h5>
                 </div>
                 <div class="modal-body">
-                    Uw opdracht is succesvol geplaatst, u kunt dit scherm nu afsluiten.
+                <?php echo '' . $data["subtitle"] . ''; ?>
                 </div>
                 <div class="modal-footer">
-                    <form action="/overzicht">
-                        <button type="get" class="nextButton btn">Terug naar de overzichtspagina</button>
+                    <form action="<?php echo $data['route']; ?>">
+                        <button type="get" class="nextButton btn"><?php echo '' . $data["button"] . '';  ?></button>
                     </form>
                 </div>
             </div>

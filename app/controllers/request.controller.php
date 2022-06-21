@@ -10,9 +10,7 @@ class RequestController extends Controller
 
     public function addRequest($payload)
     {
-        $data = [
-            "msg" => "Opdracht succesvol ingediend!"
-        ];
+        $data = [];
 
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
         if (isset($payload['annexPlayGround'])) {
@@ -35,11 +33,26 @@ class RequestController extends Controller
         $this->requestModel->addBusinessAddressRequest($this->requestModel->getLoggedInUser());
         $this->requestModel->addBillingAddressRequest($this->requestModel->getLoggedInUser());
         $this->requestModel->addContactRequest($this->requestModel->getLoggedInUser());
-        $this->requestModel->addRequest($payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
+        $result = $this->requestModel->addRequest($payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
         $this->mailModel->addRequestEmail($payload['summary'], $payload['playDate'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround);
-        
 
-        $this->view("/addRequest", $data);
+        if ($result) {
+            $data = [
+                "title" => "Opdracht succesvol ingediend!",
+                "subtitle" => "Uw opdracht is succesvol geplaatst, u kunt dit scherm nu afsluiten.",
+                "button" => "Terug naar de overzichtspagina",
+                "route" => "/overzicht"
+            ];
+            $this->view("/addRequest", $data);
+        } else {
+            $data = [
+                "title" => "Er is een fout opgetreden!",
+                "subtitle" => "Er is iets misgegaan, probeer het anders opnieuw.",
+                "button" => "Terug naar het formulier",
+                "route" => "/opdrachten/aanvragen"
+            ];
+            $this->view("/addRequest", $data);
+        }
     }
 
     public function editRequest($payload)
