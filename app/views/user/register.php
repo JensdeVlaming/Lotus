@@ -11,7 +11,7 @@
             -->
 
             <div id="tabOne" class="tab tabOne">
-                <p class="fw-bold formMiniSectionTitle">Bedrijfsgegevens:</p>
+                <span class="sectionLabel">Bedrijfsgegevens:</span>
                 <label for="" class="small-lable fw-bold">Bedrijfsnaam:</label>
                 <input type="text" name="companyCompanyName" id="companyCompanyName" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Bedrijfsnaam" required>
                 <label for="" class="small-lable fw-bold">Land:</label>
@@ -30,9 +30,9 @@
             </div>
 
             <div id="tabTwo" class="tab tabTwo">
-                <p class="fw-bold formMiniSectionTitle">Factuurgegevens:</p>
+                <span class="sectionLabel">Factuurgegevens:</span>
                 <label for="" class="small-lable fw-bold">Emailadres:</label>
-                <input type="text" name="billingEmailAddress" id="billingEmailAddress" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Emailadres" required>
+                <input type="email" name="billingEmailAddress" id="billingEmailAddress" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Emailadres" required>
                 <label for="" class="small-lable fw-bold">Land:</label>
                 <input type="text" name="billingCountry" id="billingCountry" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Land" required>
                 <label for="" class="small-lable fw-bold">Provincie:</label>
@@ -49,13 +49,17 @@
             </div>
 
             <div id="tabThree" class="tab tabThree">
-                <p class="fw-bold formMiniSectionTitle">Persoonlijke gegevens:</p>
+                <span class="sectionLabel">Persoonlijke gegevens:</span>
+                <label for="" class="small-lable fw-bold">Voornaam:</label>
+                <input type="text" name="firstName" id="firstName" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Voornaam" required>
+                <label for="" class="small-lable fw-bold">Achternaam:</label>
+                <input type="text" name="lastName" id="lastName" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Achternaam" required>
+                <label for="" class="small-lable fw-bold">Telefoonnummer:</label>
+                <input type="tel" name="phoneNumber" id="phoneNumber" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Telefoonnummer" required>
                 <label for="" class="small-lable fw-bold">Emailadres:</label>
-                <input type="text" name="billingEmailAddress" id="billingEmailAddress" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Emailadres" required>
-                <label for="" class="small-lable fw-bold">Land:</label>
-                <input type="text" name="billingCountry" id="billingCountry" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Land" required>
-                <label for="" class="small-lable fw-bold">Provincie:</label>
-                <input type="text" name="billingProvince" id="billingProvince" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Provincie" required>
+                <input type="email" name="emailAddress" id="emailAddress" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Emailadres" required>
+                <label for="" class="small-lable fw-bold">Wachtwoord:</label>
+                <input type="pasword" name="password" id="password" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Wachtwoord" required>
                 <input onclick="nextTab()" type="button" value="Afronden" name="stepThree" id="stepThree" class="tabButton btn btn-lg fw-bold btn-register col-12 mb-2 register-submit mt-3">
             </div>
 

@@ -191,6 +191,14 @@ body {
     font-size: smaller;
 }
 
+.sectionLabel {
+    font-size: 16px;
+    color: var(--kashmir-blue);
+    font-weight: bold;
+    display: block;
+    margin-top: 0.7rem;
+}
+
 /* END */
 
 
