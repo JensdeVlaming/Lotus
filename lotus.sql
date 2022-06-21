@@ -55,7 +55,7 @@ CREATE TABLE `user` (
     `roles` int NOT NULL DEFAULT 1,
     password varchar(15) NOT NULL,
     PRIMARY KEY(email),
-    CONSTRAINT FK_UserRoles FOREIGN KEY (roles) REFERENCES role(id) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT FK_UserRoles FOREIGN KEY (roles) REFERENCES `role`(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- company
@@ -136,94 +136,95 @@ CREATE TABLE `request` (
     `approved` tinyint NOT NULL DEFAULT 0,
     `clientEmail` varchar(100) NOT NULL,
     PRIMARY KEY(requestId),
-    CONSTRAINT FK_RequestBillingaddress FOREIGN KEY (billingAddressId) REFERENCES billingaddress(billingAddressId) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_RequestCompany FOREIGN KEY (companyId) REFERENCES company(companyId) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_RequestContact FOREIGN KEY (contactId) REFERENCES contact(contactId) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_RequestGrimelocation FOREIGN KEY (grimeLocationId) REFERENCES grimelocation(grimeLocationId) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_RequestPlaygroundt FOREIGN KEY (playGroundId) REFERENCES playground(playGroundId) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT FK_RequestBillingaddress FOREIGN KEY (billingAddressId) REFERENCES `billingaddress`(billingAddressId) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_RequestCompany FOREIGN KEY (companyId) REFERENCES `company`(companyId) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_RequestContact FOREIGN KEY (contactId) REFERENCES `contact`(contactId) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_RequestGrimelocation FOREIGN KEY (grimeLocationId) REFERENCES `grimelocation`(grimeLocationId) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_RequestPlaygroundt FOREIGN KEY (playGroundId) REFERENCES `playground`(playGroundId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- solicit
-CREATE TABLE solicit (
+CREATE TABLE `solicit` (
     `email` varchar(100) NOT NULL,
     `requestId` int NOT NULL,
     `assigned` tinyint NOT NULL DEFAULT 0,
     `deregisterReason` varchar(100),
     PRIMARY KEY (email, requestId),
-    CONSTRAINT FK_SolicitUser FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_SolicitRequest FOREIGN KEY (requestId) REFERENCES request(requestId) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT FK_SolicitUser FOREIGN KEY (email) REFERENCES `user`(email) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_SolicitRequest FOREIGN KEY (requestId) REFERENCES `request`(requestId) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
 
 -- roles
 INSERT INTO `role` (id, name) VALUES
-(1, 'Lid'),
-(2, 'Coordinator'),
-(3, 'Opdrachtgever'),
-(4, 'Coordinator,Lid');
+(1,'Lid'),
+(2,'Coordinator'),
+(3,'Opdrachtgever'),
+(4,'Coordinator,Lid');
 
 -- users
-INSERT INTO user (email,firstName,lastName,street,premise,phonenumber,city,postalCode,gender,roles, password) VALUES
-('client@lotus.nl','Klaas','Opdrachtgever','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M', 3, "secret"), -- Opdrachtgever
-('member@lotus.nl','Piet','Lid','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, "secret"), -- Member
-('coordinator@lotus.nl','Paula','Coordinator','coordstreet','1a','+316 12345678', 'Breda','1234AL','M', 4, "secret"), -- Coordinator
-('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, "secret"), -- Member
-('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"), -- Member
-('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, "secret"), -- Member
-('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, "secret"); -- Member
+INSERT INTO `user` (email, firstName, lastName, street, premise, phonenumber, city, postalCode, gender, roles, password) VALUES
+('manuelasmarius@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 4, 'Manuela01'),
+('manuelasmarius-opdrachtgever@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 3, 'Manuela01'),
+('client@lotus.nl','Klaas','Opdrachtgever','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M', 3, 'secret'),
+('member@lotus.nl','Piet','Lid','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, 'secret'),
+('coordinator@lotus.nl','Paula','Coordinator','coordstreet','1a','+316 12345678', 'Breda','1234AL','M', 4, 'secret'),
+('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, 'secret'),
+('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
+('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
+('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, 'secret');
 
 
 -- billingaddress
-INSERT INTO billingaddress (billingAddressId, bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
-(1, "Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA"),
-(2, "Nederland", "Gelderland", "Nijmegen", "Jasmijnstraat", 28, "6543 TW"),
-(3, "Nederland", "Zuid-Holland", "Dordrecht", "Halmaheiraplein", 5, "3312 GH"),
-(4, "Nederland", "Noord-Holland", "Amsterdam", "Anjeliersstraat", 187, "1015 NG"),
-(5, "Nederland", "Utrecht", "Utrecht", "Van Diemenstraat", 33, "3531 GG");
+INSERT INTO `billingaddress` (billingAddressId, bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
+(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
+(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
+(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
+(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
+(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
 
 -- company
-INSERT INTO company (companyId, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES 
-(1, "Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA", "Apotheek Brabantpark"),
-(2, "Nederland", "Gelderland", "Nijmegen", "Jasmijnstraat", 28, "6543 TW", "Amphia Ziekenhuis Langendijk"),
-(3, "Nederland", "Zuid-Holland", "Dordrecht", "Halmaheiraplein", 5, "3312 GH", "Apotheek Brabantpark"),
-(4, "Nederland", "Noord-Holland", "Amsterdam", "Anjeliersstraat", 187, "1015 NG", "Amphia Ziekenhuis Langendijk"),
-(5, "Nederland", "Utrecht", "Utrecht", "Van Diemenstraat", 33, "3531 GG", "Amphia Ziekenhuis Molengracht");
+INSERT INTO `company` (companyId, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES 
+(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA', 'Apotheek Brabantpark'),
+(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW', 'Amphia Ziekenhuis Langendijk'),
+(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH', 'Apotheek Brabantpark'),
+(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG', 'Amphia Ziekenhuis Langendijk'),
+(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG', 'Amphia Ziekenhuis Molengracht');
 
 -- contact
-INSERT INTO contact (contactId, firstName, lastName, email, phoneNumber) VALUES 
-(1, "Jan", "Jansen", "janjansen@gmail.com", "06-12345678"),
-(2, "Betty", "Bezem", "bettybezem@gmail.com", "06-12345678"),
-(3, "Mirte", "Roos", "mirteroos@gmail.com", "06-12345678"),
-(4, "Fien", "Brechtje", "fienbrechtje@gmail.com", "06-12345678"),
-(5, "Loek", "Alice", "loekalice@gmail.com", "06-12345678");
+INSERT INTO `contact` (contactId, firstName, lastName, email, phoneNumber) VALUES 
+(1, 'Jan', 'Jansen', 'janjansen@gmail.com', '06-12345678'),
+(2, 'Betty', 'Bezem', 'bettybezem@gmail.com', '06-12345678'),
+(3, 'Mirte', 'Roos', 'mirteroos@gmail.com', '06-12345678'),
+(4, 'Fien', 'Brechtje', 'fienbrechtje@gmail.com', '06-12345678'),
+(5, 'Loek', 'Alice', 'loekalice@gmail.com', '06-12345678');
 
 -- grimelocation
-INSERT INTO grimelocation (grimeLocationId, gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES 
-(1, "Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA"),
-(2, "Nederland", "Gelderland", "Nijmegen", "Jasmijnstraat", 28, "6543 TW"),
-(3, "Nederland", "Zuid-Holland", "Dordrecht", "Halmaheiraplein", 5, "3312 GH"),
-(4, "Nederland", "Noord-Holland", "Amsterdam", "Anjeliersstraat", 195, "1015 NG"),
-(5, "Nederland", "Utrecht", "Utrecht", "Van Diemenstraat", 25, "3531 GG");
+INSERT INTO `grimelocation` (grimeLocationId, gCountry, gProvince, gCity, gStreet, gHouseNumber, gPostalCode) VALUES 
+(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
+(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
+(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
+(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 195, '1015 NG'),
+(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 25, '3531 GG');
 
 -- playground
-INSERT INTO playground (playGroundId, pCountry, pProvince, pCity, pStreet, pHouseNumber, pPostalCode) VALUES 
-(1, "Nederland", "Noord-Brabant", "Breda", "Hooghout", 65, "4817 EA"),
-(2, "Nederland", "Gelderland", "Nijmegen", "Jasmijnstraat", 28, "6543 TW"),
-(3, "Nederland", "Zuid-Holland", "Dordrecht", "Halmaheiraplein", 5, "3312 GH"),
-(4, "Nederland", "Noord-Holland", "Amsterdam", "Anjeliersstraat", 187, "1015 NG"),
-(5, "Nederland", "Utrecht", "Utrecht", "Van Diemenstraat", 33, "3531 GG");
+INSERT INTO `playground` (playGroundId, pCountry, pProvince, pCity, pStreet, pHouseNumber, pPostalCode) VALUES 
+(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
+(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
+(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
+(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
+(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
 
 
 -- request
-INSERT INTO request (requestId, description, comments, date, time, clientEmail, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, approved) VALUES 
-(1, "Steekwonden", "Cuts and bruises", "12-06-2022", "10:00", "client@lotus.nl", 5, 1, 1, 1, 1, 1, 0),
-(2, "Benauwdheid", "Paars gezicht", "14-06-2022", "12:00", "client@lotus.nl", 3, 2, 2, 2, 2, 2, 1),
-(3, "Brandoefening", "Hoofdpijn", "14-06-2022", "12:00", "client@lotus.nl", 10, 3, 3, 3, 3, 3, 2),
-(4, "Aanrijding", "Slachtoffer na aanrijding bewusteloos", "05-07-2022", "13:00", "client@lotus.nl", 2, 4, 4, 4, 4, 4, 3),
-(5, "Kneuzing", "Voet", "20-08-2022", "10:00", "client@lotus.nl", 1, 5, 5, 5, 5, 5, 4);
+INSERT INTO `request` (requestId, description, comments, date, time, clientEmail, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, approved) VALUES 
+(1, 'Steekwonden', 'Cuts and bruises', '12-06-2022', '10:00', 'client@lotus.nl', 5, 1, 1, 1, 1, 1, 0),
+(2, 'Benauwdheid', 'Paars gezicht', '14-06-2022', '12:00', 'client@lotus.nl', 3, 2, 2, 2, 2, 2, 1),
+(3, 'Brandoefening', 'Hoofdpijn', '14-06-2022', '12:00', 'client@lotus.nl', 10, 3, 3, 3, 3, 3, 2),
+(4, 'Aanrijding', 'Slachtoffer na aanrijding bewusteloos', '05-07-2022', '13:00', 'client@lotus.nl', 2, 4, 4, 4, 4, 4, 3),
+(5, 'Kneuzing', 'Voet', '20-08-2022', '10:00', 'client@lotus.nl', 1, 5, 5, 5, 5, 5, 4);
 
 -- solicit
-INSERT INTO solicit(email, requestId, assigned) VALUES
+INSERT INTO `solicit` (email, requestId, assigned) VALUES
 ('kasper@lotus.nl', 2, 0),
 ('juliet@lotus.nl', 2, 1),
 ('daniel@lotus.nl', 2, 2),

@@ -14,6 +14,8 @@
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
             } else if ($item["approved"] == 4) {
                 $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
+            } else if ($item["approved"] == 5) {
+                $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
             }
         ?>
 
@@ -31,11 +33,11 @@
                                 <div class="embed-responsive text-center col-12">
                                     <iframe class="col-12" src="https://maps.google.com/maps?q=<?php echo "" . $item["pCity"] . "+" . $item["pStreet"] . "+" . $item["pHouseNumber"] . "+" . $item["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                                 </div>
-                                <?php if ($item["approved"] == 0) { ?>
+                                <?php if ($item["approved"] == 0 || $item["approved"] == 5) { ?>
                                 <div class="row g-0">
                                     <div class="btn-group" style="z-index: 10" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-danger col-6" data-bs-toggle="modal" data-bs-target="#declineModal<?php echo $item["requestId"]; ?>" name="declineButton">Afwijzen</button>
-                                        <button type="button" class="btn btn-success col-6" data-bs-toggle="modal" data-bs-target="#confirmationModal<?php echo $item["requestId"]; ?>" name="acceptButton">Accepteren</button>
+                                        <button type="button" class="btn btn-warning col-6" data-bs-toggle="modal" data-bs-target="#inProgressModal<?php echo $item["requestId"]; ?>" name="inProgressButton">In behandeling</button>
                                     </div>
                                 </div>
                                 <?php } ?>
@@ -69,14 +71,14 @@
                 </div>
 
 
-                <div class="modal fade" id="confirmationModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal fade" id="inProgressModal<?php echo $item["requestId"]; ?>" tabindex="-1" aria-labelledby="inProgressModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="confirmationModalLabel">Weet u het zeker?</h5>
                             </div>
                             <div class="modal-body">
-                                U staat op het punt een opdracht te accepteren. Deze actie kan niet ongedaan worden.
+                                U staat op het punt een opdracht in behandeling te nemen. Deze actie kan niet ongedaan worden.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>

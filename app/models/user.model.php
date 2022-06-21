@@ -1,13 +1,11 @@
 <?php
 
-class UserModel {
-    public function __construct() {
-        $this->db = new Database;
-    }
-
-    public function authenticate($email, $password) {
+class UserModel extends Model
+{
+    public function authenticate($email, $password)
+    {
         $this->db->query("SELECT * FROM user LEFT JOIN role ON user.roles = role.id WHERE email = :email AND password = :password;");
-        
+
         $this->db->bind(":email", $email);
         $this->db->bind(":password", $password);
 
@@ -19,9 +17,10 @@ class UserModel {
         return null;
     }
 
-    public function create($email, $firstName, $lastName, $street, $premise, $city, $postalCode, $phoneNumber, $gender, $password) {
+    public function create($email, $firstName, $lastName, $street, $premise, $city, $postalCode, $phoneNumber, $gender, $password)
+    {
         $this->db->query("INSERT INTO user (email, firstName, lastName, street, premise, city, postalCode, phoneNumber, gender, password, roles) VALUES (:email, :firstName, :lastName, :street, :premise, :city, :postalCode, :phoneNumber, :gender, :password, :roles)");
-        
+
         $this->db->bind(":email", $email);
         $this->db->bind(":firstName", $firstName);
         $this->db->bind(":lastName", $lastName);
@@ -42,7 +41,7 @@ class UserModel {
             } else {
                 return 2;
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return 3;
         }
     }

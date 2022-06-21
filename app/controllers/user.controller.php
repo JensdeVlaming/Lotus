@@ -12,4 +12,6 @@ class UserController extends Controller
     public function authenticatd() {
         echo "You can view this page because you are logged in! ";
     }
+
+
 }

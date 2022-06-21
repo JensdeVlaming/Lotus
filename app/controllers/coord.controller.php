@@ -6,12 +6,12 @@ class CoordController extends Controller
         $this->coordModel = $this->model("coord");
         $this->memberModel = $this->model("member");
         $this->userModel = $this->model("user");
-        $this->registerMiddleware(new AuthMiddleware(["getOverview"]));
+        $this->registerMiddleware(new AuthMiddleware(["getOverview", "getRegistry", "declineAssignment", "acceptAssignment", "getRequestDetails", "getMemberAndRequestDetails", "getCoordProfile", "addMember", "createMember"]));
+        $this->mailModel = $this->model("mail");
     }
 
     public function getOverview()
     {
-
         $resultSet = $this->coordModel->getAssignmentRequests();
 
         if (sizeOf($resultSet) > 0) {
@@ -23,7 +23,6 @@ class CoordController extends Controller
 
     public function getRegistry()
     {
-
         $result = $this->memberModel->getAllMembers();
 
         $this->view("coord/registry", $result);
@@ -34,35 +33,53 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->declineAssignment($id);
+        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
 
-        Application::$app->controller->redirect("/overzicht-coordinator");
+        Application::$app->controller->redirect("/overzicht");
     }
 
-    public function acceptAssignment($data)
+    public function AssignmentInProgress($data)
     {
         $id = $data["params"]["id"];
 
         $this->coordModel->AssigmentInProgress($id);
-        Application::$app->controller->redirect("/overzicht");
+        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetailsAcceptDeny($id));
 
+        Application::$app->controller->redirect("/overzicht");
     }
 
-    public function getRequestDetailsAcceptDeny($data) {
+    public function getRequestDetails($data) {
         $id = $data["params"]["id"];
 
-        $result =  $this->coordModel->getRequestDetailsAcceptDeny($id);
+        $result =  $this->coordModel->getRequestDetails($id);
+        $openMembers = $this->memberModel->getAllOpenMembersByRequestId($id);
+        $assignedMembers = $this->memberModel->getAllAssignedMembersByRequestId($id);
 
-        self::view("/coord/requestDetails", $result);
-      
+        $result = Array(
+            "details" => $result,
+            "openMembers" => $openMembers,
+            "assignedMembers" => $assignedMembers
+        );
+
+        $this->view("/coord/requestDetails", $result);
     }
 
-    public function getMemberAndRequestDetails($data) {
+    public function getMemberAndRequestDetails($data)
+    {
         $email = $data["params"]["email"];
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
-        
-        self::view("/coord/memberDetails", $result );
-        
+
+        $this->view("/coord/memberDetails", $result);
+    }
+
+    public function getCoordProfile()
+    {
+        $email = Application::$app->session->get("user");
+
+        $result = $this->coordModel->getProfile($email);
+
+        $this->view("/coord/profile", $result);
     }
 
     public function addMember()
@@ -94,6 +111,32 @@ class CoordController extends Controller
                 "error" => "Lid bestaat al of er is iets fout gegaan."
             ];
             $this->view("/coord/memberForm", $data);
+        }
+    }
+
+    public function assignMemberToAssigment($data) {
+        $id = $data["params"]["id"];
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->assignMemberToAssigment($id, $email);
+
+        if ($result) {
+            $this->redirect("/opdracht/$id/details");
+        } else {
+            echo "Er is iets fout gegegaan tijdens het toewijzen van lid voor opdracht " . $id;
+        }
+    }
+
+    public function deleteMemberFromAssigment($data) {
+        $id = $data["params"]["id"];
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->deleteMemberFromAssigment($id, $email);
+
+        if ($result) {
+            $this->redirect("/opdracht/$id/details");
+        } else {
+            echo "Er is iets fout gegegaan tijdens het verwijderen van lid voor opdracht " . $id;
         }
     }
 }
