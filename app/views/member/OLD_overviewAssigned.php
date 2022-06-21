@@ -1,7 +1,7 @@
 <div class="row row-cols-md-1 row-cols-lg-3 g-2 m-2">
         <?php
         if (!empty($data)) {
-        foreach ($data as $item) {
+        foreach ($data["details"] as $item) {
         ?>
         <div class="col-md-12 col-lg-4">
             <div class="customCard card shadow-sm col-12 h-100">

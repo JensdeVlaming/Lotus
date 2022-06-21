@@ -33,19 +33,28 @@ class CoordController extends Controller
         $id = $data["params"]["id"];
 
         $this->coordModel->declineAssignment($id);
-        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetailsAcceptDeny($id));
+        $this->mailModel->requestReviewEmail(0, $this->coordModel->getRequestDetails($id));
 
-        Application::$app->controller->redirect("/overzicht");
+        $this->redirect("/opdracht/$id/details");
     }
 
     public function AssignmentInProgress($data)
     {
         $id = $data["params"]["id"];
 
-        $this->coordModel->AssigmentInProgress($id);
-        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetailsAcceptDeny($id));
+        $this->coordModel->AssignmentInProgress($id);
+        $this->mailModel->requestReviewEmail(1, $this->coordModel->getRequestDetails($id));
 
-        Application::$app->controller->redirect("/overzicht");
+        $this->redirect("/opdracht/$id/details");
+    }
+
+    public function acceptAssignment($data)
+    {
+        $id = $data["params"]["id"];
+
+        $this->coordModel->acceptAssignment($id);
+
+        $this->redirect("/opdracht/$id/details");
     }
 
     public function getRequestDetails($data) {
@@ -53,12 +62,12 @@ class CoordController extends Controller
 
         $result =  $this->coordModel->getRequestDetails($id);
         $openMembers = $this->memberModel->getAllOpenMembersByRequestId($id);
-        $assignedMembers = $this->memberModel->getAllAssignedMembersByRequestId($id);
+        $allMembersOfRequest = $this->memberModel->getAllMembersByRequestId($id);
 
         $result = Array(
             "details" => $result,
             "openMembers" => $openMembers,
-            "assignedMembers" => $assignedMembers
+            "allMembersOfRequest" => $allMembersOfRequest
         );
 
         $this->view("/coord/requestDetails", $result);
@@ -124,6 +133,19 @@ class CoordController extends Controller
             $this->redirect("/opdracht/$id/details");
         } else {
             echo "Er is iets fout gegegaan tijdens het toewijzen van lid voor opdracht " . $id;
+        }
+    }
+
+    public function declineMemberFromAssigment($data) {
+        $id = $data["params"]["id"];
+        $email = $data["params"]["email"];
+
+        $result = $this->coordModel->declineMemberFromAssigment($id, $email);
+
+        if ($result) {
+            $this->redirect("/opdracht/$id/details");
+        } else {
+            echo "Er is iets fout gegegaan tijdens het afwijzen van lid voor opdracht " . $id;
         }
     }
 

@@ -40,22 +40,32 @@ class MemberController extends Controller
         $this->view("member/registeredAssignments", $resultSet);
     }
 
-    public function deregister($payload)
+    public function unsubscribeFromAssignment($payload)
     {
         $requestId = $payload["requestId"];
-        $reasonFor = $payload["reasonFor"];
+        if (isset($payload["reasonFor"])) {
+            $reasonFor = $payload["reasonFor"];
+        } else {
+            $reasonFor = null;
+        }
 
-        $this->memberModel->deregister($requestId, $reasonFor);
+        $this->memberModel->unsubscribeFromAssignment($requestId, $reasonFor);
 
-        $this->redirect("/opdrachten");
+        $this->redirect("/opdracht/$requestId/details");
     }
 
     public function getRequestDetails($data)
     {
+        $email = Application::$app->session->get("user");
         $id = $data["params"]["id"];
 
-        $result = $this->memberModel->requestDetails($id);
+        $result = $this->memberModel->requestDetails($email, $id);
+        $assignedMembers = $this->memberModel->getAllAssignedMembersByRequestId($id);
 
+        $result = Array(
+            "details" => $result,
+            "assignedMembers" => $assignedMembers
+        );
         $this->view("/member/requestDetails", $result);
     }
 
@@ -77,7 +87,7 @@ class MemberController extends Controller
     {
         $id = $data["params"]["id"];
 
-        $result = $this->memberModel->requestDetails($id);
+        $result = $this->memberModel->requestDetails("jens@lotus.nl", $id);
 
         $this->view("/member/requestDetailsAssigned", $result);
     }

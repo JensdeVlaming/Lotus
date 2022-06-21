@@ -1,6 +1,5 @@
     <?php 
         if (!empty($data)) {
-        foreach ($data as $item) {
     ?>
         <div class="container">
                 
@@ -9,8 +8,8 @@
                      <!-- Column 1 -->
                     <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
                 
-                        <h2 class="formSectionTitle fw-bold mt-3"><?php echo $item["companyName"];?></h2>
-                        <p><?php echo $item["description"];?></p>
+                        <h2 class="formSectionTitle fw-bold mt-3"><?php echo $data["companyName"];?></h2>
+                        <p><?php echo $data["description"];?></p>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#participateModal">Afmelden</button>
                         
                         <hr class="dropdown-divider">
@@ -25,46 +24,46 @@
                                     <tr>
                                     <td scope="row">Datum</td>
                                     <td>:</td>
-                                    <td><?php echo $item["date"];?></td>
+                                    <td><?php echo $data["date"];?></td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">Tijd</td>
                                     <td>:</td>
-                                    <td><?php echo $item["time"];?></td>
+                                    <td><?php echo $data["time"];?></td>
                                     </tr>
 
                                     <tr>
                                     <td scope="row">Stad</td>
                                     <td>:</td>
-                                    <td><?php echo $item["pCity"];?> </td>
+                                    <td><?php echo $data["pCity"];?> </td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">Locatie</td>
                                     <td>:</td>
-                                    <td><?php echo "".$item["pStreet"]." ".$item["pHouseNumber"].", ".$item["pPostalCode"].""?> </td>
+                                    <td><?php echo "".$data["pStreet"]." ".$data["pHouseNumber"].", ".$data["pPostalCode"].""?> </td>
                                     </tr>
 
                                     
                                     <tr>
                                     <td scope="row">Grimeerlocatie</td>
                                     <td>:</td>
-                                    <td><?php echo "".$item["gStreet"]." ".$item["gHouseNumber"].", ".$item["gPostalCode"].""?></td>
+                                    <td><?php echo "".$data["gStreet"]." ".$data["gHouseNumber"].", ".$data["gPostalCode"].""?></td>
                                     </tr>
                 
                                     <tr>
                                     <td scope="row">Leden nodig</td>
                                     <td>:</td>
-                                    <td><?php echo $item["casualties"];?></td>
+                                    <td><?php echo $data["casualties"];?></td>
                                     </tr>
                             </table>
                             
                             <?php
-                                if (!empty($item["comments"])) {
+                                if (!empty($data["comments"])) {
                                 echo '  <hr class="dropdown-divider">
                                         <h2 class="formSectionTitle fw-bold mt-3">Opmerkingen</h2>
-                                        <p> '.$item["comments"].'</p>';
+                                        <p> '.$data["comments"].'</p>';
                                 }
                                 ?>
 
@@ -78,16 +77,16 @@
                     <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
                                 <p>
-                                <?php echo  $item["companyName"].' </br>	                                
-                                            '.$item["firstName"].' '.$item["lastName"].' </br>
-                                            '.$item["clientEmail"].' </br>
-                                            '.$item["phoneNumber"]?>
+                                <?php echo  $data["companyName"].' </br>	                                
+                                            '.$data["firstName"].' '.$data["lastName"].' </br>
+                                            '.$data["clientEmail"].' </br>
+                                            '.$data["phoneNumber"]?>
                                             </p>
                     </div>
                     
                     <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto" >
                         <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
-                            <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "".$item["pStreet"]."+".$item["pHouseNumber"]."+".$item["pPostalCode"].""?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "".$data["pStreet"]."+".$data["pHouseNumber"]."+".$data["pPostalCode"].""?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                                         style="border:0" allowfullscreen></iframe>
                     </div> 
                     <!-- Column 2 end  -->
@@ -98,7 +97,7 @@
            
         </div>   
 
-            <?php }} else {
+            <?php } else {
                         ?>
                         <div class="container">
                             
@@ -133,8 +132,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                    <a href="/opdracht/<?php echo $item["requestId"] ?>/afmelden"><button class="btn btn-primary" data-bs-target="#confirmationModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Verstuur</button></a>
-                    <!--  -->
+                    <a href="/opdracht/<?php echo $data["requestId"] ?>/afmelden"><button class="btn btn-primary" data-bs-target="#confirmationModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Verstuur</button></a>
                 </div>
                 </div>
             </div>

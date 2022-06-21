@@ -93,6 +93,7 @@ class Controller
 
     public function redirect($url, $data = [])
     {
+        echo $url;
         header("Location: " . $url);
         exit;
     }

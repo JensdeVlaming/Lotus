@@ -25,8 +25,11 @@ if (!empty($data["details"])) {
                     <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
 
                     <?php if ($data["details"]["approved"] == 0) { ?>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#inProgressModal" name="inProgressButton">In behandeling</button>
+                    <?php } else if ($data["details"]["approved"] == 1) { ?>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
                     <?php } ?>
 
                     <hr class="dropdown-divider">
@@ -171,74 +174,83 @@ if (!empty($data["details"])) {
         </div>
 
         <?php if ($data["details"]["approved"] == 1 || $data["details"]["approved"] == 2) { ?>
-        <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
-            <!-- Overview registered members -->
-            <div class="accordion-item mt-2 mb-2 border-0">
-                <h2 class="accordion-header" id="header-1">
-                    <button class="formSectionTitle accordion-button bg-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
-                </h2>
-            </div>
+            <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
+                <!-- Overview registered members -->
+                <div class="accordion-item mt-2 mb-2 border-0">
+                    <h2 class="accordion-header" id="header-1">
+                        <button class="formSectionTitle accordion-button bg-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#registeredMembers" aria-expended="true" aria-controls="registeredMembers">Ingeschreven leden</button>
+                    </h2>
+                </div>
 
-            <div id="registeredMembers" class="accordion-collapse show collapse m-2 table-responsive" aria-labelledby="header-1">
-                <?php if ($data["details"]["approved"] == 1) { ?>
-                <button type="button" class="btn btn-success mx-1 m-2" data-bs-toggle="modal" data-bs-target="#assignMemberModal">Lid toewijzen</button>
-                <?php } ?>
-                <div class="row row-cols-md-1 row-cols-lg-2 g-2 mx-1 m-2">
-                    <?php
-                    if (!empty($data["assignedMembers"])) {
-                        foreach ($data["assignedMembers"] as $member) {
-                    ?>
-                            <div class="col-md-12 col-lg-6">
-                                <div class="customCard card shadow-sm col-12 h-100">
-                                    <div class="customCardBody card-body" for="btn-check">
-                                        <div class="row gx-0">
-                                            <div class="col-auto">
-                                                <div data-initials="<?php echo Application::$app->controller->getInitials($member["firstName"], $member["lastName"]) ?>" class="profileIcon"></div>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="card-title fw-bold"><?php echo $member["firstName"] . " " . $member["lastName"] ?></h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["email"] ?></h6>
-                                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["phoneNumber"] ?></h6>
-                                                <h6 class="card-subtitle mb-2 text-muted">Status:
-                                                    <?php
-                                                    if ($member["assigned"] == 0) {
-                                                        echo 'Aanmelding ontvangen';
-                                                    } else if ($member["assigned"] == 1) {
-                                                        echo 'Toegewezen';
-                                                    } else if ($member["assigned"] == 2) {
-                                                        echo 'Niet toegewezen';
-                                                    } else if ($member["assigned"] == 3) {
-                                                        echo 'Afgemeld';
-                                                    }
-                                                    ?></h6>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="float-end">
-                                                    <a href="/opdracht/<?php echo $data["details"]["requestId"] . "/" . $member["email"] ?>/verwijderen"><button type="button" class="btn btn-danger">Verwijderen</button></a>
+                <div id="registeredMembers" class="accordion-collapse show collapse m-2 table-responsive" aria-labelledby="header-1">
+                    <button type="button" class="btn btn-success mx-1 m-2" data-bs-toggle="modal" data-bs-target="#assignMemberModal">Lid handmatig toewijzen</button>
+                    <div class="row row-cols-md-1 row-cols-lg-2 g-2 mx-1 m-2">
+                        <?php
+                        if (!empty($data["allMembersOfRequest"])) {
+                            foreach ($data["allMembersOfRequest"] as $member) {
+                                if ($member["assigned"] == 0) {
+                                    $approved = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanmelding ontvangen</span>';
+                                } else if ($member["assigned"] == 1) {
+                                    $approved = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
+                                } else if ($member["assigned"] == 2 || $member["assigned"] == 4) {
+                                    $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgewezen</span>';
+                                } else if ($member["assigned"] == 3) {
+                                    $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgemeld</span>';
+                                } else if ($member["assigned"] == 4) {
+                                    $approved = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Geannuleerd</span>';
+                                } else if ($member["assigned"] == 5) {
+                                    $approved = '<i class="fa fa-bullhorn text-danger" aria-hidden="true"></i> <span class="text-muted">Wachten op goedkeuring</span>';
+                                }
+                        ?>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="customCard card shadow-sm col-12 h-100">
+                                        <div class="customCardBody card-body" for="btn-check">
+                                            <div class="row gx-0">
+                                                <div class="col-auto">
+                                                    <div data-initials="<?php echo Application::$app->controller->getInitials($member["firstName"], $member["lastName"]) ?>" class="profileIcon"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="card-title fw-bold"><?php echo $member["firstName"] . " " . $member["lastName"] ?></h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["email"] ?></h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["phoneNumber"] ?></h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Deelnemingen: <?php echo $member["participations"] ?></h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted hover"><?php echo $approved; ?></h6>
+                                                    <?php if ($member["assigned"] == 3 && !is_null($member["deregisterReason"])) { echo '<p class="hide">' . $member["deregisterReason"] . '</p>'; } ?>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="float-end">
+                                                        <?php if ($member["assigned"] == 0) { ?>
+                                                            <a href="/opdracht/<?php echo $data["details"]["requestId"] . "/" . $member["email"] ?>/afwijzen"><button type="button" class="btn btn-danger">Afwijzen</button></a>
+                                                            <a href="/opdracht/<?php echo $data["details"]["requestId"] . "/" . $member["email"] ?>/toewijzen"><button type="button" class="btn btn-success">Toewijzen</button></a>
+                                                        <?php } else if ($member["assigned"] == 1) { ?>
+                                                            <a href="/opdracht/<?php echo $data["details"]["requestId"] . "/" . $member["email"] ?>/afwijzen"><button type="button" class="btn btn-danger">Toch afwijzen</button></a>
+                                                        <?php } else if ($member["assigned"] == 2) { ?>
+                                                            <a href="/opdracht/<?php echo $data["details"]["requestId"] . "/" . $member["email"] ?>/toewijzen"><button type="button" class="btn btn-success">Toch toewijzen</button></a>
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php
-                        }
-                    } else {
-                        ?>
-                        <div class="container">
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <div class="container">
 
-                            <div class="row">
-                                <div class="col">
-                                    <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                                        <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn nog geen leden aangemeld voor deze opdracht!</h2>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                                            <h2 class="formSectionTitle fw-bold m-3 text-center">Er zijn nog geen leden aangemeld voor deze opdracht!</h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 <?php } else { ?>
@@ -343,6 +355,23 @@ if (!empty($data["details"])) {
                         </div>
                     <?php } ?>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inProgressModal" tabindex="-1" aria-labelledby="inProgressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Weet u het zeker?</h5>
+            </div>
+            <div class="modal-body">
+                U staat op het punt een opdracht in behandeling te nemen. Deze actie kan niet ongedaan worden.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancelButton btn" data-bs-dismiss="modal">Annuleren</button>
+                <a href="/opdracht/<?php echo $data["details"]["requestId"] ?>/behandelen"><button type="button" class="nextButton btn">Ga verder</button></a>
             </div>
         </div>
     </div>

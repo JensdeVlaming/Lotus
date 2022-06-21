@@ -87,6 +87,18 @@ class CoordModel extends Model
         return $result;
     }
 
+    public function declineMemberFromAssigment($id, $email)
+    {
+        $this->db->query("UPDATE solicit SET assigned = 2 WHERE requestId = :id AND email = :email;");
+
+        $this->db->bind(":id", $id);
+        $this->db->bind(":email", $email);
+
+        $result = $this->db->execute();
+
+        return $result;
+    }
+
     public function deleteMemberFromAssigment($id, $email)
     {
         $this->db->query("UPDATE solicit SET assigned = 4 WHERE requestId = :id AND email = :email;");
