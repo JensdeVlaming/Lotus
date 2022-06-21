@@ -40,17 +40,12 @@ class RegisterModel extends Model
 
     public function addClient($email, $firstName, $lastName, $phoneNumber, $password)
     {
-        $this->db->query("INSERT INTO user (email, firstName, lastName, street, premise, phoneNumber, city, postalCode, gender, roles, password, companyId, billingAddressId) VALUES (:email, :firstName, :lastName, :street, :premise, :phoneNumber, :city, :postalCode, :gender, :roles, :password, :companyId, :billingAddressId);");
+        $this->db->query("INSERT INTO user (email, firstName, lastName, phoneNumber, roles, password, companyId, billingAddressId) VALUES (:email, :firstName, :lastName, :phoneNumber, :roles, :password, :companyId, :billingAddressId);");
 
         $this->db->bind(':email', $email);
         $this->db->bind(':firstName', $firstName);
         $this->db->bind(':lastName', $lastName);
-        $this->db->bind(':street', 'street');
-        $this->db->bind(':premise', 'premise');
         $this->db->bind(':phoneNumber', $phoneNumber);
-        $this->db->bind(':city', 'city');
-        $this->db->bind(':postalCode', 'postalCode');
-        $this->db->bind(':gender', 'M');
         $this->db->bind(':roles', '3');
         $this->db->bind(':password', $password);
         $this->db->bind(':companyId', $this->companyId);
