@@ -11,7 +11,7 @@ class RequestController extends Controller
     public function addRequest($payload)
     {
         $data = [
-            "msg" => "message!"
+            "msg" => "Opdracht succesvol ingediend!"
         ];
 
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
