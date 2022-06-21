@@ -45,45 +45,48 @@ class RequestModel
         $this->grimeLocationId = $this->db->insertedRow();
     }
 
-    public function addBusinessAddressRequest($companyName, $province, $city, $street, $houseNumber, $postalCode)
+    public function addBusinessAddressRequest($user)
     {
 
-        $this->db->query("INSERT INTO company (companyName, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode) VALUES (:companyName, 'Nederland', :province, :city, :street, :houseNumber, :postalCode);");
+        $this->db->query("INSERT INTO company (companyName, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode) VALUES (:companyName, :country, :province, :city, :street, :houseNumber, :postalCode);");
 
-        $this->db->bind(':companyName', $companyName);
-        $this->db->bind(':province', $province);
-        $this->db->bind(':city', $city);
-        $this->db->bind(':street', $street);
-        $this->db->bind(':houseNumber', $houseNumber);
-        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':country', $user['cCountry']);
+        $this->db->bind(':companyName', $user['companyName']);
+        $this->db->bind(':province', $user['cProvince']);
+        $this->db->bind(':city', $user['cCity']);
+        $this->db->bind(':street', $user['cStreet']);
+        $this->db->bind(':houseNumber', $user['cHouseNumber']);
+        $this->db->bind(':postalCode', $user['cPostalCode']);
 
         $this->db->execute();
         $this->companyId = $this->db->insertedRow();
     }
 
-    public function addBillingAddressRequest($province, $city, $street, $houseNumber, $postalCode)
+    public function addBillingAddressRequest($user)
     {
 
-        $this->db->query("INSERT INTO billingaddress (bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES ('Nederland', :province, :city, :street, :houseNumber, :postalCode);");
+        $this->db->query("INSERT INTO billingaddress (bEmail, bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES (:email, :country, :province, :city, :street, :houseNumber, :postalCode);");
 
-        $this->db->bind(':province', $province);
-        $this->db->bind(':city', $city);
-        $this->db->bind(':street', $street);
-        $this->db->bind(':houseNumber', $houseNumber);
-        $this->db->bind(':postalCode', $postalCode);
+        $this->db->bind(':email', $user['bEmail']);
+        $this->db->bind(':country', $user['bCountry']);
+        $this->db->bind(':province', $user['bProvince']);
+        $this->db->bind(':city', $user['bCity']);
+        $this->db->bind(':street', $user['bStreet']);
+        $this->db->bind(':houseNumber', $user['bHouseNumber']);
+        $this->db->bind(':postalCode', $user['bPostalCode']);
 
         $this->db->execute();
         $this->billingAddressId = $this->db->insertedRow();
     }
 
-    public function addContactRequest($firstName, $lastName, $email, $phoneNumber)
+    public function addContactRequest($user)
     {
         $this->db->query("INSERT INTO contact (firstName, lastName, email, phoneNumber) VALUES (:firstName, :lastName, :email, :phoneNumber);");
 
-        $this->db->bind(':firstName', $firstName);
-        $this->db->bind(':lastName', $lastName);
-        $this->db->bind(':email', $email);
-        $this->db->bind(':phoneNumber', $phoneNumber);
+        $this->db->bind(':firstName', $user['firstName']);
+        $this->db->bind(':lastName', $user['lastName']);
+        $this->db->bind(':email', $user['email']);
+        $this->db->bind(':phoneNumber', $user['phoneNumber']);
 
         $this->db->execute();
         $this->contactId = $this->db->insertedRow();
@@ -107,5 +110,17 @@ class RequestModel
         $this->db->bind(':clientEmail', $client);
 
         $this->db->execute();
+    }
+
+    public function getLoggedInUser()
+    {
+        $this->db->query("SELECT * FROM user 
+                            LEFT JOIN company ON user.companyId = company.companyId
+                            LEFT JOIN billingaddress ON user.billingAddressId = billingaddress.billingAddressId 
+                            WHERE email = :email;");
+
+        $this->db->bind(':email', Application::$app->session->get("user"));
+
+        return $this->db->single();
     }
 }
