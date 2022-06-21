@@ -1,106 +1,3 @@
-var currentTab = 0;
-switchTabs(currentTab);
-
-function nextTab() {
-  // TODO alleen wanneer alle velden ingevuld zijn vervolgen ->
-  if (currentTab <= 1) {
-    currentTab++;
-  }
-  switchTabs(currentTab);
-}
-
-function prevTab() {
-  if (currentTab >= 1) {
-    currentTab--;
-  }
-  switchTabs(currentTab);
-}
-
-function switchTabs(currentTab) {
-  console.log(currentTab);
-
-  const tabOne = document.getElementById('tabOne');
-  const tabTwo = document.getElementById('tabTwo');
-  const tabThree = document.getElementById('tabThree');
-
-  tabs = [];
-
-  tabs.push(tabOne);
-  tabs.push(tabTwo);
-  tabs.push(tabThree);
-
-  const one = document.getElementById('1');
-  const two = document.getElementById('2');
-  const three = document.getElementById('3');
-
-  numbers = [];
-
-  numbers.push(one);
-  numbers.push(two);
-  numbers.push(three);
-
-  switch (currentTab) {
-    case 0:
-      tabs.forEach(tab => {
-        if (tab === tabOne) {
-          tab.classList.add('d-block');
-          tab.classList.remove('d-none');
-        } else {
-          tab.classList.add('d-none');
-          tab.classList.remove('d-block');
-        }
-      });
-
-      numbers.forEach(number => {
-        if (!(number === one)) {
-          number.classList.remove('btn-number-current');
-        }
-      });
-
-      break;
-
-    case 1:
-      tabs.forEach(tab => {
-        if (tab === tabTwo) {
-          tab.classList.add('d-block');
-          tab.classList.remove('d-none');
-        } else {
-          tab.classList.add('d-none');
-          tab.classList.remove('d-block');
-        }
-      });
-
-      numbers.forEach(number => {
-        if (number === three) {
-          number.classList.remove('btn-number-current');
-        } else {
-          number.classList.add('btn-number-current');
-        }
-      });
-      break;
-
-    case 2:
-      tabs.forEach(tab => {
-        if (tab === tabThree) {
-          tab.classList.add('d-block');
-          tab.classList.remove('d-none');
-        } else {
-          tab.classList.add('d-none');
-          tab.classList.remove('d-block');
-        }
-      });
-
-      numbers.forEach(number => {
-        number.classList.add('btn-number-current');
-      });
-      break;
-
-    default:
-      console.log('problem');
-      break;
-  }
-}
-
 function automateGatherLocationDataOnCheck() {
 
   const checkBox = document.getElementById("gatherLocationCheckbox");
@@ -421,20 +318,20 @@ function automateBillingAddressDataOnCheck() {
   }
 }
 
-const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+const formContent = document.getElementById('formContent');
 var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
 if (viewportWidth > 768) {
   if (viewportWidth > 992) {
-    placeRequestFormContent.classList.remove('w-75');
-    placeRequestFormContent.classList.add('w-50');
+    formContent.classList.remove('w-75');
+    formContent.classList.add('w-50');
   } else {
-    placeRequestFormContent.classList.remove('w-50');
-    placeRequestFormContent.classList.add('w-75');
+    formContent.classList.remove('w-50');
+    formContent.classList.add('w-75');
   }
 } else {
-  placeRequestFormContent.classList.remove('w-75');
-  placeRequestFormContent.classList.remove('w-50');
+  formContent.classList.remove('w-75');
+  formContent.classList.remove('w-50');
 }
 
 var today = new Date();
@@ -458,20 +355,20 @@ $(window).on('resize', function () {
   if ($(this).width() !== width) {
     width = $(this).width();
 
-    const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+    const formContent = document.getElementById('formContent');
     var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
     if (viewportWidth > 768) {
       if (viewportWidth > 992) {
-        placeRequestFormContent.classList.remove('w-75');
-        placeRequestFormContent.classList.add('w-50');
+        formContent.classList.remove('w-75');
+        formContent.classList.add('w-50');
       } else {
-        placeRequestFormContent.classList.remove('w-50');
-        placeRequestFormContent.classList.add('w-75');
+        formContent.classList.remove('w-50');
+        formContent.classList.add('w-75');
       }
     } else {
-      placeRequestFormContent.classList.remove('w-75');
-      placeRequestFormContent.classList.remove('w-50');
+      formContent.classList.remove('w-75');
+      formContent.classList.remove('w-50');
     }
   }
 });

@@ -21,13 +21,13 @@
             justify-content-center
             ">
         <div class="
-            placeRequestFormContent
+        formContent
             bg-white 
             px-5 
             my-4
             row
             rounded-3
-            " id="placeRequestFormContent">
+            " id="formContent">
             <img src="/src/img/logo.svg" class="img-fluid mx-auto d-block mt-4 mb-4 w-25 h-25" alt="Logo Lotus">
             <hr class="imgDivider">
 
