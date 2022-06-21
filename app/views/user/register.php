@@ -13,7 +13,7 @@
             <div id="tabOne" class="tab tabOne">
                 <span class="sectionLabel">Bedrijfsgegevens:</span>
                 <label for="" class="small-lable fw-bold">Bedrijfsnaam:</label>
-                <input type="text" name="companyCompanyName" id="companyCompanyName" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Bedrijfsnaam" required>
+                <input type="text" name="companyName" id="companyName" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Bedrijfsnaam" required>
                 <label for="" class="small-lable fw-bold">Land:</label>
                 <input type="text" name="companyCountry" id="companyCountry" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Land" required>
                 <label for="" class="small-lable fw-bold">Provincie:</label>
@@ -59,7 +59,7 @@
                 <label for="" class="small-lable fw-bold">Emailadres:</label>
                 <input type="email" name="emailAddress" id="emailAddress" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Emailadres" required>
                 <label for="" class="small-lable fw-bold">Wachtwoord:</label>
-                <input type="pasword" name="password" id="password" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Wachtwoord" required>
+                <input type="password" name="password" id="password" class="stepInputField form-control form-control-md mt-2 mb-3 py-2 px-3 register-input" placeholder="Wachtwoord" required>
                 <input onclick="nextTab()" type="button" value="Afronden" name="stepThree" id="stepThree" class="tabButton btn btn-lg fw-bold btn-register col-12 mb-2 register-submit mt-3">
             </div>
 

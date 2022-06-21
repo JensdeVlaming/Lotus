@@ -59,6 +59,7 @@ CREATE TABLE `company` (
 -- billingaddress
 CREATE TABLE `billingaddress` (
     `billingAddressId` int(11) NOT NULL AUTO_INCREMENT,
+    `bEmail` varchar(200) NOT NULL,
     `bCountry` varchar(200) NOT NULL,
     `bProvince` varchar(200) NOT NULL,
     `bCity` varchar(200) NOT NULL,
@@ -167,12 +168,12 @@ INSERT INTO `role` (id, name) VALUES
 (4,'Coordinator,Lid');
 
 -- billingaddress
-INSERT INTO `billingaddress` (billingAddressId, bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
-(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
-(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
-(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
-(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
-(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
+INSERT INTO `billingaddress` (billingAddressId, bCountry, bEmail, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
+(1, 'Nederland', 'contact@gmail.com', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
+(2, 'Nederland', 'contact@gmail.com', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
+(3, 'Nederland', 'contact@gmail.com', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
+(4, 'Nederland', 'contact@gmail.com', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
+(5, 'Nederland', 'contact@gmail.com', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
 
 -- company
 INSERT INTO `company` (companyId, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES 
