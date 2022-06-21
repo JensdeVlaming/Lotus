@@ -6,7 +6,7 @@ class AuthController extends Controller
     {
         $this->userModel = $this->model("user");
         $this->registerMiddleware(new AuthMiddleware(["changeActiveRole", "logout"]));
-
+        
     }
 
     public function login($payload)
@@ -30,15 +30,15 @@ class AuthController extends Controller
 
             $initials = substr(explode(" ", $result["firstName"])[0], 0, 1) . substr(explode(" ", $result["lastName"])[0], 0, 1);
 
-        if ($result != null) {
-            Application::$app->session->set("user", $result["email"]);
-            Application::$app->session->set("initials", $initials);
-            $this->redirect("/overzicht");
-        } else {
-            $this->view("user/login", $data);
+            if ($result != null) {
+                Application::$app->session->set("user", $result["email"]);
+                Application::$app->session->set("initials", $initials);
+                $this->redirect("/overzicht");
+            } else {
+                $this->view("user/login", $data);
+            }
         }
-    }  
-} 
+    }
 
     public function changeActiveRole($data)
     {
@@ -49,6 +49,12 @@ class AuthController extends Controller
 
         $this->redirect("$url");
     }
+
+    public function register()
+    {
+        $this->view("user/register");
+    }
+
 
 
     public function logout()
