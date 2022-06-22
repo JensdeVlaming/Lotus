@@ -44,8 +44,8 @@ if ($data) {
             align-items-center 
             justify-content-center
             ">
-            <div class="
-            placeRequestFormContent
+        <div class="
+        formContent
             bg-white 
             px-5 
             my-4

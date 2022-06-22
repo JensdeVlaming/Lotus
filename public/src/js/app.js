@@ -1,10 +1,3 @@
-$("textarea").each(function () {
-  this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-}).on("input", function () {
-  this.style.height = "auto";
-  this.style.height = (this.scrollHeight) + "px";
-});
-
 function automateGatherLocationDataOnCheck() {
 
   const checkBox = document.getElementById("gatherLocationCheckbox");
@@ -325,20 +318,20 @@ function automateBillingAddressDataOnCheck() {
   }
 }
 
-const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+const formContent = document.getElementById('formContent');
 var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
 if (viewportWidth > 768) {
   if (viewportWidth > 992) {
-    placeRequestFormContent.classList.remove('w-75');
-    placeRequestFormContent.classList.add('w-50');
+    formContent.classList.remove('w-75');
+    formContent.classList.add('w-50');
   } else {
-    placeRequestFormContent.classList.remove('w-50');
-    placeRequestFormContent.classList.add('w-75');
+    formContent.classList.remove('w-50');
+    formContent.classList.add('w-75');
   }
 } else {
-  placeRequestFormContent.classList.remove('w-75');
-  placeRequestFormContent.classList.remove('w-50');
+  formContent.classList.remove('w-75');
+  formContent.classList.remove('w-50');
 }
 
 var today = new Date();
@@ -347,13 +340,13 @@ var mm = today.getMonth() + 1;
 var yyyy = today.getFullYear();
 
 if (dd < 10) {
-   dd = '0' + dd;
+  dd = '0' + dd;
 }
 
 if (mm < 10) {
-   mm = '0' + mm;
-} 
-    
+  mm = '0' + mm;
+}
+
 today = yyyy + '-' + mm + '-' + dd;
 document.getElementById("playDate").setAttribute("min", today);
 
@@ -362,20 +355,20 @@ $(window).on('resize', function () {
   if ($(this).width() !== width) {
     width = $(this).width();
 
-    const placeRequestFormContent = document.getElementById('placeRequestFormContent');
+    const formContent = document.getElementById('formContent');
     var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
     if (viewportWidth > 768) {
       if (viewportWidth > 992) {
-        placeRequestFormContent.classList.remove('w-75');
-        placeRequestFormContent.classList.add('w-50');
+        formContent.classList.remove('w-75');
+        formContent.classList.add('w-50');
       } else {
-        placeRequestFormContent.classList.remove('w-50');
-        placeRequestFormContent.classList.add('w-75');
+        formContent.classList.remove('w-50');
+        formContent.classList.add('w-75');
       }
     } else {
-      placeRequestFormContent.classList.remove('w-75');
-      placeRequestFormContent.classList.remove('w-50');
+      formContent.classList.remove('w-75');
+      formContent.classList.remove('w-50');
     }
   }
 });
@@ -400,7 +393,7 @@ function hideGatherInfo() {
   if (gatherBoxes[0].classList.contains('d-block')) {
     chevron.outerHTML = chevronDown;
   } else {
-    chevron.outerHTML = chevronUp;    
+    chevron.outerHTML = chevronUp;
   }
 }
 
@@ -425,7 +418,17 @@ function hideBillingInfo() {
   if (billingBoxes[0].classList.contains('d-block')) {
     chevron.outerHTML = chevronDown;
   } else {
-    chevron.outerHTML = chevronUp;    
+    chevron.outerHTML = chevronUp;
   }
 }
 
+
+
+// !Keep down here
+
+$("textarea").each(function () {
+  this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+}).on("input", function () {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+});
