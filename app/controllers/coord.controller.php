@@ -14,11 +14,7 @@ class CoordController extends Controller
     {
         $resultSet = $this->coordModel->getAssignmentRequests();
 
-        if (sizeOf($resultSet) > 0) {
-            $this->view("coord/overview", $resultSet);
-        } else {
-            echo "No requests found.";
-        }
+        $this->view("coord/overview", $resultSet);
     }
 
     public function getRegistry()
