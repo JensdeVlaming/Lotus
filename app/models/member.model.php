@@ -6,6 +6,8 @@ class MemberModel extends Model
     {
         $this->db->query("SELECT * FROM user WHERE roles = :id");
         $this->db->bind(":id", 1);
+        $result = $this->db->resultSet();
+        return $result;
     }
 
     // public function getOpenAssignments()

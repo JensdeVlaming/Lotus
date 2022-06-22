@@ -10,9 +10,7 @@ class RequestController extends Controller
 
     public function addRequest($payload)
     {
-        $data = [
-            "msg" => "message!"
-        ];
+        $data = [];
 
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
         if (isset($payload['annexPlayGround'])) {
@@ -24,38 +22,37 @@ class RequestController extends Controller
             $houseNumberGatherLocation .= $payload['annexGatherLocation'];
         }
 
-        $houseNumberBusinessAddress = $payload['houseNumberBusinessAddress'];
-        if (isset($payload['annexBusinessAddress'])) {
-            $houseNumberBusinessAddress .= $payload['annexBusinessAddress'];
-        }
-
-        $houseNumberBillingAddress = $payload['houseNumberBillingAddress'];
-        if (isset($payload['annexBillingAddress'])) {
-            $houseNumberBillingAddress .= $payload['annexBillingAddress'];
-        }
-
-
         $provinceGatherLocation = $payload['provincePlayGround'];
         if (isset($payload['provinceGatherLocation'])) {
             $provinceGatherLocation = $payload['provinceGatherLocation'];
         }
 
-        $provinceBillingAddress = $payload['provinceBusinessAddress'];
-        if ($payload['provinceBillingAddress'] = 0) {
-            $provinceGatherLocation = $payload['provinceBillingAddress'];
-        }
-
 
         $this->requestModel->addPlayGroundRequest($payload['provincePlayGround'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround, $payload['postalCodePlayGround']);
         $this->requestModel->addGrimeLocationRequest($provinceGatherLocation, $payload['cityGatherLocation'], $payload['streetGatherLocation'], $houseNumberGatherLocation, $payload['postalCodeGatherLocation']);
-        $this->requestModel->addBusinessAddressRequest($payload['requestName'], $payload['provinceBusinessAddress'], $payload['cityBusinessAddress'], $payload['streetBusinessAddress'], $houseNumberBusinessAddress, $payload['postalCodeBusinessAddress']);
-        $this->requestModel->addBillingAddressRequest($provinceBillingAddress, $payload['cityBillingAddress'], $payload['streetBillingAddress'], $houseNumberBillingAddress, $payload['postalCodeBillingAddress']);
-        $this->requestModel->addContactRequest($payload['clientFirstName'], $payload['clientLastName'], $payload['clientEmail'], $payload['clientPhoneNumber']);
-        $this->requestModel->addRequest($payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
+        $this->requestModel->addBusinessAddressRequest($this->requestModel->getLoggedInUser());
+        $this->requestModel->addBillingAddressRequest($this->requestModel->getLoggedInUser());
+        $this->requestModel->addContactRequest($this->requestModel->getLoggedInUser());
+        $result = $this->requestModel->addRequest($payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
         $this->mailModel->addRequestEmail($payload['summary'], $payload['playDate'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround);
-        
 
-        $this->view("/addRequest", $data);
+        if ($result) {
+            $data = [
+                "title" => "Opdracht succesvol ingediend!",
+                "subtitle" => "Uw opdracht is succesvol geplaatst, u kunt dit scherm nu afsluiten.",
+                "button" => "Terug naar de overzichtspagina",
+                "route" => "/overzicht"
+            ];
+            $this->view("/addRequest", $data);
+        } else {
+            $data = [
+                "title" => "Er is een fout opgetreden!",
+                "subtitle" => "Er is iets misgegaan, probeer het anders opnieuw.",
+                "button" => "Terug naar het formulier",
+                "route" => "/opdrachten/aanvragen"
+            ];
+            $this->view("/addRequest", $data);
+        }
     }
 
     public function editRequest($payload)

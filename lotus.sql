@@ -25,9 +25,9 @@
 -- USE `lotus`;
 
 DROP TABLE IF EXISTS `solicit`;
+DROP TABLE IF EXISTS `request`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `role`;
-DROP TABLE IF EXISTS `request`;
 DROP TABLE IF EXISTS `grimelocation`;
 DROP TABLE IF EXISTS `playground`;
 DROP TABLE IF EXISTS `billingaddress`;
@@ -39,23 +39,6 @@ CREATE TABLE `role` (
     `id` int AUTO_INCREMENT,
     `name` varchar(16) NOT NULL,
     PRIMARY KEY(id)
-);
-
--- user
-CREATE TABLE `user` (
-    `email` varchar(100) NOT NULL,
-    `firstName` varchar(50) NOT NULL,
-    `lastName` varchar(50) NOT NULL,
-    `street` varchar(100) NOT NULL,
-    `premise` varchar(5) NULL,
-    `phoneNumber` varchar(15) NOT NULL,
-    `city` varchar(50) NOT NULL,
-    `postalCode` varchar(7) NOT NULL,
-    `gender` varchar(1) NOT NULL,
-    `roles` int NOT NULL DEFAULT 1,
-    password varchar(15) NOT NULL,
-    PRIMARY KEY(email),
-    CONSTRAINT FK_UserRoles FOREIGN KEY (roles) REFERENCES `role`(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- company
@@ -70,6 +53,41 @@ CREATE TABLE `company` (
     `cPostalCode` varchar(10) NOT NULL,
     PRIMARY KEY(companyId)
 
+);
+
+
+-- billingaddress
+CREATE TABLE `billingaddress` (
+    `billingAddressId` int(11) NOT NULL AUTO_INCREMENT,
+    `bEmail` varchar(200) NOT NULL,
+    `bCountry` varchar(200) NOT NULL,
+    `bProvince` varchar(200) NOT NULL,
+    `bCity` varchar(200) NOT NULL,
+    `bStreet` varchar(200) NOT NULL,
+    `bHouseNumber` varchar(10) NOT NULL,
+    `bPostalCode` varchar(10) NOT NULL,
+    PRIMARY KEY (billingAddressId)
+);
+
+-- user
+CREATE TABLE `user` (
+    `email` varchar(100) NOT NULL,
+    `firstName` varchar(50) NOT NULL,
+    `lastName` varchar(50) NOT NULL,
+    `street` varchar(100) NULL,
+    `premise` varchar(5) NULL,
+    `phoneNumber` varchar(15) NOT NULL,
+    `city` varchar(50) NULL,
+    `postalCode` varchar(7) NULL,
+    `gender` varchar(1) NULL,
+    `roles` int NOT NULL DEFAULT 1,
+    `password` varchar(15) NOT NULL,
+    `companyId` int NULL,
+    `billingAddressId` int NULL,
+    PRIMARY KEY(email),
+    CONSTRAINT FK_UserRoles FOREIGN KEY (roles) REFERENCES `role`(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_UserBillingaddress FOREIGN KEY (billingAddressId) REFERENCES `billingaddress`(billingAddressId) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_UserCompany FOREIGN KEY (companyId) REFERENCES `company`(companyId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- contact
@@ -105,18 +123,6 @@ CREATE TABLE `playground` (
     `pPostalCode` varchar(10) NOT NULL,
     PRIMARY KEY(playGroundId)
 
-);
-
--- billingaddress
-CREATE TABLE `billingaddress` (
-    `billingAddressId` int(11) NOT NULL AUTO_INCREMENT,
-    `bCountry` varchar(200) NOT NULL,
-    `bProvince` varchar(200) NOT NULL,
-    `bCity` varchar(200) NOT NULL,
-    `bStreet` varchar(200) NOT NULL,
-    `bHouseNumber` varchar(10) NOT NULL,
-    `bPostalCode` varchar(10) NOT NULL,
-    PRIMARY KEY (billingAddressId)
 );
 
 -- request
@@ -161,26 +167,13 @@ INSERT INTO `role` (id, name) VALUES
 (3,'Opdrachtgever'),
 (4,'Coordinator,Lid');
 
--- users
-INSERT INTO `user` (email, firstName, lastName, street, premise, phonenumber, city, postalCode, gender, roles, password) VALUES
-('manuelasmarius@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 4, 'Manuela01'),
-('manuelasmarius-opdrachtgever@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 3, 'Manuela01'),
-('client@lotus.nl','Klaas','Opdrachtgever','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M', 3, 'secret'),
-('member@lotus.nl','Piet','Lid','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, 'secret'),
-('coordinator@lotus.nl','Paula','Coordinator','coordstreet','1a','+316 12345678', 'Breda','1234AL','M', 4, 'secret'),
-('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, 'secret'),
-('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
-('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
-('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, 'secret');
-
-
 -- billingaddress
-INSERT INTO `billingaddress` (billingAddressId, bCountry, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
-(1, 'Nederland', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
-(2, 'Nederland', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
-(3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
-(4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
-(5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
+INSERT INTO `billingaddress` (billingAddressId, bCountry, bEmail, bProvince, bCity, bStreet, bHouseNumber, bPostalCode) VALUES 
+(1, 'Nederland', 'contact@gmail.com', 'Noord-Brabant', 'Breda', 'Hooghout', 65, '4817 EA'),
+(2, 'Nederland', 'contact@gmail.com', 'Gelderland', 'Nijmegen', 'Jasmijnstraat', 28, '6543 TW'),
+(3, 'Nederland', 'contact@gmail.com', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH'),
+(4, 'Nederland', 'contact@gmail.com', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG'),
+(5, 'Nederland', 'contact@gmail.com', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG');
 
 -- company
 INSERT INTO `company` (companyId, cCountry, cProvince, cCity, cStreet, cHouseNumber, cPostalCode, companyName) VALUES 
@@ -189,6 +182,20 @@ INSERT INTO `company` (companyId, cCountry, cProvince, cCity, cStreet, cHouseNum
 (3, 'Nederland', 'Zuid-Holland', 'Dordrecht', 'Halmaheiraplein', 5, '3312 GH', 'Apotheek Brabantpark'),
 (4, 'Nederland', 'Noord-Holland', 'Amsterdam', 'Anjeliersstraat', 187, '1015 NG', 'Amphia Ziekenhuis Langendijk'),
 (5, 'Nederland', 'Utrecht', 'Utrecht', 'Van Diemenstraat', 33, '3531 GG', 'Amphia Ziekenhuis Molengracht');
+
+-- users
+INSERT INTO `user` (email, firstName, lastName, street, premise, phonenumber, city, postalCode, gender, roles, password) VALUES
+('manuelasmarius@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 4, 'Manuela01'),
+('manuelasmarius-opdrachtgever@lotus.nl','Manuela','Smarius','lotusstreet','1a','+316 12345678', 'Breda','1234AL','V', 3, 'Manuela01'),
+('member@lotus.nl','Piet','Lid','memberstreet','1a','+316 12345678', 'Breda','1234AL','M', 1, 'secret'),
+('coordinator@lotus.nl','Paula','Coordinator','coordstreet','1a','+316 12345678', 'Breda','1234AL','M', 4, 'secret'),
+('jens@lotus.nl','Jens','de Vlaming','Burgemeester Beelaertspark','12','06 20529433', 'Dordrecht','3319AV','M', 1, 'secret'),
+('daniel@lotus.nl','Daniel','Zuijdam', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
+('kasper@lotus.nl','Kasper','van den Enden', 'Lotusstraat', '1', '06 12345678', 'Breda', '000AX', 'V', 1, 'secret'),
+('juliet@lotus.nl', 'Juliet', 'van Bezooijen', 'Papenhof', '16', '06 36548857', 'Breda', '4817BX', 'V', 1, 'secret');
+
+INSERT INTO `user` (email, firstName, lastName, street, premise, phonenumber, city, postalCode, gender, roles, password, companyId, billingAddressId) VALUES
+('client@lotus.nl','Klaas','Opdrachtgever','lotusstreet','1a','+316 12345678', 'Breda','1234AL','M', 3, 'secret', 1, 1);
 
 -- contact
 INSERT INTO `contact` (contactId, firstName, lastName, email, phoneNumber) VALUES 

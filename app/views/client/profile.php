@@ -219,7 +219,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="editEmail"class="mt-2 ms-2"><span class="formLabel">Email:</span></label>
-                                <input type="text" class="form-control request-input m-1 w-75" id="email" name="email"  value="<?php echo $data["email"];?>">
+                                <input type="text" class="form-control request-input m-1 w-75" id="email" name="email"  value="<?php echo $data["email"];?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="editPhoneNumber"class="mt-2 ms-2"><span class="formLabel">Telefoonnummer:</span></label>
@@ -227,23 +227,23 @@
                             </div>
                             <div class="col-12">
                                 <label for="editCity"class="mt-2 ms-2"><span class="formLabel">Stad:</span></label>
-                                <input type="text" class="form-control request-input m-1 w-75" id="city" name="city"  value="<?php echo $data["city"];?>" required>
+                                <input type="text" class="form-control request-input m-1 w-75" id="city" name="city"  value="<?php echo $data["city"];?>">
                             </div>
                             <div class="col-12">
                                 <label for="editStreet"class="mt-2 ms-2"><span class="formLabel">Straatnaam:</span></label>
-                                <input type="text" class="form-control request-input m-1 w-75" id="street" name="street"  value="<?php echo $data["street"];?>"     required>
+                                <input type="text" class="form-control request-input m-1 w-75" id="street" name="street"  value="<?php echo $data["street"];?>">
                             </div>
                             <div class="col-12">
                                 <label for="editPremise"class="mt-2 ms-2"><span class="formLabel">Huisnummer:</span></label>
-                                <input type="text" class="form-control request-input m-1 w-75" id="premise" name="premise"  value="<?php echo $data["premise"];?>" required>
+                                <input type="text" class="form-control request-input m-1 w-75" id="premise" name="premise"  value="<?php echo $data["premise"];?>">
                             </div>
                             <div class="col-12">
                                 <label for="editPostalCode"class="mt-2 ms-2"><span class="formLabel">Postcode:</span></label>
-                                <input type="text" class="form-control request-input m-1 w-75" id="postalCode" name="postalCode"  value="<?php echo $data["postalCode"];?>" required>
+                                <input type="text" class="form-control request-input m-1 w-75" id="postalCode" name="postalCode"  value="<?php echo $data["postalCode"];?>">
                             </div>
                             <div class="col-12">
                                 <label for="editPostalCode"class="mt-2 ms-2"><span class="formLabel">Geslacht:</span></label>
-                                <select class="form-select mt-2 ms-2 w-25" aria-label="Default select example" id="gender" name="gender" required>
+                                <select class="form-select mt-2 ms-2 w-25" aria-label="Default select example" id="gender" name="gender">
                                     <option selected></option>
                                     <option value="1" <?php if ($data['gender'] == 'M') echo ' selected="selected"'; ?>>Man</option>
                                     <option value="2"<?php if ($data['gender'] == 'V') echo ' selected="selected"'; ?>>Vrouw</option>

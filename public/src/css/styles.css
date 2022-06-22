@@ -91,7 +91,127 @@ body {
     font-size: 22px;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    background-color: var(--blue);
     border: 3px solid var(--blue) !important;
+}
+
+/* END */
+
+/* Register */
+
+.register-input {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    background: var(--white) !important;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 4px !important;
+    border: 3px solid var(--white) !important;
+}
+
+.register-input:focus {
+    border: 3px solid var(--orange) !important;
+}
+
+.register-submit {
+    border-radius: 4px !important;
+    font-size: 22px;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: 3px solid var(--orange) !important;
+}
+
+.register-submit:hover {
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.btn-number {
+    border-radius: 50% !important;
+    font-size: 12px;
+    background-color: var(--white);
+    color: var(--blue);
+    border: 3px solid var(--blue) !important;
+}
+
+.btn-number:hover {
+    color: var(--blue) !important;
+    cursor: default !important;
+}
+
+.btn-number-current {
+    font-size: 12px !important;
+    background-color: var(--white) !important;
+    color: var(--orange) !important;
+    border: 3px solid var(--orange) !important;
+}
+
+.btn-number-current:hover {
+    color: var(--orange) !important;
+    cursor: default !important;
+}
+
+.btn-number-back {
+    color: var(--blue);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.btn-number-back:hover {
+    opacity: 0.8;
+}
+
+.btn-number-next {
+    color: var(--blue);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.btn-number-next:hover {
+    opacity: 0.8;
+}
+
+.hide-this {
+    opacity: 0 !important;
+    cursor: context-menu !important;
+}
+
+.sub-title {
+    color: var(--blue) !important;
+}
+
+.bottom-link-blue, 
+.bottom-text-blue {
+    color: var(--blue) !important;
+}
+
+.bottom-text-orange, 
+.bottom-link-orange {
+    color: var(--orange) !important;
+}
+
+.bottom-link-blue,
+.bottom-link-orange {
+    text-decoration: none;
+}
+
+.bottom-link-blue:hover,  
+.bottom-link-orange:hover {
+    text-decoration: underline;
+}
+
+.small-lable {
+    color: var(--blue);
+    font-size: smaller;
+}
+
+.sectionLabel {
+    font-size: 16px;
+    color: var(--kashmir-blue);
+    font-weight: bold;
+    display: block;
+    margin-top: 0.7rem;
 }
 
 /* END */
@@ -140,7 +260,7 @@ body {
     opacity: 0.9;
 }
 
-.placeRequestFormContent {
+.formContent {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 

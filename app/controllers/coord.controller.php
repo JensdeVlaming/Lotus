@@ -24,7 +24,6 @@ class CoordController extends Controller
     public function getRegistry()
     {
         $result = $this->memberModel->getAllMembers();
-
         $this->view("coord/registry", $result);
     }
 
