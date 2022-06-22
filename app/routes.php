@@ -74,7 +74,12 @@ $app->router->get("/opdracht/:id/details", [AssigmentDetailsHandler::class, "get
 $app->router->get("/opdracht/:id/details-lid-assigned", [MemberController::class, "getRequestDetailsAssigned"]); // Kasper, Jens nakijken
 $app->router->get("/lid/:email/details", [CoordController::class, "getMemberAndRequestDetails"]);
 $app->router->get("/profiel", [ProfileHandler::class, "getProfile"]);
-$app->router->post("/profiel", [MemberController::class, "changeProfile"]);
+// $app->router->post("/profiel", [ProfileHandler::class, "editProfile"]);
+$app->router->get("/profiel/wijzigen", [ProfileHandler::class, "getProfileInfo"]);
+$app->router->get("/profiel/wijzig", [ProfileHandler::class, "goEditPassword"]);
+$app->router->post("/profiel/wijzigen", [ProfileHandler::class, "editProfile"]);
+$app->router->post("/profiel/wijzig", [ProfileHandler::class, "editPassword"]);
+
 
 // Requests
 $app->router->post("/role/:role", [AuthController::class, "changeActiveRole"]);

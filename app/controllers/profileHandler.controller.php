@@ -24,5 +24,64 @@ class ProfileHandler extends Controller
             $this->exceptionController->_500();
         }
     }
-    
+
+    public function editProfile($payload)
+    {
+        $activeRole = Application::$app->session->get("activeRole");
+
+        if (strtolower($activeRole) == "lid") {
+            $this->memberController->editProfile($payload);
+        } else if (strtolower($activeRole) == "coordinator") {
+            $this->coordController->editProfile($payload);
+        } else if (strtolower($activeRole) == "opdrachtgever") {
+            $this->clientController->editProfile($payload);
+        } else {
+            $this->exceptionController->_500();
+        }
+    }
+
+
+    public function getProfileInfo() {
+        $activeRole = Application::$app->session->get("activeRole");
+
+        if (strtolower($activeRole) == "lid") {
+            $this->memberController->getMemberDetails();
+        } else if (strtolower($activeRole) == "coordinator") {
+            $this->coordController->getCoordDetails();
+        } else if (strtolower($activeRole) == "opdrachtgever") {
+            $this->clientController->getClientDetails();
+        } else {
+            $this->exceptionController->_500();
+        }
+    }    
+
+    public function goEditPassword($data) {
+        $activeRole = Application::$app->session->get("activeRole");
+
+        if (strtolower($activeRole) == "lid") {
+            $this->memberController->goEditPassword();
+        } else if (strtolower($activeRole) == "coordinator") {
+            $this->coordController->goEditPassword();
+        } else if (strtolower($activeRole) == "opdrachtgever") {
+            $this->clientController->goEditPassword();
+        } else {
+            $this->exceptionController->_500();
+        }
+    }  
+
+    public function editPassword($payload) {
+        $activeRole = Application::$app->session->get("activeRole");
+
+        if (strtolower($activeRole) == "lid") {
+            $this->memberController->editPassword($payload);
+        } else if (strtolower($activeRole) == "coordinator") {
+            $this->coordController->editPassword($payload);
+        } else if (strtolower($activeRole) == "opdrachtgever") {
+            $this->clientController->editPassword($payload);
+        } else {
+            $this->exceptionController->_500();
+        }
+    }  
+
+
 }

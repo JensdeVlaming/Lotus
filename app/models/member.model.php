@@ -6,6 +6,27 @@ class MemberModel extends Model
     {
         $this->db->query("SELECT * FROM user WHERE roles = :id");
         $this->db->bind(":id", 1);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getOpenAssignments()
+    {
+        $email = Application::$app->session->get("user");
+
+        $this->db->query("SELECT DISTINCT * FROM request 
+                            LEFT JOIN company ON request.companyId = company.companyId
+                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
+                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
+                            LEFT JOIN contact ON request.contactId = contact.contactId
+                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
+                            WHERE request.approved = 1;");
+
+        // $this->db->bind(":email", $email);
+
+
         $result = $this->db->resultSet();
         return $result;
     }

@@ -69,18 +69,22 @@ class MemberController extends Controller
         $this->view("/member/requestDetails", $result);
     }
 
-    public function getMemberProfile($message = null)
+    public function getMemberProfile()
     {
         $email = Application::$app->session->get("user");
 
         $result = $this->memberModel->getMemberDetailsStatisticsAndHistory($email);
 
-        if ($message != null) {
-            $result['message'] = $message;
-            $this->view("/member/profile", $result);
-        }
-
         $this->view("/member/profile", $result);
+    }
+
+    public function getMemberDetails()
+    {
+        $email = Application::$app->session->get("user");
+
+        $result = $this->memberModel->getMemberDetails($email);
+
+        $this->view("/editProfile", $result);
     }
 
     public function getRequestDetailsAssigned($data)
@@ -92,21 +96,7 @@ class MemberController extends Controller
         $this->view("/member/requestDetailsAssigned", $result);
     }
 
-    public function changeProfile($payload)
-    {
-        $activeRole = Application::$app->session->get("activeRole");
-        // change profile info
-        if (!empty($payload['userEmail'])) {
-            $this->editProfile($payload);
-        }
-        // change pwd
-        if (!empty($payload['oldPdw'])) {
-            $this->editPwd($payload);
-        }
-
-        // $this->redirect("/profiel");
-    }
-
+    // edit profile functions
     public function editProfile($payload)
     {
         $email = $payload['email'];
@@ -118,9 +108,9 @@ class MemberController extends Controller
         $postalCode = $payload['postalCode'];
         $phoneNumber = $payload['phoneNumber'];
         $gender = $payload['gender'];
-        $userEmail = $payload['userEmail'];
+        $userEmail = Application::$app->session->get("user");
 
-
+    
         if ($gender == "1") {
             $gender = "M";
         } else if ($gender == "2") {
@@ -129,18 +119,19 @@ class MemberController extends Controller
             $gender = "O";
         }
 
-
+        $message = $this->profileMessageArray($email,$firstName,$lastName,$street,$premise,$city,$postalCode,$phoneNumber,$gender);
 
         if ($email != $userEmail) {
             $result = $this->memberModel->userExists($email);
         } else {
-            $result = null;
+           $result = null;
         }
 
         if ($result != null) {
+        
             $message['message'] = "Gebruiker met deze email bestaat al!";
-            // $this->view("/member/profile", $data);
-            $this->getMemberProfile($message);
+            $this->view("/editProfile", $message);
+            
         } else {
 
             Application::$app->session->set("user", $email);
@@ -148,17 +139,19 @@ class MemberController extends Controller
 
             if ($result != null) {
                 $message['message'] = "Profielgegevens zijn gewijzigd!";
-                $this->getMemberProfile($message);
+                $this->view("/editProfile", $message);
             } else {
                 $message['message'] = "Er is iets fout gegaan met het wijzigen van je profiel!";
-                $this->getMemberProfile($message);
+                $this->view("/editProfile", $message);
             }
         }
+
+        
     }
 
-    public function editPwd($payload)
+    public function editPassword($payload)
     {
-        $email = $payload['email'];
+        $email = Application::$app->session->get("user");
         $oldPwd = $payload['oldPdw'];
         $newPwd = $payload['newPdw'];
         $copyPwd = $payload['copyPdw'];
@@ -171,14 +164,34 @@ class MemberController extends Controller
             if ($newPwd == $payload['copyPdw']) {
                 $this->memberModel->changePwd($email, $newPwd);
                 $message['message'] = "Uw wachtwoord is gewijzigd!";
-                $this->getMemberProfile($message);
+                $this->view("/editPassword", $message);
             } else {
-                $message['message'] = "Herhaald wachtwoord komt niet overeen";
-                $this->getMemberProfile($message);
+                $message['message'] = "Herhaald wachtwoord komt niet overeen!";
+                $this->view("/editPassword", $message);
             }
         } else {
-            $message['message'] = "Wachtwoord is onjuist";
-            $this->getMemberProfile($message);
+            $message['message'] = "Wachtwoord is onjuist!";
+            $this->view("/editPassword", $message);
         }
+    }
+
+    public function goEditPassword() {
+    
+        $this->view("/editPassword");
+    }
+
+    public function profileMessageArray($email,$firstName,$lastName,$street,$premise,$city,$postalCode,$phoneNumber,$gender) {
+        $message['email'] = $email ;
+        $message['firstName'] = $firstName;
+        $message['lastName'] = $lastName;
+        $message['street'] = $street;
+        $message['premise'] = $premise;
+        $message['city'] = $city;
+        $message['postalCode'] = $postalCode;
+        $message['phoneNumber'] = $phoneNumber;
+        $message['gender'] = $gender;
+
+        return $message;
+
     }
 }
