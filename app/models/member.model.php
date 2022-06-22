@@ -9,6 +9,12 @@ class MemberModel extends Model
 
         $result = $this->db->resultSet();
 
+        $email = Application::$app->session->get("user");
+        
+        for ($x = 0; $x < sizeof($result); $x++) {
+            $result[$x]['countAssignments'] = count($this->getAllMemberCompletedAssigments($result[$x]['email'])) + count($this->getAllMemberUpcommingAssigments($result[$x]['email']));
+          }
+
         return $result;
     }
 
@@ -240,7 +246,7 @@ class MemberModel extends Model
         $result["completedAssignmentList"] = $this->getAllMemberCompletedAssigments($email);
         $result["solicitAssignmentList"] = $this->getAllMemberSolicitAssigments($email);
         $result["upcommingAssignmentList"] = $this->getAllMemberUpcommingAssigments($email);
-
+        
         $result["completedAssignments"] = count($result["completedAssignmentList"]);
         $result["solicitAssignments"] = count($result["solicitAssignmentList"]);
         $result["upcommingAssignments"] = count($result["upcommingAssignmentList"]);
@@ -256,7 +262,7 @@ class MemberModel extends Model
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId 
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) < DATE_FORMAT(NOW(),'%Y-%m-%d ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -302,7 +308,7 @@ class MemberModel extends Model
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
+                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%Y-%m-%d ');");
 
         $this->db->bind(":email", $email);
         $this->db->bind(":assignedId", $assignedId);
@@ -442,4 +448,4 @@ class MemberModel extends Model
         }
         return null;
     }
-}
+}   

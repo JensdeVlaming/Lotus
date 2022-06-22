@@ -17,7 +17,7 @@
                                     <h5 class="card-title fw-bold"><?php echo $item["firstName"] . " " . $item["lastName"] ?></h5>
                                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["email"] ?></h6>
                                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["phoneNumber"] ?></h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Aantal opdrachten: 8</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Aantal opdrachten: <?php echo $item['countAssignments'] ?></h6>
                                 </div>
                             </div>
                         </div>
