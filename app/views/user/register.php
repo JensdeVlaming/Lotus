@@ -79,7 +79,7 @@
     </div>
 
     <div class="d-flex align-items-end justify-content-center">
-        <p class="fw-bold bottom-text">Of wilt u <a href="/inloggen" class="bottom-link">Inloggen</a> met een bestaand account?</p>
+        <p class="fw-bold bottom-text-orange">Of wilt u <a href="/inloggen" class="bottom-link-blue">Inloggen</a> met een bestaand account?</p>
     </div>
 </div>
 

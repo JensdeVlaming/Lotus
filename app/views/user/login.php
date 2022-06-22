@@ -22,6 +22,6 @@
         </form>
     </div>
     <div class="d-flex align-items-end justify-content-center">
-        <p class="fw-bold text-secondary"><span class="link-primary">Registreren</span> als opdrachtgever?</p>
+        <p class="fw-bold bottom-text-blue">Of wilt u <a href="/registreren" class="bottom-link-orange">Registreren</a> om een nieuw account aan te maken?</p>
     </div>
 </div>

@@ -177,13 +177,30 @@ body {
     cursor: context-menu !important;
 }
 
-.sub-title,
-.bottom-link {
+.sub-title {
     color: var(--blue) !important;
 }
 
-.bottom-text {
-    color: var(--orange);
+.bottom-link-blue, 
+.bottom-text-blue {
+    color: var(--blue) !important;
+}
+
+.bottom-text-orange, 
+.bottom-link-orange {
+    color: var(--orange) !important;
+}
+
+.bottom-link-blue, 
+.bottom-text-blue,
+.bottom-text-orange, 
+.bottom-link-orange {
+    text-decoration: none;
+}
+
+.bottom-link-blue:hover,  
+.bottom-link-orange:hover {
+    text-decoration: underline;
 }
 
 .small-lable {
