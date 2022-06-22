@@ -126,470 +126,36 @@ foreach($data as $item) {
             row
             rounded-3
             " id="formContent">
-            <img src="/src/img/logo.svg" class="img-fluid mx-auto d-block mt-4 mb-4 w-25 h-25" alt="Logo Lotus">
-            <hr class="imgDivider">
+                <img src="/src/img/logo.svg" class="img-fluid mx-auto d-block mt-4 mb-4 w-25 h-25" alt="Logo Lotus">
+                <hr class="imgDivider">
 
-            <div class="
+                <div class="
                     requestInfoBox 
                     mb-5
                 ">
-                <div class="businessInfoBox">
                     <label for="" class="
-                            mt-2
-                            fw-bold">
+                        mt-2
+                        fw-bold
+                    ">
                         <span class="formSectionTitle">
-                            Bedrijfsinformatie:
+                            Aanvraag Informatie:
                         </span>
                     </label>
                     <div class="form-control">
                         <div class="row">
-                            <div class="col-xl-12">
-                            <input 
-                                            name="companyId" 
-                                            id="companyId"
-                                            required
-                                            readonly
-                                            class="
-                                                form-control
-                                                request-input
-                                                w-25
-                                                text-center
-                                                d-none
-                                            "
-                                            value=<?php echo $companyId;?>
-                                        >
-                                <div>
-                                    <label for="requestName" class="
-                                            mt-2
-                                        ">
-                                        <span class="formLabel">
-                                            <span class="requiredField">*</span>Bedrijfsnaam:
-                                        </span>
-                                    </label>
-                                    <input type="text" name="requestName" id="requestName" required class="
-                                                form-control
-                                                request-input
-                                            "
-                                            value="<?php echo $companyName; ?>"
-                                            >
-                                </div>
-                            </div>
-                            <div class="clientInfoBox">
+                            <div class="requestDetailBox">
                                 <label for="" class="
-                                        mt-2
-                                        fw-bold
-                                    ">
+                                    mt-2
+                                    fw-bold
+                                ">
                                     <span class="formMiniSectionTitle">
-                                        Contactpersoon Informatie:
+                                        Aanvraag Details:
                                     </span>
                                 </label>
                                 <div class="form-control">
                                     <div class="row">
-                                        <input 
-                                                    name="contactId" 
-                                                    id="contactId"
-                                                    required
-                                                    readonly
-                                                    class="
-                                                        form-control
-                                                        request-input
-                                                        w-25
-                                                        text-center
-                                                        d-none
-                                                    "
-                                                    value=<?php echo $contactId;?>
-                                                >
                                         <div class="col-xl-6 col-md-12">
-                                            <div>
-                                                <label for="clientFirstName" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Voornaam:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="clientFirstName" id="clientFirstName" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $firstName; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-12">
-                                            <div>
-                                                <label for="clientLastName" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Achternaam:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="clientLastName" id="clientLastName" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $lastName; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-12">
-                                            <div>
-                                                <label for="clientEmail" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Emailadres:
-                                                    </span>
-                                                </label>
-                                                <input type="mail" name="clientEmail" id="clientEmail" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $email; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-12">
-                                            <div>
-                                                <label for="clientPhoneNumber" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Telefoonnummer:
-                                                    </span>
-                                                </label>
-                                                <input type="tel" name="clientPhoneNumber" id="clientPhoneNumber" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $phoneNumber; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <div class="addresBox">
-                                    <label for="" class="
-                                            mt-2
-                                            fw-bold
-                                        ">
-                                        <span class="formMiniSectionTitle">
-                                            Adres:
-                                        </span>
-                                    </label>
-                                    <div class="form-control">
-                                        <div class="row">
-                                            <div class="col-xl-6 col-md-12">
-                                                <label for="country" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Land:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="country" id="country" required readonly value="Nederland" class="
-                                                        form-control
-                                                        request-input
-                                                        readonly-input
-                                                    "
-                                                    value="<?php echo $cCountry; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12">
-                                                <label for="provinceBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Provincie:
-                                                    </span>
-                                                </label>
-                                                <select class="
-                                                        form-select
-                                                        request-input
-                                                    " name="provinceBusinessAddress" id="provinceBusinessAddress" required>
-                                                    <option id="defaultOptionBusinessAddress" selected></option>
-                                                    <option id="DrentheBusinessAddress" value="Drenthe" <?php if ($cProvince == 'Drenthe') echo ' selected="selected"'; ?>>
-                                                        Drenthe
-                                                    </option>
-                                                    <option id="FlevolandBusinessAddress" value="Flevoland" <?php if ($cProvince == 'Flevoland') echo ' selected="selected"'; ?>>
-                                                        Flevoland
-                                                    </option>
-                                                    <option id="FrieslandBusinessAddress" value="Friesland" <?php if ($cProvince == 'Friesland') echo ' selected="selected"'; ?>>
-                                                        Friesland
-                                                    </option>
-                                                    <option id="GelderlandBusinessAddress" value="Gelderland" <?php if ($cProvince == 'Gelderland') echo ' selected="selected"'; ?>>
-                                                        Gelderland
-                                                    </option>
-                                                    <option id ="GroningenBusinessAddress" value="Groningen" <?php if ($cProvince == 'Groningen') echo ' selected="selected"'; ?>>
-                                                        Groningen
-                                                    </option>
-                                                    <option id="LimburgBusinessAddress" value="Limburg" <?php if ($cProvince == 'Limburg') echo ' selected="selected"'; ?>>
-                                                        Limburg
-                                                    </option>
-                                                    <option id="NoordBrabantBusinessAddress" value="Noord-Brabant" <?php if ($cProvince == 'Noord-Brabant') echo ' selected="selected"'; ?>>
-                                                        Noord-Brabant
-                                                    </option>
-                                                    <option id="NoordHollandBusinessAddress" value="Noord-Holland" <?php if ($cProvince == 'Noord-Holland') echo ' selected="selected"'; ?>>
-                                                        Noord-Holland
-                                                    </option>
-                                                    <option id="OverijsselBusinessAddress" value="Overijssel" <?php if ($cProvince == 'Overijssel') echo ' selected="selected"'; ?>>
-                                                        Overijssel
-                                                    </option>
-                                                    <option id="UtrechtBusinessAddress" value="Utrecht" <?php if ($cProvince == 'Utrecht') echo ' selected="selected"'; ?>>
-                                                        Utrecht
-                                                    </option>
-                                                    <option id="ZeelandBusinessAddress" value="Zeeland" <?php if ($cProvince == 'Zeeland') echo ' selected="selected"'; ?>>
-                                                        Zeeland
-                                                    </option>
-                                                    <option id="ZuidHollandBusinessAddress" value="Zuid-Holland" <?php if ($cProvince == 'Zuid-Holland') echo ' selected="selected"'; ?>>
-                                                        Zuid-Holland
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xl-6 col-md-12">
-                                                <label for="cityBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Stad:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="cityBusinessAddress" id="cityBusinessAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $cCity; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12">
-                                                <label for="streetBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Straat:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="streetBusinessAddress" id="streetBusinessAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $cStreet; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <label for="houseNumberBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Huisnummer:
-                                                    </span>
-                                                </label>
-                                                <input type="number" name="houseNumberBusinessAddress" id="houseNumberBusinessAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    " min="1"
-                                                    value="<?php echo $cHouseNumber; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <label for="annexBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">Toevoeging:</span>
-                                                </label>
-                                                <input type="text" name="annexBusinessAddress" id="annexBusinessAddress" class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $cPremise; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12">
-                                                <label for="postalCodeBusinessAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Postcode:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="postalCodeBusinessAddress" id="postalCodeBusinessAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $cPostalCode; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <div class="addresBox">
-                                    <label for="" class="
-                                            mt-2
-                                            fw-bold
-                                        ">
-                                        <span class="formMiniSectionTitle">
-                                            Factuuradres:
-                                        </span>
-                                    </label>
-                                    <div class="form-control">
-                                        <div class="row">
-                                                <input 
-                                                        name="billingAddressId" 
-                                                        id="billingAddressId"
-                                                        required
-                                                        readonly
-                                                        class="
-                                                            form-control
-                                                            request-input
-                                                            w-25
-                                                            text-center
-                                                            d-none
-                                                        "
-                                                        value=<?php echo $billingAddressId;?>
-                                                    >
-                                            <div class="col-xl-11 col-10">
-                                                <input type="checkbox" name="billingAddressCheckbox" id="billingAddressCheckbox" onclick="automateBillingAddressDataOnCheck()">
-                                                <span class="formLabel">
-                                                    <span class="checkboxText">
-                                                        Factuuradres is het bedrijfsadres.
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="col-xl-1 col-2 me-auto">
-                                                <div class="text-end" id="hideBillingInfoButton" onclick="hideBillingInfo()"><span id="billingChevron" class="fa fa-chevron-up"></span></div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-12 d-none billingBox">
-                                                <label for="country" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Land:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="country" id="country" required readonly value="Nederland" class="
-                                                        form-control
-                                                        request-input
-                                                        readonly-input
-                                                    "
-                                                    value="<?php echo $bCountry; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12 d-none billingBox">
-                                                <label for="provinceBillingAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Provincie:
-                                                    </span>
-                                                </label>
-                                                <select class="
-                                                        form-select
-                                                        request-input
-                                                    " name="provinceBillingAddress" id="provinceBillingAddress" required>
-                                                    <option id="defaultOptionBillingAddress" selected></option>
-                                                    <option id="DrentheBillingAddress" value="Drenthe" <?php if ($bProvince == 'Drenthe') echo ' selected="selected"'; ?>>
-                                                        Drenthe
-                                                    </option>
-                                                    <option id="FlevolandBillingAddress" value="Flevoland" <?php if ($bProvince == 'Flevoland') echo ' selected="selected"'; ?>>
-                                                        Flevoland
-                                                    </option>
-                                                    <option id="FrieslandBillingAddress" value="Friesland" <?php if ($bProvince == 'Friesland') echo ' selected="selected"'; ?>>
-                                                        Friesland
-                                                    </option>
-                                                    <option id="GelderlandBillingAddress" value="Gelderland" <?php if ($bProvince == 'Gelderland') echo ' selected="selected"'; ?>>
-                                                        Gelderland
-                                                    </option>
-                                                    <option id ="GroningenBillingAddress" value="Groningen" <?php if ($bProvince == 'Groningen') echo ' selected="selected"'; ?>>
-                                                        Groningen
-                                                    </option>
-                                                    <option id="LimburgBillingAddress" value="Limburg" <?php if ($bProvince == 'Limburg') echo ' selected="selected"'; ?>>
-                                                        Limburg
-                                                    </option>
-                                                    <option id="NoordBrabantBillingAddress" value="Noord-Brabant" <?php if ($bProvince == 'Noord-Brabant') echo ' selected="selected"'; ?>>
-                                                        Noord-Brabant
-                                                    </option>
-                                                    <option id="NoordHollandBillingAddress" value="Noord-Holland" <?php if ($bProvince == 'Noord-Holland') echo ' selected="selected"'; ?>>
-                                                        Noord-Holland
-                                                    </option>
-                                                    <option id="OverijsselBillingAddress" value="Overijssel" <?php if ($bProvince == 'Overijssel') echo ' selected="selected"'; ?>>
-                                                        Overijssel
-                                                    </option>
-                                                    <option id="UtrechtBillingAddress" value="Utrecht" <?php if ($bProvince == 'Utrecht') echo ' selected="selected"'; ?>>
-                                                        Utrecht
-                                                    </option>
-                                                    <option id="ZeelandBillingAddress" value="Zeeland" <?php if ($bProvince == 'Zeeland') echo ' selected="selected"'; ?>>
-                                                        Zeeland
-                                                    </option>
-                                                    <option id="ZuidHollandBillingAddress" value="Zuid-Holland" <?php if ($bProvince == 'Zuid-Holland') echo ' selected="selected"'; ?>>
-                                                        Zuid-Holland
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xl-6 col-md-12 d-none billingBox">
-                                                <label for="cityBillingAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Stad:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="cityBillingAddress" id="cityBillingAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $bCity; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12 d-none billingBox">
-                                                <label for="streetBillingAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Straat:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="streetBillingAddress" id="streetBillingAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $bStreet; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-3 d-none billingBox">
-                                                <label for="houseNumberBillingAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Huisnummer:
-                                                    </span>
-                                                </label>
-                                                <input type="number" name="houseNumberBillingAddress" id="houseNumberBillingAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    " min="1"
-                                                    value="<?php echo $bHouseNumber; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-3 d-none billingBox">
-                                                <label for="annexBillingAddress" class="mt-2">
-                                                    <span class="formLabel">Toevoeging:</span>
-                                                </label>
-                                                <input type="text" name="annexBillingAddress" id="annexBillingAddress" class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $bPremise; ?>"
-                                                    >
-                                            </div>
-                                            <div class="col-xl-6 col-md-12 d-none billingBox">
-                                                <label for="postalCodeBillingAddress" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Postcode:
-                                                    </span>
-                                                </label>
-                                                <input type="text" name="postalCodeBillingAddress" id="postalCodeBillingAddress" required class="
-                                                        form-control
-                                                        request-input
-                                                    "
-                                                    value="<?php echo $bPostalCode; ?>"
-                                                    >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr class="sectionDivider">
-
-
-                <label for="" class="
-                        mt-2
-                        fw-bold
-                    ">
-                    <span class="formSectionTitle">
-                        Aanvraag Informatie:
-                    </span>
-                </label>
-                <div class="form-control">
-                    <div class="row d-none">
-                                <div class="col-xl-6 col-md-12">
-                                        <span> Id:</span><input 
+                                            <input 
                                             name="requestId" 
                                             id="requestId"
                                             required
@@ -599,149 +165,135 @@ foreach($data as $item) {
                                                 request-input
                                                 w-25
                                                 text-center
+                                                d-none
                                             "
                                             value=<?php echo $requestId;?>
                                         >
-                                </div>
-                            </div>
-                    <div class="row">
-                        <div class="requestDetailBox">
-                            <label for="" class="
-                                    mt-2
-                                    fw-bold
-                                ">
-                                <span class="formMiniSectionTitle">
-                                    Aanvraag Details:
-                                </span>
-                            </label>
-                            <div class="form-control">
-                                <div class="row">
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="">
-                                            <label for="summary" class="mt-2">
-                                                <span class="formLabel">
-                                                    <span class="requiredField">*</span>Korte Omschrijving:
-                                                </span>
-                                            </label>
-                                            <textarea name="summary" id="summary" required class="
+
+                                            <div class="">
+                                                <label for="summary" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Korte Omschrijving:
+                                                    </span>
+                                                </label>
+                                                <textarea name="summary" id="summary" required class="
                                                 form-control
                                                 request-input
                                             "><?php echo $description;?></textarea>
+                                            </div>
                                         </div>
-                                    </div>
 
 
 
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="">
-                                            <label for="comments" class="mt-2">
-                                                <span class="formLabel">
-                                                    Opmerkingen:
-                                                </span>
-                                            </label>
-                                            <textarea name="comments" id="comments" required class="
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
+                                                <label for="comments" class="mt-2">
+                                                    <span class="formLabel">
+                                                        Opmerkingen:
+                                                    </span>
+                                                </label>
+                                                <textarea name="comments" id="comments" required class="
                                                 form-control
                                                 request-input
                                             "><?php echo $comments;?></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="">
-                                            <label for="playDate" class="mt-2">
-                                                <span class="formLabel">
-                                                    <span class="requiredField">*</span>Speel Datum:
-                                                </span>
-                                            </label>
-                                            <input type="date" name="playDate" id="playDate" required class="
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
+                                                <label for="playDate" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Speel Datum:
+                                                    </span>
+                                                </label>
+                                                <input type="date" name="playDate" id="playDate" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $date; ?>" 
-                                                
                                             >
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="">
-                                            <label for="playTime" class="mt-2">
-                                                <span class="formLabel">
-                                                    <span class="requiredField">*</span>Speel Tijd:
-                                                </span>
-                                            </label>
-                                            <input type="time" name="playTime" id="playTime" required class="
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
+                                                <label for="playTime" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Speel Tijd:
+                                                    </span>
+                                                </label>
+                                                <input type="time" name="playTime" id="playTime" required class="
                                                 form-control
                                                 request-input
                                             "
-                                            value="<?php echo $time; ?>"
+                                            value="<?php echo $time; ?>" 
                                             >
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="">
-                                            <label for="lotusCasualties" class="mt-2">
-                                                <span class="formLabel">
-                                                    <span class="requiredField">*</span>Aantal Slachtoffers:
-                                                </span>
-                                            </label>
-                                            <input type="number" name="lotusCasualties" id="lotusCasualties" required class="
+                                        <div class="col-xl-4">
+                                            <div class="">
+                                                <label for="lotusCasualties" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Aantal Slachtoffers:
+                                                    </span>
+                                                </label>
+                                                <input type="number" name="lotusCasualties" id="lotusCasualties" required class="
                                                 form-control
                                                 request-input
                                             " min="1"
-                                            value="<?php echo $casualties; ?>"
+                                            value="<?php echo $casualties; ?>" 
                                             >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div class="addresBox ">
-                            <label for="" class="
+                            <div class="addresBox ">
+                                <label for="" class="
                                     mt-2
                                     fw-bold
                                 ">
-                                <span class="formMiniSectionTitle">
-                                    Speel Plaats:
-                                </span>
-                            </label>
-                            <div class="form-control">
-                                <div class="row">
-                                    <div class="col-xl-6 col-md-12">
-                                        <input 
-                                            name="playGroundId" 
-                                            id="playGroundId"
-                                            required
-                                            readonly
-                                            class="
-                                                form-control
-                                                request-input
-                                                w-25
-                                                text-center
-                                                d-none
-                                            "
-                                            value=<?php echo $playGroundId;?>
-                                        >
-                                        <label for="country" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Land:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="country" id="country" required readonly value="<?php echo $pCountry; ?>" class="
+                                    <span class="formMiniSectionTitle">
+                                        Speel Plaats:
+                                    </span>
+                                </label>
+                                <div class="form-control">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-md-12">
+                                            <input 
+                                                name="playGroundId" 
+                                                id="playGroundId"
+                                                required
+                                                readonly
+                                                class="
+                                                    form-control
+                                                    request-input
+                                                    w-25
+                                                    text-center
+                                                    d-none
+                                                "
+                                                value=<?php echo $playGroundId;?>
+                                            >
+                                            <label for="country" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Land:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="country" id="country" required readonly value="<?php echo $pCountry;?>" class="
                                                 form-control
                                                 request-input
                                                 readonly-input
                                             "
                                             
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <label for="provincePlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Provincie:
-                                            </span>
-                                        </label>
-                                        <select class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <label for="provincePlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Provincie:
+                                                </span>
+                                            </label>
+                                            <select class="
                                                 form-select
                                                 request-input
                                             " name="provincePlayGround" id="provincePlayGround" required>
@@ -782,88 +334,88 @@ foreach($data as $item) {
                                             <option id="ZuidHollandPlayGround" value="Zuid-Holland" <?php if ($pProvince == 'Zuid-Holland') echo ' selected="selected"'; ?>>
                                                 Zuid-Holland
                                             </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <label for="cityPlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Stad:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="cityPlayGround" id="cityPlayGround" required class="
+                                            </select>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <label for="cityPlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Stad:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="cityPlayGround" id="cityPlayGround" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $pCity; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <label for="streetPlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Straat:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="streetPlayGround" id="streetPlayGround" required class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <label for="streetPlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Straat:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="streetPlayGround" id="streetPlayGround" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $pStreet; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <label for="houseNumberPlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Huisnummer:
-                                            </span>
-                                        </label>
-                                        <input type="number" name="houseNumberPlayGround" id="houseNumberPlayGround" required class="
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <label for="houseNumberPlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Huisnummer:
+                                                </span>
+                                            </label>
+                                            <input type="number" name="houseNumberPlayGround" id="houseNumberPlayGround" required class="
                                                 form-control
                                                 request-input
                                             " min="1"
                                             value="<?php echo $pHouseNumber; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <label for="annexPlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                Toevoeging:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="annexPlayGround" id="annexPlayGround" class="
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <label for="annexPlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    Toevoeging:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="annexPlayGround" id="annexPlayGround" class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $pPremise; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <label for="postalCodePlayGround" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Postcode:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="postalCodePlayGround" id="postalCodePlayGround" required class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <label for="postalCodePlayGround" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Postcode:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="postalCodePlayGround" id="postalCodePlayGround" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $pPostalCode; ?>"
                                             >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="addresBox ">
-                            <label for="" class="
+                            <div class="addresBox ">
+                                <label for="" class="
                                     mt-2
                                     fw-bold
                                 ">
-                                <span class="formMiniSectionTitle">
-                                    Grimeerlocatie:
-                                </span>
-                            </label>
-                            <div class="form-control">
-                                <div class="row">
-                                    <div class="col-xl-11 col-10">
+                                    <span class="formMiniSectionTitle">
+                                        Grimeerlocatie:
+                                    </span>
+                                </label>
+                                <div class="form-control">
+                                    <div class="row">
+                                        <div class="col-xl-11 col-10">
                                         <input 
                                             name="grimeLocationId" 
                                             id="grimeLocationId"
@@ -878,37 +430,38 @@ foreach($data as $item) {
                                             "
                                             value=<?php echo $grimeLocationId;?>
                                         >
-                                        <input type="checkbox" name="gatherLocationCheckbox" id="gatherLocationCheckbox" onclick="automateGatherLocationDataOnCheck()">
-                                        <span class="formLabel">
-                                            <span class="checkboxText">
-                                                Grimeerlocatie is de speel plaats.
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col-xl-1 col-2 me-auto">
-                                        <div class="text-end" id="hideGatherInfoButton" onclick="hideGatherInfo()"><span id="gatherChevron" class="fa fa-chevron-up"></span></div>
-                                    </div>
-                                    <div class="col-xl-6 col-md-12 d-none gatherBox">
-                                        <label for="country" class="mt-2">
+
+                                            <input type="checkbox" name="gatherLocationCheckbox" id="gatherLocationCheckbox" onclick="automateGatherLocationDataOnCheck()">
                                             <span class="formLabel">
-                                                <span class="requiredField">*</span>Land:
+                                                <span class="checkboxText">
+                                                    Grimeerlocatie is de speel plaats.
+                                                </span>
                                             </span>
-                                        </label>
-                                        <input type="text" name="country" id="country" required readonly value="Nederland" class="
+                                        </div>
+                                        <div class="col-xl-1 col-2 me-auto">
+                                            <div class="text-end" id="hideGatherInfoButton" onclick="hideGatherInfo()"><span id="gatherChevron" class="fa fa-chevron-up"></span></div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12 d-none gatherBox">
+                                            <label for="country" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Land:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="country" id="country" required readonly value="Nederland" class="
                                                 form-control
                                                 request-input
                                                 readonly-input
                                             "
                                             value="<?php echo $gCountry; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12 d-none gatherBox">
-                                        <label for="provinceGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Provincie:
-                                            </span>
-                                        </label>
-                                        <select class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12 d-none gatherBox">
+                                            <label for="provinceGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Provincie:
+                                                </span>
+                                            </label>
+                                            <select class="
                                                 form-select
                                                 request-input
                                             " name="provinceGatherLocation" id="provinceGatherLocation" required>
@@ -949,109 +502,83 @@ foreach($data as $item) {
                                             <option id="ZuidHollandGatherLocation" value="Zuid-Holland" <?php if ($gProvince == 'Zuid-Holland') echo ' selected="selected"'; ?>>
                                                 Zuid-Holland
                                             </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-6 col-md-12 d-none gatherBox">
-                                        <label for="cityGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Stad:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="cityGatherLocation" id="cityGatherLocation" required class="
+                                            </select>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12 d-none gatherBox">
+                                            <label for="cityGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Stad:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="cityGatherLocation" id="cityGatherLocation" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $gCity; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12 d-none gatherBox">
-                                        <label for="streetGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Straat:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="streetGatherLocation" id="streetGatherLocation" required class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12 d-none gatherBox">
+                                            <label for="streetGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Straat:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="streetGatherLocation" id="streetGatherLocation" required class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $gStreet; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-3 d-none gatherBox">
-                                        <label for="houseNumberGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Huisnummer:
-                                            </span>
-                                        </label>
-                                        <input type="number" name="houseNumberGatherLocation" id="houseNumberGatherLocation" required class="
+                                        </div>
+                                        <div class="col-xl-3 d-none gatherBox">
+                                            <label for="houseNumberGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Huisnummer:
+                                                </span>
+                                            </label>
+                                            <input type="number" name="houseNumberGatherLocation" id="houseNumberGatherLocation" required class="
                                                 form-control
                                                 request-input
                                             " min="1"
                                             value="<?php echo $gHouseNumber; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-3 d-none gatherBox">
-                                        <label for="annexGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                Toevoeging:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="annexGatherLocation" id="annexGatherLocation" class="
+                                        </div>
+                                        <div class="col-xl-3 d-none gatherBox">
+                                            <label for="annexGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    Toevoeging:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="annexGatherLocation" id="annexGatherLocation" class="
                                                 form-control
                                                 request-input
                                             "
                                             value="<?php echo $gPremise; ?>"
                                             >
-                                    </div>
-                                    <div class="col-xl-6 col-md-12 d-none gatherBox">
-                                        <label for="postalCodeGatherLocation" class="mt-2">
-                                            <span class="formLabel">
-                                                <span class="requiredField">*</span>Postcode:
-                                            </span>
-                                        </label>
-                                        <input type="text" name="postalCodeGatherLocation" id="postalCodeGatherLocation" required class="
+                                        </div>
+                                        <div class="col-xl-6 col-md-12 d-none gatherBox">
+                                            <label for="postalCodeGatherLocation" class="mt-2">
+                                                <span class="formLabel">
+                                                    <span class="requiredField">*</span>Postcode:
+                                                </span>
+                                            </label>
+                                            <input type="text" name="postalCodeGatherLocation" id="postalCodeGatherLocation" required class="
                                                 form-control
                                                 request-input
-                                            "
-                                            value="<?php echo $gPostalCode; ?>"
-                                            >
+                                            "value="<?php echo $gPostalCode; ?>">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div>
+                    <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
+                </div>
             </div>
-
-        <?php if ($date_now < $date_request) { // Wel aanpassen ?> 
-            <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
-        <?php } else { // Niet aanpassen, contact opnemenen met coordinator ?>
-            <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
-        <?php } ?>
-               
-            </div>
-        </div>
-    </form>
-
-    <!-- Modal -->
-    <div class="modal fade" id="contactCoordinatorModal" tabindex="-1" aria-labelledby="contactCoordinatorModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="contactCoordinatorModalLabel">Neem contact op!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            Een opdracht wijzigen moet minimaal 2 dagen van tevoren! Neem contact op met de coordinator!
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ga terug</button>
-        </div>
-        </div>
-    </div>
-    </div>
-
-
+        </form>
     
 </body>
 <script 
