@@ -191,9 +191,7 @@ body {
     color: var(--orange) !important;
 }
 
-.bottom-link-blue, 
-.bottom-text-blue,
-.bottom-text-orange, 
+.bottom-link-blue,
 .bottom-link-orange {
     text-decoration: none;
 }
