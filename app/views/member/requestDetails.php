@@ -4,39 +4,44 @@ if (!empty($data["details"])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3"><?php echo $data["details"]["companyName"]; ?></h2>
-                    <p><?php echo $data["details"]["description"]; ?></p>
-                    <?php
-                    if ($data["details"]["assigned"] == null) {
-                        $assignStatus = null;
-                    } else if ($data["details"]["assigned"] == 0) {
-                        $assignStatus = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanmelding ontvangen</span>';
-                    } else if ($data["details"]["assigned"] == 1) {
-                        $assignStatus = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
-                    } else if ($data["details"]["assigned"] == 2) {
-                        $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Niet toegewezen</span>';
-                    } else if ($data["details"]["assigned"] == 3) {
-                        $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgemeld</span>';
-                    }
+                <div class="customCard card shadow-sm col-auto">
+                    <div class="customCardBody card-body">
+                        <h2 class="formSectionTitle fw-bold"><?php echo $data["details"]["companyName"]; ?></h2>
+                        <p><?php echo $data["details"]["description"]; ?></p>
+                        <?php
+                        if ($data["details"]["assigned"] == null) {
+                            $assignStatus = null;
+                        } else if ($data["details"]["assigned"] == 0) {
+                            $assignStatus = '<i class="fa fa-envelope text-primary" aria-hidden="true"></i> <span class="text-muted">Aanmelding ontvangen</span>';
+                        } else if ($data["details"]["assigned"] == 1) {
+                            $assignStatus = '<i class="fa fa-check text-success" aria-hidden="true"></i> <span class="text-muted">Toegewezen</span>';
+                        } else if ($data["details"]["assigned"] == 2) {
+                            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Niet toegewezen</span>';
+                        } else if ($data["details"]["assigned"] == 3) {
+                            $assignStatus = '<i class="fa fa-times text-danger" aria-hidden="true"></i> <span class="text-muted">Afgemeld</span>';
+                        }
 
-                    $currentDate = new DateTime('now');
-                    $playDate = new DateTime($data["details"]['date']);
-                    $days = $playDate->diff($currentDate);
-                    $diffDate = $days->format("%a") + 1;
+                        $currentDate = new DateTime('now');
+                        $playDate = new DateTime($data["details"]['date']);
+                        $days = $playDate->diff($currentDate);
+                        $diffDate = $days->format("%a") + 1;
 
-                    ?>
-                    <h6 class="card-subtitle mb-2"><?php echo $assignStatus ?></h6>
-                    <?php if (is_null($data["details"]["assigned"]) || $data["details"]["assigned"] == 3) { ?>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#participateModal"><?php if ($data["details"]["assigned"] == 3) { echo "Opnieuw aanmelden"; } else { echo "Aanmelden"; }; ?></button>
-                    <?php } else if ($data["details"]["assigned"] == 0) { ?>
-                        <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterNotAssignedModal">Inschrijving annuleren</button>
-                    <?php } else if ($data["details"]["assigned"] == 1 && $diffDate > 1) { ?>
-                        <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal">Inschrijving annuleren</button>
-                    <?php } else if ($data["details"]["assigned"] == 1 && $diffDate <= 1) { ?>
-                        <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#lateDeregisterAssignedModal">Aanvraag voor afmelding</button>
-                    <?php } ?>
-                    <!-- <?php if (is_null($data["details"]["assigned"]) || $data["details"]["assigned"] == 3) { ?>
+                        ?>
+                        <h6 class="card-subtitle mb-2"><?php echo $assignStatus ?></h6>
+                        <?php if (is_null($data["details"]["assigned"]) || $data["details"]["assigned"] == 3) { ?>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#participateModal"><?php if ($data["details"]["assigned"] == 3) {
+                                                                                                                                        echo "Opnieuw aanmelden";
+                                                                                                                                    } else {
+                                                                                                                                        echo "Aanmelden";
+                                                                                                                                    }; ?></button>
+                        <?php } else if ($data["details"]["assigned"] == 0) { ?>
+                            <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterNotAssignedModal">Inschrijving annuleren</button>
+                        <?php } else if ($data["details"]["assigned"] == 1 && $diffDate > 1) { ?>
+                            <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#deregisterAssignedModal">Inschrijving annuleren</button>
+                        <?php } else if ($data["details"]["assigned"] == 1 && $diffDate <= 1) { ?>
+                            <button type="button" class="btn btn-danger" style="z-index: 10" data-bs-toggle="modal" data-bs-target="#lateDeregisterAssignedModal">Aanvraag voor afmelding</button>
+                        <?php } ?>
+                        <!-- <?php if (is_null($data["details"]["assigned"]) || $data["details"]["assigned"] == 3) { ?>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#participateModal"><?php if ($data["details"]["assigned"] == 3) {
                                                                                                                                     echo "Opnieuw aanmelden";
                                                                                                                                 } else {
@@ -46,79 +51,83 @@ if (!empty($data["details"])) {
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#unparticipateModal">Afmelden</button>
                     <?php } ?> -->
 
-                    <?php if ($data["details"]["assigned"] == 1) { ?>
-                        <a href="/opdracht/1/formulier" target="_blank"><button type="button" class="btn btn-primary">Formulier</button></a>
-                    <?php } ?>
+                        <?php if ($data["details"]["assigned"] == 1) { ?>
+                            <a href="/opdracht/1/formulier" target="_blank"><button type="button" class="btn btn-primary">Formulier</button></a>
+                        <?php } ?>
 
-                    <hr class="dropdown-divider">
-                    <table class="table table-sm table-hover w-auto ">
-                        <thead>
-                            <tr>
-                                <th scope="col">Details</th>
-                                <th scope="col"></th>
-                                <th scope="col">Info</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td scope="row">Datum</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["date"]; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Tijd</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["time"]; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Stad</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["pCity"]; ?> </td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Locatie</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["pStreet"] . " " . $data["details"]["pHouseNumber"] . ", " . $data["details"]["pPostalCode"] ?> </td>
-                        </tr>
-
-
-                        <tr>
-                            <td scope="row">Grimeerlocatie</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["gStreet"] . " " . $data["details"]["gHouseNumber"] . ", " . $data["details"]["gPostalCode"] ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Leden nodig</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["casualties"]; ?></td>
-                        </tr>
-                    </table>
-
-                    <?php if (!empty($data["details"]["comments"])) { ?>
                         <hr class="dropdown-divider">
-                        <h2 class="formSectionTitle fw-bold mt-3">Opmerkingen</h2>
-                        <p><?php echo $data["details"]["comments"]; ?></p>
-                    <?php } ?>
+                        <table class="table table-sm table-hover w-auto ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Details</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Info</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td scope="row">Datum</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["date"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Tijd</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["time"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Stad</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["pCity"]; ?> </td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Locatie</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["pStreet"] . " " . $data["details"]["pHouseNumber"] . ", " . $data["details"]["pPostalCode"] ?> </td>
+                            </tr>
+
+
+                            <tr>
+                                <td scope="row">Grimeerlocatie</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["gStreet"] . " " . $data["details"]["gHouseNumber"] . ", " . $data["details"]["gPostalCode"] ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Leden nodig</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["casualties"]; ?></td>
+                            </tr>
+                        </table>
+
+                        <?php if (!empty($data["details"]["comments"])) { ?>
+                            <hr class="dropdown-divider">
+                            <h2 class="formSectionTitle fw-bold mt-3">Opmerkingen</h2>
+                            <p><?php echo $data["details"]["comments"]; ?></p>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
 
             <div class="col">
-                <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
-                    <div class="mb-3">
-                        <a><?php echo $data["details"]["companyName"] ?></a><br>
-                        <a><?php echo $data["details"]["firstName"] . " " . $data["details"]["lastName"] ?></a><br>
-                        <a><?php echo $data["details"]["clientEmail"] ?></a><br>
-                        <a><?php echo $data["details"]["phoneNumber"] ?></a>
+                <div class="customCard card shadow-sm col-auto mb-2">
+                    <div class="customCardBody card-body">
+                        <h2 class="formSectionTitle fw-bold">Gegevens opdrachtgever</h2>
+                        <div class="mb-3">
+                            <a><?php echo $data["details"]["companyName"] ?></a><br>
+                            <a><?php echo $data["details"]["firstName"] . " " . $data["details"]["lastName"] ?></a><br>
+                            <a><?php echo $data["details"]["clientEmail"] ?></a><br>
+                            <a><?php echo $data["details"]["phoneNumber"] ?></a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
-                    <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "" . $data["details"]["pStreet"] . "+" . $data["details"]["pHouseNumber"] . "+" . $data["details"]["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="customCard card shadow-sm col-auto">
+                    <div class="customCardBody card-body">
+                        <h2 class="formSectionTitle fw-bold">Locatie</h2>
+                        <iframe class="mb-3" src="https://maps.google.com/maps?q=<?php echo "" . $data["details"]["pStreet"] . "+" . $data["details"]["pHouseNumber"] . "+" . $data["details"]["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>

@@ -27,16 +27,9 @@ class AuthController extends Controller
             Application::$app->session->set("initials", $initials);
             Application::$app->session->set("roles", $roles);
             Application::$app->session->set("activeRole", $roles[0]);
-
-            $initials = substr(explode(" ", $result["firstName"])[0], 0, 1) . substr(explode(" ", $result["lastName"])[0], 0, 1);
-
-            if ($result != null) {
-                Application::$app->session->set("user", $result["email"]);
-                Application::$app->session->set("initials", $initials);
-                $this->redirect("/overzicht");
-            } else {
-                $this->view("user/login", $data);
-            }
+            $this->redirect("/overzicht");
+        } else {
+            $this->viewContentOnly("user/login", $data);
         }
     }
 
@@ -47,16 +40,14 @@ class AuthController extends Controller
 
         Application::$app->session->set("activeRole", $role);
 
-        $this->redirect("$url");
+        $this->redirect("/overzicht");
     }
 
     public function register()
     {
         $this->view("user/register");
     }
-
-
-
+ 
     public function logout()
     {
         Application::$app->session->destroy();

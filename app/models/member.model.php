@@ -4,36 +4,10 @@ class MemberModel extends Model
 {
     public function getAllMembers()
     {
-        $this->db->query("SELECT * FROM user WHERE roles = :id");
-        $this->db->bind(":id", 1);
+        $this->db->query("SELECT *, (SELECT COUNT(*) as Participations FROM solicit WHERE email = user.email AND assigned IN (0,1)) AS participations  FROM user WHERE roles IN (1,4)");
 
         $result = $this->db->resultSet();
 
-        $email = Application::$app->session->get("user");
-        
-        for ($x = 0; $x < sizeof($result); $x++) {
-            $result[$x]['countAssignments'] = count($this->getAllMemberCompletedAssigments($result[$x]['email'])) + count($this->getAllMemberUpcommingAssigments($result[$x]['email']));
-          }
-
-        return $result;
-    }
-
-    public function getOpenAssignments()
-    {
-        $email = Application::$app->session->get("user");
-
-        $this->db->query("SELECT DISTINCT * FROM request 
-                            LEFT JOIN company ON request.companyId = company.companyId
-                            LEFT JOIN grimelocation ON request.grimeLocationId = grimelocation.grimeLocationId
-                            LEFT JOIN playground ON request.playgroundId = playground.playgroundId
-                            LEFT JOIN contact ON request.contactId = contact.contactId
-                            LEFT JOIN billingaddress ON request.billingaddressId = billingaddress.billingaddressId
-                            WHERE request.approved = 1;");
-
-        // $this->db->bind(":email", $email);
-
-
-        $result = $this->db->resultSet();
         return $result;
     }
 
@@ -53,11 +27,6 @@ class MemberModel extends Model
 
 
     //     $result = $this->db->resultSet();
-
-    //     foreach ($result as $key => $member) {
-    //         $result[$key]["completedAssignment"] = $this->getCountOfCompletedAssigments($member["email"]);
-    //     }
-
     //     return $result;
     // }
 
@@ -82,7 +51,7 @@ class MemberModel extends Model
                             LEFT JOIN contact ON request.contactId = contact.contactId 
                             LEFT JOIN billingaddress ON request.billingAddressId = billingaddress.billingAddressId
                             WHERE requestId NOT IN (SELECT requestId FROM solicit WHERE assigned IN (0,1,2,4) AND email = :email)
-                            AND request.approved = 1;");
+                            AND request.approved = 1 ORDER BY request.date, assigned;");
 
         $this->db->bind(":email", $email);
 

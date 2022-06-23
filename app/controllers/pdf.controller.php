@@ -27,12 +27,14 @@ class PdfController extends Controller
         );
 
         $requestId = $result["details"]["requestId"];
-        $location = $result["details"]["pStreet"] . " " . $result["details"]["pHouseNumber"] . ", " . $result["details"]["pPostalCode"];
+        $location = $result["details"]["pStreet"] . " " . $result["details"]["pHouseNumber"];
+        $postalCode =  $result["details"]["pPostalCode"];
         $name = $result["details"]["companyName"];
         $playGround = $result["details"]["pCity"];
         $date = $result["details"]["date"];
         $time = $result["details"]["time"];
         $contactPerson = $result["details"]["clientEmail"];
+        $invoiceEmail = $result["details"]["clientEmail"];
         $phoneNumber = $result["details"]["phoneNumber"];
         $instructor = "......";
         $requestComments = $result["details"]["comments"];
@@ -107,38 +109,44 @@ class PdfController extends Controller
         $this->pdf->Cell($this->w, 10, 'Coordinatie formulier', 0, 1, 'C');
         $this->pdf->SetFont('Arial', '', 12);
 
-        $this->pdf->Cell(50, 10, "Nummer:", 1, 0);
-        $this->pdf->Cell(140, 10, $requestId, 1, 1);
+        $this->pdf->Cell(50, 10, "Nummer:", 0, 0);
+        $this->pdf->Cell(140, 10, $requestId, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Locatie:", 1, 0);
-        $this->pdf->Cell(140, 10, $location, 1, 1);
+        $this->pdf->Cell(50, 10, "Locatie:", 0, 0);
+        $this->pdf->Cell(140, 10, $location, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Naam:", 1, 0);
-        $this->pdf->Cell(140, 10, $name, 1, 1);
+        $this->pdf->Cell(50, 10, "Postcode", 0, 0);
+        $this->pdf->Cell(140, 10, $postalCode, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Straat:", 1, 0);
-        $this->pdf->Cell(140, 10, $playGround, 1, 1);
+        $this->pdf->Cell(50, 10, "Naam:", 0, 0);
+        $this->pdf->Cell(140, 10, $name, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Datum:", 1, 0);
-        $this->pdf->Cell(140, 10, $date, 1, 1);
+        $this->pdf->Cell(50, 10, "Straat:", 0, 0);
+        $this->pdf->Cell(140, 10, $playGround, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Tijd:", 1, 0);
-        $this->pdf->Cell(140, 10, $time, 1, 1);
+        $this->pdf->Cell(50, 10, "Datum:", 0, 0);
+        $this->pdf->Cell(140, 10, $date, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Contactpersoon:", 1, 0);
-        $this->pdf->Cell(140, 10, $contactPerson, 1, 1);
+        $this->pdf->Cell(50, 10, "Tijd:", 0, 0);
+        $this->pdf->Cell(140, 10, $time, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Telefoonnummer/mobiel:", 1, 0);
-        $this->pdf->Cell(140, 10, $phoneNumber, 1, 1);
+        $this->pdf->Cell(50, 10, "Contactpersoon:", 0, 0);
+        $this->pdf->Cell(140, 10, $contactPerson, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Kaderinstructeur:", 1, 0);
-        $this->pdf->Cell(140, 10, $instructor, 1, 1);
+        $this->pdf->Cell(50, 10, "Factuur email:", 0, 0);
+        $this->pdf->Cell(140, 10, $invoiceEmail, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Bijzonderheden:", 1, 0);
-        $this->pdf->Cell(140, 10, $requestComments, 1, 1);
+        $this->pdf->Cell(50, 10, "Telefoonnummer/mobiel:", 0, 0);
+        $this->pdf->Cell(140, 10, $phoneNumber, 0, 1);
 
-        $this->pdf->Cell(50, 10, "Aantal slachtoffers:", 1, 0);
-        $this->pdf->Cell(140, 10, $requestCasualties, 1, 1);
+        $this->pdf->Cell(50, 10, "Kaderinstructeur:", 0, 0);
+        $this->pdf->Cell(140, 10, $instructor, 0, 1);
+
+        $this->pdf->Cell(50, 10, "Bijzonderheden:", 0, 0);
+        $this->pdf->Cell(140, 10, $requestComments, 0, 1);
+
+        $this->pdf->Cell(50, 10, "Aantal slachtoffers:", 0, 0);
+        $this->pdf->Cell(140, 10, count($members) . " / " . $requestCasualties, 0, 1);
 
         $this->pdf->ln(15);
 
@@ -153,7 +161,8 @@ class PdfController extends Controller
             $this->pdf->Cell(190, 10, "Geen leden", 1, 0);
         }
         foreach ($members as $key=>$member) {
-            $this->pdf->Cell(50, 10, $member["firstName"] . " " . $member["lastName"], 1, 0);
+            $lastNameInitial = $this->getInitials($member["firstName"], $member["lastName"])[1];
+            $this->pdf->Cell(50, 10, $member["firstName"] . " " . $lastNameInitial . ".", 1, 0);
 
             if ($key % 1 != 0) {
                 $this->pdf->Cell(140, 10, "......", 1, 0);
