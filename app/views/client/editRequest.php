@@ -575,7 +575,7 @@ foreach($data as $item) {
                 </div>
 
                 <div>
-                    <button type="button" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#contactCoordinatorModal">Opdracht aanpassen</button>
+                <input type="submit" value="Opdracht aanpassen" name="editRequest" id="editRequest" class="submitRequestButton btn mt-3 mb-3 mx-auto d-block">
                 </div>
             </div>
         </form>
