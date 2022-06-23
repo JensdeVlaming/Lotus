@@ -33,7 +33,6 @@ class PdfController extends Controller
         $playGround = $result["details"]["pCity"];
         $date = $result["details"]["date"];
         $time = $result["details"]["time"];
-        print_r($result["details"]);
         $endTime = $result["details"]["endTime"];
         $contactPerson = $result["details"]["clientEmail"];
         $invoiceEmail = $result["details"]["clientEmail"];
