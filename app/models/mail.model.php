@@ -86,7 +86,7 @@ class MailModel
             $subtitle = "De coordinator heeft uw opdracht afgekeurd. Bij eventuele vragen over waarom uw opdracht afgewezen is, kunt u contact opnemen met de coordinator.";
         } else {
             $title = "Uw opdracht is geaccepteerd!";
-            $subtitle = "De coordinator heeft uw opdracht goedgekeurd. Leden van LOTUS kunnen zich vanaf nu aanmelden voor uw opdracht. U zal op de hoogte worden gehouden van eventuele verdere ontwikkelingen rondom uw opdracht.";
+            $subtitle = "De coordinator heeft uw opdracht in behandeling genomen. Leden van LOTUS kunnen zich vanaf nu aanmelden voor uw opdracht. U zal op de hoogte worden gehouden van eventuele verdere ontwikkelingen rondom uw opdracht.";
         }
 
         // Mail subject 
@@ -132,8 +132,9 @@ class MailModel
         $this->mail->send();
     }
 
-    public function memberAssignedToRequest($email, $description)
+    public function memberAssignedToRequest($id, $email, $description,$date, $pCity, $pStreet, $pHouse, $pPostalCode)
     {
+            $playGround = $pStreet . ' ' . $pHouse . ', ' . $pPostalCode . ' ' . $pCity;
 
              // Add a recipient 
             $this->mail->addAddress($email); 
@@ -148,6 +149,11 @@ class MailModel
             // Mail body content 
             $bodyContent = '<h1>De coordinator heeft u uitgekozen voor het uitvoeren van de opdracht: ' . $description . '</h1>';
             $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
+            $bodyContent .= '<h3>Details</h3>';
+            $bodyContent .= '<p>Datum: ' . $date . ' </p>';
+            $bodyContent .= '<p>Locatie: ' . $playGround . ' </p>';
+            $bodyContent .= '<p>Op de detailpagina van de opdracht kunt u nu het PDF-Formulier downloaden om uit te draaien en mee te nemen naar de opdracht!</p>';
+            $bodyContent .= "<p><a href='http://localhost/opdracht/$id/formulier'>Klik hier</a> om het PDF-Formulier direct te downloaden</p>";
 
             $this->mail->Body    = $bodyContent;
 
@@ -161,9 +167,16 @@ class MailModel
 
     public function clientRequestAssigned($results)
     {
-
+        $id = $results['requestId'];
         $emailAddress = $results['clientEmail'];
         $description = $results['description'];
+        $date = $results['date'];
+        $pCity = $results['pCity'];
+        $pStreet =$results['pStreet'];
+        $pHouse = $results['pHouseNumber'];
+        $pPostalCode = $results['pPostalCode'];
+       
+        $playGround = $pStreet . ' ' . $pHouse . ', ' . $pPostalCode . ' ' . $pCity;
         
         // Add a recipient 
         $this->mail->addAddress($emailAddress); 
@@ -174,12 +187,16 @@ class MailModel
         // Mail subject 
         $this->mail->Subject = 'Uw opdracht is verdeeld onder de leden';
 
-
         // Mail body content 
         $bodyContent = '<h1>De coordinator heeft uw opdracht: ' . $description . ' verdeeld.</h1>';
         $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
+        $bodyContent .= '<h3>Details</h3>';
+        $bodyContent .= '<p>Datum: ' . $date . ' </p>';
+        $bodyContent .= '<p>Locatie: ' . $playGround . ' </p>';
+        $bodyContent .= '<p>Op de detailpagina van de opdracht kunt u nu het PDF-Formulier downloaden om uit te draaien!</p>';
+        $bodyContent .= "<p><a href='http://localhost/opdracht/$id/formulier'>Klik hier</a> om het PDF-Formulier direct te downloaden</p>";
 
-        $this->mail->Body    = $bodyContent;
+        $this->mail->Body = $bodyContent;
 
         // Send email 
         $this->mail->send();

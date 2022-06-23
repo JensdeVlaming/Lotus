@@ -47,14 +47,14 @@ class CoordController extends Controller
     {
         $id = $data["params"]["id"];
         $this->coordModel->acceptAssignment($id);
-        // methode hieronder werkt
+        // email to client
         $this->mailModel->clientRequestAssigned($this->memberModel->getAssignmentDetailsAndIdClient($id));
 
-        // testen methode hieronder
+        // email to members
         $results = $this->memberModel->getAssignmentDetailsAndId($id);
         
         foreach ($results as $item) { 
-            $this->mailModel->memberAssignedToRequest($item['email'],$item['description']); 
+            $this->mailModel->memberAssignedToRequest($item['requestId'],$item['email'],$item['description'],$item['date'],$item['pCity'],$item['pStreet'],$item['pHouseNumber'],$item['pPostalCode']); 
         }
         
 
