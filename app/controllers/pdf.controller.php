@@ -32,6 +32,7 @@ class PdfController extends Controller
         $playGround = $result["details"]["pCity"];
         $date = $result["details"]["date"];
         $time = $result["details"]["time"];
+        $endTime = $result["details"]["endTime"];
         $contactPerson = $result["details"]["clientEmail"];
         $phoneNumber = $result["details"]["phoneNumber"];
         $instructor = "......";
@@ -123,7 +124,7 @@ class PdfController extends Controller
         $this->pdf->Cell(140, 10, $date, 1, 1);
 
         $this->pdf->Cell(50, 10, "Tijd:", 1, 0);
-        $this->pdf->Cell(140, 10, $time, 1, 1);
+        $this->pdf->Cell(140, 10, $time .' - '. $endTime, 1, 1);
 
         $this->pdf->Cell(50, 10, "Contactpersoon:", 1, 0);
         $this->pdf->Cell(140, 10, $contactPerson, 1, 1);
