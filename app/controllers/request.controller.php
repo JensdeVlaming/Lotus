@@ -10,6 +10,7 @@ class RequestController extends Controller
 
     public function addRequest($payload)
     {
+    
         $data = [];
 
         $houseNumberPlayGround = $payload['houseNumberPlayGround'];
@@ -33,7 +34,7 @@ class RequestController extends Controller
         $this->requestModel->addBusinessAddressRequest($this->requestModel->getLoggedInUser());
         $this->requestModel->addBillingAddressRequest($this->requestModel->getLoggedInUser());
         $this->requestModel->addContactRequest($this->requestModel->getLoggedInUser());
-        $result = $this->requestModel->addRequest($payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
+        $result = $this->requestModel->addRequest($payload['summary'], $payload['comments'],$payload['playDate'],$payload['playTime'],$payload['endTime'],$payload['lotusCasualties']);
         $this->mailModel->addRequestEmail($payload['summary'], $payload['playDate'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround);
 
         if ($result) {
@@ -72,33 +73,17 @@ class RequestController extends Controller
             $houseNumberGatherLocation .= $payload['annexGatherLocation'];
         }
 
-        $houseNumberBusinessAddress = $payload['houseNumberBusinessAddress'];
-        if (isset($payload['annexBusinessAddress'])) {
-            $houseNumberBusinessAddress .= $payload['annexBusinessAddress'];
-        }
-
-        $houseNumberBillingAddress = $payload['houseNumberBillingAddress'];
-        if (isset($payload['annexBillingAddress'])) {
-            $houseNumberBillingAddress .= $payload['annexBillingAddress'];
-        }
-
-
         $provinceGatherLocation = $payload['provincePlayGround'];
         if (isset($payload['provinceGatherLocation'])) {
             $provinceGatherLocation = $payload['provinceGatherLocation'];
         }
 
-        $provinceBillingAddress = $payload['provinceBusinessAddress'];
-        if ($payload['provinceBillingAddress'] = 0) {
-            $provinceGatherLocation = $payload['provinceBillingAddress'];
-        }
-
         $this->requestModel->editPlayGroundRequest($payload['playGroundId'], $payload['provincePlayGround'], $payload['cityPlayGround'], $payload['streetPlayGround'], $houseNumberPlayGround, $payload['postalCodePlayGround']);
         $this->requestModel->editGrimeLocationRequest($payload['grimeLocationId'], $provinceGatherLocation, $payload['cityGatherLocation'], $payload['streetGatherLocation'], $houseNumberGatherLocation, $payload['postalCodeGatherLocation']);
-        $this->requestModel->editBusinessAddressRequest($payload['companyId'], $payload['requestName'], $payload['provinceBusinessAddress'], $payload['cityBusinessAddress'], $payload['streetBusinessAddress'], $houseNumberBusinessAddress, $payload['postalCodeBusinessAddress']);
-        $this->requestModel->editBillingAddressRequest($payload['billingAddressId'], $provinceBillingAddress, $payload['cityBillingAddress'], $payload['streetBillingAddress'], $houseNumberBillingAddress, $payload['postalCodeBillingAddress']);
-        $this->requestModel->editContactRequest($payload['contactId'], $payload['clientFirstName'], $payload['clientLastName'], $payload['clientEmail'], $payload['clientPhoneNumber']);
-        $this->requestModel->editRequest($payload['requestId'], $payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'], $payload['lotusCasualties']);
+        // $this->requestModel->editBusinessAddressRequest($this->requestModel->getLoggedInUser());
+        // $this->requestModel->editBillingAddressRequest($this->requestModel->getLoggedInUser());
+        // $this->requestModel->editContactRequest($this->requestModel->getLoggedInUser());
+        $this->requestModel->editRequest($payload['requestId'], $payload['summary'], $payload['comments'], $payload['playDate'], $payload['playTime'],$payload['endTime'], $payload['lotusCasualties']);
 
         $this->redirect("/overzicht");
     }

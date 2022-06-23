@@ -314,6 +314,7 @@ class MemberModel extends Model
         $this->db->query("SELECT * FROM solicit 
                                 LEFT JOIN user ON user.email = solicit.email
                                 LEFT JOIN request ON request.requestId = solicit.requestId
+                                LEFT JOIN playground ON request.playGroundId = playground.playGroundId
                                 WHERE request.requestId = :id AND assigned = :assigned AND approved = :approved;");
 
 
@@ -332,6 +333,7 @@ class MemberModel extends Model
         $this->db->query("SELECT * FROM solicit 
                                 LEFT JOIN user ON user.email = solicit.email
                                 LEFT JOIN request ON request.requestId = solicit.requestId
+                                LEFT JOIN playground ON request.playGroundId = playground.playGroundId
                                 WHERE request.requestId = :id AND approved = :approved;");
 
 

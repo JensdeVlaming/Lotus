@@ -70,11 +70,11 @@ if (!empty($data["details"])) {
                                 <td><?php echo $data["details"]["date"]; ?></td>
                             </tr>
 
-                            <tr>
-                                <td scope="row">Tijd</td>
-                                <td>:</td>
-                                <td><?php echo $data["details"]["time"]; ?></td>
-                            </tr>
+                        <tr>
+                            <td scope="row">Tijd</td>
+                            <td>:</td>
+                            <td><?php echo $data["details"]["time"]; ?> - <?php echo $data["details"]["endTime"]; ?> </td>
+                        </tr>
 
                             <tr>
                                 <td scope="row">Stad</td>

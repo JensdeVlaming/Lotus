@@ -47,11 +47,11 @@ if (!empty($data["details"])) {
                                 <td><?php echo $data["details"]["date"]; ?></td>
                             </tr>
 
-                            <tr>
-                                <td scope="row">Tijd</td>
-                                <td>:</td>
-                                <td><?php echo $data["details"]["time"]; ?></td>
-                            </tr>
+                        <tr>
+                            <td scope="row">Tijd</td>
+                            <td>:</td>
+                            <td><?php echo $data["details"]["time"]; ?> - <?php echo $data["details"]["endTime"]; ?></td>
+                        </tr>
 
                             <tr>
                                 <td scope="row">Stad</td>
@@ -190,7 +190,9 @@ if (!empty($data["details"])) {
                 </div>
 
                 <div id="registeredMembers" class="accordion-collapse show collapse m-2 table-responsive" aria-labelledby="header-1">
+                    <?php if ($data["details"]['approved'] == 1){ ?>
                     <button type="button" class="btn btn-success mx-1 m-2" data-bs-toggle="modal" data-bs-target="#assignMemberModal">Lid handmatig toewijzen</button>
+                    <?php }?>
                     <div class="row row-cols-md-1 row-cols-lg-2 g-2 mx-1 m-2">
                         <?php
                         if (!empty($data["allMembersOfRequest"])) {

@@ -132,7 +132,52 @@ if (!empty($data)) {
                                     <td>:</td>
                                     <td><?php echo $item["bHouseNumber"]; ?></td>
                                 </tr>
+                            </thead>
+                            <tr>
+                                <td scope="row">Datum</td>
+                                <td>:</td>
+                                <td><?php echo $item["date"]; ?></td>
+                            </tr>
 
+                            <tr>
+                                <td scope="row">Tijd</td>
+                                <td>:</td>
+                                <td><?php echo $item["time"]; ?> - <?php echo $item["endTime"]; ?> </td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Stad</td>
+                                <td>:</td>
+                                <td><?php echo $item["pCity"]; ?> </td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Locatie</td>
+                                <td>:</td>
+                                <td><?php echo "" . $item["pStreet"] . " " . $item["pHouseNumber"] . ", " . $item["pPostalCode"] . "" ?> </td>
+                            </tr>
+
+
+                            <tr>
+                                <td scope="row">Grimeerlocatie</td>
+                                <td>:</td>
+                                <td><?php echo "" . $item["gStreet"] . " " . $item["gHouseNumber"] . ", " . $item["gPostalCode"] . "" ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Leden nodig</td>
+                                <td>:</td>
+                                <td><?php echo $item["casualties"]; ?></td>
+                            </tr>
+                        </table>
+
+
+                        <hr class="dropdown-divider">
+
+                        <h2 class="formSectionTitle fw-bold mt-3">Factuurgegevens</h2>
+
+                        <table class="table table-sm table-hover w-auto ">
+                            <thead>
                                 <tr>
                                     <td scope="row">Postcode</td>
                                     <td>:</td>
