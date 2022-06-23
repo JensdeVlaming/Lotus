@@ -132,7 +132,7 @@ class MailModel
         $this->mail->send();
     }
 
-    public function memberAssignedToRequest($description, $email)
+    public function memberAssignedToRequest($email, $description)
     {
 
              // Add a recipient 
@@ -155,9 +155,7 @@ class MailModel
             $this->mail->send();
 
             // Clear addres to not get unwanted CC
-            $this->mail->ClearAddresses($email); 
-    
-    
+            $this->mail->ClearAddresses();   
 
     }
 
@@ -187,7 +185,7 @@ class MailModel
         $this->mail->send();
 
         // Clear addres to not get unwanted CC
-        $this->mail->ClearAddresses($emailAddress); 
+        $this->mail->ClearAddresses(); 
         
         
 
