@@ -46,8 +46,17 @@ class CoordController extends Controller
     public function acceptAssignment($data)
     {
         $id = $data["params"]["id"];
-
         $this->coordModel->acceptAssignment($id);
+        // methode hieronder werkt
+        $this->mailModel->clientRequestAssigned($this->memberModel->getAssignmentDetailsAndIdClient($id));
+
+        // testen methode hieronder
+        $results = $this->memberModel->getAssignmentDetailsAndId($id);
+        
+        foreach ($results as $item) { 
+            $this->mailModel->memberAssignedToRequest($item['email'],$item['description']); 
+        }
+        
 
         $this->redirect("/opdracht/$id/details");
     }

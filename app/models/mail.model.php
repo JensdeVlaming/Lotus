@@ -23,6 +23,7 @@ class MailModel
         $this->mail->Password = 'mqepvldycmkxtctm';  // SMTP password 
         $this->mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
         $this->mail->Port = 587;                    // TCP port to connect to 
+      
 
         // Sender info 
         $this->mail->setFrom('projectlotus2023@gmail.com', 'LOTUS Here We Go');
@@ -131,42 +132,41 @@ class MailModel
         $this->mail->send();
     }
 
-    public function memberAssignedToRequest($results)
+    public function memberAssignedToRequest($description, $email)
     {
 
-        foreach ($results as $item) {
-            $emailAddress = $item['email'];
-            $description = $item['description'];
-        }
+             // Add a recipient 
+            $this->mail->addAddress($email); 
 
-        // Add a recipient 
-        $this->mail->addAddress($emailAddress); 
+            // Set email format to HTML 
+            $this->mail->isHTML(true);
 
-        // Set email format to HTML 
-        $this->mail->isHTML(true);
-
-        // Mail subject 
-        $this->mail->Subject = 'U bent geselecteerd voor een opdracht';
+            // Mail subject 
+            $this->mail->Subject = 'U bent geselecteerd voor een opdracht';
 
 
-        // Mail body content 
-        $bodyContent = '<h1>De coordinator heeft u uitgekozen voor het uitvoeren van de opdracht: ' . $description . '</h1>';
-        $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
+            // Mail body content 
+            $bodyContent = '<h1>De coordinator heeft u uitgekozen voor het uitvoeren van de opdracht: ' . $description . '</h1>';
+            $bodyContent .= '<p>Hieronder vind u nog enige details over de opdracht.</p>';
 
-        $this->mail->Body    = $bodyContent;
+            $this->mail->Body    = $bodyContent;
 
-        // Send email 
-        $this->mail->send();
+            // Send email 
+            $this->mail->send();
+
+            // Clear addres to not get unwanted CC
+            $this->mail->ClearAddresses($email); 
+    
+    
+
     }
 
     public function clientRequestAssigned($results)
     {
 
-        foreach ($results as $item) {
-            $emailAddress = $item['clientEmail'];
-            $description = $item['description'];
-        }
-
+        $emailAddress = $results['clientEmail'];
+        $description = $results['description'];
+        
         // Add a recipient 
         $this->mail->addAddress($emailAddress); 
 
@@ -185,5 +185,11 @@ class MailModel
 
         // Send email 
         $this->mail->send();
+
+        // Clear addres to not get unwanted CC
+        $this->mail->ClearAddresses($emailAddress); 
+        
+        
+
     }
 }

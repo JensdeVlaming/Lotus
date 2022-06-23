@@ -242,7 +242,7 @@ if (!empty($data["details"])) {
                 <div class="m-3">
                     <label for="message-text" class="col-form-label">Reden tot afmelding:</label>
                     <textarea class="form-control" name="reasonFor" id="message-text"></textarea>
-                    <input type="hidden" name="requestId" value="<?php echo $item["requestId"] ?>">
+                    <input type="hidden" name="requestId" value="<?php echo $data["details"]["requestId"] ?>">
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="cancelButton btn" data-bs-dismiss="modal" value="Anuleren">

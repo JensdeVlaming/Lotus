@@ -338,6 +338,42 @@ class MemberModel extends Model
         return $results;
     }
 
+    public function getAssignmentDetailsAndId($id)
+    {
+        $assigned = 1;
+        $approved = 2;
+        $this->db->query("SELECT * FROM solicit 
+                                LEFT JOIN user ON user.email = solicit.email
+                                LEFT JOIN request ON request.requestId = solicit.requestId
+                                WHERE request.requestId = :id AND assigned = :assigned AND approved = :approved;");
+
+
+       
+        $this->db->bind(":id", $id);
+        $this->db->bind(":assigned", $assigned);
+        $this->db->bind(":approved", $approved);
+
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function getAssignmentDetailsAndIdClient($id)
+    {
+        $approved = 2;
+        $this->db->query("SELECT * FROM solicit 
+                                LEFT JOIN user ON user.email = solicit.email
+                                LEFT JOIN request ON request.requestId = solicit.requestId
+                                WHERE request.requestId = :id AND approved = :approved;");
+
+
+       
+        $this->db->bind(":id", $id);
+        $this->db->bind(":approved", $approved);
+
+        $results = $this->db->single();
+        return $results;
+    }
+
     public function getAllOpenMembersByRequestId($id)
     {
         $this->db->query("SELECT *, (SELECT COUNT(*) as Participations FROM solicit WHERE email = user.email AND assigned IN (0,1)) AS participations FROM user WHERE user.email NOT IN (SELECT email FROM solicit WHERE solicit.requestId = :id AND solicit.assigned IN (0, 1, 3)) AND user.roles IN (1, 4);");

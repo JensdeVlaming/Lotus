@@ -41,6 +41,13 @@ class CoordModel extends Model
         $result = $this->db->resultSet();
     }
 
+    public function acceptAssignment($id)
+    {
+        $this->db->query("UPDATE request SET approved = 2 WHERE requestId = $id;");
+
+        $result = $this->db->resultSet();
+    }
+
     public function getProfile($email)
     {
         $this->db->query("SELECT * FROM user
