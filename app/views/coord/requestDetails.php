@@ -18,155 +18,162 @@ if (!empty($data["details"])) {
         <div class="row">
             <div class="col">
                 <!-- Column 1 -->
-                <div class="container-sm m-1 border shadow-sm rounded-3 w-auto">
+                <div class="customCard card shadow-sm col-auto mb-2">
+                    <div class="customCardBoy card-body">
+                        <h2 class="formSectionTitle fw-bold"><?php echo $data["details"]["companyName"]; ?></h2>
+                        <p><?php echo $data["details"]["description"]; ?></p>
+                        <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
 
-                    <h2 class="formSectionTitle fw-bold mt-3"><?php echo $data["details"]["companyName"]; ?></h2>
-                    <p><?php echo $data["details"]["description"]; ?></p>
-                    <h6 class="card-subtitle mb-2"><?php echo $approved ?></h6>
+                        <?php if ($data["details"]["approved"] == 0) { ?>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#inProgressModal" name="inProgressButton">In behandeling</button>
+                        <?php } else if ($data["details"]["approved"] == 1) { ?>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
+                        <?php } ?>
 
-                    <?php if ($data["details"]["approved"] == 0) { ?>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#inProgressModal" name="inProgressButton">In behandeling</button>
-                    <?php } else if ($data["details"]["approved"] == 1) { ?>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Afwijzen</button>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal">Accepteren</button>
-                    <?php } ?>
-
-                    <hr class="dropdown-divider">
-                    <table class="table table-sm table-hover w-auto ">
-                        <thead>
+                        <hr class="dropdown-divider">
+                        <table class="table table-sm table-hover w-auto ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Details</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Info</th>
+                                </tr>
+                            </thead>
                             <tr>
-                                <th scope="col">Details</th>
-                                <th scope="col"></th>
-                                <th scope="col">Info</th>
+                                <td scope="row">Datum</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["date"]; ?></td>
                             </tr>
-                        </thead>
-                        <tr>
-                            <td scope="row">Datum</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["date"]; ?></td>
-                        </tr>
 
-                        <tr>
-                            <td scope="row">Tijd</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["time"]; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Stad</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["pCity"]; ?> </td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Locatie</td>
-                            <td>:</td>
-                            <td><?php echo "" . $data["details"]["pStreet"] . " " . $data["details"]["pHouseNumber"] . ", " . $data["details"]["pPostalCode"] . "" ?> </td>
-                        </tr>
-
-
-                        <tr>
-                            <td scope="row">Grimeerlocatie</td>
-                            <td>:</td>
-                            <td><?php echo "" . $data["details"]["gStreet"] . " " . $data["details"]["gHouseNumber"] . ", " . $data["details"]["gPostalCode"] . "" ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Leden nodig</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["casualties"]; ?></td>
-                        </tr>
-                    </table>
-
-
-                    <hr class="dropdown-divider">
-
-                    <h2 class="formSectionTitle fw-bold mt-3">Factuurgegevens</h2>
-
-                    <table class="table table-sm table-hover w-auto ">
-                        <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col"></th>
-                                <th scope="col">Info</th>
+                                <td scope="row">Tijd</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["time"]; ?></td>
                             </tr>
-                        </thead>
-                        <tr>
-                            <td scope="row">Land</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bCountry"]; ?></td>
-                        </tr>
 
-                        <tr>
-                            <td scope="row">Provincie</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bProvince"]; ?></td>
-                        </tr>
+                            <tr>
+                                <td scope="row">Stad</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["pCity"]; ?> </td>
+                            </tr>
 
-                        <tr>
-                            <td scope="row">Stad</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bCity"]; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="row">Straat</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bStreet"]; ?></td>
-                        </tr>
+                            <tr>
+                                <td scope="row">Locatie</td>
+                                <td>:</td>
+                                <td><?php echo "" . $data["details"]["pStreet"] . " " . $data["details"]["pHouseNumber"] . ", " . $data["details"]["pPostalCode"] . "" ?> </td>
+                            </tr>
 
 
-                        <tr>
-                            <td scope="row">Huisnummer</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bHouseNumber"]; ?></td>
-                        </tr>
+                            <tr>
+                                <td scope="row">Grimeerlocatie</td>
+                                <td>:</td>
+                                <td><?php echo "" . $data["details"]["gStreet"] . " " . $data["details"]["gHouseNumber"] . ", " . $data["details"]["gPostalCode"] . "" ?></td>
+                            </tr>
 
-                        <tr>
-                            <td scope="row">Postcode</td>
-                            <td>:</td>
-                            <td><?php echo $data["details"]["bPostalCode"]; ?></td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td scope="row">Leden nodig</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["casualties"]; ?></td>
+                            </tr>
+                        </table>
 
-                    <?php
-                    if (!empty($data["details"]["comments"])) {
-                        echo '  <hr class="dropdown-divider">
+
+                        <hr class="dropdown-divider">
+
+                        <h2 class="formSectionTitle fw-bold mt-3">Factuurgegevens</h2>
+
+                        <table class="table table-sm table-hover w-auto ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Info</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td scope="row">Land</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bCountry"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Provincie</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bProvince"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Stad</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bCity"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Straat</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bStreet"]; ?></td>
+                            </tr>
+
+
+                            <tr>
+                                <td scope="row">Huisnummer</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bHouseNumber"]; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Postcode</td>
+                                <td>:</td>
+                                <td><?php echo $data["details"]["bPostalCode"]; ?></td>
+                            </tr>
+                        </table>
+
+                        <?php
+                        if (!empty($data["details"]["comments"])) {
+                            echo '  <hr class="dropdown-divider">
                                         <h2 class="formSectionTitle fw-bold mt-3">Opmerkingen</h2>
                                         <p> ' . $data["details"]["comments"] . '</p>';
-                    }
-                    ?>
+                        }
+                        ?>
+                    </div>
                 </div>
                 <!-- Column 1 end -->
             </div>
 
             <div class="col">
                 <!-- Column 2 start -->
-                <div class="container-sm m-1 mt-3 mt-sm-1 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3">Gegevens opdrachtgever</h2>
-                    <p>
-                        <?php echo  $data["details"]["companyName"] . ' </br>	                                
+                <div class="customCard card shadow-sm col-auto mb-2">
+                    <div class="customCardBoy card-body">
+                        <h2 class="formSectionTitle fw-bold">Gegevens opdrachtgever</h2>
+                        <p>
+                            <?php echo  $data["details"]["companyName"] . ' </br>	                                
                                             ' . $data["details"]["firstName"] . ' ' . $data["details"]["lastName"] . ' </br>
                                             ' . $data["details"]["clientEmail"] . ' </br>
                                             ' . $data["details"]["phoneNumber"] ?>
-                    </p>
+                        </p>
+                    </div>
 
                 </div>
 
-                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3">Contactgegevens</h2>
-                    <p>
-                        <?php echo $data["details"]["firstName"] . ' ' . $data["details"]["lastName"] . ' </br>
+                <div class="customCard card shadow-sm col-auto mb-2">
+                    <div class="customCardBoy card-body">
+                        <h2 class="formSectionTitle fw-bold">Contactgegevens</h2>
+                        <p>
+                            <?php echo $data["details"]["firstName"] . ' ' . $data["details"]["lastName"] . ' </br>
                                             ' . $data["details"]["email"] . ' </br>
                                             ' . $data["details"]["phoneNumber"] ?>
-                    </p>
+                        </p>
+                    </div>
                 </div>
 
-                <div class="container-sm m-1 mt-3 mt-sm-4 border shadow-sm rounded-3 w-auto">
-                    <h2 class="formSectionTitle fw-bold mt-3">Locatie</h2>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item mb-3" src="https://maps.google.com/maps?q=<?php echo "" .  $data["details"]["pCity"] . "+" . $data["details"]["pStreet"] . "+" . $data["details"]["pHouseNumber"] . "+" . $data["details"]["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="customCard card shadow-sm col-auto mb-2">
+                    <div class="customCardBoy card-body">
+                        <h2 class="formSectionTitle fw-bold">Locatie</h2>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item mb-3" src="https://maps.google.com/maps?q=<?php echo "" .  $data["details"]["pCity"] . "+" . $data["details"]["pStreet"] . "+" . $data["details"]["pHouseNumber"] . "+" . $data["details"]["pPostalCode"] . "" ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
                 <!-- Column 2 end  -->
@@ -215,7 +222,9 @@ if (!empty($data["details"])) {
                                                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $member["phoneNumber"] ?></h6>
                                                     <h6 class="card-subtitle mb-2 text-muted">Deelnemingen: <?php echo $member["participations"] ?></h6>
                                                     <h6 class="card-subtitle mb-2 text-muted hover"><?php echo $approved; ?></h6>
-                                                    <?php if ($member["assigned"] == 3 && !is_null($member["deregisterReason"])) { echo '<p class="hide">' . $member["deregisterReason"] . '</p>'; } ?>
+                                                    <?php if ($member["assigned"] == 3 && !is_null($member["deregisterReason"])) {
+                                                        echo '<p class="hide">' . $member["deregisterReason"] . '</p>';
+                                                    } ?>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="float-end">
