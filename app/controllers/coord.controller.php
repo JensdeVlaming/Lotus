@@ -126,7 +126,7 @@ class CoordController extends Controller
 
         $result = $this->userModel->create($email, $firstName, $lastName, $street, $premise, $city, $postalCode, $phoneNumber, $gender, $password);
 
-        if ($result == 1) {
+        if ($result == true) {
             $this->redirect("/leden");
         } else {
             $data = [

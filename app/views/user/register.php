@@ -5,11 +5,13 @@
 
             <span class="fw-bold sub-title">Maak een nieuw account aan.</span>
 
-            <!-- 
-            // TODO correcte gegevens aanvragen en controlles hierop
-            // TODO data naar database plaatsen 
-            -->
+            <?php if (isset($data["error"])) { ?>
 
+                <div class="alert alert-danger" id="alert-login" role="alert">
+                    <span class="text-center"><?php echo $data["error"] ?></span>
+                </div>
+
+            <?php } ?>
             <div id="tabOne" class="tab tabOne">
                 <span class="sectionLabel">Bedrijfsgegevens:</span>
                 <label for="" class="small-lable fw-bold">Bedrijfsnaam:</label>

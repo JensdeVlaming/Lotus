@@ -36,13 +36,13 @@ class UserModel extends Model
         try {
             $result = $this->db->execute();
 
-            if ($result == 1) {
-                return 1;
+            if ($result == true) {
+                return true;
             } else {
-                return 2;
+                return false;
             }
         } catch (Exception $e) {
-            return 3;
+            return false;
         }
     }
 }

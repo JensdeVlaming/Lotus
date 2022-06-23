@@ -52,15 +52,6 @@ class RegisterModel extends Model
         $this->db->bind(':billingAddressId', $this->billingId);
 
 
-        if ($this->db->execute()) {
-
-            $firstName = explode(" ", $firstName);
-            $lastName = explode(" ", $lastName);
-            $initials = substr($firstName[0], 0, 1) . substr($lastName[count($lastName) - 1], 0, 1);
-
-            Application::$app->session->set("user", $email);
-            Application::$app->session->set("initials", $initials);
-            Application::$app->session->set("activeRole", "opdrachtgever");
-        }
+        return $this->db->execute();
     }
 }
