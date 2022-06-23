@@ -2,29 +2,15 @@
 
 foreach($data as $item) {
     
-    $cSplit = str_split($item["cHouseNumber"]);
     $gSplit = str_split($item["gHouseNumber"]);
-    $bSplit = str_split($item["bHouseNumber"]);
     $pSplit = str_split($item["pHouseNumber"]);
 
-    $c = count($cSplit);
     $g = count($gSplit);
-    $b = count($bSplit);
     $p = count($pSplit);
     
-    $cHouseNumber = "";
     $gHouseNumber = "";
-    $bHouseNumber = "";
     $pHouseNumber = "";
 
-    if (!preg_match('/[^A-Za-z]/', $cSplit[$c-1]))
-        {
-            $cPremise = $cSplit[$c-1];
-            for ($x = 0; $x < $c-1 ; $x++) {$cHouseNumber .= $cSplit[$x];}
-        } else {
-            $cPremise = "";
-            $cHouseNumber = $item["cHouseNumber"];
-        }
 
     if (!preg_match('/[^A-Za-z]/', $gSplit[$g-1])) 
         {
@@ -33,15 +19,6 @@ foreach($data as $item) {
         } else {
             $gPremise = "";
             $gHouseNumber = $item["gHouseNumber"];
-        }
-
-    if (!preg_match('/[^A-Za-z]/', $bSplit[$b-1]))
-        {
-            $bPremise = $bSplit[$b-1];
-            for ($x = 0; $x < $b-1 ; $x++) {$bHouseNumber .= $bSplit[$x];}
-        } else {
-            $bPremise = "";
-            $bHouseNumber = $item["bHouseNumber"];
         }
 
     if (!preg_match('/[^A-Za-z]/', $pSplit[$p-1]))
@@ -60,18 +37,10 @@ foreach($data as $item) {
     $comments = $item["comments"];
     $date = $item["date"];
     $time = $item["time"];
+    $endTime = $item['endTime'];
     $casualties = $item["casualties"];
     $postDate = $item["postDate"];
     $clientEmail = $item["clientEmail"];
-
-    // company
-    $companyId = $item['companyId'];
-    $companyName = $item["companyName"];
-    $cCountry = $item["cCountry"];
-    $cProvince = $item["cProvince"];
-    $cCity = $item["cCity"];
-    $cStreet = $item["cStreet"];
-    $cPostalCode = $item["cPostalCode"];
 
     // grimeLocation
     $grimeLocationId=$item['grimeLocationId'];
@@ -89,20 +58,6 @@ foreach($data as $item) {
     $pStreet = $item["pStreet"];
     $pPostalCode = $item["pPostalCode"];
 
-    // contact
-    $contactId = $item['contactId'];
-    $firstName = $item["firstName"];
-    $lastName = $item["lastName"];
-    $email = $item["email"];
-    $phoneNumber = $item["phoneNumber"];
-
-    // Billing
-    $billingAddressId = $item['billingAddressId'];
-    $bCountry = $item["bCountry"];
-    $bProvince = $item["bProvince"];
-    $bCity = $item["bCity"];
-    $bStreet = $item["bStreet"];
-    $bPostalCode = $item["bPostalCode"];
 
      // date comparison variables
      $date_now = date("Y-m-d");
@@ -200,6 +155,36 @@ foreach($data as $item) {
                                         </div>
                                         <div class="col-xl-6 col-md-12">
                                             <div class="">
+                                                <label for="playTime" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Speel Tijd:
+                                                    </span>
+                                                </label>
+                                                <input type="time" name="playTime" id="playTime" required class="
+                                                form-control
+                                                request-input
+                                            "
+                                            value="<?php echo $time; ?>"
+                                            >
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
+                                                <label for="endTime" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Eind Tijd:
+                                                    </span>
+                                                </label>
+                                                <input type="time" name="endTime" id="endTime" required class="
+                                                form-control
+                                                request-input
+                                            "
+                                            value="<?php echo $endTime; ?>"
+                                            >
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
                                                 <label for="playDate" class="mt-2">
                                                     <span class="formLabel">
                                                         <span class="requiredField">*</span>Speel Datum:
@@ -213,21 +198,8 @@ foreach($data as $item) {
                                             >
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-md-12">
-                                            <div class="">
-                                                <label for="playTime" class="mt-2">
-                                                    <span class="formLabel">
-                                                        <span class="requiredField">*</span>Speel Tijd:
-                                                    </span>
-                                                </label>
-                                                <input type="time" name="playTime" id="playTime" required class="
-                                                form-control
-                                                request-input
-                                            "
-                                            value="<?php echo $time; ?>" 
-                                            >
-                                            </div>
-                                        </div>
+                                        
+                                        
                                         <div class="col-xl-4">
                                             <div class="">
                                                 <label for="lotusCasualties" class="mt-2">

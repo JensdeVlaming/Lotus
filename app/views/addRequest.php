@@ -111,12 +111,12 @@ if ($data) {
                                         </div>
                                         <div class="col-xl-6 col-md-12">
                                             <div class="">
-                                                <label for="playDate" class="mt-2">
+                                                <label for="playTime" class="mt-2">
                                                     <span class="formLabel">
-                                                        <span class="requiredField">*</span>Speel Datum:
+                                                        <span class="requiredField">*</span>Speel Tijd:
                                                     </span>
                                                 </label>
-                                                <input type="date" name="playDate" id="playDate" required class="
+                                                <input type="time" name="playTime" id="playTime" required class="
                                                 form-control
                                                 request-input
                                             ">
@@ -124,12 +124,25 @@ if ($data) {
                                         </div>
                                         <div class="col-xl-6 col-md-12">
                                             <div class="">
-                                                <label for="playTime" class="mt-2">
+                                                <label for="endTime" class="mt-2">
                                                     <span class="formLabel">
-                                                        <span class="requiredField">*</span>Speel Tijd:
+                                                        <span class="requiredField">*</span>Eind Tijd:
                                                     </span>
                                                 </label>
-                                                <input type="time" name="playTime" id="playTime" required class="
+                                                <input type="time" name="endTime" id="endTime" required class="
+                                                form-control
+                                                request-input
+                                            ">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-12">
+                                            <div class="">
+                                                <label for="playDate" class="mt-2">
+                                                    <span class="formLabel">
+                                                        <span class="requiredField">*</span>Speel Datum:
+                                                    </span>
+                                                </label>
+                                                <input type="date" name="playDate" id="playDate" required class="
                                                 form-control
                                                 request-input
                                             ">

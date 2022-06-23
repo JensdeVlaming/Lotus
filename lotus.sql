@@ -132,6 +132,7 @@ CREATE TABLE `request` (
     `comments` text DEFAULT NULL,
     `date` varchar(10) NOT NULL,
     `time` varchar(5) NOT NULL,
+    `endTime` varchar(5) NOT NULL,
     `casualties` int(3) NOT NULL,
     `playGroundId` int(11) NOT NULL,
     `grimeLocationId` int(11) NOT NULL,
@@ -223,12 +224,12 @@ INSERT INTO `contact` (contactId, firstName, lastName, email, phoneNumber) VALUE
 
 
     -- request
-    INSERT INTO `request` (requestId, description, comments, date, time, clientEmail, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, approved) VALUES 
-    (1, 'Steekwonden', 'Cuts and bruises', '2022-06-12', '10:00', 'client@lotus.nl', 5, 1, 1, 1, 1, 1, 0),
-    (2, 'Benauwdheid', 'Paars gezicht', '2022-06-14', '12:00', 'client@lotus.nl', 3, 2, 2, 2, 2, 2, 1),
-    (3, 'Brandoefening', 'Hoofdpijn', '2022-06-14', '12:00', 'client@lotus.nl', 10, 3, 3, 3, 3, 3, 2),
-    (4, 'Aanrijding', 'Slachtoffer na aanrijding bewusteloos', '2022-07-05', '13:00', 'client@lotus.nl', 2, 4, 4, 4, 4, 4, 3),
-    (5, 'Kneuzing', 'Voet', '2022-08-20', '10:00', 'client@lotus.nl', 1, 5, 5, 5, 5, 5, 4);
+    INSERT INTO `request` (requestId, description, comments, date, time, endTime, clientEmail, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, approved) VALUES 
+    (1, 'Steekwonden', 'Cuts and bruises', '2022-06-12', '10:00','14:00' , 'client@lotus.nl', 5, 1, 1, 1, 1, 1, 0),
+    (2, 'Benauwdheid', 'Paars gezicht', '2022-06-14', '12:00','16:00' ,'client@lotus.nl', 3, 2, 2, 2, 2, 2, 1),
+    (3, 'Brandoefening', 'Hoofdpijn', '2022-06-14', '12:00','16:00' ,'client@lotus.nl', 10, 3, 3, 3, 3, 3, 2),
+    (4, 'Aanrijding', 'Slachtoffer na aanrijding bewusteloos','2022-07-05', '13:00', '17:00','client@lotus.nl', 2, 4, 4, 4, 4, 4, 3),
+    (5, 'Kneuzing', 'Voet', '2022-08-20', '10:00','14:00' ,'client@lotus.nl', 1, 5, 5, 5, 5, 5, 4);
 
     -- solicit
     INSERT INTO `solicit` (email, requestId, assigned) VALUES

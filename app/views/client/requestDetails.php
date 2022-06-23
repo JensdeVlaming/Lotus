@@ -60,7 +60,7 @@ if (!empty($data)) {
                             <tr>
                                 <td scope="row">Tijd</td>
                                 <td>:</td>
-                                <td><?php echo $item["time"]; ?></td>
+                                <td><?php echo $item["time"]; ?> - <?php echo $item["endTime"]; ?> </td>
                             </tr>
 
                             <tr>

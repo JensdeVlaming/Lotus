@@ -85,15 +85,16 @@ class RequestModel extends Model
         $this->contactId = $this->db->insertedRow();
     }
 
-    public function addRequest($description, $comments, $date, $time, $casualties)
+    public function addRequest($description, $comments, $date, $time,$endTime, $casualties)
     {
         $client = Application::$app->session->get("user");
-        $this->db->query("INSERT INTO request (description, comments, date, time, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, clientEmail) VALUES (:description, :comments, :date, :time, :casualties, :playGroundId, :grimeLocationId, :companyId, :contactId, :billingAddressId, :clientEmail);");
+        $this->db->query("INSERT INTO request (description, comments, date, time, endTime, casualties, playGroundId, grimeLocationId, companyId, contactId, billingAddressId, clientEmail) VALUES (:description, :comments, :date, :time, :endTime, :casualties, :playGroundId, :grimeLocationId, :companyId, :contactId, :billingAddressId, :clientEmail);");
 
         $this->db->bind(':description', $description);
         $this->db->bind(':comments', $comments);
         $this->db->bind(':date', $date);
         $this->db->bind(':time', $time);
+        $this->db->bind(':endTime', $endTime);
         $this->db->bind(':casualties', $casualties);
         $this->db->bind(':playGroundId', $this->playGroundId);
         $this->db->bind(':grimeLocationId', $this->grimeLocationId);
@@ -195,15 +196,16 @@ class RequestModel extends Model
         $this->db->execute();
     }
 
-    public function editRequest($requestId,$description, $comments, $date, $time, $casualties)
+    public function editRequest($requestId,$description, $comments, $date, $time, $endTime, $casualties)
     {
         $client = Application::$app->session->get("user");
-        $this->db->query("UPDATE request SET description = :description ,comments = :comments ,date = :date ,time = :time ,casualties = :casualties, approved = 5 WHERE requestId = :id;");
+        $this->db->query("UPDATE request SET description = :description ,comments = :comments ,date = :date ,time = :time, endTime = :endTime ,casualties = :casualties, approved = 5 WHERE requestId = :id;");
 
         $this->db->bind(':description', $description);
         $this->db->bind(':comments', $comments);
         $this->db->bind(':date', $date);
         $this->db->bind(':time', $time);
+        $this->db->bind(':endTime', $endTime);
         $this->db->bind(':casualties', $casualties);
         $this->db->bind(':id', $requestId);
 

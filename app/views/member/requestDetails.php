@@ -68,7 +68,7 @@ if (!empty($data["details"])) {
                         <tr>
                             <td scope="row">Tijd</td>
                             <td>:</td>
-                            <td><?php echo $data["details"]["time"]; ?></td>
+                            <td><?php echo $data["details"]["time"]; ?> - <?php echo $data["details"]["endTime"]; ?> </td>
                         </tr>
 
                         <tr>

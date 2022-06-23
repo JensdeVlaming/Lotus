@@ -99,13 +99,13 @@
                                             </tr>
                                         </thead>
                                             <?php foreach($data["solicitAssignmentList"] as $request) { ?>
-                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details-lid-assigned'">
+                                                <tr class="clickable " onclick="window.location='//localhost/opdracht/<?php echo $request['requestId'];?>/details'">
                                                     <td class="text-center" scope="row"><?php echo $request["requestId"];?></td>
                                                     <td>:</td>
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?>
                                         </table>
@@ -143,7 +143,7 @@
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?> 
                                         </table>
@@ -181,7 +181,7 @@
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?>
                                     </table>

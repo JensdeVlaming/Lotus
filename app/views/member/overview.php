@@ -10,7 +10,7 @@
                             <div class="col col-12">
                                 <h5 class="card-title"><?php echo $item["description"] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["companyName"] ?></h6>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["date"] ?> - <?php echo $item["time"] ?></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $item["date"] ?> | <?php echo $item["time"] ?> - <?php echo $item["endTime"] ?></h6>
                             </div>
                             <div class="col col-12">
                                 <div class="embed-responsive text-center col-12">

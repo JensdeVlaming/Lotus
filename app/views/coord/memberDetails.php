@@ -99,7 +99,7 @@
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?>
                                         </table>
@@ -137,7 +137,7 @@
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?> 
                                         </table>
@@ -175,7 +175,7 @@
                                                     <td class="text-left"><?php echo $request["companyName"];?></td>
                                                     <td class="text-center"><?php echo $request["cCity"];?></td>
                                                     <td class="text-center"><?php echo $request["date"];?></td>
-                                                    <td class="text-center"><?php echo $request["time"];?></td>
+                                                    <td class="text-center"><?php echo $request["time"];?> - <?php echo $request["endTime"];?></td>
                                                 </tr>
                                             <?php } ?>
                                     </table>
