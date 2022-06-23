@@ -4,7 +4,7 @@ if (!empty($data["details"])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="customCard card shadow-sm col-auto">
+                <div class="customCard card shadow-sm col-auto mb-2">
                     <div class="customCardBody card-body">
                         <h2 class="formSectionTitle fw-bold"><?php echo $data["details"]["companyName"]; ?></h2>
                         <p><?php echo $data["details"]["description"]; ?></p>

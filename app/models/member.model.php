@@ -146,22 +146,22 @@ class MemberModel extends Model
         return $result;
     }
 
-    private function getCountOfCompletedAssigments($email)
-    {
-        // TODO check on date
-        $assignedId = 1;
-        $approvedId = 2;
+    // private function getCountOfCompletedAssigments($email)
+    // {
+    //     // TODO check on date
+    //     $assignedId = 1;
+    //     $approvedId = 2;
 
-        $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
+    //     $this->db->query("SELECT COUNT(*) AS CompletedAssignments FROM request LEFT JOIN solicit ON request.requestId = solicit.requestId WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%d-%m-%Y ');");
 
-        $this->db->bind(":email", $email);
-        $this->db->bind(":assignedId", $assignedId);
-        $this->db->bind(":approvedId", $approvedId);
+    //     $this->db->bind(":email", $email);
+    //     $this->db->bind(":assignedId", $assignedId);
+    //     $this->db->bind(":approvedId", $approvedId);
 
-        $result = $this->db->single();
+    //     $result = $this->db->single();
 
-        return $result["CompletedAssignments"];
-    }
+    //     return $result["CompletedAssignments"];
+    // }
 
     // private function getCountOfSolicitAssigments($email)
     // {
@@ -225,17 +225,12 @@ class MemberModel extends Model
 
     private function getAllMemberCompletedAssigments($email)
     {
-        $assignedId = 1;
-        $approvedId = 2;
-
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId 
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) < DATE_FORMAT(NOW(),'%Y-%m-%d ');");
+                                    WHERE email = :email AND assigned = 1 AND request.approved = 2 AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%Y-%m-%d ');");
 
         $this->db->bind(":email", $email);
-        $this->db->bind(":assignedId", $assignedId);
-        $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->resultset();
 
@@ -248,17 +243,12 @@ class MemberModel extends Model
 
     private function getAllMemberSolicitAssigments($email)
     {
-        $assignedId = 0;
-        $approvedId = 2;
-
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId;");
+                                    WHERE email = :email AND assigned = 1 AND approved = 1");
 
         $this->db->bind(":email", $email);
-        $this->db->bind(":assignedId", $assignedId);
-        $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->resultset();
 
@@ -271,17 +261,12 @@ class MemberModel extends Model
 
     private function getAllMemberUpcommingAssigments($email)
     {
-        $assignedId = 1;
-        $approvedId = 2;
-
         $this->db->query("SELECT * FROM request 
                                     LEFT JOIN solicit ON request.requestId = solicit.requestId
                                     LEFT JOIN company ON request.companyId = company.companyId
-                                    WHERE email = :email AND assigned = :assignedId AND request.approved = :approvedId AND CONCAT(request.date) >= DATE_FORMAT(NOW(),'%Y-%m-%d ');");
+                                    WHERE email = :email AND assigned = 1 and approved = 2 AND CONCAT(request.date) <= DATE_FORMAT(NOW(),'%Y-%m-%d ');");
 
         $this->db->bind(":email", $email);
-        $this->db->bind(":assignedId", $assignedId);
-        $this->db->bind(":approvedId", $approvedId);
 
         $result = $this->db->resultset();
 
