@@ -59,9 +59,9 @@ foreach($data as $item) {
     $pPostalCode = $item["pPostalCode"];
 
 
-     // date comparison variables
-     $date_now = date("Y-m-d");
-     $date_request = date('Y-m-d', strtotime('-1 days', strtotime($item['date'])));  
+    // date comparison variables
+    $date_now = date("Y-m-d");
+    $date_request = date('Y-m-d', strtotime('-1 days', strtotime($item['date'])));  
         
     }
 ?>
