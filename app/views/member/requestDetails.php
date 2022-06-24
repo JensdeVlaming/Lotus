@@ -52,7 +52,7 @@ if (!empty($data["details"])) {
                     <?php } ?> -->
 
                         <?php if ($data["details"]["assigned"] == 1) { ?>
-                            <a href="/opdracht/1/formulier" target="_blank"><button type="button" class="btn btn-primary">Formulier</button></a>
+                            <a href="/opdracht/<?php echo $data["details"]["requestId"]; ?>/formulier" target="_blank"><button type="button" class="btn btn-primary">Formulier</button></a>
                         <?php } ?>
 
                         <hr class="dropdown-divider">
